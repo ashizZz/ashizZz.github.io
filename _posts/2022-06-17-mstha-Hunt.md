@@ -5,7 +5,7 @@ tags: [TECHNIQUE T1218.005, System Binary Proxy Execution, HTA, windows]
 ---
 Mshta is attractive to adversaries both in the early and latter stages of an infection because it enables them to proxy the execution of arbitrary code through a trusted utility.
 # Process and command-line monitoring
-## Monitor process execution and command-line parameters for suspicious use of Mshta
+# Monitor process execution and command-line parameters for suspicious use of Mshta
 Look for Mshta being executed with command lines containing protocol handlers like javascript, vbscript, about, etc.
 
 **Example:**
