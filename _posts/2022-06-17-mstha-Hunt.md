@@ -1,5 +1,5 @@
 ---
-title: mashta Hunt
+title: mshta Hunt
 category: Defense Evasion
 tags: [TECHNIQUE T1218.005, System Binary Proxy Execution, HTA, windows]
 ---
