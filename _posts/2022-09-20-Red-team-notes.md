@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Red Team Notes"
+title:  "Red Team quick detection notes"
 date:   2020-09-20 16:46:24 +0200
-categories: [redteam, R&D]
+categories: [redteam, R&D, usecases]
 ---
 
 # Windows
@@ -92,3 +92,4 @@ Hiding Windows services:
 
 ```powershell
 sc sdset evilsvc "D:(D;;DCLCWPDTSD;;;IU)(D;;DCLCWPDTSD;;;SU)(D;;DCLCWPDTSD;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCLCSWRPWPDTLO
+```
