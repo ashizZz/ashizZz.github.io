@@ -48,9 +48,10 @@ Example: using explorer.exe for code execution
 
 explorer.exe /root,"C:\Windows\System32\calc.exe"
 ```
-![](assets/img/red-teams-notes/process-monitor-1.png)
+<!-- ![](assets/img/red-teams-notes/process-monitor-1.png)
 ![](assets/img/red-teams-notes/process-monitor-2.png)
 ![](assets/img/red-teams-notes/process-monitor-3.png)
+-->
 ---
 
 ## Windows Defender signature removoal  
