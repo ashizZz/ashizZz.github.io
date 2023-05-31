@@ -4,7 +4,7 @@ category: Defense Evasion
 tags: [TECHNIQUE T1218.005, System Binary Proxy Execution, HTA, windows]
 ---
 Mshta is attractive to adversaries both in the early and latter stages of an infection because it enables them to proxy the execution of arbitrary code through a trusted utility.
-## Process and command-line monitoring
+# Process and command-line monitoring
 ## Monitor process execution and command-line parameters for suspicious use of Mshta
 Look for Mshta being executed with command lines containing protocol handlers like javascript, vbscript, about, etc.
 
@@ -32,7 +32,7 @@ Look for Mshta executing remotely hosted HTA content via URIs or UNC paths.
 ## Suspicious process ancestry
 For example, an adversary conducting a phishing attack might embed a macro in a Microsoft Word document that executes a malicious HTA file.
 
-## Parent process: winword.exe
+Parent process: winword.exe
 Child process: mshta.exe
 
 ## Mshta masquerading
@@ -47,5 +47,5 @@ MIME type: application/hta
 ## False positive mitigation
 Fine-tune detection logic to account for legitimate and expected use of Mshta in your environment.
 
-## Reference
+# Reference
 https://redcanary.com/threat-detection-report/techniques/mshta/#:~:text=Suspicious%20process%20ancestry,executes%20a%20malicious%20HTA%20file
