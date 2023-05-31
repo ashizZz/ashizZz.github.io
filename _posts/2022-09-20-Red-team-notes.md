@@ -2,7 +2,7 @@
 layout: post
 title:  "Red Team Notes"
 date:   2020-09-20 16:46:24 +0200
-categories: redteam R&D
+categories: [redteam, R&D]
 ---
 
 # Windows
