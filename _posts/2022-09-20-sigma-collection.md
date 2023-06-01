@@ -81,6 +81,7 @@ falsepositives:
   - Legitimate software activity. Requires further investigation and filtering.
 level: medium
 ```
+# Web Server
 
 ## Possible GitLab CVE-2023-2825 Exploitation Attempt (via webserver)
 ```bash
