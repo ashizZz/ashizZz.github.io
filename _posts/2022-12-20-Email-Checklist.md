@@ -1,3 +1,10 @@
+---
+layout:	post
+title:  "Email analysis checklists"
+date:   2023-03-30 16:46:24 +0200
+categories: [email, Phishing, analysis]
+---
+
 ### *I divided this analysis into four pieces to help us better understand the investigation flow.*
 
 # Email address
