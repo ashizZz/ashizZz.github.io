@@ -2,7 +2,7 @@
 layout: post
 title:  "Sigma Collection"
 date:   2023-04-20 16:46:24 +0200
-categories: [detection, R&D, sigma]
+categories: [detection, rules, sigma]
 ---
 
 # Windows
