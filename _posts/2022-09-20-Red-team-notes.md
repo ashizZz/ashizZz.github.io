@@ -48,10 +48,13 @@ Example: using explorer.exe for code execution
 
 explorer.exe /root,"C:\Windows\System32\calc.exe"
 ```
-<!-- ![](assets/img/red-teams-notes/pm1.png)
-![](assets/img/red-teams-notes/pm2.png)
-![](assets/img/red-teams-notes/pm3.png)
--->
+![new processes](/assets/img/red-teams-notes/pm1.png)
+
+![child parent](/assets/img/red-teams-notes/pm2.png)
+
+![Procmon](/assets/img/red-teams-notes/pm3.png)
+
+
 ---
 
 ## Windows Defender signature removoal  
