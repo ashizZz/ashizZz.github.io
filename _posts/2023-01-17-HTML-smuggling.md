@@ -5,7 +5,7 @@ tags: [HTML Smuggling (T1027.006), Obfuscated Files or Information (T1027), Deli
 ---
 ## HTML-Smuggling
 HTML Smuggling is an evasive payload delivery method that helps an attacker smuggle payload past content filters and firewalls by hiding malicious payloads inside of seemingly benign HTML files. This is possible by using JavaScript blobs and the HTML5 download attribute used with the anchor tag. This article demonstrates the methodology and two such readily available scripts that perform HTML smuggling.
-
+## MITRE Mapping
  - MITRE TACTIC: Defense Evasion (TA0005)
  - MITRE Technique ID: Obfuscated Files or Information (T1027) 
  - MITRE SUB ID: HTML Smuggling (T1027.006)
