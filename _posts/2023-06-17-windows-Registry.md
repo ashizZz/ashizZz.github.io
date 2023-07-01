@@ -40,7 +40,7 @@ Internet Explorer stores its data in the ***HKEY_CURRENT_USER\Software\Microsoft
 
 
 ### Attached Hardware:
-Navigating to the following key ***HKEY_LOCAL_MACHINE\SYSTEM|MountedDevices.This information can be useful to a forensic examiner as it shows any connected storage device has been recognized by the operating system.
+Navigating to the following key ***HKEY_LOCAL_MACHINE\SYSTEM***|MountedDevices.This information can be useful to a forensic examiner as it shows any connected storage device has been recognized by the operating system.
 
 If the examiner notes a discrepancy between the physically attached devices and the ones reported here, it can be an indication that some device was removed prior to the evidence being seized.
 
