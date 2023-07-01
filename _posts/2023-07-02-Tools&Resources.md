@@ -1,5 +1,5 @@
 ---
-title: Windows Registry
+title: Tools & Resources
 category: Tool & Technology 
 tags: [Tools, Reference, Guides]
 ---
