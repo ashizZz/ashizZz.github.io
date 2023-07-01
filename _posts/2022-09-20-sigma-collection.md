@@ -154,3 +154,84 @@ falsepositives:
 level: medium
 id: bce89ac5-10e8-4b1b-aec6-04bce0419988
 ```
+
+## Taskkill Scheduled Task Was Created (via audit)
+```bash
+title: Taskkill Scheduled Task Was Created (via audit)
+status: stable
+description: Adversaries may attempt to establish scheduled tasks with taskkill execution to terminate security processes or prevent write conflicts. For instance, ransomware may generate another group policy to kill a predefined list of processes by creating a scheduled task that invokes taskkill.exe.
+author: SOC Prime Team
+references:
+  - https://research.checkpoint.com/2023/rorschach-a-new-sophisticated-and-fast-ransomware/
+tags:
+  - attack.T1053
+  - attack.execution
+  - attack.persistence
+  - attack.privilege_escalation
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4698
+    TaskContent|contains:
+      - 'taskkill'
+  condition: selection
+falsepositives:
+  - Unknown
+level: high
+id: 37d48248-1d7d-442c-bbce-53eadbac13a0
+```
+
+## Possible CVE-2023-33299 (FortiNAC Insecure Deserialization) Exploitation Patterns (via keywords)
+```bash
+title: Possible CVE-2023-33299 (FortiNAC Insecure Deserialization) Exploitation Patterns (via keywords)
+status: stable
+description: Adversaries may try to exploit CVE-2023-33299 (FortiNAC Insecure Deserialization) in order to gain initial access. This rule requires extra log data from the appliance (output.master log file (/bsc/logs/output.master)).
+author: SOC Prime Team
+references:
+  - https://frycos.github.io/vulns4free/2023/06/18/fortinac.html
+tags:
+  - attack.t1190
+  - attack.initial_access
+logsource:
+  product: fortinet
+  service: fortinac
+  definition: requires output.master log file (/bsc/logs/output.master)
+detection:
+  keywords:
+    - 'ObjectInputStream.readObject' #ObjectInputStream.readObject()
+  condition: keywords
+falsepositives:
+  - Unknown
+level: medium
+id: 100e0dc2-f99d-480c-ac46-c2f3b5329425
+```
+## Possible Exfiltration Activities Of FadeStealer Malware Detected By Associate Filepaths.[via File_Event]
+```bash
+title: Possible Exfiltration Activities Of FadeStealer Malware Detected By Associate Filepaths.[via File_Event]
+id: f137df7b-4b98-45f3-b2dd-a4384861d52d
+description: This rule can detect exfiltration activities of fadestealer malware that create individual folders for each exfiltrated data in the %temp% directory.
+references: https://asec.ahnlab.com/en/54349/
+author: Phyo Paing Htun
+status: stable
+logsource:
+  product: windows
+  category: file_event
+detection:
+  selection: 
+    TargetFilename|contains:
+    - '\VSTelems_Fade'
+    - '\VSTelems_FadeIn'
+    - '\VSTelems_FadeOut'
+  condition: selection
+falsepositives:
+- unknown
+level: high
+tags:
+- attack.exfiltration
+- attack.collection
+- attack.credential_access
+- attack.t1052.001
+- attack.t1056.001
+```
