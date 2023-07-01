@@ -1,5 +1,5 @@
 ---
-title: HTML Smuggling
+title: Windows Registry
 category: Defense Evasion
 tags: [HTML Smuggling (T1027.006), Obfuscated Files or Information (T1027), Delivery]
 ---
