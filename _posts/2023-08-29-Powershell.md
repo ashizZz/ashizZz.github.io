@@ -1,99 +1,201 @@
 ---
-title: Tools & Resources
-category: Tool & Technology 
-tags: [Tools, Reference, Guides]
+title: Powershell Recommendations
+category: logging, recommendations 
+tags: [Powershell, Logging, Recomandations, Guides]
 ---
-# **Windows Forensics**
-# Network Analysis Tools
 
--   [Wireshark](https://nasbench.medium.com/wireshark.org/download.html)
--   [Network Appliance Forensic Toolkit](https://blog.didierstevens.com/programs/network-appliance-forensic-toolkit/)
--   [NetworkMiner](https://www.netresec.com/?page=networkminer)
+# **Powershell Recomendations**
 
-## Registry Analysis Tools
+## Upgrade the environment to Powershell v5 and remove prior versions where possible to add logging and restriction abilities.
+## Enable PowerShell Logging
 
--   [RegRipper](https://github.com/keydet89/RegRipper2.8)
--   [ShellBags Explorer](https://ericzimmerman.github.io/#!index.md)
--   [AmcacheParser](https://ericzimmerman.github.io/#!index.md)
--   [AppCompatCacheParser](https://ericzimmerman.github.io/#!index.md)
--   [JLECmd](https://ericzimmerman.github.io/#!index.md)
--   [RecentFileCacheParser](https://ericzimmerman.github.io/#!index.md)
--   [Computer Account Forensic Artifact Extractor (cafae)](https://tzworks.net/prototype_page.php?proto_id=19)
--   [Yet Another Registry Utility (yaru)](https://tzworks.net/prototype_page.php?proto_id=3)
+Detection of PowerShell attack activity on your network begins with logging PowerShell activity. Enabling PowerShell logging requires PowerShell v3 and newer and PowerShell v4 adds some additional log detail (Windows 2012 R2 & Windows 8.1 with November 2014 roll-up KB300850) useful for discovering and tracking attack activity. PowerShell logging can be enabled via Group Policy for PowerShell modules:
 
-## RDP Cache Analysis Tools
+*  **Microsoft.PowerShell.*** – Log most of PowerShell’s core capability.
 
--   [BMC-Tools](https://github.com/ANSSI-FR/bmc-tools)
+* **ActiveDirectory** – Log Active Directory cmdlet use.
 
-## Recycle Bin Analysis Tools
+*  **BITSfer** – Logs use of BITS cmdlets.
 
--   [RBCmd](https://ericzimmerman.github.io/#!index.md)
--   [$I Parser](https://df-stream.com/recycle-bin-i-parser/)
+*  **CimCmdlets (2012R2/8.1**) – Logs cmdlets that interface with CIM.
 
-## “$” Files Analysis Tools
+*  **GroupPolicy**– Log Group Policy cmdlet use.
 
--   [MFTExplorer](https://ericzimmerman.github.io/#!index.md)  ($MFT)
--   [MFTECmd](https://ericzimmerman.github.io/#!index.md)  ($MFT, $Boot, $J, $SDS, and $LogFile (coming soon) parser)
--   [UsnJrnl2Csv](https://github.com/jschicht/UsnJrnl2Csv)  ($UsnJrnl)
--   [INDXParse](https://github.com/williballenthin/INDXParse)  ($I30)
+*  **Microsoft.WSMan.Management** – Logs cmdlets that manage Web Services for Management (WS-Management) and Windows Remote Management (WinRM).
 
-## Logs Analysis Tools
+*  **NetAdapter/NetConnection** – Logs Network related cdmdlets. * * **PSScheduledJob/ScheduledTasks (PSv5)** – Logs cmdlets to manage scheduled jobs.
 
--   [Log Parser](https://www.microsoft.com/en-us/download/details.aspx?id=24659)  (Windows Event Logs)
--   [Evtx Explorer/EvtxECmd](https://ericzimmerman.github.io/#!index.md)
--   [Apache Scalp](https://github.com/nanopony/apache-scalp)
+*  **ServerManager** – Log Server Manager cmdlet use.
 
-## Processes And Memory Analysis Tools
+*  **SmbShare** – Log SMB sharing activity.
 
--   [Volatility](https://www.volatilityfoundation.org/)
--   [Memoryze](https://www.fireeye.com/services/freeware/memoryze.html)
--   [Magnet Process Capture](https://www.magnetforensics.com/resources/magnet-process-capture/)
--   [Magnet RAM Capture](https://www.magnetforensics.com/resources/magnet-ram-capture/)
+*PowerShell logging can also be configured for all PowerShell modules (“*”) useful if the attacker has imported custom modules*
 
-## Disk And File Analysis Tools
 
--   [FTK Imager](https://accessdata.com/product-download)
--   [Encrypted Disk Detector](https://www.magnetforensics.com/resources/encrypted-disk-detector/)
--   [Disk Editor Freeware](http://www.disk-editor.org/index.html)
--   [HxD](https://mh-nexus.de/en/hxd/)
+### Transcription
 
-## Browsers Analysis Tools
+PowerShell now transcribes what it can of console commands that manipulate the console buffer directly and can now be enabled in hosts such as the PowerShell ISE.
 
--   [DB Browser for SQLite](https://sqlitebrowser.org/)  (Open “.sqlite” files)
--   [Nirsoft Web Browsers Tools](https://www.nirsoft.net/web_browser_tools.html)  (Contains a multitude of tools to open cache files, cookies and history data)
--   [BrowsingHistoryView](https://www.nirsoft.net/utils/browsing_history_view.html)
--   [ESEDatabaseView](https://www.nirsoft.net/utils/ese_database_view.html)
--   [Session History Scrounger for Firefox](https://www.jeffersonscher.com/ffu/scrounger.html)  (Opens “.jsonlz4” files)
--   [Sysinternals Strings](https://docs.microsoft.com/en-us/sysinternals/downloads/strings)
--   [OS Forensics](https://www.osforensics.com/)
--   [Magnet IEF](https://www.magnetforensics.com/products/magnet-ief/)  (Internet Evidence Finder)
--   [Browser History Viewer](https://www.foxtonforensics.com/browser-history-viewer/)
--   [Browser History Examiner](https://www.foxtonforensics.com/browser-history-examiner/)  (Free Trial)
--   [Hindsight](https://github.com/obsidianforensics/hindsight)
--   [libsedb](https://github.com/libyal/libesedb)  (Library to access the Extensible Storage Engine (ESE) Database File (EDB) format)
--   [Web Browser Addons View](https://www.nirsoft.net/utils/web_browser_addons_view.html)  (Use to view installed extensions and addons)
--   [The LaZagne Project](https://github.com/AlessandroZ/LaZagne)
--   firepwd.py (open source tool to decrypt Mozilla protected passwords)
--   [Firefox Search Engine Extractor](https://www.jeffersonscher.com/ffu/searchjson.html)  (Open ‘search.json.mozlz4’ files)
--   [Firefox Bookmark Backup Reader/Decompressor](https://www.jeffersonscher.com/ffu/bookbackreader.html)  (Open ‘ jsonlz4’ files)
+Create a directory to hold transcripts.
 
-## **Frameworks, Toolkits and** VM’s
+Set permissions on the directory to prevent tampering. (I chose SDDL for the shortest code here.)
 
--   [SANS SIFT Workstation](https://digital-forensics.sans.org/community/downloads)
--   [ANSSI DFIR-ORC](https://github.com/dfir-orc)
--   [Redline](https://www.fireeye.com/services/freeware/redline.html)
--   [OSForensics](https://www.osforensics.com/)
--   [Kali Linux](https://www.kali.org/)
--   [Forensic Toolkit FTK](https://accessdata.com/products-services/forensic-toolkit-ftk)
--   [The Sleuth Kit](http://www.sleuthkit.org/)
--   [EnCase](https://www.guidancesoftware.com/encase-forensic)
--   [C.A.I.N.E](https://www.caine-live.net/)  (Computer Aided INvestigative Environment)
+Trim the transcript directory contents on an interval to avoid filling the drive (if local).
 
-## Other
+To enable automatic transcription, enable the ‘Turn on PowerShell Transcription’ feature in Group Policy through ***Windows Components -> Administrative Templates -> Windows PowerShell.*** For automation, the configuration settings are:
 
--   [Eric Zimmerman’s tools](https://ericzimmerman.github.io/#!index.md)
--   [DB Browser For SQLite](https://sqlitebrowser.org/dl/)
--   [NirSoft — freeware utilities: password recovery, system utilities, desktop utilities](https://www.nirsoft.net/)
--   [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/)
--   [Log2timeline](https://plaso.readthedocs.io/en/latest/)
--   [ProcDOT](https://www.procdot.com/)
+
+> HKLM:\Software\Policies\Microsoft\Windows\PowerShell\Transcription
+> 
+> *EnableTranscripting, 1
+> 
+> IncludeInvocationHeader,1
+> 
+> OutputDirectory, [Path]*
+
+### Script Block Logging
+PowerShell v5 and KB 3000850 introduces deep script block logging. This exposes what is being run.
+To enable automatic transcription, enable the ‘Turn on PowerShell Script Block Logging’ feature in Group Policy 
+through ***Windows Components -> Administrative Templates -> Windows PowerShell***.  If you select ‘Log script block invocation start / stop events’, PowerShell also logs start and stop events for every time a script block is invoked. This latter setting can generate an extremely high volume of events, so should be enabled with caution.  For automation, the configuration settings are stored under 
+
+> HKLM:\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging.
+> EnableScriptBlockLogging, 1   EnableScriptBlockInvocationLogging, 1
+
+It may also be a good idea to increase the log size. The Microsoft-Windows-PowerShell/Operational log is 15MB by default.  
+  
+### Protected Event Logging 
+Enable this to allow legitimate PS users to encrypt sensitive information that might be otherwise exposed in 
+script block logging.
+
+## Constrained Powershell - Whitelisting
+
+The strongest form of protection is when a system employs AppLocker in ‘*Allow Mode*’, where only specific known applications are allowed to run.  Known applications can restrict execution from script from a protected directory or signed by the enterprise's trusted code signing certificate. In version 5, PowerShell reduces the script's functionality to “Constrained Mode” for both interactive input and user-authored scripts when it detects that 
+PowerShell scripts have an ‘Allow Mode’ policy applied to them.  Before Powershell 5, the commands can be entered manually.  This doesn't stop execution from a manually installed and portable version of an earlier Powershell.
+*Set constrainedLanguageMode with AppLocker, DeviceGuard, Environment variable _PSLockdownPolicy*
+
+##  Detect Powershell generated EventId's within a SIEM or equivalent
+
+* Depending on OS version, it is contained within:
+ * Windows PowerShell.evtx
+  * Microsoft-Windows-PowerShell/Operational log
+  * Microsoft-Windows-PowerShell/Analytic.etl
+  * Microsoft-Windows-WinRM/Operational.evtx
+  * Microsoft-Windows-WinRM/Analytic.etl
+
+**ID 6:**     Creating WSMan Session    	             
+**ID 81:**    Processing client request for operation CreateShell
+**ID 134:**   Sending response for DeleteShell    
+  **ID 169:**   User X authent success using NTLM
+**ID 400:**   Engine Started                      
+   **ID 403:**   Engine Stopped
+**ID 772:**   WinRM request to target system       
+  **ID 1044:**  WINRM response from a system
+**ID 4100:**  Error Messages (PS 3.0 and higher)    
+ **ID 4103:**  PS module logging
+**ID 4104:**  Script block logging enabled           
+**ID 4105:**  Script block invocation logging start
+**ID 4106:**  Script block invocation logging end   
+ **ID 4656:**  handle to wsman\client keyID
+**ID 7937:**  Executed cmdlets, scripts, or commands
+**ID 8005:**  AppLocker permitted execution of PS    
+**ID 8006:**  AppLocker would have prevented PS exec 
+**ID 32850:** Creating attributable remote session  
+ **ID 32867:** Recv remoting frag of encoded payload  
+**ID 32868:** Sent remoting frag of encoded payload  
+**ID 40961:** PowerShell console is starting up
+**ID 40962:** PowerShell ready for user input
+
+**Field HostName** == ConsoleHost is for a local session
+**Field HostName** == ServerRemoteHost is for remote session
+
+## Blacklist known Powershell executables not maintained by IT
+
+While attackers have tools to circumvent this, it helps prevent them from being installed and therefore makes 
+finding a rogue PS instance one of more significant value.   
+
+## Monitoring the Powershell Operational log - Script block logging enabled
+
+Many PowerShell attack tools can be detected by monitoring the above PowerShell event logs for indicators. 
+They include the PowerSploit tools, but many other PowerShell attack tools use the same methods.
+
+Obfuscation of commands include:
+
+> ToString, Reverse, Split, Replace, Concat, and the "-f" operator
+> FromBase64String or Base64 Look for a high count of characters used
+> for obfuscation   examples: "$' for variables, semicolon for multiple
+> commands, plus for concat
+> 
+> -[E,EC,Enc,Encoded,EncodedCommand], -enc
+> -NoP, -NoProfile
+> -Nonl, -NonInteractive
+> -[W,Win,Window] Hidden, -WindowStyle Hidden
+> -[EP,Exec,Execution] Bypass, -ExecutionPolicy Bypass
+
+Configure system-wide transcription to log to a central repository. These indicators can assist in finding evil.
+
+    Invoke-TokenManipulation
+    TOKEN_IMPERSONATE
+    TOKEN_DUPLICATE
+    TOKEN_ADJUST_PRIVILEGES
+    AdjustTokenPrivileges
+    Invoke-CredentialInjection
+    TOKEN_PRIVILEGES
+    TOKEN_ALL_ACCESS
+    TOKEN_ASSIGN_PRIMARY
+    TOKEN_ELEVATION
+    TOKEN_INFORMATION_CLASS
+    TOKEN_QUERY
+    GetDelegateForFunctionPointer
+    ReadProcessMemory.Invoke
+    SE_PRIVILEGE_ENABLED
+    Invoke-DLLInjection
+    System.Reflection.AssemblyName
+    System.Reflection.Assembly
+    System.Reflection.Emit.AssemblyBuilderAccess
+    Invoke-Shellcode
+    Reflection.AssemblyName
+    System.Reflection.Emit.AssemblyBuilderAccess
+    System.MulticastDelegate
+    System.Reflection.CallingConventions
+    Get-GPPPassword
+    System.Security.Cryptography
+    System.Runtime.InteropServices
+    0x4e,0x99,0x06,0xe8,0xfc,0xb6,0x6c,0xc9,0xfa,0xf4
+    Groups.User.Properties.cpassword
+    ScheduledTasks.Task.Properties.cpassword
+    Out-MiniDump
+    Management.Automation.WindowsErrorReporting
+    Management.Automation.RuntimeException
+    MiniDumpWriteDump
+    IMAGE_NT_OPTIONAL_HDR64_MAGIC
+    Microsoft.Win32.UnsafeNativeMethods
+    LSA_UNICODE_STRING
+    PAGE_EXECUTE_READ
+    Net.Sockets.SocketFlags
+    SECURITY_DELEGATION
+    Metasploit
+
+## Protected event logging (can be used together with Windows Event Forwarding)  
+Requires Windows 10 or Windows Server 2016  
+Requires a document encryption certificate  
+
+> HKLM:\Software\Policies\Microsoft\Windows\EventLog\ProtectedEventLogging
+> EnableProtectedEventLogging, 1   EncryptionCertificate, [Certificate]
+
+
+## Additional References
+-   [Get Data into Splunk User Behavior Analytics](https://docs.splunk.com/Documentation/UBA/5.0.4.1/GetDataIn/AddPowerShell)  - PowerShell logging  
+    
+-   [Hunting for Malicious PowerShell using Script Block Logging](https://www.splunk.com/en_us/blog/security/hunting-for-malicious-powershell-using-script-block-logging.html)  
+    
+-   [PowerShell ♥ the Blue Team](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/)  - Microsoft  
+    
+-   [about_Logging](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging?view=powershell-5.1)  - Microsoft Docs  
+    
+-   [Greater Visibility Through PowerShell Logging - FireEye](https://www.fireeye.com/blog/threat-research/2016/02/greater_visibilityt.html)  
+    
+-   [How to Use PowerShell Transcription Logs in Splunk](https://hurricanelabs.com/splunk-tutorials/how-to-use-powershell-transcription-logs-in-splunk/)  - Hurricane Labs  
+    
+-   [Hurricane Labs Add-on for Windows PowerShell Transcript](https://splunkbase.splunk.com/app/4984/)  
+    
+-   [How to detect suspicious PowerShell activity with Splunk?](https://github.com/inodee/threathunting-spl/blob/master/hunt-queries/powershell_qualifiers.md)  -  [Alex Teixeira](https://twitter.com/ateixei)
