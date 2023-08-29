@@ -4,8 +4,6 @@ category: logging, recommendations
 tags: [Powershell, Logging, Recomandations, Guides]
 ---
 
-# **Powershell Recomendations**
-
 ## Upgrade the environment to Powershell v5 and remove prior versions where possible to add logging and restriction abilities.
 ## Enable PowerShell Logging
 
