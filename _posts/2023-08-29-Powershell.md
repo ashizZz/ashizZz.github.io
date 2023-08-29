@@ -1,5 +1,5 @@
 ---
-title: Powershell Recommendations
+title: Powershell Recommendations for detecting Malicious PowerShell
 category: logging, recommendations 
 tags: [Powershell, Logging, Recomandations, Guides]
 ---
