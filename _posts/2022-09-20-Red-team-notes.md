@@ -57,7 +57,7 @@ explorer.exe /root,"C:\Windows\System32\calc.exe"
 
 ---
 
-## Windows Defender signature removoal  
+## Windows Defender signature removal  
 A bit messy, but if Windows Defender is causing you a big headache, rather than disabling it (which alerts the user), you should just neuter it by deleting all the signatures:
 
 ```powershell
