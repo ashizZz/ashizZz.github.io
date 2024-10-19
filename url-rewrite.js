@@ -1,7 +1,9 @@
-// url-rewrite.js
+// url-alternate.js
 
-// Check if the URL contains 'StayUpdated.html'
-if (window.location.pathname === '/StayUpdated.html') {
-    // Replace the URL in the browser address bar without reloading the page
-    window.history.replaceState({}, '', '/stayupdated');
-}
+document.addEventListener('DOMContentLoaded', function () {
+    // Check if the current URL contains 'StayUpdated.html'
+    if (window.location.pathname.endsWith('/StayUpdated.html')) {
+        // Update the URL in the address bar without reloading the page
+        window.history.pushState({}, '', '/stayupdated');
+    }
+});
