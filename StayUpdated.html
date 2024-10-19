@@ -190,6 +190,37 @@
             border-radius: 4px;
             margin: 10px 0;
         }
+
+        /* Sleek and Elegant Navigation Button */
+        .navigation-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1de9b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999; /* Ensure it stays on top */
+        }
+
+        .navigation-button:hover {
+            background-color: #00bfae;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        .navigation-button .arrow-icon {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -212,12 +243,19 @@
         &copy; 2024 ashizZz
     </footer>
 
+    <!-- Sleek Navigation Button -->
+    <button class="navigation-button" id="toggleButton">
+        <span class="arrow-icon" id="arrowIcon">↓</span>
+    </button>
+
     <script>
         const feedContainer = document.getElementById('feedContainer');
         const lastUpdatedElement = document.getElementById('lastUpdated');
         const loadingMessage = document.getElementById('loadingMessage');
         const errorMessage = document.getElementById('errorMessage');
         const retryButton = document.getElementById('retryButton');
+        const toggleButton = document.getElementById('toggleButton');
+        const arrowIcon = document.getElementById('arrowIcon');
 
         const rssFeeds = [
             "https://www.hackthebox.com/rss/blog/blue-teaming",
@@ -320,10 +358,22 @@
             });
         }
 
+        // Scroll to top or bottom
+        toggleButton.addEventListener('click', () => {
+            const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+            if (isAtBottom) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                arrowIcon.innerText = '↓'; // Change arrow to down
+            } else {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                arrowIcon.innerText = '↑'; // Change arrow to up
+            }
+        });
+
         // Initialize feed fetching on load
         window.onload = fetchFeeds;
         retryButton.addEventListener('click', fetchFeeds);
     </script>
-  <script src="stay-updated.js"></script>
+<script src="stay-updated.js"></script>
 </body>
 </html>
