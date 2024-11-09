@@ -1,5 +1,5 @@
 ---
-title: Traffic Signaling: Port Knocking - Hidden Security or Overlooked Threat?
+title: Traffic Signaling:- Port Knocking - Hidden Security or Overlooked Threat?
 category: Persistence
 tags: [Traffic Signaling (T1205.001)]
 ---
