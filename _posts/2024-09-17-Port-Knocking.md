@@ -3,17 +3,16 @@ title: Traffic Signaling:- Port Knocking - Hidden Security or Overlooked Threat?
 category: Persistence
 tags: [Traffic Signaling (T1205.001)]
 ---
-## Port Knocking
 Port knocking is a stealthy technique used to control access to networked services, shielding sensitive systems from unauthorized users and casual scans. By requiring a specific sequence of "knocks" on closed ports, administrators can hide services such as SSH from prying eyes. However, while port knocking can offer an additional layer of security, its implementation is not foolproof. If set up improperly, it could expose systems to sophisticated attacks. This blog explores the principles of port knocking, its security benefits, the potential risks, and how defenders can detect suspicious port-knocking attempts.
 
-What is Port Knocking?
+## What is Port Knocking?
 Port knocking is essentially a "traffic signaling" technique. Administrators define a specific sequence of port connection attempts that act as a hidden key to unlock access to a particular service or open a port. Once a user performs the correct sequence, a daemon on the server recognizes the pattern and temporarily opens access to the service for the user's IP address.
 
 For example, to protect SSH access (port 22), a user might attempt to connect in the following order:
 
-Port 1234
-Port 5678
-Port 9101
+* Port 1234
+* Port 5678
+* Port 9101
 Upon completing the sequence, the server grants SSH access to the user's IP, allowing them to connect. This additional layer of security helps obscure services from routine port scans, reducing the likelihood of unauthorized access.
 ## Steps of Port Knocking
 -   **All Ports Initially Closed:** The server hides all service ports, making it harder for potential attackers to identify active services.
