@@ -121,7 +121,7 @@ Since the socket filter is designed to operate with minimal system overhead, its
 
 The lack of visible network activity and the use of low-overhead socket operations mean that traditional network monitoring tools or IDS systems that rely on frequent traffic inspection may fail to detect the exfiltration or reverse shell activation.
 
-### **Detection **
+### **Detection and Mitigation**
 
 
 #### **A. Monitoring and Auditing Network Interfaces**
@@ -130,9 +130,6 @@ To detect the use of socket filters for covert backdoor activations, network adm
 
 **Check for BPF programs attached to network interfaces**
 
-bash
-
-Copy code
 
 `sudo bpftool prog show` 
 
@@ -146,9 +143,6 @@ For example, using **tcpdump** to capture traffic on port 9999 can help detect a
 
 _**Capturing traffic on port 9999**_
 
-bash
-
-Copy code
 
 `sudo tcpdump -i eth0 port 9999` 
 
@@ -162,9 +156,6 @@ Restricting access to the ability to attach socket filters can help prevent adve
 
 _**SELinux policy to restrict BPF program usage**_
 
-bash
-
-Copy code
 
 `semanage permissive -a bpfilter_t` 
 
