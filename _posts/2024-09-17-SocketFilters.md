@@ -159,9 +159,6 @@ _**SELinux policy to restrict BPF program usage**_
 
 `semanage permissive -a bpfilter_t` 
 
-#### **E. EDR**
-
-Advanced EDR tools can help detect unusual processes and activities associated with backdoor activation, such as the sudden spawning of reverse shells or unusual socket connections. By correlating event logs and monitoring for anomalous behavior, defenders can identify and respond to attacks more effectively.
 
 ### **Conclusion**
 
