@@ -99,6 +99,9 @@ This will listen on port 9999 for incoming connections, allowing the attacker to
 `echo "Test" | nc -w 1 victim-ip 9999` 
 
 ![Packet Filter & capture](/assets/img/socket-filters/shell.png)
+
+
+
 The attacker needs to send a packet to the victim's machine that matches the BPF filter. Use Netcat to send a simple packet.This packet will match the filter.
 
 This simulation demonstrates how an attacker can use packet filters to trigger a reverse shell without needing to maintain an active connection. By understanding how packet filters work and how they can be leveraged by adversaries, security professionals can better detect and prevent such attacks. The use of packet filters to monitor specific ports can be an effective persistence mechanism for attackers, which makes detecting these activities crucial for securing systems.
@@ -118,7 +121,7 @@ Since the socket filter is designed to operate with minimal system overhead, its
 
 The lack of visible network activity and the use of low-overhead socket operations mean that traditional network monitoring tools or IDS systems that rely on frequent traffic inspection may fail to detect the exfiltration or reverse shell activation.
 
-### **Detection and Mitigation Techniques**
+### **Detection **
 
 
 #### **A. Monitoring and Auditing Network Interfaces**
