@@ -135,6 +135,10 @@ To detect the use of socket filters for covert backdoor activations, network adm
 
 This can identify any filters that have been installed on the system, such as those attached to port 9999 for reverse shell activation.
 
+![Packet Filter & capture](/assets/img/socket-filters/bpftool.png)
+
+By using bpftool to inspect the loaded BPF programs, administrators can detect the presence of suspicious filters, especially those related to network interfaces or specific ports used in covert backdoor or reverse shell activations. Identifying programs attached to unusual ports or interfaces can help detect attacks using socket filters, which are often used to bypass traditional network defenses.
+
 #### **B. Inspecting Network Traffic**
 
 Adversary-driven packet filters often utilize hidden or non-standard ports for command and control. By analyzing network traffic for deviations from normal patterns—such as traffic on uncommon ports or with unusual packet characteristics—defenders can identify potential exfiltration or C&C activity.
@@ -144,7 +148,9 @@ For example, using **tcpdump** to capture traffic on port 9999 can help detect a
 _**Capturing traffic on port 9999**_
 
 
-`sudo tcpdump -i eth0 port 9999` 
+`sudo tcpdump -i enp0s3 port 9999` 
+
+![Packet Filter & capture](/assets/img/socket-filters/tcpdump.png)
 
 #### **C. Kernel Auditing and System Integrity Checks**
 
