@@ -78,9 +78,9 @@ Attackers can also attempt to bypass the timeout by creating persistent access m
 
   
 
-Custom malware that ensures the port remains open.
+* Custom malware that ensures the port remains open.
 
-VPN tunneling or encrypted channels that remain open even after the timeout.
+* VPN tunneling or encrypted channels that remain open even after the timeout.
 
 ***Security Use:***
 
@@ -92,14 +92,5 @@ From a security perspective, closing the port after a set timeout is a useful wa
 
 Chaos is a backdoor that was originally part of a rootkit that was active in 2013 called “sebd”. This backdoor performs port knocking by providing a reverse shell that is triggered by packet reception and contains a special string which can be sent to any port.
 
-
-## Detection
-
-While port knocking provides a concealment layer, several detection methods can help identify suspicious port-knocking attempts. These include:
-
-1.  **Intrusion Detection Systems (IDS):** Configure IDS to monitor connection attempts on closed ports. A high volume of connection attempts across different ports can signal a port-knocking attempt or brute-force scan.
-2.  **Firewall Monitoring:** Log connection attempts on non-standard ports. Suspicious sequences of connections (e.g., repeated access to closed ports in rapid succession) should be flagged.
-3.  **Sequence Randomization:** Randomizing the knock sequence periodically prevents replay attacks and makes it harder for attackers to guess.
-4.  **Single-Packet Authorization (SPA):** Unlike traditional port knocking, SPA uses cryptographically signed packets, which makes replay and brute-force attacks significantly harder. Each knock must be authenticated, adding an additional security layer.
 
 ## LAB
