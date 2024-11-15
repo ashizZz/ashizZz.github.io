@@ -169,3 +169,8 @@ _**SELinux policy to restrict BPF program usage**_
 ### **Conclusion**
 
 The use of socket filters for covert backdoor activation and command and control is a powerful evasion technique used by adversaries. By exploiting _**libpcap**_ or _**Winpcap**_, attackers can create custom filters that monitor specific traffic and trigger malicious actions, such as reverse shells or implant installations, when certain criteria are met. Defenders must be vigilant in monitoring network interfaces, analyzing traffic patterns, and implementing security measures to detect and mitigate such attacks before they can cause damage.
+
+
+### References
+https://attack.mitre.org/techniques/T1205/002/
+http://recursos.aldabaknocking.com/libpcapHakin9LuisMartinGarcia.pdf
