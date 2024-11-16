@@ -129,7 +129,9 @@ Chaos is a backdoor that was originally part of a rootkit that was active in 201
 
 **Update the Default Settings**
 
-    sudo nano /etc/default/knockd
+    sudo vim /etc/default/knockd
+
+    
 **Ensuring the file contain following**
 
     # control if we start knockd at init or not
@@ -154,7 +156,6 @@ Closing the ssh port since the knockd service role is open or closed a port.
 
      sudo apt install ufw
      sudo ufw enable
-    
      sudo ufw status numbered
 
 
