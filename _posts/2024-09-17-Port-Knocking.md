@@ -91,6 +91,7 @@ From a security perspective, closing the port after a set timeout is a useful wa
 ## Example of Port-Knocking Exploit Persistence (Chaos)
 
 Chaos is a backdoor that was originally part of a rootkit that was active in 2013 called “sebd”. This backdoor performs port knocking by providing a reverse shell that is triggered by packet reception and contains a special string which can be sent to any port.
+
 [Chaos: a Stolen Backdoor Rising Again](https://gosecure.ai/blog/2018/02/14/chaos-a-stolen-backdoor-rising/)
 
 ## LAB
