@@ -164,13 +164,11 @@ Closing the ssh port since the knockd service role is open or closed a port.
     
     knock -v 192.168.205.129 7777 8888 9999
 
-
-![Verifying Port Knocking](/assets/img/Port-Knocking/Port-knocking-steps.png)
+![Port Knocking Steps](/assets/img/Port-Knocking/Port-knocking-steps.png)
 
 **Verify  Knocked logs**
 
-sudo knockd -i enp0s3 -v
-
+`sudo knockd -i enp0s3 -v`
 
 
 
