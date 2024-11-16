@@ -3,6 +3,7 @@ title: Traffic Signaling:- Port Knocking - Hidden Security or Overlooked Threat?
 category: Persistence
 tags: [Traffic Signaling (T1205.001)]
 ---
+![Verifying Port Knocking](/assets/img/port-Knocking/port-knocking.jpgng)
 
 Port knocking is a stealthy network security technique designed to shield services like SSH from unauthorized access and routine port scans. By requiring a predefined sequence of connection attempts to specific ports, it acts as a covert "key" to unlock access, effectively obscuring sensitive services from prying eyes. While often used by administrators to add an extra layer of security, adversaries have also adopted port knocking to conceal malicious activities such as persistence and command-and-control (C2) communication. This blog delves into the mechanics of port knocking, its security implications, and how it can both protect and potentially compromise systems. Here’s how port knocking works, with a focus on how it can be used by adversaries for maintaining covert access:
  
@@ -131,7 +132,7 @@ Chaos is a backdoor that was originally part of a rootkit that was active in 201
 
     sudo vim /etc/default/knockd
 
-    
+
 **Ensuring the file contain following**
 
     # control if we start knockd at init or not
@@ -166,6 +167,8 @@ Closing the ssh port since the knockd service role is open or closed a port.
     knock -v 192.168.205.129 7777 8888 9999
 
 ![Port Knocking Steps](/assets/img/Port-Knocking/Port-knocking-steps.png)
+
+*The screenshot demonstrates a successful implementation of **Port Knocking** to secure SSH access on the server `192.168.10.69`. Initially, an SSH connection attempt fails because port 22 is closed by default. Using the `knock` command, a specific sequence of TCP packets is sent to ports `1111`, `2222`, and `3333`, which the `knockd` daemon detects and dynamically opens port 22. After performing the knock sequence, the SSH connection is established successfully. Following the session, another knock sequence in reverse order (`3333`, `2222`, `1111`) is executed to close the SSH port again, ensuring the server remains secure. This workflow highlights how port knocking reduces attack surfaces by keeping critical ports closed unless accessed by authorized users with the correct sequence.*
 
 **Verify  Knocked logs**
 
