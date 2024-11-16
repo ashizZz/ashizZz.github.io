@@ -91,6 +91,74 @@ From a security perspective, closing the port after a set timeout is a useful wa
 ## Example of Port-Knocking Exploit Persistence (Chaos)
 
 Chaos is a backdoor that was originally part of a rootkit that was active in 2013 called “sebd”. This backdoor performs port knocking by providing a reverse shell that is triggered by packet reception and contains a special string which can be sent to any port.
-
+[Chaos: a Stolen Backdoor Rising Again](https://gosecure.ai/blog/2018/02/14/chaos-a-stolen-backdoor-rising/)
 
 ## LAB
+**installing the knockd**  
+
+    sudo apt install knockd
+
+**Configuring the knockd**
+
+    sudo vim/etc/knockd.conf
+
+ The change of the default configuration is important cause  of known values leads compromise of the system.
+
+    [options]
+            UseSyslog
+    
+    [openSSH]
+            sequence    = 1111,2222,3333
+            seq_timeout = 5
+            command     = /sbin/iptables -A INPUT -s %IP% -p tcp --dport 22 -j ACCEPT
+            tcpflags    = syn
+    
+    [closeSSH]
+            sequence    = 3333,2222,1111
+            seq_timeout = 5
+            command     = /sbin/iptables -D INPUT -s %IP% -p tcp --dport 22 -j ACCEPT
+            tcpflags    = syn
+    
+    [openHTTPS]
+            sequence    = 12345,54321,24680,13579
+            seq_timeout = 5
+            command     = /usr/local/sbin/knock_add -i -c INPUT -p tcp -d 443 -f %IP%
+            tcpflags    = syn
+
+
+**Update the Default Settings**
+
+    sudo nano /etc/default/knockd
+**Ensuring the file contain following**
+
+    # control if we start knockd at init or not
+    # 1 = start
+    # anything else = don't start
+    # PLEASE EDIT /etc/knockd.conf BEFORE ENABLING
+    START_KNOCKD=0
+    
+    # command line options
+    KNOCKD_OPTS="-i enp0s3"
+
+Checking the status  of **knockd**
+
+    sudo systemctl start knockd
+    
+     sudo systemctl enable knockd
+    
+     sudo systemctl status knockd
+
+Closing the ssh port since the knockd service role is open or closed a port.
+   
+
+     sudo apt install ufw
+     sudo ufw enable
+    
+     sudo ufw status numbered
+
+
+**Configure the knock client**
+
+    sudo apt install knockd
+    
+    knock -v 192.168.205.129 7777 8888 9999
