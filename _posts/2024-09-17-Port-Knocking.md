@@ -163,3 +163,18 @@ Closing the ssh port since the knockd service role is open or closed a port.
     sudo apt install knockd
     
     knock -v 192.168.205.129 7777 8888 9999
+
+
+    ![Verifying Port Knocking](/assets/img/Port-Knocking/Port-knocking-steps.png)
+
+**Verify  Knocked logs**
+
+sudo knockd -i enp0s3 -v
+
+
+
+
+    ![Verifying Port Knocking](/assets/img/Port-Knocking/Verifying.png)
+
+
+  
