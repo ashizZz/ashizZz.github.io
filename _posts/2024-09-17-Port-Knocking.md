@@ -3,8 +3,6 @@ title: Traffic Signaling:- Port Knocking - Hidden Security or Overlooked Threat?
 category: Persistence
 tags: [Traffic Signaling (T1205.001)]
 ---
-![Verifying Port Knocking](/assets/img/port-Knocking/port-knocking.jpg)
-
 Port knocking is a stealthy network security technique designed to shield services like SSH from unauthorized access and routine port scans. By requiring a predefined sequence of connection attempts to specific ports, it acts as a covert "key" to unlock access, effectively obscuring sensitive services from prying eyes. While often used by administrators to add an extra layer of security, adversaries have also adopted port knocking to conceal malicious activities such as persistence and command-and-control (C2) communication. This blog delves into the mechanics of port knocking, its security implications, and how it can both protect and potentially compromise systems. Here’s how port knocking works, with a focus on how it can be used by adversaries for maintaining covert access:
  
 ## Step Involves 
