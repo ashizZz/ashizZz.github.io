@@ -1,7 +1,7 @@
 ---
 title: Windows Registry
 category: Defense Evasion
-tags: [HTML Smuggling (T1027.006), Obfuscated Files or Information (T1027), Delivery]
+tags: [Windows]
 ---
 ## Windows Registry Structure
 open Regedit.exe, he sees a tree-like structure with five root folders, or “hives”.
@@ -54,3 +54,13 @@ Navigating to this following key will give information for the last accessed app
 ***HKEY_CURRENT_USER\SOFTWARE\Microsoft\Currentversion\Search\RecentApps.***
 
 This user has a vast list of applications, one of which was Vmworkstation found.
+
+### Registry Analysis Tools
+* RegRipper
+* ShellBags Explorer
+* AmcacheParser
+* AppCompatCacheParser
+* JLECmd
+* RecentFileCacheParser
+* Computer Account Forensic Artifact Extractor (cafae)
+* Yet Another Registry Utility (yaru)
