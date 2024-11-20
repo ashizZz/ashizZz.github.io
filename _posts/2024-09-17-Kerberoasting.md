@@ -1,7 +1,7 @@
 ---
 title: Active Dictory:- Kerberoasting
 category: AD
-tags: [Attack Defense & Detection]
+tags: [Attack Defense & Detection,Credential Access]
 ---
 ## kerberoasting
 → Post-exploitation attack technique that is used to obtain a password hash of an AD account that has **servicePrincipalName(SPN)** value.
