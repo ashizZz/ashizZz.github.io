@@ -1,0 +1,58 @@
+<div class="controls-panel">
+    <div class="controls-row">
+        <div class="search-container">
+            <label for="searchInput" class="sr-only">Search articles</label>
+            <input type="text" 
+                   class="search-input" 
+                   id="searchInput" 
+                   placeholder="Search articles by title, description, or source... (Press / to focus)"
+                   aria-label="Search feeds"
+                   aria-describedby="searchHelp"
+                   autocomplete="off"
+                   spellcheck="false">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <div id="searchHelp" class="search-hint">💡 Tip: Try searching for keywords like "ransomware", "vulnerability", or source names</div>
+        </div>
+        <label for="sortSelect" class="sr-only">Sort articles by</label>
+        <select class="sort-select" id="sortSelect" aria-label="Sort feeds" aria-describedby="sortHelp">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="source">By Source</option>
+        </select>
+        <span id="sortHelp" class="sr-only">Choose how to sort the articles</span>
+    </div>
+    <div class="controls-row">
+        <div class="date-filter-group">
+            <label for="dateFilter" style="font-size: 0.85em; color: #b3b3b3; margin-right: 10px; font-weight: 500;">Date Range:</label>
+            <select class="filter-select" id="dateFilter" aria-label="Filter by date" aria-describedby="dateFilterHelp">
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+                <option value="custom">Custom Range</option>
+            </select>
+            <span id="dateFilterHelp" class="sr-only">Select a date range to filter articles</span>
+            <div id="customDateRange" style="display: none; gap: 10px; align-items: center; margin-left: 10px;">
+                <label for="dateFrom" class="sr-only">Start date</label>
+                <input type="date" 
+                       id="dateFrom" 
+                       class="filter-select" 
+                       style="padding: 8px;" 
+                       aria-label="Date from"
+                       aria-describedby="dateRangeHelp"
+                       max="">
+                <span style="color: #777; font-weight: 500;">to</span>
+                <label for="dateTo" class="sr-only">End date</label>
+                <input type="date" 
+                       id="dateTo" 
+                       class="filter-select" 
+                       style="padding: 8px;" 
+                       aria-label="Date to"
+                       aria-describedby="dateRangeHelp"
+                       max="">
+                <span id="dateRangeHelp" class="sr-only">Select start and end dates for custom range</span>
+            </div>
+        </div>
+    </div>
+</div>
+
