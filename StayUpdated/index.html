@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Stay Updated - Cybersecurity Threat Intelligence Feed Aggregator</title>
+    <meta name="description" content="Real-time Cybersecurity Threat Intelligence Aggregator. Stay informed with the latest security news, advisories, and research from 55+ trusted sources including CISA, Krebs on Security, and more.">
+    <meta name="keywords" content="cybersecurity, threat intelligence, security news, CISA, vulnerability, ransomware, security advisories">
+    <meta name="author" content="ashizZz">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0056b2">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(138, 180, 248)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ashizzz.github.io/StayUpdated/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stay Updated - Cybersecurity Threat Intelligence Feed Aggregator">
+    <meta property="og:description" content="Real-time Cybersecurity Threat Intelligence Aggregator. Stay informed with the latest security news, advisories, and research from 55+ trusted sources including CISA, Krebs on Security, and more.">
+    <meta property="og:url" content="https://ashizzz.github.io/StayUpdated/">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stay Updated - Cybersecurity Threat Intelligence Feed Aggregator">
+    <meta name="twitter:description" content="Real-time Cybersecurity Threat Intelligence Aggregator. Stay informed with the latest security news, advisories, and research from 55+ trusted sources including CISA, Krebs on Security, and more.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/stayupdated.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+<header role="banner">
+    <h1>🛡️ Stay Updated</h1>
+    <p class="subtitle">Real-time Cybersecurity Threat Intelligence Aggregator</p>
+    <div class="last-updated" id="lastUpdated"></div>
+    <div class="header-actions">
+        <button class="refresh-btn" id="headerRefreshBtn" title="Refresh all feeds" aria-label="Refresh all feeds">
+            <span class="refresh-icon">🔄</span>
+            <span>Refresh</span>
+        </button>
+    </div>
+</header>
+
+
+    
+    <div class="main-layout">
+        <aside class="sidebar">
+    <div class="source-filters-container">
+        <div class="source-filters-header">
+            <div class="source-filters-title">
+                <span>📰</span>
+                <span>Filter by Source</span>
+                <span class="source-filter-count-badge" id="sourceFilterCount">0 selected</span>
+            </div>
+            <div class="source-filter-actions">
+                <button class="filter-action-btn" id="selectAllSources" title="Select all available sources" aria-label="Select all available sources">
+                    <span>✓</span> <span>All</span>
+                </button>
+                <button class="filter-action-btn" id="deselectAllSources" title="Deselect all sources" aria-label="Deselect all sources">
+                    <span>✗</span> <span>None</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="filter-presets">
+            <div style="font-size: 0.85em; color: #777; margin-right: 10px; font-weight: 700; width: 100%; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Quick Filters</div>
+            <button class="preset-btn" data-preset="government" title="Government & Critical Infrastructure sources">
+                🏛️ Government
+            </button>
+            <button class="preset-btn" data-preset="news" title="Breaking news & journalism">
+                🕵️ News
+            </button>
+            <button class="preset-btn" data-preset="research" title="Threat research & malware analysis">
+                🔬 Research
+            </button>
+            <button class="preset-btn" data-preset="offensive" title="Offensive security & hacking">
+                🛡️ Offensive
+            </button>
+            <button class="preset-btn" data-preset="bugbounty" title="Bug bounty programs & writeups">
+                🎯 Bug Bounty
+            </button>
+            <button class="preset-btn" data-preset="cloud" title="Cloud & platform security">
+                ☁️ Cloud
+            </button>
+            <button class="preset-btn" data-preset="community" title="Community forums & discussions">
+                👥 Community
+            </button>
+        </div>
+        
+        <div class="source-search-wrapper">
+            <label for="sourceSearch" class="sr-only">Search sources</label>
+            <input type="text" 
+                   class="source-search" 
+                   id="sourceSearch" 
+                   placeholder="Search sources..."
+                   aria-label="Search sources"
+                   aria-describedby="sourceSearchHelp"
+                   autocomplete="off"
+                   spellcheck="false">
+            <span class="source-search-icon" aria-hidden="true">🔍</span>
+            <span id="sourceSearchHelp" class="sr-only">Type to filter the list of available sources</span>
+        </div>
+        
+        <div class="source-filter-actions" style="margin-top: 16px; margin-bottom: 16px; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <button class="filter-action-btn" id="expandAllCategories" title="Expand all categories" aria-label="Expand all categories">
+                <span>▼</span> <span>Expand All</span>
+            </button>
+            <button class="filter-action-btn" id="collapseAllCategories" title="Collapse all categories" aria-label="Collapse all categories">
+                <span>▲</span> <span>Collapse All</span>
+            </button>
+        </div>
+        
+        <div class="source-filters" id="sourceFilters" role="group" aria-label="Filter by source">
+            <!-- Source categories will be dynamically generated -->
+        </div>
+    </div>
+</aside>
+
+
+        
+        <main class="main-content" id="main-content" tabindex="-1">
+            <!-- Welcome Banner -->
+<div class="welcome-banner" id="welcomeBanner">
+    <div class="welcome-banner-icon">💡</div>
+    <div class="welcome-banner-content">
+        <div class="welcome-banner-title">Quick Start Guide</div>
+        <div class="welcome-banner-text">
+            <strong>Welcome!</strong> This page aggregates cybersecurity news from 55+ trusted sources. 
+            <strong>Quick tips:</strong> Use filter buttons for topics, search with keywords, or click article cards to read. 
+            Press <kbd>/</kbd> to focus search. Your preferences are saved automatically.
+        </div>
+    </div>
+    <button class="welcome-banner-close" id="closeWelcomeBanner" aria-label="Close welcome message">×</button>
+</div>
+
+
+            <div class="controls-panel">
+    <div class="controls-row">
+        <div class="search-container">
+            <label for="searchInput" class="sr-only">Search articles</label>
+            <input type="text" 
+                   class="search-input" 
+                   id="searchInput" 
+                   placeholder="Search articles by title, description, or source... (Press / to focus)"
+                   aria-label="Search feeds"
+                   aria-describedby="searchHelp"
+                   autocomplete="off"
+                   spellcheck="false">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <div id="searchHelp" class="search-hint">💡 Tip: Try searching for keywords like "ransomware", "vulnerability", or source names</div>
+        </div>
+        <label for="sortSelect" class="sr-only">Sort articles by</label>
+        <select class="sort-select" id="sortSelect" aria-label="Sort feeds" aria-describedby="sortHelp">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="source">By Source</option>
+        </select>
+        <span id="sortHelp" class="sr-only">Choose how to sort the articles</span>
+    </div>
+    <div class="controls-row">
+        <div class="date-filter-group">
+            <label for="dateFilter" style="font-size: 0.85em; color: #b3b3b3; margin-right: 10px; font-weight: 500;">Date Range:</label>
+            <select class="filter-select" id="dateFilter" aria-label="Filter by date" aria-describedby="dateFilterHelp">
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+                <option value="custom">Custom Range</option>
+            </select>
+            <span id="dateFilterHelp" class="sr-only">Select a date range to filter articles</span>
+            <div id="customDateRange" style="display: none; gap: 10px; align-items: center; margin-left: 10px;">
+                <label for="dateFrom" class="sr-only">Start date</label>
+                <input type="date" 
+                       id="dateFrom" 
+                       class="filter-select" 
+                       style="padding: 8px;" 
+                       aria-label="Date from"
+                       aria-describedby="dateRangeHelp"
+                       max="">
+                <span style="color: #777; font-weight: 500;">to</span>
+                <label for="dateTo" class="sr-only">End date</label>
+                <input type="date" 
+                       id="dateTo" 
+                       class="filter-select" 
+                       style="padding: 8px;" 
+                       aria-label="Date to"
+                       aria-describedby="dateRangeHelp"
+                       max="">
+                <span id="dateRangeHelp" class="sr-only">Select start and end dates for custom range</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <div class="stats-bar">
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+        <div class="stat-item" title="Total number of articles loaded from all sources">
+            <span>📊 Total:</span>
+            <span class="stat-value" id="totalCount">0</span>
+        </div>
+        <div class="stat-item" title="Number of articles currently visible after applying filters">
+            <span>👁️ Showing:</span>
+            <span class="stat-value" id="showingCount">0</span>
+        </div>
+        <div class="stat-item" title="Number of unique sources with articles">
+            <span>📰 Sources:</span>
+            <span class="stat-value" id="sourceCount">0</span>
+        </div>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+        <div class="auto-refresh-toggle">
+            <label for="autoRefreshToggle" style="cursor: pointer; user-select: none;" title="Automatically refresh feeds every 30 minutes">
+                <span>🔄 Auto-refresh:</span>
+            </label>
+            <div class="toggle-switch" 
+                 id="autoRefreshToggle" 
+                 role="switch" 
+                 aria-checked="false"
+                 aria-label="Toggle auto-refresh"
+                 aria-describedby="autoRefreshHelp"
+                 tabindex="0"></div>
+            <span id="refreshInterval" aria-live="polite">30 min</span>
+            <span id="autoRefreshHelp" class="sr-only">When enabled, feeds will automatically refresh every 30 minutes</span>
+        </div>
+        <div class="quick-actions">
+            <button class="quick-action-btn" id="exportBtn" title="Export filtered articles to JSON file" aria-label="Export filtered articles">
+                💾 Export
+            </button>
+            <button class="quick-action-btn" id="clearFiltersBtn" title="Clear all filters and reset to default view" aria-label="Clear all filters">
+                🗑️ Clear Filters
+            </button>
+            <button class="quick-action-btn" id="helpBtn" title="View keyboard shortcuts and tips" aria-label="Show keyboard shortcuts help">
+                ⌨️ Help
+            </button>
+        </div>
+    </div>
+</div>
+
+
+            <div class="loading" id="loadingMessage" style="display: none;" role="status" aria-live="polite" aria-label="Loading feeds">
+    <div class="spinner" aria-hidden="true"></div>
+    <span style="font-weight: 500;">Loading threat intelligence feeds...</span>
+    <div class="loading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Loading progress">
+        <div class="loading-progress-bar" id="loadingProgress" style="width: 0%;"></div>
+    </div>
+    <div style="font-size: 0.85em; color: #777; margin-top: 8px;" id="loadingStatus" aria-live="polite">Initializing...</div>
+    <div style="font-size: 0.75em; color: #666; margin-top: 12px; max-width: 400px; text-align: center;">
+        💡 Tip: Cached articles load instantly. Fresh data loads in the background.
+    </div>
+</div>
+
+<div class="error-message" id="errorMessage" style="display: none;" role="alert" aria-live="assertive"></div>
+
+
+            <div class="feed-container" id="feedContainer" role="main" aria-live="polite">
+    <!-- RSS feed content will be dynamically loaded here -->
+</div>
+
+<button class="button" id="retryButton" style="display: none; margin: 20px auto;" aria-label="Retry loading feeds">Retry Loading Feeds</button>
+
+
+        </main>
+    </div>
+    
+    <footer role="contentinfo">
+    <p>&copy; 2026 ashizZz | Cybersecurity Threat Intelligence Aggregator</p>
+    <p style="font-size: 0.85em; margin-top: 5px;">Stay informed. Stay secure.</p>
+</footer>
+
+
+    <button class="navigation-button" id="toggleButton" aria-label="Scroll to top or bottom">
+    <span id="arrowIcon">↑</span>
+</button>
+
+
+    
+    <!-- Scripts -->
+    <script src="/assets/js/stayupdated.js"></script>
+    <script src="/StayUpdated.js"></script>
+</body>
+</html>
+
