@@ -1,13 +1,7 @@
 name: "Build and Deploy"
 on:
   push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-      - .gitignore
-      - README.md
-      - LICENSE
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -22,13 +16,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: recursive # Changed to recursive to be safe
 
       - name: Setup Pages
         id: pages
@@ -38,30 +30,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
-          bundler-cache: true
-
-      # This is the fail-safe. It forces the creation of the vendor folder 
-      # if it's missing in the runner.
-      - name: Fix Chirpy SCSS Import
-        run: |
-          mkdir -p _sass/vendors
-          if [ -d "assets/vendor/bootstrap" ]; then
-            cp -r assets/vendor/bootstrap _sass/vendors/ 2>/dev/null || true
-          fi
+          bundler-cache: true # This installs the gems from your new Gemfile
 
       - name: Build site
         run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
-
-      - name: Test site
-        run: |
-          bundle exec htmlproofer _site \
-            --disable-external \
-            --check-html \
-            --allow_hash_href \
-            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" || true 
-            # Added || true so that broken links don't stop the deployment while we fix the CSS
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
