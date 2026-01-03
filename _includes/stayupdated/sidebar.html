@@ -1,0 +1,72 @@
+<aside class="sidebar">
+    <div class="source-filters-container">
+        <div class="source-filters-header">
+            <div class="source-filters-title">
+                <span>📰</span>
+                <span>Filter by Source</span>
+                <span class="source-filter-count-badge" id="sourceFilterCount">0 selected</span>
+            </div>
+            <div class="source-filter-actions">
+                <button class="filter-action-btn" id="selectAllSources" title="Select all available sources" aria-label="Select all available sources">
+                    <span>✓</span> <span>All</span>
+                </button>
+                <button class="filter-action-btn" id="deselectAllSources" title="Deselect all sources" aria-label="Deselect all sources">
+                    <span>✗</span> <span>None</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="filter-presets">
+            <div style="font-size: 0.85em; color: #777; margin-right: 10px; font-weight: 700; width: 100%; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Quick Filters</div>
+            <button class="preset-btn" data-preset="government" title="Government & Critical Infrastructure sources">
+                🏛️ Government
+            </button>
+            <button class="preset-btn" data-preset="news" title="Breaking news & journalism">
+                🕵️ News
+            </button>
+            <button class="preset-btn" data-preset="research" title="Threat research & malware analysis">
+                🔬 Research
+            </button>
+            <button class="preset-btn" data-preset="offensive" title="Offensive security & hacking">
+                🛡️ Offensive
+            </button>
+            <button class="preset-btn" data-preset="bugbounty" title="Bug bounty programs & writeups">
+                🎯 Bug Bounty
+            </button>
+            <button class="preset-btn" data-preset="cloud" title="Cloud & platform security">
+                ☁️ Cloud
+            </button>
+            <button class="preset-btn" data-preset="community" title="Community forums & discussions">
+                👥 Community
+            </button>
+        </div>
+        
+        <div class="source-search-wrapper">
+            <label for="sourceSearch" class="sr-only">Search sources</label>
+            <input type="text" 
+                   class="source-search" 
+                   id="sourceSearch" 
+                   placeholder="Search sources..."
+                   aria-label="Search sources"
+                   aria-describedby="sourceSearchHelp"
+                   autocomplete="off"
+                   spellcheck="false">
+            <span class="source-search-icon" aria-hidden="true">🔍</span>
+            <span id="sourceSearchHelp" class="sr-only">Type to filter the list of available sources</span>
+        </div>
+        
+        <div class="source-filter-actions" style="margin-top: 16px; margin-bottom: 16px; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <button class="filter-action-btn" id="expandAllCategories" title="Expand all categories" aria-label="Expand all categories">
+                <span>▼</span> <span>Expand All</span>
+            </button>
+            <button class="filter-action-btn" id="collapseAllCategories" title="Collapse all categories" aria-label="Collapse all categories">
+                <span>▲</span> <span>Collapse All</span>
+            </button>
+        </div>
+        
+        <div class="source-filters" id="sourceFilters" role="group" aria-label="Filter by source">
+            <!-- Source categories will be dynamically generated -->
+        </div>
+    </div>
+</aside>
+

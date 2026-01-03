@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% if site.theme_mode %}
+  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
+{% endif %}
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" {{ prefer_mode }}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>{{ page.title | default: "Stay Updated - Cybersecurity Threat Intelligence Feed Aggregator" }}</title>
+    <meta name="description" content="{{ page.description | default: 'Real-time Cybersecurity Threat Intelligence Aggregator. Stay informed with the latest security news, advisories, and research from 55+ trusted sources including CISA, Krebs on Security, and more.' }}">
+    <meta name="keywords" content="{{ page.keywords | default: 'cybersecurity, threat intelligence, security news, CISA, vulnerability, ransomware, security advisories' }}">
+    <meta name="author" content="{{ site.social.name | default: 'Ashish' }}">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0056b2">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(138, 180, 248)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page.title | default: 'Stay Updated - Cybersecurity Threat Intelligence Aggregator' }}">
+    <meta property="og:description" content="{{ page.description | default: 'Real-time Cybersecurity Threat Intelligence Aggregator from 55+ trusted sources' }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: 'Stay Updated - Cybersecurity Threat Intelligence' }}">
+    <meta name="twitter:description" content="{{ page.description | default: 'Real-time Cybersecurity Threat Intelligence Aggregator from 55+ trusted sources' }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/stayupdated.css' | relative_url }}">
+</head>
+<body>
+    {% include stayupdated/header.html %}
+    
+    <div class="main-layout">
+        {% include stayupdated/sidebar.html %}
+        
+        <main class="main-content" id="main-content" tabindex="-1">
+            {% include stayupdated/welcome-banner.html %}
+            {% include stayupdated/controls.html %}
+            {% include stayupdated/stats-bar.html %}
+            {% include stayupdated/loading-error.html %}
+            {% include stayupdated/feed-container.html %}
+        </main>
+    </div>
+    
+    {% include stayupdated/footer.html %}
+    {% include stayupdated/navigation-button.html %}
+    
+    <!-- Scripts -->
+    <script src="{{ '/assets/js/stayupdated.js' | relative_url }}"></script>
+    <script src="{{ '/StayUpdated.js' | relative_url }}"></script>
+</body>
+</html>
+

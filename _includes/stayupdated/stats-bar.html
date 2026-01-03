@@ -1,0 +1,44 @@
+<div class="stats-bar">
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+        <div class="stat-item" title="Total number of articles loaded from all sources">
+            <span>📊 Total:</span>
+            <span class="stat-value" id="totalCount">0</span>
+        </div>
+        <div class="stat-item" title="Number of articles currently visible after applying filters">
+            <span>👁️ Showing:</span>
+            <span class="stat-value" id="showingCount">0</span>
+        </div>
+        <div class="stat-item" title="Number of unique sources with articles">
+            <span>📰 Sources:</span>
+            <span class="stat-value" id="sourceCount">0</span>
+        </div>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+        <div class="auto-refresh-toggle">
+            <label for="autoRefreshToggle" style="cursor: pointer; user-select: none;" title="Automatically refresh feeds every 30 minutes">
+                <span>🔄 Auto-refresh:</span>
+            </label>
+            <div class="toggle-switch" 
+                 id="autoRefreshToggle" 
+                 role="switch" 
+                 aria-checked="false"
+                 aria-label="Toggle auto-refresh"
+                 aria-describedby="autoRefreshHelp"
+                 tabindex="0"></div>
+            <span id="refreshInterval" aria-live="polite">30 min</span>
+            <span id="autoRefreshHelp" class="sr-only">When enabled, feeds will automatically refresh every 30 minutes</span>
+        </div>
+        <div class="quick-actions">
+            <button class="quick-action-btn" id="exportBtn" title="Export filtered articles to JSON file" aria-label="Export filtered articles">
+                💾 Export
+            </button>
+            <button class="quick-action-btn" id="clearFiltersBtn" title="Clear all filters and reset to default view" aria-label="Clear all filters">
+                🗑️ Clear Filters
+            </button>
+            <button class="quick-action-btn" id="helpBtn" title="View keyboard shortcuts and tips" aria-label="Show keyboard shortcuts help">
+                ⌨️ Help
+            </button>
+        </div>
+    </div>
+</div>
+
