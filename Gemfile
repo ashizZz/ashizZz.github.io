@@ -11,8 +11,8 @@ gem "jekyll-theme-chirpy", "~> 7.1"
 # The original tools you had
 gem "html-proofer", "~> 5.0", group: :test
 
-# Sass compiler for StayUpdated page SCSS
-gem "sass", "~> 3.7"
+# Sass compiler for StayUpdated page SCSS (using modern Dart Sass)
+gem "sass-embedded", "~> 1.77"
 
 # Platform specific gems
 platforms :mingw, :x64_mingw, :mswin, :jruby do
@@ -20,4 +20,5 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo-data"
 end
 
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+# wdm gem has compatibility issues with Ruby 3.3 on Windows - Jekyll works without it
+# gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]

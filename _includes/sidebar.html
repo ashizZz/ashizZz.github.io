@@ -25,6 +25,13 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
+      <!-- Stay Updated -->
+      <li class="nav-item{% if page.layout == 'stayupdated' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/StayUpdated/' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-shield-alt"></i>
+          <span>STAY UPDATED</span>
+        </a>
+      </li>
       <!-- the real tabs -->
       {% for tab in site.tabs %}
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">

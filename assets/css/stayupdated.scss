@@ -1,4 +1,5 @@
 ---
+# Jekyll front matter for SCSS processing
 ---
 
 /* Light mode (default) - matching main theme */
@@ -151,6 +152,7 @@
   header {
     background: var(--gradient-card);
     padding: clamp(15px, 3vw, 25px) clamp(15px, 4vw, 20px);
+    padding-top: clamp(60px, 8vw, 70px);
     text-align: center;
     width: 100%;
     position: sticky;
@@ -160,6 +162,47 @@
     border-bottom: 1px solid var(--border-color);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
+    position: relative;
+}
+  .header-top {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 10;
+}
+  .home-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--card-background);
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+  .home-button:hover {
+    background: var(--card-hover);
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+}
+  .home-icon {
+    font-size: 1.2em;
+    line-height: 1;
+}
+  .home-text {
+    display: inline-block;
+}
+  /* Hide navigation button */
+  .navigation-button {
+    display: none !important;
 }
   header h1 {
     margin: 0 0 clamp(8px, 1.5vw, 10px) 0;
@@ -1300,6 +1343,21 @@ textarea:focus-visible {
     }
       .stats-bar {
         padding: 18px 24px;
+        flex-wrap: wrap;
+    }
+      .quick-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+      .header-actions {
+        position: static;
+        justify-content: center;
+        margin-top: 10px;
+        width: 100%;
+    }
+      .refresh-btn {
+        font-size: 0.85em;
     }
 }
   /* Tablet Portrait / Large Phone (481px - 768px) */
@@ -1308,6 +1366,22 @@ textarea:focus-visible {
         width: 100%;
         margin: 12px 0;
         gap: 15px;
+    }
+      .header-top {
+        top: 10px;
+        left: 15px;
+    }
+      .home-button {
+        padding: 8px 12px;
+    }
+      .home-text {
+        display: none;
+    }
+      .home-icon {
+        font-size: 1.4em;
+    }
+      header {
+        padding-top: 50px;
     }
       .sidebar {
         width: 100%;
@@ -1347,9 +1421,20 @@ textarea:focus-visible {
         margin: 0 12px 18px 12px;
         padding: 16px 20px;
         gap: 15px;
+        flex-wrap: wrap;
+    }
+      .stat-item {
+        font-size: 0.85em;
     }
       .quick-actions {
         flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+      .quick-action-btn {
+        font-size: 0.8em;
+        padding: 8px 14px;
     }
       .navigation-button {
         bottom: 18px;
@@ -1378,8 +1463,22 @@ textarea:focus-visible {
         margin: 8px 0;
         gap: 12px;
     }
+      .header-top {
+        top: 8px;
+        left: 10px;
+    }
+      .home-button {
+        padding: 6px 10px;
+    }
+      .home-text {
+        display: none;
+    }
+      .home-icon {
+        font-size: 1.4em;
+    }
       header {
         padding: 15px 12px;
+        padding-top: 45px;
     }
       header h1 {
         font-size: 1.5em;
@@ -1457,6 +1556,23 @@ textarea:focus-visible {
       .feed-item h2 {
         font-size: 1.1em;
     }
+      .header-actions {
+        position: static;
+        justify-content: center;
+        margin-top: 8px;
+        width: 100%;
+    }
+      .refresh-btn {
+        font-size: 0.75em;
+        padding: 6px 10px;
+    }
+      .refresh-btn span:not(.refresh-icon) {
+        display: none;
+    }
+      .last-updated {
+        font-size: 0.7em;
+        margin-top: 5px;
+    }
       .stats-bar {
         flex-direction: column;
         align-items: flex-start;
@@ -1468,6 +1584,7 @@ textarea:focus-visible {
         width: 100%;
         justify-content: space-between;
         padding: 10px 12px;
+        font-size: 0.85em;
     }
       .quick-actions {
         width: 100%;
@@ -1478,6 +1595,7 @@ textarea:focus-visible {
         width: 100%;
         justify-content: center;
         padding: 12px 18px;
+        font-size: 0.85em;
     }
       .auto-refresh-toggle {
         width: 100%;
@@ -1569,13 +1687,32 @@ textarea:focus-visible {
     }
       header {
         padding: 12px 10px;
+        padding-top: 40px;
     }
       header h1 {
         font-size: 1.3em;
     }
+      .header-top {
+        top: 5px;
+        left: 8px;
+    }
+      .home-button {
+        padding: 5px 8px;
+    }
+      .home-icon {
+        font-size: 1.2em;
+    }
+      .header-actions {
+        margin-top: 5px;
+    }
+      .refresh-btn {
+        padding: 5px 8px;
+        font-size: 0.7em;
+    }
       .sidebar,
     .controls-panel,
-    .stats-bar {
+    .stats-bar,
+    .welcome-banner {
         margin-left: 5px;
         margin-right: 5px;
     }
@@ -1590,6 +1727,14 @@ textarea:focus-visible {
         font-size: 0.65em;
         padding: 5px 8px;
     }
+      .stat-item {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+      .quick-action-btn {
+        font-size: 0.8em;
+        padding: 10px 15px;
+    }
 }
   /* Landscape Orientation Adjustments */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -1601,12 +1746,48 @@ textarea:focus-visible {
     }
       header {
         padding: 12px 20px;
+        padding-top: 50px;
     }
       header h1 {
         margin-bottom: 4px;
+        font-size: 1.3em;
     }
       header .subtitle {
         margin-bottom: 8px;
+        font-size: 0.75em;
+    }
+      .header-top {
+        top: 8px;
+        left: 15px;
+    }
+      .home-button {
+        padding: 6px 10px;
+    }
+      .home-text {
+        display: none;
+    }
+      .header-actions {
+        position: static;
+        margin-top: 5px;
+    }
+      .refresh-btn {
+        font-size: 0.75em;
+        padding: 6px 10px;
+    }
+      .refresh-btn span:not(.refresh-icon) {
+        display: none;
+    }
+      .last-updated {
+        font-size: 0.7em;
+        margin-top: 3px;
+    }
+      .controls-panel {
+        padding: 12px 15px;
+        margin-bottom: 12px;
+    }
+      .stats-bar {
+        padding: 12px 15px;
+        margin-bottom: 12px;
     }
 }
   /* Loading skeleton */
@@ -2073,10 +2254,41 @@ select:disabled {
         position: static;
         justify-content: center;
         margin-top: 10px;
+        width: 100%;
+    }
+      .refresh-btn {
+        font-size: 0.8em;
+        padding: 8px 12px;
+    }
+      .refresh-btn span:not(.refresh-icon) {
+        display: none;
+    }
+      .last-updated {
+        font-size: 0.75em;
+        margin-top: 5px;
     }
       .welcome-banner {
         padding: 12px 16px;
         margin: 0 10px 15px 10px;
+    }
+      header {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+      /* Improve touch targets for mobile */
+      button, .button, .quick-action-btn, .filter-action-btn, .preset-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+      .source-filter-item {
+        min-height: 44px;
+    }
+      .category-header {
+        min-height: 44px;
+    }
+      .toggle-switch {
+        min-width: 50px;
+        min-height: 28px;
     }
 }
 
