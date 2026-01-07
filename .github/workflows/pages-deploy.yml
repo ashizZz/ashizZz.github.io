@@ -33,12 +33,14 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true # This installs the gems from your new Gemfile
 
-      # ADDED: This ensures the Chirpy assets are ready before Jekyll tries to build
-      - name: Initialize Chirpy Assets
-        run: |
-          if [ -f ./tools/init.sh ]; then
-            bash ./tools/init.sh --no-edit
-          fi
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      # Build Chirpy theme assets (CSS/JS) before Jekyll build
+      - name: Build Assets
+        run: npm i && npm run build
 
       - name: Build site
         run: bundle exec jekyll build -d "_site${{ steps.pages.outputs.base_path }}"
