@@ -82,5 +82,8 @@ layout: compress
     {% endfor %}
 
     {% include_cached search-loader.html lang=lang %}
+    
+    <!-- StayUpdated case-insensitive routing -->
+    <script src="{{ '/StayUpdated.js' | relative_url }}"></script>
   </body>
 </html>

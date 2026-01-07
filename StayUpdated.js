@@ -27,7 +27,7 @@
     }
 
     /**
-     * Check if current path matches the route pattern
+     * Check if current path matches the route pattern (case-insensitive)
      * @param {string} pathname - Current pathname
      * @returns {boolean} True if path matches route
      */
@@ -35,18 +35,23 @@
         const normalized = normalizePath(pathname);
         const normalizedRoute = normalizePath(CONFIG.routePath);
         
-        // Exact match
-        if (normalized === normalizedRoute) {
+        // Convert to lowercase for case-insensitive comparison
+        const lowerNormalized = normalized.toLowerCase();
+        const lowerRoute = normalizedRoute.toLowerCase();
+        
+        // Exact match (case-insensitive)
+        if (lowerNormalized === lowerRoute) {
             return true;
         }
         
-        // Match with trailing slash
-        if (normalized === normalizedRoute + '/') {
+        // Match with trailing slash (case-insensitive)
+        if (lowerNormalized === lowerRoute + '/') {
             return true;
         }
         
-        // Match case-insensitive (for some edge cases)
-        if (normalized.toLowerCase() === normalizedRoute.toLowerCase()) {
+        // Match any case variation of StayUpdated (e.g., /stayupdated, /STAYUPDATED, /StayUpdated)
+        const routePattern = /^\/stayupdated\/?$/i;
+        if (routePattern.test(normalized)) {
             return true;
         }
         
@@ -150,12 +155,17 @@
     /**
      * Clean URL by removing .html extension, index.html, or ensuring proper directory structure
      * Uses history.replaceState to update URL without reload
+     * Handles case-insensitive paths
      */
     function cleanUrl() {
         const currentPath = window.location.pathname;
         const currentHref = window.location.href;
         const cleanPath = '/StayUpdated';
         const cleanPathWithSlash = '/StayUpdated/';
+        
+        // Case-insensitive check for StayUpdated path
+        const stayUpdatedPattern = /\/stayupdated/i;
+        const isStayUpdatedPath = stayUpdatedPattern.test(currentPath);
         
         let needsCleaning = false;
         let newPath = cleanPathWithSlash;
@@ -164,25 +174,30 @@
         if (currentPath.includes('/index.html') || currentPath.endsWith('index.html') || 
             currentHref.includes('/index.html')) {
             needsCleaning = true;
-            // For file:// URLs, extract the directory path
-            if (currentPath.includes('/StayUpdated/')) {
-                newPath = currentPath.replace(/\/index\.html.*$/, '/');
-                // Ensure it ends with /StayUpdated/
-                if (!newPath.endsWith('/StayUpdated/')) {
-                    newPath = newPath.replace(/StayUpdated.*$/, 'StayUpdated/');
+            // For file:// URLs, extract the directory path (case-insensitive)
+            if (isStayUpdatedPath) {
+                newPath = currentPath.replace(/\/index\.html.*$/i, '/');
+                // Ensure it ends with /StayUpdated/ (normalize case)
+                if (!/\/stayupdated\/$/i.test(newPath)) {
+                    newPath = newPath.replace(/\/stayupdated.*$/i, '/StayUpdated/');
                 }
             } else {
                 newPath = cleanPathWithSlash;
             }
         }
-        // Check if URL contains .html extension and needs cleaning
-        else if (currentPath.includes('StayUpdated.html') || currentHref.includes('StayUpdated.html')) {
+        // Check if URL contains .html extension and needs cleaning (case-insensitive)
+        else if (/stayupdated\.html/i.test(currentPath) || /stayupdated\.html/i.test(currentHref)) {
             needsCleaning = true;
             newPath = cleanPathWithSlash;
         }
-        // Ensure trailing slash for directory structure
-        else if (currentPath === cleanPath || 
-                 (currentPath.includes('StayUpdated') && !currentPath.endsWith('/') && !currentPath.includes('.'))) {
+        // Ensure trailing slash for directory structure (case-insensitive)
+        else if (currentPath.toLowerCase() === cleanPath.toLowerCase() || 
+                 (isStayUpdatedPath && !currentPath.endsWith('/') && !currentPath.includes('.'))) {
+            needsCleaning = true;
+            newPath = cleanPathWithSlash;
+        }
+        // Handle case variations (e.g., /stayupdated, /STAYUPDATED) - redirect to canonical /StayUpdated/
+        else if (isStayUpdatedPath && currentPath.toLowerCase() !== cleanPathWithSlash.toLowerCase()) {
             needsCleaning = true;
             newPath = cleanPathWithSlash;
         }
@@ -238,6 +253,11 @@
      */
     function init() {
         const currentPath = window.location.pathname;
+        const lowerPath = currentPath.toLowerCase();
+        
+        // Case-insensitive check for StayUpdated path
+        const stayUpdatedPattern = /\/stayupdated/i;
+        const isStayUpdatedPath = stayUpdatedPattern.test(currentPath);
         
         // If URL contains index.html, clean it immediately
         if (currentPath.includes('/index.html') || currentPath.endsWith('index.html')) {
@@ -245,25 +265,31 @@
             return;
         }
         
-        // If accessing /StayUpdated.html directly, clean the URL (no redirect needed)
-        if (currentPath === '/StayUpdated.html' || 
-            currentPath.endsWith('/StayUpdated.html') ||
-            currentPath.includes('StayUpdated.html')) {
-            // Clean URL - this will remove .html extension
+        // If accessing StayUpdated.html directly (case-insensitive), clean the URL
+        if (/stayupdated\.html/i.test(currentPath)) {
+            // Clean URL - this will remove .html extension and normalize case
             cleanUrl();
-            return; // Don't redirect, just clean the URL
-        }
-        
-        // If on /StayUpdated/ (clean path), we're good - just ensure it's clean
-        if (currentPath === '/StayUpdated/' || currentPath.endsWith('/StayUpdated/')) {
-            cleanUrl(); // This will ensure proper formatting
+            // Also redirect to canonical URL if case is different
+            if (!currentPath.match(/\/StayUpdated\.html$/i)) {
+                performRedirect();
+            }
             return;
         }
         
-        // Check if we're on the route path (without .html) - only redirect if needed
-        // This handles cases where Jekyll permalink might not be working
-        // But only redirect if we're not already on a StayUpdated page
-        if (matchesRoute(currentPath) && !currentPath.includes('StayUpdated')) {
+        // If on StayUpdated path (case-insensitive), check if case needs normalization
+        if (isStayUpdatedPath) {
+            // If case is not canonical (/StayUpdated/), redirect to canonical
+            if (currentPath !== '/StayUpdated/' && currentPath !== '/StayUpdated') {
+                performRedirect();
+                return;
+            }
+            // If already on canonical path, just ensure it's clean
+            cleanUrl();
+            return;
+        }
+        
+        // Check if we're on the route path (case-insensitive) - redirect to canonical
+        if (matchesRoute(currentPath)) {
             // Small delay to ensure DOM is ready (if needed)
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', performRedirect);
