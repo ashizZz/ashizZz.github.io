@@ -11,6 +11,9 @@ gem "jekyll-theme-chirpy", "~> 7.1"
 # The original tools you had
 gem "html-proofer", "~> 5.0", group: :test
 
+# Sass compiler for StayUpdated page SCSS
+gem "sass", "~> 3.7"
+
 # Platform specific gems
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
