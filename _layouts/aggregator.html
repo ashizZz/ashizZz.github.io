@@ -1,0 +1,155 @@
+---
+# Stay Updated — premium obsidian threat-intel dashboard (Chirpy tab)
+layout: page
+toc: false
+---
+
+<section class="stay-updated-dashboard"
+         data-app="stay-updated"
+         data-ui-lock="1"
+         data-snapshot-url="{{ '/assets/data/feeds-snapshot.json' | relative_url }}"
+         aria-label="Threat intelligence feed">
+  <header class="su-command" aria-label="Search and sort">
+    <div class="su-command__search">
+      <label for="search-input" class="sr-only">Search articles</label>
+      <search class="su-search align-items-center w-100">
+        <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+        <input type="search"
+               id="search-input"
+               class="form-control"
+               placeholder="Try “ransomware”, “CVE”, or a source… (press /)"
+               aria-label="Search articles"
+               autocomplete="off"
+               spellcheck="false">
+      </search>
+    </div>
+
+    <div class="su-command__actions">
+      <button type="button" class="su-btn su-btn--ghost" id="headerRefreshBtn" aria-label="Refresh feeds">
+        <svg class="su-btn__icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                d="M2.6 8a5.4 5.4 0 0 1 9.4-3.6L13.4 6M13.4 8a5.4 5.4 0 0 1-9.4 3.6L2.6 10M13.4 2.6V6h-3.4M2.6 13.4V10h3.4"/>
+        </svg>
+        <span>Refresh</span>
+      </button>
+
+      <label for="sortSelect" class="sr-only">Sort articles</label>
+      <select id="sortSelect" class="su-btn su-btn--select" aria-label="Sort order">
+        <option value="date-desc">Newest First</option>
+        <option value="date-asc">Oldest First</option>
+        <option value="source">By Source</option>
+      </select>
+    </div>
+  </header>
+
+  <p class="su-hint" id="dashboardHint">
+    Press <kbd class="su-hint__kbd">/</kbd> to search,
+    <kbd class="su-hint__kbd">J</kbd><kbd class="su-hint__kbd">K</kbd> to move between articles,
+    <kbd class="su-hint__kbd">I</kbd> or <strong>Sources</strong> to show or hide the filter panel. Click a card to select it; click the title to open the article.
+  </p>
+
+  <div class="su-ribbon" role="toolbar" aria-label="Filters and actions">
+    <div class="su-ribbon__left">
+      <button type="button"
+              class="su-sidebar-toggle"
+              id="sidebarToggleBtn"
+              aria-expanded="false"
+              aria-controls="sourceFilters"
+              title="Show sources panel (I)">
+        <span class="su-sidebar-toggle__chev" aria-hidden="true"></span>
+        <span class="su-sidebar-toggle__label">Sources</span>
+      </button>
+      <div class="su-ribbon__date-group">
+        <span class="su-ribbon__label">Date range</span>
+        <label for="dateFilter" class="sr-only">Date range</label>
+        <select id="dateFilter" class="su-pill" aria-label="Date range">
+          <option value="3days">Last 3 days</option>
+          <option value="all">All time</option>
+          <option value="today">Today</option>
+          <option value="week">This week</option>
+          <option value="month">This month</option>
+          <option value="custom">Custom</option>
+        </select>
+
+        <div class="su-ribbon__dates" id="customDateRange" hidden>
+          <label for="dateFrom" class="sr-only">From</label>
+          <input type="date" id="dateFrom" class="su-pill su-pill--date" aria-label="From date">
+          <span class="su-ribbon__dash" aria-hidden="true">–</span>
+          <label for="dateTo" class="sr-only">To</label>
+          <input type="date" id="dateTo" class="su-pill su-pill--date" aria-label="To date">
+        </div>
+      </div>
+
+      <div class="su-metrics" aria-live="polite">
+        <span class="su-metric su-metric--violet">
+          <span class="su-metric__dot" aria-hidden="true"></span>
+          Total <strong id="totalCount">0</strong>
+        </span>
+        <span class="su-metric su-metric--blue">
+          <span class="su-metric__dot" aria-hidden="true"></span>
+          Showing <strong id="showingCount">0</strong>
+        </span>
+        <span class="su-metric su-metric--green">
+          <span class="su-metric__dot" aria-hidden="true"></span>
+          Sources <strong id="sourceCount">0</strong>
+        </span>
+        <span id="lastUpdated" class="su-ribbon__updated"></span>
+      </div>
+    </div>
+
+    <div class="su-ribbon__right">
+      <div class="su-ribbon__auto">
+        <div class="form-check form-switch su-auto-refresh-switch">
+          <input class="form-check-input"
+                 type="checkbox"
+                 role="switch"
+                 id="autoRefreshToggle"
+                 aria-label="Toggle auto-refresh">
+          <label class="form-check-label su-ribbon__auto-label" for="autoRefreshToggle">Auto-refresh</label>
+        </div>
+        <label for="refreshIntervalSelect" class="sr-only">Auto-refresh interval</label>
+        <select id="refreshIntervalSelect" class="su-pill su-pill--interval" aria-label="Auto-refresh interval">
+          <option value="15">15 min</option>
+          <option value="30" selected>30 min</option>
+          <option value="60">60 min</option>
+        </select>
+      </div>
+
+      <button type="button" class="su-btn su-btn--action" id="exportBtn">Export</button>
+      <button type="button" class="su-btn su-btn--action" id="clearFiltersBtn">Clear</button>
+      <button type="button" class="su-btn su-btn--action su-btn--help" id="helpBtn">Help</button>
+    </div>
+  </div>
+
+  <button type="button" class="su-sidebar-backdrop" id="sidebarBackdrop" hidden aria-label="Close sources panel"></button>
+
+  <div class="su-workspace">
+    <aside class="su-sidebar" aria-label="Filter by source">
+      {% include stayupdated/sidebar.html %}
+    </aside>
+
+    <main class="su-main">
+      <div id="loadingMessage" class="su-loading" role="status" aria-live="polite" hidden>
+        <div class="su-loading__spinner" aria-hidden="true"></div>
+        <p id="loadingStatus">Loading feeds…</p>
+        <div class="su-loading__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="su-loading__bar" id="loadingProgress" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div id="errorMessage" class="su-error" role="alert" hidden></div>
+
+      <div id="feed-container" class="su-feed" role="feed" aria-live="polite" aria-label="Articles"></div>
+
+      <button type="button" class="su-retry" id="retryButton" hidden>Try again</button>
+    </main>
+  </div>
+
+  <span class="sr-only" id="sourceFilterCount" aria-hidden="true"></span>
+</section>
+
+<link rel="stylesheet" href="{{ '/assets/css/stayupdated.css' | relative_url }}">
+<script>
+  window.__SU_FEEDS__ = {{ site.data.stayupdated-feeds.feeds | jsonify }};
+</script>
+<script defer src="{{ '/assets/js/stayupdated.js' | relative_url }}"></script>

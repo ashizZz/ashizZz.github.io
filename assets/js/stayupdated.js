@@ -1,4 +1,4 @@
-﻿// Configuration
+// Configuration
         const CONFIG = {
             CACHE_DURATION: 30 * 60 * 1000, // 30 minutes
             AUTO_REFRESH_INTERVAL: 30 * 60 * 1000, // 30 minutes
@@ -6,81 +6,20 @@
             PROXY_URL: "https://api.rss2json.com/v1/api.json?rss_url=",
             FETCH_TIMEOUT: 15000, // 15 seconds per feed
             CONCURRENT_FEEDS: 10, // Load 10 feeds at a time
-            USE_CACHE_FIRST: true // Show cached feeds immediately
+            USE_CACHE_FIRST: true, // Show cached feeds immediately
+            MAX_INITIAL_PAINT: 30, // Fast first frame — only mount this many cards
+            MAX_INITIAL_ITEMS: 30, // Alias for spec / external hooks
+            LAZY_CARD_BATCH: 24, // Cards built per idle slice
+            SNAPSHOT_MAX_AGE_MS: 12 * 60 * 60 * 1000 // 12h — then background live refresh
         };
+        CONFIG.MAX_INITIAL_ITEMS = CONFIG.MAX_INITIAL_PAINT;
 
-        const rssFeeds = [
-            // 🏛️ Government & Critical Infrastructure
-            { url: "https://www.cisa.gov/cybersecurity-advisories/all.xml", name: "CISA Advisories" },
-            { url: "https://www.cisa.gov/news.xml", name: "CISA News" },
-            { url: "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml", name: "NCSC (UK)" },
-            { url: "https://www.kb.cert.org/vulfeed/", name: "CERT Vulnerability Notes" },
-            { url: "https://www.nist.gov/blogs/cybersecurity-insights/rss.xml", name: "NIST Cybersecurity Insights" },
-            { url: "https://www.us-cert.gov/ncas/alerts.xml", name: "US-CERT Alerts" },
-            
-            // 🕵️ Investigative Journalism & Breaking News
-            { url: "https://krebsonsecurity.com/feed/", name: "Krebs on Security" },
-            { url: "https://feeds.feedburner.com/TheHackersNews", name: "The Hacker News" },
-            { url: "https://www.darkreading.com/rss.xml", name: "Dark Reading" },
-            { url: "https://www.bleepingcomputer.com/feed/", name: "BleepingComputer" },
-            { url: "https://www.schneier.com/feed/atom/", name: "Schneier on Security" },
-            { url: "https://risky.biz/feeds/risky-business", name: "Risky Business" },
-            { url: "https://www.grahamcluley.com/feed/", name: "Graham Cluley" },
-            { url: "https://www.securityweek.com/rss", name: "SecurityWeek" },
-            { url: "https://www.helpnetsecurity.com/feed", name: "Help Net Security" },
-            { url: "https://securityaffairs.co/wordpress/feed", name: "Security Affairs" },
-            { url: "https://www.cybersecuritynews.com/feed/", name: "Cyber Security News" },
-            { url: "https://www.hackread.com/feed", name: "HackRead" },
-            
-            // 🔬 Threat Research & Malware Analysis
-            { url: "https://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss", name: "Google Project Zero" },
-            { url: "https://talosintelligence.com/rss", name: "Cisco Talos Intelligence" },
-            { url: "https://isc.sans.edu/rssfeed_full.xml", name: "SANS Internet Storm Center" },
-            { url: "https://www.mandiant.com/resources/blog/rss.xml", name: "Mandiant" },
-            { url: "https://securelist.com/feed/", name: "Securelist (Kaspersky)" },
-            { url: "https://news.sophos.com/en-us/category/threat-research/feed/", name: "Sophos Threat Research" },
-            { url: "https://www.malwarebytes.com/blog/feed", name: "Malwarebytes Labs" },
-            { url: "https://research.checkpoint.com/feed", name: "Check Point Research" },
-            { url: "https://unit42.paloaltonetworks.com/feed", name: "Palo Alto Unit 42" },
-            { url: "https://www.welivesecurity.com/feed", name: "WeLiveSecurity" },
-            { url: "https://www.crowdstrike.com/blog/feed", name: "CrowdStrike Blog" },
-            { url: "https://blog.google/threat-analysis-group/rss", name: "Google TAG" },
-            { url: "https://blog.trailofbits.com/feed/", name: "Trail of Bits" },
-            { url: "https://www.zerodayinitiative.com/blog?format=rss", name: "Zero Day Initiative" },
-            
-            // 🛡️ Offensive Security & Hacking Techniques
-            { url: "https://www.offsec.com/blog/feed", name: "OffSec (Offensive Security)" },
-            { url: "https://www.offensive-security.com/blog/feed", name: "Offensive Security" },
-            { url: "https://bishopfox.com/feeds/blog.rss", name: "Bishop Fox" },
-            { url: "https://hackingthe.cloud/feed_rss_created.xml", name: "Hacking The Cloud" },
-            { url: "https://www.hackthebox.com/rss/blog/all", name: "Hack The Box (All)" },
-            { url: "https://www.hackthebox.com/rss/blog/blue-teaming", name: "HackTheBox Blue Team" },
-            { url: "http://feeds.feedburner.com/PentestTools", name: "KitPloit" },
-            { url: "https://malwaretech.com/feed.xml", name: "MalwareTech" },
-            { url: "https://aboutdfir.com/feed", name: "About DFIR" },
-            { url: "https://infosecwriteups.com/feed", name: "InfoSec Writeups" },
-            
-            // ☁️ Platform & Cloud Security
-            { url: "https://aws.amazon.com/blogs/security/feed/", name: "AWS Security Blog" },
-            { url: "https://msrc-blog.microsoft.com/feed", name: "Microsoft Security Response Center" },
-            { url: "https://www.microsoft.com/security/blog/feed", name: "Microsoft Security Blog" },
-            
-            // 🔧 Security Operations & Tools
-            { url: "https://news.sophos.com/en-us/category/security-operations/feed/", name: "Sophos Security Ops" },
-            { url: "https://nakedsecurity.sophos.com/feed", name: "Naked Security" },
-            
-            // 👥 Community & Forums
-            { url: "https://www.reddit.com/r/netsec/.rss", name: "r/netsec" },
-            { url: "https://www.reddit.com/r/blueteamsec/.rss", name: "r/blueteamsec" },
-            { url: "https://news.ycombinator.com/rss", name: "Hacker News" },
-            
-            // 🎯 Bug Bounty & Responsible Disclosure
-            { url: "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty", name: "Bug Bounty Writeups (Medium)" },
-            { url: "https://medium.com/feed/tag/bug-bounty", name: "Medium Bug Bounty Tag" },
-            { url: "https://www.intigriti.com/blog/feed", name: "Intigriti Blog" },
-            { url: "https://www.yeswehack.com/rss.xml", name: "YesWeHack" },
-            { url: "https://www.hackerone.com/blog/feed", name: "HackerOne Blog" }
-        ];
+        /** Single source of truth: _data/stayupdated-feeds.yml → aggregator layout */
+        const rssFeeds = (window.__SU_FEEDS__ || []).map((f) => ({
+            name: f.name,
+            url: f.url,
+            category: f.category || null
+        }));
 
         // State management
         const state = {
@@ -90,47 +29,109 @@
             expandedCategories: new Set(),
             searchQuery: '',
             sortBy: 'date-desc',
-            dateFilter: 'all',
+            dateFilter: '3days',
             dateFrom: null,
             dateTo: null,
             autoRefreshEnabled: false,
+            refreshIntervalMinutes: 30,
             refreshTimer: null,
-            feedStatus: {}
+            feedStatus: {},
+            // --- Memoization cache (vanilla equivalent of useMemo) ---
+            // Stores last computed filter result keyed by a dependency hash.
+            // If hash matches on next applyFilters() call, we skip the O(N log N) sort
+            // and the O(N) filter pass entirely.
+            _filterCache: { key: null, items: null },
+            _datasetVersion: 0, // bumps every time allItems grows
+            // Persistent DOM map: itemKey -> HTMLElement. Cards live in the DOM across
+            // filter changes; we only toggle a `is-hidden` class instead of recreating
+            // 300+ elements on every keystroke. This is the vanilla equivalent of
+            // React.memo with a stable key prop.
+            _cardNodes: new Map(),
+            // Frame coalescing handle for batched renders.
+            _renderRaf: null,
+            // Tracks whether init has already wired window-level listeners so we
+            // never double-bind across hot-reloads or duplicate inits.
+            _listenersWired: false,
+            sidebarCollapsed: true,
+            _selectedCardKey: null,
+            _keyboardIndex: -1,
+            _fastBoot: true,
+            _lazyArchiveReady: false,
+            _lazyBuildHandle: null,
+            _lazyArchivePending: false,
+            _lazyGeneration: 0,
+            _snapshotGeneratedAt: null,
+            _liveFeedRefresh: false
         };
 
-        // DOM elements
-        const elements = {
-            feedContainer: document.getElementById('feedContainer'),
-            lastUpdated: document.getElementById('lastUpdated'),
-            loadingMessage: document.getElementById('loadingMessage'),
-            errorMessage: document.getElementById('errorMessage'),
-            retryButton: document.getElementById('retryButton'),
-            toggleButton: document.getElementById('toggleButton'),
-            arrowIcon: document.getElementById('arrowIcon'),
-            searchInput: document.getElementById('searchInput'),
-            sortSelect: document.getElementById('sortSelect'),
-            dateFilter: document.getElementById('dateFilter'),
-            dateFrom: document.getElementById('dateFrom'),
-            dateTo: document.getElementById('dateTo'),
-            customDateRange: document.getElementById('customDateRange'),
-            sourceFilters: document.getElementById('sourceFilters'),
-            sourceSearch: document.getElementById('sourceSearch'),
-            sourceFilterCount: document.getElementById('sourceFilterCount'),
-            selectAllSources: document.getElementById('selectAllSources'),
-            deselectAllSources: document.getElementById('deselectAllSources'),
-            expandAllCategories: document.getElementById('expandAllCategories'),
-            collapseAllCategories: document.getElementById('collapseAllCategories'),
-            exportBtn: document.getElementById('exportBtn'),
-            clearFiltersBtn: document.getElementById('clearFiltersBtn'),
-            helpBtn: document.getElementById('helpBtn'),
-            loadingProgress: document.getElementById('loadingProgress'),
-            loadingStatus: document.getElementById('loadingStatus'),
-            totalCount: document.getElementById('totalCount'),
-            showingCount: document.getElementById('showingCount'),
-            sourceCount: document.getElementById('sourceCount'),
-            autoRefreshToggle: document.getElementById('autoRefreshToggle'),
-            refreshInterval: document.getElementById('refreshInterval')
-        };
+        // ============================================================
+        // PERF: tiny scheduler. Coalesce multiple state changes into a
+        // single render per frame (rAF) so rapid checkbox toggles don't
+        // trigger 5 synchronous filter+render passes back-to-back.
+        // ============================================================
+        function scheduleRender() {
+            if (state._renderRaf != null) return;
+            state._renderRaf = requestAnimationFrame(() => {
+                state._renderRaf = null;
+                applyFilters();
+            });
+        }
+
+        // Polyfill: requestIdleCallback isn't available in Safari. Falls back to
+        // a 16ms setTimeout so background work (initial card materialisation,
+        // sidebar build) still yields to the main thread for input handling.
+        const rIC = window.requestIdleCallback
+            ? window.requestIdleCallback.bind(window)
+            : (cb) => setTimeout(() => cb({ timeRemaining: () => 8, didTimeout: false }), 16);
+
+        // DOM refs — resolved inside .stay-updated-dashboard (see resolveDashboardElements).
+        const elements = {};
+
+        function resolveDashboardElements() {
+            const root = document.querySelector('.stay-updated-dashboard[data-app="stay-updated"]');
+            if (!root) return false;
+
+            const byId = (id) => root.querySelector('#' + id);
+
+            elements.feedContainer = byId('feed-container');
+            elements.lastUpdated = byId('lastUpdated');
+            elements.loadingMessage = byId('loadingMessage');
+            elements.errorMessage = byId('errorMessage');
+            elements.retryButton = byId('retryButton');
+            elements.toggleButton = byId('toggleButton');
+            elements.arrowIcon = byId('arrowIcon');
+            elements.searchInput = byId('search-input');
+            elements.sortSelect = byId('sortSelect');
+            elements.dateFilter = byId('dateFilter');
+            elements.dateFrom = byId('dateFrom');
+            elements.dateTo = byId('dateTo');
+            elements.customDateRange = byId('customDateRange');
+            elements.sourceFilters = byId('sourceFilters');
+            elements.sourceSearch = byId('sourceSearch');
+            elements.sourceFilterCount = byId('sourceFilterCount');
+            elements.selectAllSources = byId('selectAllSources');
+            elements.deselectAllSources = byId('deselectAllSources');
+            elements.expandAllCategories = byId('expandAllCategories');
+            elements.collapseAllCategories = byId('collapseAllCategories');
+            elements.exportBtn = byId('exportBtn');
+            elements.clearFiltersBtn = byId('clearFiltersBtn');
+            elements.helpBtn = byId('helpBtn');
+            elements.loadingProgress = byId('loadingProgress');
+            elements.loadingStatus = byId('loadingStatus');
+            elements.totalCount = byId('totalCount');
+            elements.showingCount = byId('showingCount');
+            elements.sourceCount = byId('sourceCount');
+            elements.autoRefreshToggle = byId('autoRefreshToggle');
+            elements.refreshInterval = byId('refreshInterval');
+            elements.refreshIntervalSelect = byId('refreshIntervalSelect');
+
+            return !!elements.feedContainer;
+        }
+
+        function getRefreshIntervalMs() {
+            const mins = Number(state.refreshIntervalMinutes) || 30;
+            return Math.max(5, mins) * 60 * 1000;
+        }
 
         // Utility functions
         function sanitizeHtml(html) {
@@ -143,6 +144,25 @@
                 // Fallback for invalid HTML
                 return String(html).replace(/<[^>]*>/g, '');
             }
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function bindClickableAction(el, handler) {
+            if (!el) return;
+            el.addEventListener('click', handler);
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handler(e);
+                }
+            });
         }
 
         function getRelativeTime(date) {
@@ -179,9 +199,40 @@
         function estimateReadingTime(text) {
             if (!text) return null;
             const wordsPerMinute = 200;
-            const wordCount = text.split(/\s+/).length;
+            const wordCount = text.split(/\s+/).filter(Boolean).length;
+            if (!wordCount) return null;
             const minutes = Math.ceil(wordCount / wordsPerMinute);
             return minutes <= 1 ? '1 min read' : `${minutes} min read`;
+        }
+
+        function isArticleNew(pubDate) {
+            try {
+                const d = pubDate instanceof Date ? pubDate : new Date(pubDate);
+                if (Number.isNaN(d.getTime())) return false;
+                return Date.now() - d.getTime() < 60 * 60 * 1000;
+            } catch {
+                return false;
+            }
+        }
+
+        function buildFaviconSrc(sourceName) {
+            return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(getSourceDomain(sourceName))}&sz=64`;
+        }
+
+        function getSourceDomain(sourceName) {
+            const feed = rssFeeds.find((f) => f.name === sourceName);
+            if (feed?.url) {
+                try {
+                    return new URL(feed.url).hostname;
+                } catch { /* fall through */ }
+            }
+            const sample = state.allItems.find((it) => it.sourceName === sourceName && it.link);
+            if (sample?.link) {
+                try {
+                    return new URL(sample.link).hostname;
+                } catch { /* fall through */ }
+            }
+            return 'example.com';
         }
 
         function copyToClipboard(text, message) {
@@ -303,43 +354,237 @@
             return 'Unknown';
         }
 
+        const OG_IMAGE_CACHE_KEY = 'su_og_image_cache_v1';
+        const OG_IMAGE_PROXY = 'https://opengraph.githubassets.com/1/';
+        const OG_FETCH_CONCURRENCY = 4;
+        const _ogFetchQueue = [];
+        let _ogFetchActive = 0;
+        let _thumbObserver = null;
+
+        function readOgImageCache() {
+            try {
+                const raw = localStorage.getItem(OG_IMAGE_CACHE_KEY);
+                return raw ? JSON.parse(raw) : {};
+            } catch {
+                return {};
+            }
+        }
+
+        function writeOgImageCacheEntry(articleUrl, imageUrl) {
+            if (!articleUrl || !imageUrl) return;
+            try {
+                const cache = readOgImageCache();
+                cache[articleUrl] = { url: imageUrl, t: Date.now() };
+                const keys = Object.keys(cache);
+                if (keys.length > 400) {
+                    keys.sort((a, b) => (cache[a].t || 0) - (cache[b].t || 0));
+                    keys.slice(0, keys.length - 400).forEach((k) => delete cache[k]);
+                }
+                localStorage.setItem(OG_IMAGE_CACHE_KEY, JSON.stringify(cache));
+            } catch {}
+        }
+
+        function getCachedOgImage(articleUrl) {
+            if (!articleUrl) return null;
+            const hit = readOgImageCache()[articleUrl];
+            return hit?.url || null;
+        }
+
+        function isValidHttpUrl(url) {
+            try {
+                const u = new URL(url);
+                return u.protocol === 'http:' || u.protocol === 'https:';
+            } catch {
+                return false;
+            }
+        }
+
         function extractImageUrl(item) {
             try {
-                if (item.enclosure && item.enclosure.link) {
-                    const url = item.enclosure.link;
-                    // Validate URL
-                    try {
-                        new URL(url);
-                        return url;
-                    } catch {
-                        // Invalid URL
-                    }
+                const candidates = [
+                    item.imageUrl,
+                    item.ogImage,
+                    item.thumbnail,
+                    item.enclosure?.link,
+                    item.enclosure?.url
+                ];
+                for (const url of candidates) {
+                    if (url && isValidHttpUrl(url)) return url;
                 }
-                if (item.thumbnail) {
-                    try {
-                        new URL(item.thumbnail);
-                        return item.thumbnail;
-                    } catch {
-                        // Invalid URL
-                    }
-                }
-                
-                // Try to extract from description
-                const desc = item.description || '';
+
+                const desc = item.description || item.content || '';
                 const imgMatch = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
-                if (imgMatch && imgMatch[1]) {
-                    try {
-                        new URL(imgMatch[1]);
-                        return imgMatch[1];
-                    } catch {
-                        // Invalid URL
-                    }
+                if (imgMatch?.[1] && isValidHttpUrl(imgMatch[1]) && !/pixel|tracking|1x1|spacer/i.test(imgMatch[1])) {
+                    return imgMatch[1];
                 }
-            } catch (e) {
-                // Silently fail
-            }
-            
+            } catch {}
             return null;
+        }
+
+        function buildOgProxyUrl(articleUrl) {
+            if (!isValidHttpUrl(articleUrl)) return null;
+            return OG_IMAGE_PROXY + encodeURIComponent(articleUrl);
+        }
+
+        function resolveCardThumbnailUrl(item) {
+            const direct = extractImageUrl(item);
+            if (direct) return direct;
+            if (item._ogImage && isValidHttpUrl(item._ogImage)) return item._ogImage;
+            const cached = getCachedOgImage(item.link);
+            if (cached) {
+                item._ogImage = cached;
+                return cached;
+            }
+            return null;
+        }
+
+        function setArticleCardMediaImage(mediaEl, imageUrl, sourceName) {
+            if (!mediaEl || !imageUrl) return;
+            const existing = mediaEl.querySelector('img.article-card__media-img');
+            if (existing?.src === imageUrl) return;
+
+            mediaEl.innerHTML = '';
+            mediaEl.removeAttribute('data-placeholder');
+            const img = document.createElement('img');
+            img.className = 'article-card__media-img';
+            img.src = imageUrl;
+            img.alt = '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            const srcName = sourceName || mediaEl.closest('.article-card')?.dataset?.source || 'Unknown';
+            img.addEventListener('error', () => {
+                replaceMediaWithPlaceholder(mediaEl, srcName);
+            }, { once: true });
+            mediaEl.appendChild(img);
+            mediaEl.dataset.hasImage = '1';
+        }
+
+        function replaceMediaWithPlaceholder(mediaEl, sourceName) {
+            if (!mediaEl) return;
+            mediaEl.removeAttribute('data-has-image');
+            mediaEl.removeAttribute('data-ogQueued');
+            mediaEl.dataset.placeholder = '1';
+            mediaEl.innerHTML = '';
+            const wrap = document.createElement('div');
+            wrap.className = 'article-card__media-placeholder';
+            wrap.setAttribute('aria-hidden', 'true');
+            const fav = document.createElement('img');
+            fav.className = 'article-card__media-favicon';
+            fav.src = buildFaviconSrc(sourceName || 'Unknown');
+            fav.alt = '';
+            fav.width = 40;
+            fav.height = 40;
+            fav.loading = 'lazy';
+            fav.decoding = 'async';
+            wrap.appendChild(fav);
+            mediaEl.appendChild(wrap);
+        }
+
+        async function fetchOgImageViaMicrolink(articleUrl) {
+            if (!isValidHttpUrl(articleUrl)) return null;
+            try {
+                const api = `https://api.microlink.io/?url=${encodeURIComponent(articleUrl)}&screenshot=false&video=false&audio=false`;
+                const res = await fetch(api);
+                if (!res.ok) return null;
+                const json = await res.json();
+                const url = json?.data?.image?.url;
+                return url && isValidHttpUrl(url) ? url : null;
+            } catch {
+                return null;
+            }
+        }
+
+        function finishOgThumbnailJob(job, imageUrl) {
+            if (imageUrl) {
+                job.item._ogImage = imageUrl;
+                job.item.imageUrl = imageUrl;
+                writeOgImageCacheEntry(job.item.link, imageUrl);
+                if (job.mediaEl?.isConnected) {
+                    setArticleCardMediaImage(job.mediaEl, imageUrl, job.item.sourceName);
+                }
+            } else if (job.mediaEl?.isConnected) {
+                job.mediaEl.dataset.ogFailed = '1';
+                replaceMediaWithPlaceholder(job.mediaEl, job.item.sourceName);
+            }
+            _ogFetchActive--;
+            pumpOgFetchQueue();
+        }
+
+        function pumpOgFetchQueue() {
+            while (_ogFetchActive < OG_FETCH_CONCURRENCY && _ogFetchQueue.length) {
+                const job = _ogFetchQueue.shift();
+                if (!job) continue;
+                _ogFetchActive++;
+                const proxyUrl = buildOgProxyUrl(job.item.link);
+                if (!proxyUrl) {
+                    finishOgThumbnailJob(job, null);
+                    continue;
+                }
+                const probe = new Image();
+                probe.onload = () => finishOgThumbnailJob(job, proxyUrl);
+                probe.onerror = () => {
+                    fetchOgImageViaMicrolink(job.item.link).then((url) => finishOgThumbnailJob(job, url));
+                };
+                probe.src = proxyUrl;
+            }
+        }
+
+        function queueOgThumbnailFetch(item, mediaEl) {
+            if (!item?.link || !mediaEl || mediaEl.dataset.hasImage === '1') return;
+            if (mediaEl.dataset.ogQueued === '1' || mediaEl.dataset.ogFailed === '1') return;
+            if (resolveCardThumbnailUrl(item)) return;
+
+            mediaEl.dataset.ogQueued = '1';
+            _ogFetchQueue.push({ item, mediaEl });
+            pumpOgFetchQueue();
+        }
+
+        function ensureThumbnailObserver() {
+            if (_thumbObserver || !elements.feedContainer) return;
+            _thumbObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const mediaEl = entry.target;
+                    const card = mediaEl.closest('.article-card');
+                    if (!card) return;
+                    const key = card.dataset.key;
+                    const item = state.allItems.find((it) => it._key === key)
+                        || state.filteredItems.find((it) => it._key === key);
+                    if (!item) return;
+                    const url = resolveCardThumbnailUrl(item);
+                    if (url) {
+                        setArticleCardMediaImage(mediaEl, url, item.sourceName);
+                    } else {
+                        queueOgThumbnailFetch(item, mediaEl);
+                    }
+                    _thumbObserver.unobserve(mediaEl);
+                });
+            }, { rootMargin: '120px 0px', threshold: 0.01 });
+        }
+
+        function observeCardMedia(mediaEl, item) {
+            if (!mediaEl) return;
+            ensureThumbnailObserver();
+            const url = resolveCardThumbnailUrl(item);
+            if (url) {
+                setArticleCardMediaImage(mediaEl, url, item.sourceName);
+                return;
+            }
+            if (!mediaEl.dataset.placeholder) {
+                replaceMediaWithPlaceholder(mediaEl, item.sourceName);
+            }
+            if (_thumbObserver) {
+                _thumbObserver.observe(mediaEl);
+            } else {
+                queueOgThumbnailFetch(item, mediaEl);
+            }
+        }
+
+        function getCategoryShortLabel(categoryKey) {
+            const cat = sourceCategories[categoryKey];
+            if (cat?.shortName) return cat.shortName;
+            if (categoryKey === 'other') return 'Other';
+            return categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1);
         }
 
         // Storage management
@@ -384,6 +629,195 @@
             }
         }
 
+        const SNAPSHOT_KEY = 'stayupdated_snapshot';
+
+        function saveSnapshot() {
+            if (!state.allItems.length) return;
+            try {
+                const items = state.allItems.map((item) => ({
+                    title: item.title,
+                    link: item.link,
+                    description: item.description,
+                    guid: item.guid,
+                    sourceName: item.sourceName,
+                    sourceUrl: item.sourceUrl,
+                    pubDate: item.pubDate instanceof Date ? item.pubDate.toISOString() : item.pubDate,
+                    _searchText: item._searchText,
+                    _key: item._key
+                }));
+                saveToStorage(SNAPSHOT_KEY, { items });
+            } catch (e) {
+                if (window.location.hostname === 'localhost') {
+                    console.warn('[StayUpdated] saveSnapshot failed:', e);
+                }
+            }
+        }
+
+        function hydrateFeedItem(item) {
+            const pubDate = item.pubDate instanceof Date ? item.pubDate : new Date(item.pubDate);
+            const safeTitle = sanitizeHtml(item.title || '');
+            const safeDesc = sanitizeHtml(item.description || item.content || '');
+            const sourceName = item.sourceName || 'Unknown';
+            const _searchText = item._searchText
+                || (safeTitle + ' ' + safeDesc + ' ' + sourceName).toLowerCase();
+            const _key = item._key
+                || String(item.guid || item.link || (sourceName + '|' + safeTitle)).slice(0, 200);
+            const _severity = item._severity || detectThreatSeverity(safeTitle, safeDesc);
+            return {
+                ...item,
+                title: item.title,
+                link: item.link || '',
+                description: item.description || item.content || '',
+                guid: item.guid,
+                sourceName,
+                sourceUrl: item.sourceUrl || '',
+                pubDate: Number.isNaN(pubDate.getTime()) ? new Date() : pubDate,
+                _searchText,
+                _key,
+                _severity
+            };
+        }
+
+        function getSnapshotUrl() {
+            const root = dashboardRoot();
+            return root?.dataset?.snapshotUrl || '';
+        }
+
+        function isStaticSnapshotStale(generatedAt) {
+            if (!generatedAt) return true;
+            const t = new Date(generatedAt).getTime();
+            if (Number.isNaN(t)) return true;
+            return Date.now() - t > CONFIG.SNAPSHOT_MAX_AGE_MS;
+        }
+
+        function updateFeedStatusLine(snapshotData, live) {
+            if (!elements.lastUpdated) return;
+            if (live) {
+                const updateTime = new Date().toLocaleString();
+                elements.lastUpdated.textContent = `Live · ${updateTime}`;
+                elements.lastUpdated.setAttribute('title', `Live refresh at ${updateTime}`);
+                return;
+            }
+            if (!snapshotData?.generatedAt) return;
+            const when = new Date(snapshotData.generatedAt);
+            const rel = getRelativeTime(when);
+            const errN = (snapshotData.feedErrors || []).length;
+            let text = `Snapshot · ${rel}`;
+            if (errN) text += ` · ${errN} feed${errN > 1 ? 's' : ''} skipped`;
+            elements.lastUpdated.textContent = text;
+            elements.lastUpdated.setAttribute('title', `Snapshot built ${when.toLocaleString()}`);
+        }
+
+        function applyStaticSnapshotData(data) {
+            state.allItems = [];
+            state.feedStatus = {};
+            const okSources = new Set();
+
+            (data.items || []).forEach((raw) => {
+                if (!raw?.title) return;
+                const item = hydrateFeedItem(raw);
+                state.allItems.push(item);
+                if (item.sourceName) okSources.add(item.sourceName);
+            });
+
+            okSources.forEach((name) => { state.feedStatus[name] = 'success'; });
+            (data.feedErrors || []).forEach((err) => {
+                if (err?.name) state.feedStatus[err.name] = 'error';
+            });
+
+            state._datasetVersion++;
+            state._filterCache.key = null;
+            state._snapshotGeneratedAt = data.generatedAt || null;
+            state._liveFeedRefresh = false;
+            syncSelectedSourcesWithData();
+            return state.allItems.length > 0;
+        }
+
+        async function loadStaticSnapshot(options = {}) {
+            const url = getSnapshotUrl();
+            if (!url) {
+                return null;
+            }
+            try {
+                const absoluteUrl = new URL(url, window.location.href).href;
+                const res = await fetch(absoluteUrl, {
+                    cache: options.bypassCache ? 'no-store' : 'default'
+                });
+                if (!res.ok) {
+                    return null;
+                }
+                const data = await res.json();
+                if (!data?.items?.length) {
+                    return null;
+                }
+                if (!applyStaticSnapshotData(data)) {
+                    return null;
+                }
+                return data;
+            } catch (err) {
+                return null;
+            }
+        }
+
+        function restoreSnapshot() {
+            const snap = loadFromStorage(SNAPSHOT_KEY);
+            if (!snap?.items?.length) return false;
+            try {
+                state.allItems = snap.items.map((item) => hydrateFeedItem(item));
+                state._datasetVersion++;
+                state._filterCache.key = null;
+                snap.items.forEach((item) => {
+                    if (item.sourceName) state.feedStatus[item.sourceName] = 'success';
+                });
+                state._liveFeedRefresh = true;
+                syncSelectedSourcesWithData();
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function setLoadingVisible(show) {
+            if (!elements.loadingMessage) return;
+            elements.loadingMessage.hidden = !show;
+            elements.loadingMessage.style.display = show ? 'flex' : 'none';
+        }
+
+        function setErrorVisible(show) {
+            if (!elements.errorMessage) return;
+            elements.errorMessage.hidden = !show;
+            elements.errorMessage.style.display = show ? 'block' : 'none';
+        }
+
+        function setRetryVisible(show) {
+            if (!elements.retryButton) return;
+            elements.retryButton.hidden = !show;
+            elements.retryButton.style.display = show ? 'block' : 'none';
+        }
+
+        function setFeedSkeletonVisible(show) {
+            if (!elements.feedContainer) return;
+            const existing = elements.feedContainer.querySelector('.su-feed-skeleton');
+            if (!show) {
+                existing?.remove();
+                return;
+            }
+            if (existing) return;
+            const wrap = document.createElement('div');
+            wrap.className = 'su-feed-skeleton';
+            wrap.setAttribute('aria-hidden', 'true');
+            for (let i = 0; i < 6; i++) {
+                const card = document.createElement('div');
+                card.className = 'su-skeleton-card';
+                wrap.appendChild(card);
+            }
+            elements.feedContainer.appendChild(wrap);
+        }
+
+        function clearFeedSkeleton() {
+            elements.feedContainer?.querySelector('.su-feed-skeleton')?.remove();
+        }
+
         function loadFromStorage(key) {
             try {
                 const stored = localStorage.getItem(key);
@@ -410,27 +844,90 @@
             }
         }
 
+        const dashboardRoot = () => document.querySelector('.stay-updated-dashboard[data-app="stay-updated"]');
+        const SU_MOBILE_MQ = window.matchMedia('(max-width: 900px)');
+
+        function isMobileLayout() {
+            return SU_MOBILE_MQ.matches;
+        }
+
+        function toggleSourcesSidebar() {
+            state.sidebarCollapsed = !state.sidebarCollapsed;
+            applySidebarUi();
+            savePreferences();
+        }
+
+        function applySidebarUi() {
+            const root = dashboardRoot();
+            const toggleBtn = document.getElementById('sidebarToggleBtn');
+            const panelCloseBtn = document.getElementById('sidebarPanelCloseBtn');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (root) {
+                root.classList.toggle('is-sidebar-collapsed', state.sidebarCollapsed);
+            }
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-expanded', String(!state.sidebarCollapsed));
+                toggleBtn.setAttribute(
+                    'title',
+                    state.sidebarCollapsed ? 'Show sources panel (I)' : 'Hide sources panel (I)'
+                );
+            }
+            if (panelCloseBtn) {
+                panelCloseBtn.hidden = state.sidebarCollapsed;
+            }
+            if (backdrop) {
+                backdrop.hidden = state.sidebarCollapsed || !isMobileLayout();
+            }
+        }
+
+        function collapseSidebarIfMobile() {
+            if (isMobileLayout()) {
+                state.sidebarCollapsed = true;
+                applySidebarUi();
+                savePreferences();
+            }
+        }
+
+        function invalidateFilterCache() {
+            state._filterCache = { key: null, items: null };
+        }
+
         function loadPreferences() {
             const prefs = loadFromStorage('feedPreferences');
             if (prefs) {
                 state.selectedSources = new Set(prefs.selectedSources || []);
                 state.sortBy = prefs.sortBy || 'date-desc';
-                state.dateFilter = prefs.dateFilter || 'all';
+                state.dateFilter = prefs.dateFilter || '3days';
                 state.dateFrom = prefs.dateFrom || null;
                 state.dateTo = prefs.dateTo || null;
-                state.autoRefreshEnabled = prefs.autoRefreshEnabled || false;
+                state.autoRefreshEnabled = prefs.autoRefreshEnabled === true;
+                state.refreshIntervalMinutes = Number(prefs.refreshIntervalMinutes) || 30;
                 state.expandedCategories = new Set(prefs.expandedCategories || []);
-                
-                elements.sortSelect.value = state.sortBy;
-                elements.dateFilter.value = state.dateFilter;
-                if (state.dateFilter === 'custom') {
-                    elements.customDateRange.style.display = 'flex';
-                    if (state.dateFrom) elements.dateFrom.value = state.dateFrom;
-                    if (state.dateTo) elements.dateTo.value = state.dateTo;
+                state.searchQuery = prefs.searchQuery || '';
+                if (typeof prefs.sidebarCollapsed === 'boolean') {
+                    state.sidebarCollapsed = prefs.sidebarCollapsed;
+                } else {
+                    state.sidebarCollapsed = true;
                 }
-                elements.autoRefreshToggle.classList.toggle('active', state.autoRefreshEnabled);
-                elements.autoRefreshToggle.setAttribute('aria-checked', state.autoRefreshEnabled);
+
+                if (elements.sortSelect) elements.sortSelect.value = state.sortBy;
+                if (elements.refreshIntervalSelect) {
+                    elements.refreshIntervalSelect.value = String(state.refreshIntervalMinutes);
+                }
+                if (elements.dateFilter) elements.dateFilter.value = state.dateFilter;
+                if (elements.searchInput) elements.searchInput.value = state.searchQuery;
+                if (state.dateFilter === 'custom' && elements.customDateRange) {
+                    elements.customDateRange.hidden = false;
+                    if (state.dateFrom && elements.dateFrom) elements.dateFrom.value = state.dateFrom;
+                    if (state.dateTo && elements.dateTo) elements.dateTo.value = state.dateTo;
+                }
+                if (elements.autoRefreshToggle) {
+                    elements.autoRefreshToggle.checked = !!state.autoRefreshEnabled;
+                }
+            } else if (isMobileLayout()) {
+                state.sidebarCollapsed = true;
             }
+            applySidebarUi();
         }
 
         function savePreferences() {
@@ -441,8 +938,186 @@
                 dateFrom: state.dateFrom,
                 dateTo: state.dateTo,
                 autoRefreshEnabled: state.autoRefreshEnabled,
-                expandedCategories: Array.from(state.expandedCategories || [])
+                refreshIntervalMinutes: state.refreshIntervalMinutes,
+                expandedCategories: Array.from(state.expandedCategories || []),
+                searchQuery: state.searchQuery,
+                sidebarCollapsed: state.sidebarCollapsed
             });
+        }
+
+        /* ---- Threat severity (ingest-time) ---- */
+        const THREAT_SEVERITY_RULES = [
+            { level: 'critical', re: /\b(0-day|0day|zero[- ]?day|critical\s+(rce|vuln|vulnerability)|actively\s+exploited)\b/i },
+            { level: 'high', re: /\b(ransomware|\bc2\b|command[- ]and[- ]control|exploited|in the wild|active exploitation)\b/i }
+        ];
+
+        function detectThreatSeverity(title, description) {
+            const blob = `${title || ''} ${description || ''}`;
+            for (const rule of THREAT_SEVERITY_RULES) {
+                if (rule.re.test(blob)) return rule.level;
+            }
+            return null;
+        }
+
+        function getThreatBadgeLabel(level) {
+            if (level === 'critical') return 'Critical';
+            if (level === 'high') return 'Active';
+            return '';
+        }
+
+        /* ---- Search match highlighting ---- */
+        function escapeRegex(str) {
+            return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function setHighlightedText(el, text, query) {
+            const plain = text || '';
+            const q = (query || '').trim();
+            if (!q) {
+                el.textContent = plain;
+                return;
+            }
+            const safe = sanitizeHtml(plain);
+            try {
+                const re = new RegExp(`(${escapeRegex(q)})`, 'gi');
+                el.innerHTML = safe.replace(re, '<mark class="search-match">$1</mark>');
+            } catch {
+                el.textContent = plain;
+            }
+        }
+
+        /* ---- Keyboard-driven card navigation ---- */
+        function isTypingContext(target) {
+            if (!target) return false;
+            const tag = target.tagName;
+            return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable;
+        }
+
+        function getVisibleArticleCards() {
+            if (!elements.feedContainer) return [];
+            return Array.from(
+                elements.feedContainer.querySelectorAll('.article-card:not(.is-hidden)')
+            );
+        }
+
+        function setCardSelected(cardEl) {
+            if (!cardEl) return;
+            const key = cardEl.dataset.key;
+            if (state._selectedCardKey === key) {
+                state._selectedCardKey = null;
+                cardEl.classList.remove('is-card-selected');
+                cardEl.setAttribute('aria-selected', 'false');
+                return;
+            }
+            elements.feedContainer?.querySelectorAll('.article-card.is-card-selected').forEach((el) => {
+                el.classList.remove('is-card-selected');
+                el.setAttribute('aria-selected', 'false');
+            });
+            state._selectedCardKey = key;
+            cardEl.classList.add('is-card-selected');
+            cardEl.setAttribute('aria-selected', 'true');
+        }
+
+        function syncCardSelectionAfterRender() {
+            elements.feedContainer?.querySelectorAll('.article-card.is-card-selected').forEach((el) => {
+                el.classList.remove('is-card-selected');
+                el.setAttribute('aria-selected', 'false');
+            });
+            if (!state._selectedCardKey || !elements.feedContainer) return;
+            const selected = Array.from(
+                elements.feedContainer.querySelectorAll('.article-card:not(.is-hidden)')
+            ).find((el) => el.dataset.key === state._selectedCardKey);
+            if (selected && !selected.classList.contains('is-hidden')) {
+                selected.classList.add('is-card-selected');
+                selected.setAttribute('aria-selected', 'true');
+            } else {
+                state._selectedCardKey = null;
+            }
+        }
+
+        function clearKeyboardCardFocus() {
+            elements.feedContainer?.querySelectorAll('.article-card.is-keyboard-focused').forEach((el) => {
+                el.classList.remove('is-keyboard-focused');
+            });
+            detachKeyboardHints();
+        }
+
+        function setKeyboardCardFocus(index) {
+            const cards = getVisibleArticleCards();
+            clearKeyboardCardFocus();
+            if (!cards.length) {
+                state._keyboardIndex = -1;
+                return;
+            }
+            const clamped = Math.max(0, Math.min(index, cards.length - 1));
+            state._keyboardIndex = clamped;
+            const card = cards[clamped];
+            card.classList.add('is-keyboard-focused');
+            attachKeyboardHint(card);
+            card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+
+        function attachKeyboardHint(card) {
+            if (!card) return;
+            let hint = card.querySelector('.article-card__keyhint');
+            if (!hint) {
+                hint = document.createElement('span');
+                hint.className = 'article-card__keyhint';
+                hint.setAttribute('aria-hidden', 'true');
+                card.appendChild(hint);
+            }
+            hint.textContent = 'J/K';
+        }
+
+        function detachKeyboardHints() {
+            elements.feedContainer?.querySelectorAll('.article-card__keyhint').forEach((h) => h.remove());
+        }
+
+        function moveKeyboardCardFocus(delta) {
+            const cards = getVisibleArticleCards();
+            if (!cards.length) return;
+            const next = state._keyboardIndex < 0
+                ? (delta > 0 ? 0 : cards.length - 1)
+                : state._keyboardIndex + delta;
+            setKeyboardCardFocus(next);
+        }
+
+        function openKeyboardFocusedCard() {
+            const cards = getVisibleArticleCards();
+            if (state._keyboardIndex < 0 || !cards[state._keyboardIndex]) return;
+            const link = cards[state._keyboardIndex].querySelector(
+                'a.article-card__title-link, a.article-card__link, a[href]'
+            );
+            if (link?.href && link.href !== '#') {
+                window.open(link.href, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        function focusMainSearch(fromHotkey) {
+            if (!elements.searchInput) return;
+            elements.searchInput.focus();
+            elements.searchInput.select();
+            if (fromHotkey) elements.searchInput.classList.add('is-hotkey-focus');
+        }
+
+        function blurMainSearch() {
+            if (!elements.searchInput) return;
+            elements.searchInput.classList.remove('is-hotkey-focus');
+            elements.searchInput.blur();
+        }
+
+        function syncKeyboardFocusAfterRender() {
+            const cards = getVisibleArticleCards();
+            if (!cards.length) {
+                state._keyboardIndex = -1;
+                clearKeyboardCardFocus();
+                return;
+            }
+            if (state._keyboardIndex >= cards.length) {
+                setKeyboardCardFocus(cards.length - 1);
+            } else if (state._keyboardIndex >= 0) {
+                setKeyboardCardFocus(state._keyboardIndex);
+            }
         }
 
         // Feed fetching
@@ -540,31 +1215,48 @@
                 try {
                     result.items.forEach(item => {
                         if (item && item.title) { // Only process valid items
+                            const sourceName = result.source || 'Unknown';
+                            const pubDate = (() => {
+                                try {
+                                    const date = new Date(item.pubDate);
+                                    return isNaN(date.getTime()) ? new Date() : date;
+                                } catch {
+                                    return new Date();
+                                }
+                            })();
+                            // PERF: precompute search corpus ONCE per item at ingest time.
+                            // Previously applyFilters() ran sanitizeHtml + toLowerCase on
+                            // every title+description for EVERY keystroke (≈600 string
+                            // allocations per keypress at 300 items). Doing it once here
+                            // collapses the search filter to a pure substring check.
+                            const safeTitle = sanitizeHtml(item.title || '');
+                            const safeDesc = sanitizeHtml(item.description || '');
+                            const _searchText = (safeTitle + ' ' + safeDesc + ' ' + sourceName).toLowerCase();
+                            // Stable identity key for DOM diffing (vanilla React.memo equivalent).
+                            const _key = (item.guid || item.link || (sourceName + '|' + safeTitle)).slice(0, 200);
+                            const _severity = detectThreatSeverity(safeTitle, safeDesc);
                             state.allItems.push({
                                 ...item,
-                                sourceName: result.source || 'Unknown',
+                                sourceName,
                                 sourceUrl: result.url || '',
-                                pubDate: (() => {
-                                    try {
-                                        const date = new Date(item.pubDate);
-                                        return isNaN(date.getTime()) ? new Date() : date;
-                                    } catch {
-                                        return new Date();
-                                    }
-                                })()
+                                pubDate,
+                                _searchText,
+                                _key,
+                                _severity
                             });
                         }
                     });
-                    
-                    // Debounce UI updates to avoid excessive re-renders
+                    state._datasetVersion++;
+                    state._filterCache.key = null; // invalidate memo
+
+                    // Debounce UI updates to avoid excessive re-renders during bulk ingest.
                     if (updateUI && state.allItems.length > 0) {
                         clearTimeout(filterUpdateTimer);
                         filterUpdateTimer = setTimeout(() => {
-                            applyFilters();
-                        }, 100); // Update UI every 100ms max
+                            scheduleRender();
+                        }, 100);
                     }
                 } catch (e) {
-                    // Silently handle processing errors
                     if (window.location.hostname === 'localhost') {
                         console.warn('Error processing feed result:', e);
                     }
@@ -598,14 +1290,40 @@
             }
         }
 
-        async function fetchAllFeeds() {
-            elements.feedContainer.innerHTML = '';
-            elements.loadingMessage.style.display = 'flex';
-            elements.errorMessage.style.display = 'none';
-            elements.retryButton.style.display = 'none';
-            
-            state.feedStatus = {};
-            state.allItems = [];
+        async function fetchAllFeeds(options = {}) {
+            const hardRefresh = options.hardRefresh === true;
+            const background = options.background === true;
+            const hadItems = state.allItems.length > 0;
+            let preservedItems = null;
+
+            if (hardRefresh) {
+                if (elements.feedContainer) elements.feedContainer.innerHTML = '';
+                state._cardNodes.clear();
+                state.allItems = [];
+                state.feedStatus = {};
+                state._lazyGeneration += 1;
+                state._lazyArchiveReady = false;
+                state._fastBoot = true;
+                state._lazyBuildHandle = null;
+                state._lazyArchivePending = false;
+            } else if (background && hadItems) {
+                preservedItems = state.allItems.slice();
+                state.allItems = [];
+                state.feedStatus = {};
+            } else if (!hadItems) {
+                if (elements.feedContainer) elements.feedContainer.innerHTML = '';
+                state._cardNodes.clear();
+                state.allItems = [];
+                state.feedStatus = {};
+            } else {
+                state.allItems = [];
+                state.feedStatus = {};
+            }
+
+            state._liveFeedRefresh = true;
+            setLoadingVisible((!hadItems || hardRefresh) && !background);
+            setErrorVisible(false);
+            setRetryVisible(false);
 
             const total = rssFeeds.length;
             let completed = 0;
@@ -632,14 +1350,11 @@
 
                 // Update UI with cached data
                 if (state.allItems.length > 0) {
-                    if (state.selectedSources.size === 0) {
-                        const loadedSources = new Set(state.allItems.map(item => item.sourceName));
-                        state.selectedSources = new Set(loadedSources);
-                        savePreferences();
-                    }
+                    syncSelectedSourcesWithData();
+                    savePreferences();
+                    if (elements.sourceFilters) elements.sourceFilters.dataset.built = '';
                     initializeSourceFilters();
-                    applyFilters();
-                    // Keep loading message visible while fetching fresh data
+                    scheduleRender();
                     if (elements.loadingStatus) {
                         elements.loadingStatus.textContent = `Loaded ${loadedFromCache} from cache. Fetching fresh data...`;
                     }
@@ -703,13 +1418,15 @@
                 }
             }
 
-            // Final update with better feedback
-            elements.loadingMessage.style.display = 'none';
-            const updateTime = new Date().toLocaleString();
-            elements.lastUpdated.textContent = updateTime;
-            elements.lastUpdated.setAttribute('aria-live', 'polite');
-            elements.lastUpdated.setAttribute('title', `Last updated at ${updateTime}`);
+            if (state.allItems.length === 0 && preservedItems?.length) {
+                state.allItems = preservedItems;
+            }
+
+            setLoadingVisible(false);
+            setFeedSkeletonVisible(false);
+            updateFeedStatusLine(null, true);
             localStorage.setItem('lastFeedRefresh', Date.now().toString());
+            saveSnapshot();
             
             // Show success notification if we loaded new data
             const newItemsCount = state.allItems.length;
@@ -748,60 +1465,270 @@
                         </div>
                     </div>
                 `;
-                elements.errorMessage.style.display = 'block';
-                elements.retryButton.style.display = 'block';
+                setErrorVisible(true);
+                setRetryVisible(true);
                 elements.retryButton.focus();
             } else {
-                // Final filter initialization
-                if (state.selectedSources.size === 0) {
-                    const loadedSources = new Set(state.allItems.map(item => item.sourceName));
-                    state.selectedSources = new Set(loadedSources);
-                    savePreferences();
-                }
+                syncSelectedSourcesWithData();
+                savePreferences();
+                if (elements.sourceFilters) elements.sourceFilters.dataset.built = '';
                 initializeSourceFilters();
-                applyFilters();
+                scheduleRender();
             }
         }
 
-        // Rendering
-        function renderFeedItem(item) {
-            const feedItem = document.createElement('div');
-            feedItem.className = 'feed-item';
-            feedItem.setAttribute('data-source', item.sourceName || 'Unknown');
-            
-            // Safely handle date
-            try {
-                const dateTime = item.pubDate instanceof Date ? item.pubDate.getTime() : new Date(item.pubDate).getTime();
-                if (!isNaN(dateTime)) {
-                    feedItem.setAttribute('data-date', dateTime);
+        // ============================================================
+        // Rendering — persistent DOM nodes (vanilla React.memo equivalent)
+        //
+        // Old code recreated 300+ <div class="feed-item"> nodes from scratch
+        // every time the user toggled a checkbox. That's tens of thousands
+        // of DOM allocations per filter change → guaranteed jank.
+        //
+        // The new strategy:
+        //   1. Build each card's DOM ONCE, cached in `state._cardNodes`.
+        //   2. On subsequent filter changes, walk the filteredItems array
+        //      and just toggle a `.is-hidden` class + reorder via
+        //      appendChild (which MOVES rather than copies the node).
+        //   3. Hover/click handlers are attached at the container via
+        //      event delegation — no per-card listener storms.
+        // ============================================================
+
+        // One-time event delegation for card action buttons. Hooked up once
+        // (idempotent) on the feed container so individual cards don't carry
+        // their own onclick handlers.
+        function ensureCardEventDelegation() {
+            if (!elements.feedContainer) return;
+            if (elements.feedContainer.dataset.delegated === '1') return;
+            elements.feedContainer.dataset.delegated = '1';
+            elements.feedContainer.addEventListener('click', (e) => {
+                if (e.target.closest('a.article-card__title-link')) return;
+                const card = e.target.closest('.article-card');
+                if (card && !e.target.closest('.action-btn')) {
+                    setCardSelected(card);
                 }
-            } catch (e) {
-                // Invalid date - use current time
-                feedItem.setAttribute('data-date', Date.now());
+            });
+            elements.feedContainer.addEventListener('click', (e) => {
+                const btn = e.target.closest('.action-btn');
+                if (!btn) return;
+                e.preventDefault();
+                e.stopPropagation();
+                const card = btn.closest('.feed-item');
+                if (!card) return;
+                const key = card.dataset.key;
+                const item = state.allItems.find(it => it._key === key);
+                if (!item) return;
+                if (btn.dataset.action === 'copy') {
+                    copyToClipboard(item.link, 'Article link copied to clipboard!');
+                    const orig = btn.textContent;
+                    btn.textContent = '✓';
+                    btn.classList.add('action-btn--ok');
+                    setTimeout(() => {
+                        btn.textContent = orig;
+                        btn.classList.remove('action-btn--ok');
+                    }, 1000);
+                } else if (btn.dataset.action === 'share') {
+                    shareArticle(item);
+                }
+            });
+        }
+
+        const useListLayout = !!document.querySelector('.stay-updated-dashboard[data-app="stay-updated"]');
+
+        function updateArticleCardContent(node, item) {
+            if (!node?.classList.contains('article-card')) return;
+            const severity = item._severity || detectThreatSeverity(item.title, item.description);
+            item._severity = severity;
+
+            let badge = node.querySelector('.threat-badge');
+            const head = node.querySelector('.article-card__head') || node.querySelector('.article-card__body');
+            if (severity) {
+                if (!badge && head) {
+                    badge = document.createElement('span');
+                    badge.className = `threat-badge threat-badge--${severity}`;
+                    const titleEl = head.querySelector('.article-card__title');
+                    if (titleEl) head.insertBefore(badge, titleEl);
+                    else head.prepend(badge);
+                }
+                if (badge) {
+                    badge.className = `threat-badge threat-badge--${severity}`;
+                    badge.textContent = getThreatBadgeLabel(severity);
+                }
+            } else if (badge) {
+                badge.remove();
             }
+
+            const titleEl = node.querySelector('.article-card__title');
+            const excerptEl = node.querySelector('.article-card__excerpt');
+            if (titleEl) setHighlightedText(titleEl, sanitizeHtml(item.title || 'Untitled'), state.searchQuery);
+            if (excerptEl) {
+                const desc = sanitizeHtml(item.description || '').trim() || 'No description available.';
+                setHighlightedText(excerptEl, desc, state.searchQuery);
+            }
+        }
+
+        function buildCardNode(item) {
+            const feedItem = document.createElement('article');
+            feedItem.className = 'feed-item';
+            feedItem.dataset.source = item.sourceName || 'Unknown';
+            feedItem.dataset.key = item._key;
+
+            try {
+                const dateTime = item.pubDate instanceof Date
+                    ? item.pubDate.getTime()
+                    : new Date(item.pubDate).getTime();
+                feedItem.dataset.date = isNaN(dateTime) ? Date.now() : dateTime;
+            } catch {
+                feedItem.dataset.date = Date.now();
+            }
+
+            const sourceName = item.sourceName || 'Unknown';
+            const categoryKey = getSourceCategory(sourceName);
+            feedItem.dataset.category = categoryKey;
+            const safeTitle = sanitizeHtml(item.title || 'Untitled');
+            if (!item._severity) item._severity = detectThreatSeverity(item.title, item.description);
+
+            if (useListLayout) {
+                feedItem.classList.add('article-card');
+                feedItem.setAttribute('role', 'article');
+                feedItem.setAttribute('aria-selected', 'false');
+                feedItem.tabIndex = 0;
+
+                const shell = document.createElement('div');
+                shell.className = 'article-card__shell';
+
+                const media = document.createElement('div');
+                media.className = 'article-card__media';
+                media.dataset.source = sourceName;
+                const thumbUrl = resolveCardThumbnailUrl(item);
+                if (thumbUrl) {
+                    setArticleCardMediaImage(media, thumbUrl, sourceName);
+                } else {
+                    replaceMediaWithPlaceholder(media, sourceName);
+                }
+
+                const body = document.createElement('div');
+                body.className = 'article-card__body';
+
+                const head = document.createElement('div');
+                head.className = 'article-card__head';
+
+                const categoryPill = document.createElement('span');
+                categoryPill.className = `article-card__category article-card__category--${categoryKey}`;
+                categoryPill.textContent = getCategoryShortLabel(categoryKey);
+                head.appendChild(categoryPill);
+
+                if (item._severity) {
+                    const badge = document.createElement('span');
+                    badge.className = `threat-badge threat-badge--${item._severity}`;
+                    badge.textContent = getThreatBadgeLabel(item._severity);
+                    head.appendChild(badge);
+                }
+
+                if (isArticleNew(item.pubDate)) {
+                    const newBadge = document.createElement('span');
+                    newBadge.className = 'article-card__new-badge';
+                    newBadge.textContent = 'NEW';
+                    head.appendChild(newBadge);
+                }
+
+                const h2 = document.createElement('h2');
+                h2.className = 'article-card__title';
+                const titleLink = document.createElement('a');
+                titleLink.className = 'article-card__title-link';
+                try {
+                    titleLink.href = new URL(item.link).href;
+                } catch {
+                    titleLink.href = '#';
+                    titleLink.dataset.invalid = '1';
+                }
+                titleLink.target = '_blank';
+                titleLink.rel = 'noopener noreferrer';
+                titleLink.setAttribute('aria-label', `Read article: ${safeTitle} from ${sourceName}`);
+                setHighlightedText(titleLink, safeTitle, state.searchQuery);
+                h2.appendChild(titleLink);
+                head.appendChild(h2);
+
+                const desc = document.createElement('p');
+                desc.className = 'article-card__excerpt';
+                const descPlain = sanitizeHtml(item.description || '').trim() || 'No description available.';
+                setHighlightedText(desc, descPlain, state.searchQuery);
+
+                const footer = document.createElement('footer');
+                footer.className = 'article-card__footer';
+
+                const timeEl = document.createElement('span');
+                timeEl.className = 'article-card__footer-time';
+                timeEl.textContent = getRelativeTime(item.pubDate);
+                footer.appendChild(timeEl);
+
+                const readTime = estimateReadingTime(
+                    `${item.title || ''} ${item.description || ''}`
+                );
+                if (readTime) {
+                    footer.appendChild(document.createTextNode(' • '));
+                    const readEl = document.createElement('span');
+                    readEl.className = 'article-card__footer-read';
+                    readEl.textContent = readTime;
+                    footer.appendChild(readEl);
+                }
+
+                footer.appendChild(document.createTextNode(' • '));
+                const sourceEl = document.createElement('span');
+                sourceEl.className = 'article-card__footer-source';
+                const favicon = document.createElement('img');
+                favicon.className = 'article-card__favicon';
+                favicon.src = buildFaviconSrc(sourceName);
+                favicon.alt = '';
+                favicon.width = 16;
+                favicon.height = 16;
+                favicon.loading = 'lazy';
+                favicon.decoding = 'async';
+                sourceEl.append(favicon, document.createTextNode(` ${sourceName}`));
+                footer.appendChild(sourceEl);
+
+                body.append(head, desc, footer);
+                shell.append(media, body);
+                feedItem.appendChild(shell);
+                if (!thumbUrl) observeCardMedia(media, item);
+                return feedItem;
+            }
+
+            // Status dot — outside the link so clicks on it don't navigate.
+            const status = document.createElement('div');
+            status.className = 'feed-status';
+            if (state.feedStatus[sourceName] === 'error') {
+                status.classList.add('error');
+                status.title = 'Source failed to load';
+                status.setAttribute('aria-label', 'Feed source error');
+            } else {
+                status.title = 'Source loaded successfully';
+                status.setAttribute('aria-label', 'Feed source active');
+            }
+            feedItem.appendChild(status);
+
+            // Action buttons — no per-card listeners (delegated above).
+            const actions = document.createElement('div');
+            actions.className = 'article-actions';
+            actions.innerHTML =
+                '<button class="action-btn" data-action="copy" title="Copy link" aria-label="Copy article link">🔗</button>' +
+                '<button class="action-btn" data-action="share" title="Share article" aria-label="Share article">📤</button>';
+            feedItem.appendChild(actions);
 
             const link = document.createElement('a');
-            
-            // Validate and set link
             try {
-                const url = new URL(item.link);
-                link.href = url.href;
-            } catch (e) {
-                // Invalid URL - use # as fallback
+                link.href = new URL(item.link).href;
+            } catch {
                 link.href = '#';
-                link.onclick = (e) => {
-                    e.preventDefault();
-                    showNotification('Invalid article link', 'error', 2000);
-                };
+                link.dataset.invalid = '1';
             }
-            
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            const safeTitle = sanitizeHtml(item.title || 'Untitled');
-            const safeSource = item.sourceName || 'Unknown Source';
-            link.setAttribute('aria-label', `Read article: ${safeTitle} from ${safeSource}`);
-            link.setAttribute('title', `Click to read full article on ${safeSource}`);
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.setAttribute('aria-label', `Read article: ${safeTitle} from ${sourceName}`);
+            link.title = `Click to read full article on ${sourceName}`;
 
+            // Image / skeleton placeholder. The skeleton is a clean shimmer
+            // (see .feed-item__skeleton in stayupdated.scss) — no heavy
+            // glowing square, no concurrent backdrop-filter layers.
             const imageUrl = extractImageUrl(item);
             if (imageUrl) {
                 const img = document.createElement('img');
@@ -809,164 +1736,231 @@
                 img.alt = safeTitle || 'Article image';
                 img.loading = 'lazy';
                 img.decoding = 'async';
-                img.onerror = function() {
-                    this.style.display = 'none';
-                    const noImage = document.createElement('div');
-                    noImage.className = 'no-image';
-                    link.insertBefore(noImage, link.firstChild);
-                };
+                // Fail gracefully: swap to the skeleton if the image breaks.
+                img.addEventListener('error', () => {
+                    img.remove();
+                    const skel = document.createElement('div');
+                    skel.className = 'feed-item__skeleton';
+                    link.insertBefore(skel, link.firstChild);
+                }, { once: true });
                 link.appendChild(img);
             } else {
-                const noImage = document.createElement('div');
-                noImage.className = 'no-image';
-                link.appendChild(noImage);
+                const skel = document.createElement('div');
+                skel.className = 'feed-item__skeleton';
+                skel.setAttribute('aria-hidden', 'true');
+                link.appendChild(skel);
             }
 
-            const title = document.createElement('h2');
-            title.textContent = safeTitle;
-            title.setAttribute('aria-label', `Article: ${safeTitle}`);
-            link.appendChild(title);
+            const h2 = document.createElement('h2');
+            h2.textContent = safeTitle;
+            link.appendChild(h2);
 
-            const pubDate = document.createElement('div');
-            pubDate.className = 'pub-date';
+            const meta = document.createElement('div');
+            meta.className = 'pub-date';
             const readingTime = estimateReadingTime(item.description || '');
-            pubDate.innerHTML = `
-                <span>🕒 ${getRelativeTime(item.pubDate)}</span>
-                ${readingTime ? `<span class="reading-time">📖 ${readingTime}</span>` : ''}
-            `;
-            link.appendChild(pubDate);
+            meta.innerHTML =
+                `<span class="pub-date__time">${getRelativeTime(item.pubDate)}</span>` +
+                (readingTime ? `<span class="pub-date__sep" aria-hidden="true">•</span><span class="reading-time">${readingTime}</span>` : '');
+            link.appendChild(meta);
 
-            const description = document.createElement('p');
-            const descText = sanitizeHtml(item.description || "No description available.");
-            description.textContent = descText;
-            description.setAttribute('aria-label', `Description: ${descText.substring(0, 100)}${descText.length > 100 ? '...' : ''}`);
-            link.appendChild(description);
+            const desc = document.createElement('p');
+            const descText = sanitizeHtml(item.description || 'No description available.');
+            desc.textContent = descText;
+            link.appendChild(desc);
 
             const source = document.createElement('div');
             source.className = 'source';
-            const safeSourceName = item.sourceName || 'Unknown Source';
-            source.textContent = safeSourceName;
-            source.setAttribute('aria-label', `Source: ${safeSourceName}`);
+            source.textContent = sourceName;
             link.appendChild(source);
-
-            const status = document.createElement('div');
-            status.className = 'feed-status';
-            const sourceName = item.sourceName || 'Unknown';
-            if (state.feedStatus[sourceName] === 'error') {
-                status.classList.add('error');
-                status.setAttribute('title', 'Source failed to load');
-                status.setAttribute('aria-label', 'Feed source error');
-            } else {
-                status.setAttribute('title', 'Source loaded successfully');
-                status.setAttribute('aria-label', 'Feed source active');
-            }
-            feedItem.appendChild(status);
-
-            // Article actions
-            const actions = document.createElement('div');
-            actions.className = 'article-actions';
-            
-            const shareBtn = document.createElement('button');
-            shareBtn.className = 'action-btn';
-            shareBtn.innerHTML = '🔗';
-            shareBtn.title = 'Copy link';
-            shareBtn.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                copyToClipboard(item.link, 'Article link copied to clipboard!');
-                
-                // Visual feedback
-                shareBtn.innerHTML = '✓';
-                shareBtn.style.background = 'var(--success-color)';
-                setTimeout(() => {
-                    shareBtn.innerHTML = '🔗';
-                    shareBtn.style.background = '';
-                }, 1000);
-            };
-            
-            const shareBtn2 = document.createElement('button');
-            shareBtn2.className = 'action-btn';
-            shareBtn2.innerHTML = '📤';
-            shareBtn2.title = 'Share article';
-            shareBtn2.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                shareArticle(item);
-            };
-            
-            actions.appendChild(shareBtn);
-            actions.appendChild(shareBtn2);
-            feedItem.appendChild(actions);
 
             feedItem.appendChild(link);
             return feedItem;
         }
 
-        function renderFeeds() {
-            // Smooth transition when updating
-            if (elements.feedContainer.children.length > 0) {
-                elements.feedContainer.style.opacity = '0.7';
-                elements.feedContainer.style.transition = 'opacity 0.2s ease';
-            }
-            
-            setTimeout(() => {
-                elements.feedContainer.innerHTML = '';
+        function buildEmptyStateNode() {
+            const emptyState = document.createElement('div');
+            emptyState.className = 'empty-state';
+            emptyState.setAttribute('role', 'status');
+            emptyState.setAttribute('aria-live', 'polite');
+            const hasItems = state.allItems.length > 0;
+            const hasFilters = state.searchQuery || state.dateFilter !== 'all' || state.selectedSources.size > 0;
+            const tipsList = hasFilters
+                ? ['Try different keywords or remove some search terms',
+                   'Select more sources from the sidebar (or click All)',
+                   hasItems ? 'Try date range “All time” — articles may be outside the last 3 days' : 'Adjust the date range to include more articles',
+                   'Clear all filters to see everything']
+                : ['Use the quick filter buttons above to focus on topics',
+                   'Search for keywords like "vulnerability" or "CVE"',
+                   'Select specific sources from the sidebar filters',
+                   'Articles are loading in the background — check back soon'];
+            const tipsHtml = tipsList.map(t => `<li>${t}</li>`).join('');
+            emptyState.innerHTML = `
+                <p class="empty-state__lead">${hasFilters ? 'No articles found' : 'No articles available'}</p>
+                <p class="empty-state__hint">${
+                    hasFilters
+                        ? 'Try adjusting your date range or sources, or clear filters to see more.'
+                        : (hasItems
+                            ? `${state.allItems.length} articles are loaded but hidden by your current filters.`
+                            : 'Articles will appear here once feeds finish loading.')
+                }</p>
+                ${hasFilters ? '<button type="button" class="su-btn su-btn--action" id="emptyStateClear" style="margin-top:1rem">Clear filters</button>' : ''}
+                <div class="empty-state-help">
+                    <div class="empty-state-help-title">💡 ${hasFilters ? 'Tips to find more articles:' : 'Getting Started:'}</div>
+                    <ul class="empty-state-help-text">${tipsHtml}</ul>
+                </div>
+            `;
+            const clearBtn = emptyState.querySelector('#emptyStateClear');
+            if (clearBtn) clearBtn.addEventListener('click', () => elements.clearFiltersBtn.click());
+            return emptyState;
+        }
 
-                if (state.filteredItems.length === 0) {
-                const emptyState = document.createElement('div');
-                emptyState.className = 'empty-state';
-                emptyState.setAttribute('role', 'status');
-                emptyState.setAttribute('aria-live', 'polite');
-                const hasFilters = state.searchQuery || state.dateFilter !== 'all' || state.selectedSources.size > 0;
-                const helpTips = hasFilters ? `
-                    <div class="empty-state-help">
-                        <div class="empty-state-help-title">💡 Tips to find more articles:</div>
-                        <div class="empty-state-help-text">
-                            <ul style="margin: 8px 0; padding-left: 20px; text-align: left; display: inline-block;">
-                                <li>Try different keywords or remove some search terms</li>
-                                <li>Select more sources from the sidebar</li>
-                                <li>Adjust the date range to include more articles</li>
-                                <li>Check spelling of search terms</li>
-                                <li>Clear all filters to see everything</li>
-                            </ul>
-                        </div>
-                    </div>
-                ` : `
-                    <div class="empty-state-help">
-                        <div class="empty-state-help-title">💡 Getting Started:</div>
-                        <div class="empty-state-help-text">
-                            <ul style="margin: 8px 0; padding-left: 20px; text-align: left; display: inline-block;">
-                                <li>Use the quick filter buttons above to focus on specific topics</li>
-                                <li>Search for keywords like "vulnerability", "ransomware", or "CVE"</li>
-                                <li>Select specific sources from the sidebar filters</li>
-                                <li>Use date filters to find recent articles</li>
-                                <li>Articles are loading in the background - check back soon!</li>
-                            </ul>
-                        </div>
-                    </div>
-                `;
-                emptyState.innerHTML = `
-                    <div class="empty-state-icon">${hasFilters ? '🔍' : '📰'}</div>
-                    <h3>${hasFilters ? 'No articles found' : 'No articles available'}</h3>
-                    <p>${hasFilters ? 'Try adjusting your search or filter criteria' : 'Feeds are loading or no articles match your current filters'}</p>
-                    ${hasFilters ? '<button class="button" onclick="document.getElementById(\'clearFiltersBtn\').click()" style="margin-top: 20px;" aria-label="Clear all filters">Clear All Filters</button>' : ''}
-                    ${helpTips}
-                `;
-                elements.feedContainer.appendChild(emptyState);
+        function getVisibleCardKeys() {
+            const filtered = state.filteredItems;
+            const fastSlice = state._fastBoot && !state._lazyArchiveReady;
+            if (!fastSlice) {
+                return new Set(filtered.map((it) => it._key));
+            }
+            return new Set(
+                filtered.slice(0, CONFIG.MAX_INITIAL_PAINT).map((it) => it._key)
+            );
+        }
+
+        function scheduleLazyArchiveBuild() {
+            if (state._lazyArchiveReady || state._lazyArchivePending) return;
+            if (!state.allItems.length || !elements.feedContainer) return;
+            state._lazyArchivePending = true;
+
+            const buildGen = state._lazyGeneration;
+            const runChunk = (startIndex) => {
+                if (buildGen !== state._lazyGeneration) {
+                    state._lazyBuildHandle = null;
+                    state._lazyArchivePending = false;
+                    return;
+                }
+                const container = elements.feedContainer;
+                const filteredKeys = new Set(state.filteredItems.map((it) => it._key));
+                const visibleKeys = getVisibleCardKeys();
+                const end = Math.min(startIndex + CONFIG.LAZY_CARD_BATCH, state.allItems.length);
+                const fragment = document.createDocumentFragment();
+
+                for (let i = startIndex; i < end; i++) {
+                    const item = state.allItems[i];
+                    if (!item?._key) continue;
+                    let node = state._cardNodes.get(item._key);
+                    if (!node) {
+                        node = buildCardNode(item);
+                        state._cardNodes.set(item._key, node);
+                    }
+                    if (!filteredKeys.has(item._key) || !visibleKeys.has(item._key)) {
+                        node.classList.add('is-hidden');
+                    } else {
+                        node.classList.remove('is-hidden');
+                    }
+                    if (!node.parentNode) {
+                        fragment.appendChild(node);
+                    }
+                }
+                if (fragment.childNodes.length) {
+                    container.appendChild(fragment);
+                }
+
+                if (end < state.allItems.length) {
+                    state._lazyBuildHandle = rIC(() => runChunk(end));
+                } else {
+                    state._lazyArchiveReady = true;
+                    state._fastBoot = false;
+                    state._lazyBuildHandle = null;
+                    state._lazyArchivePending = false;
+                    scheduleRender();
+                }
+            };
+
+            /* Defer until after first paint frame, then idle-chunk the archive */
+            const scheduleIdle = () => {
+                state._lazyBuildHandle = rIC(() => runChunk(0));
+            };
+            if (typeof requestAnimationFrame === 'function') {
+                requestAnimationFrame(scheduleIdle);
+            } else {
+                scheduleIdle();
+            }
+        }
+
+        function renderFeeds() {
+            resolveDashboardElements();
+            if (!elements.feedContainer) {
+                updateStats();
                 return;
             }
+            ensureCardEventDelegation();
 
-                state.filteredItems.forEach((item, index) => {
-                    const feedItem = renderFeedItem(item);
-                    // Stagger animation for better visual flow
-                    feedItem.style.animationDelay = `${index * 0.03}s`;
-                    elements.feedContainer.appendChild(feedItem);
+            const container = elements.feedContainer;
+            clearFeedSkeleton();
+
+            try {
+                if (state.filteredItems.length === 0) {
+                    container.innerHTML = '';
+                    container.appendChild(buildEmptyStateNode());
+                    syncKeyboardFocusAfterRender();
+                    if (!state._lazyArchiveReady) scheduleLazyArchiveBuild();
+                    return;
+                }
+
+                const visibleKeys = getVisibleCardKeys();
+                const fragment = document.createDocumentFragment();
+                const stale = container.querySelector('.empty-state');
+                if (stale) stale.remove();
+
+                const presentNodes = state._cardNodes;
+                const fastSlice = state._fastBoot && !state._lazyArchiveReady;
+                const paintLimit = fastSlice
+                    ? Math.min(CONFIG.MAX_INITIAL_PAINT, state.filteredItems.length)
+                    : state.filteredItems.length;
+
+                for (let i = 0; i < paintLimit; i++) {
+                    const item = state.filteredItems[i];
+
+                    let node = presentNodes.get(item._key);
+                    if (!node) {
+                        node = buildCardNode(item);
+                        presentNodes.set(item._key, node);
+                    } else if (node.classList.contains('article-card')) {
+                        updateArticleCardContent(node, item);
+                        const mediaEl = node.querySelector('.article-card__media');
+                        if (mediaEl && mediaEl.dataset.hasImage !== '1') {
+                            observeCardMedia(mediaEl, item);
+                        }
+                    }
+                    node.classList.remove('is-hidden');
+                    if (i < 24 && !node.dataset.animated) {
+                        node.style.animationDelay = `${i * 0.025}s`;
+                        node.dataset.animated = '1';
+                    } else if (i >= 24) {
+                        node.style.animationDelay = '0s';
+                    }
+                    fragment.appendChild(node);
+                }
+
+                presentNodes.forEach((node, key) => {
+                    if (!visibleKeys.has(key) && node.parentNode === container) {
+                        node.classList.add('is-hidden');
+                    }
                 });
 
-                // Restore opacity
-                elements.feedContainer.style.opacity = '1';
+                container.appendChild(fragment);
+                syncKeyboardFocusAfterRender();
+
+                if (!state._lazyArchiveReady) {
+                    scheduleLazyArchiveBuild();
+                }
+            } catch (err) {
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('[StayUpdated] renderFeeds failed:', err);
+                }
+            } finally {
                 updateStats();
-            }, 100);
+                syncCardSelectionAfterRender();
+            }
         }
 
         // Date filtering utilities
@@ -975,6 +1969,11 @@
             const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
             
             switch (filterType) {
+                case '3days': {
+                    const threeDaysAgo = new Date(today);
+                    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+                    return { from: threeDaysAgo, to: now };
+                }
                 case 'today':
                     return { from: today, to: now };
                 case 'week':
@@ -997,192 +1996,251 @@
 
         function isDateInRange(itemDate, dateRange) {
             if (!dateRange.from && !dateRange.to) return true;
-            
+
             try {
                 const item = new Date(itemDate);
-                
-                // Handle invalid dates
-                if (isNaN(item.getTime())) {
-                    return false;
-                }
-                
-                if (dateRange.from && item < dateRange.from) return false;
-                if (dateRange.to && item > dateRange.to) return false;
-                
+                if (Number.isNaN(item.getTime())) return false;
+
+                // RSS feeds sometimes publish slightly in the future; treat as "now"
+                // so the default 3-day window does not hide fresh articles.
+                const now = new Date();
+                const effective = item > now ? now : item;
+
+                if (dateRange.from && effective < dateRange.from) return false;
+                if (dateRange.to && effective > dateRange.to) return false;
+
                 return true;
-            } catch (e) {
-                // Invalid date - exclude from results
+            } catch {
                 return false;
             }
         }
 
-        // Filtering and sorting
+        /** Keep sidebar selection aligned with loaded articles (fixes stale localStorage). */
+        function syncSelectedSourcesWithData() {
+            const available = new Set(
+                state.allItems.map((it) => it.sourceName).filter(Boolean)
+            );
+            if (available.size === 0) return;
+
+            if (state.selectedSources.size > 0) {
+                const next = new Set();
+                state.selectedSources.forEach((name) => {
+                    if (available.has(name)) next.add(name);
+                });
+                state.selectedSources = next.size > 0 ? next : available;
+            } else {
+                state.selectedSources = new Set(available);
+            }
+        }
+
+        // ============================================================
+        // Filtering & sorting — memoized.
+        //
+        // Vanilla equivalent of:
+        //   const filteredItems = useMemo(
+        //     () => filterAndSort(allItems, deps),
+        //     [allItems, search, sources, dateFilter, sortBy]
+        //   );
+        //
+        // We build a cheap dependency key. If it matches the cached key, we
+        // reuse the previous filteredItems array reference and skip straight
+        // to the render step. That's what makes toggling a single checkbox
+        // feel instant — the bulk of the cost (string compares, date math,
+        // sort) is paid once per *unique* filter combination.
+        // ============================================================
+        function buildFilterKey() {
+            // Sources serialised once (sorted for deterministic key).
+            const srcKey = state.selectedSources.size
+                ? Array.from(state.selectedSources).sort().join('\u0001')
+                : '*';
+            return [
+                state._datasetVersion,
+                state.searchQuery.trim().toLowerCase(),
+                state.sortBy,
+                state.dateFilter,
+                state.dateFrom || '',
+                state.dateTo || '',
+                srcKey
+            ].join('\u0002');
+        }
+
         function applyFilters() {
-            if (!Array.isArray(state.allItems)) {
-                state.allItems = [];
-            }
-            let filtered = [...state.allItems];
-            const initialCount = filtered.length;
+            if (!Array.isArray(state.allItems)) state.allItems = [];
 
-            // Date filter
-            if (state.dateFilter !== 'all') {
-                const dateRange = getDateRange(state.dateFilter);
-                const beforeDateFilter = filtered.length;
-                filtered = filtered.filter(item => isDateInRange(item.pubDate, dateRange));
-                
-                // Provide feedback if date filter removed many items
-                if (beforeDateFilter > 0 && filtered.length === 0 && state.dateFilter !== 'all') {
-                    // Will be handled by empty state
-                }
+            const cacheKey = buildFilterKey();
+            if (state._filterCache.key === cacheKey && state._filterCache.items) {
+                // Memo hit — nothing changed, just re-render against existing DOM.
+                state.filteredItems = state._filterCache.items;
+                renderFeeds();
+                return;
             }
 
-            // Search filter
-            if (state.searchQuery) {
-                const query = state.searchQuery.toLowerCase().trim();
-                if (query.length > 0) {
-                    const beforeSearch = filtered.length;
-                    filtered = filtered.filter(item => {
-                        if (!item || !item.title) return false;
-                        try {
-                            const title = sanitizeHtml(item.title || '').toLowerCase();
-                            const desc = sanitizeHtml(item.description || '').toLowerCase();
-                            const source = (item.sourceName || '').toLowerCase();
-                            return title.includes(query) || desc.includes(query) || source.includes(query);
-                        } catch (e) {
-                            return false;
-                        }
-                    });
-                    
-                    // Show helpful message for very specific searches
-                    if (filtered.length === 0 && beforeSearch > 0 && query.length > 3) {
-                        // Message will be shown in empty state
-                    }
-                }
+            // Pre-compute date range ONCE per call (was previously recomputed per item).
+            const dateRange = (state.dateFilter && state.dateFilter !== 'all')
+                ? getDateRange(state.dateFilter)
+                : null;
+            const query = state.searchQuery ? state.searchQuery.toLowerCase().trim() : '';
+            const sources = state.selectedSources;
+            const sourceFilterActive = sources && sources.size > 0;
+
+            // Single pass: combine all filters into one .filter() rather than chaining
+            // three separate passes (which previously allocated 3 intermediate arrays).
+            const filtered = [];
+            for (let i = 0, n = state.allItems.length; i < n; i++) {
+                const item = state.allItems[i];
+                if (!item || !item.title) continue;
+                if (dateRange && !isDateInRange(item.pubDate, dateRange)) continue;
+                if (query && (!item._searchText || item._searchText.indexOf(query) === -1)) continue;
+                if (sourceFilterActive && !sources.has(item.sourceName)) continue;
+                filtered.push(item);
             }
 
-            // Source filter
-            if (state.selectedSources && state.selectedSources.size > 0) {
-                filtered = filtered.filter(item =>
-                    item && item.sourceName && state.selectedSources.has(item.sourceName)
-                );
-            }
-
-            // Sort
+            // Sort in-place (avoids a second array allocation from .sort() on a copy).
+            const sortBy = state.sortBy;
             filtered.sort((a, b) => {
-                switch (state.sortBy) {
-                    case 'date-desc':
-                        return b.pubDate - a.pubDate;
-                    case 'date-asc':
-                        return a.pubDate - b.pubDate;
-                    case 'source':
-                        return a.sourceName.localeCompare(b.sourceName);
-                    default:
-                        return 0;
-                }
+                if (sortBy === 'date-desc') return b.pubDate - a.pubDate;
+                if (sortBy === 'date-asc') return a.pubDate - b.pubDate;
+                if (sortBy === 'source') return a.sourceName.localeCompare(b.sourceName);
+                return 0;
             });
 
             state.filteredItems = filtered;
-            
-            // Show helpful message if filters are very restrictive
-            if (initialCount > 0 && filtered.length === 0) {
-                // Empty state will handle this
-            } else if (initialCount > filtered.length && filtered.length > 0) {
-                // Filters are active but results found
-                const reductionPercent = Math.round((1 - filtered.length / initialCount) * 100);
-                if (reductionPercent > 80) {
-                    // Very restrictive filters - could show subtle hint
-                }
-            }
-            
+            state._filterCache = { key: cacheKey, items: filtered };
             renderFeeds();
         }
 
+        // PERF: replaced a setInterval-based number tween that fired 20 times
+        // over 300ms PER STAT, PER FILTER CHANGE. With rapid typing in the
+        // search box that produced dozens of overlapping intervals — the
+        // single worst offender for filter-time jank. We now just write the
+        // numbers directly; the CSS handles the subtle "pop" via a 120ms
+        // colour/scale transition on `.stat-value` when its content changes.
         function updateStats() {
-            const uniqueSources = new Set(state.allItems.map(item => item.sourceName));
-            
-            // Animate number changes for better UX
-            const animateNumber = (element, newValue, oldValue) => {
-                if (oldValue === newValue) {
-                    element.textContent = newValue;
-                    return;
-                }
-                
-                const duration = 300;
-                const steps = 20;
-                const increment = (newValue - oldValue) / steps;
-                let current = oldValue;
-                let step = 0;
-                
-                const timer = setInterval(() => {
-                    step++;
-                    current += increment;
-                    if (step >= steps) {
-                        element.textContent = newValue;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.round(current);
-                    }
-                }, duration / steps);
-            };
-            
-            const oldTotal = parseInt(elements.totalCount.textContent) || 0;
-            const oldShowing = parseInt(elements.showingCount.textContent) || 0;
-            const oldSources = parseInt(elements.sourceCount.textContent) || 0;
-            
-            animateNumber(elements.totalCount, state.allItems.length, oldTotal);
-            animateNumber(elements.showingCount, state.filteredItems.length, oldShowing);
-            animateNumber(elements.sourceCount, uniqueSources.size, oldSources);
-            
-            // Update aria-live for screen readers
-            if (state.filteredItems.length !== oldShowing) {
-                const change = state.filteredItems.length - oldShowing;
-                const message = change > 0 
-                    ? `Showing ${state.filteredItems.length} articles` 
-                    : `Filtered to ${state.filteredItems.length} articles`;
-                elements.feedContainer.setAttribute('aria-label', message);
+            resolveDashboardElements();
+            const allLen = state.allItems.length;
+            const showLen = state.filteredItems.length;
+
+            // Cache the unique-source count on dataset version so we don't
+            // re-Set() 300+ items every render.
+            if (state._sourceCountVersion !== state._datasetVersion) {
+                const set = new Set();
+                for (let i = 0; i < allLen; i++) set.add(state.allItems[i].sourceName);
+                state._uniqueSourceCount = set.size;
+                state._sourceCountVersion = state._datasetVersion;
             }
+
+            const totalEl = elements.totalCount;
+            const showEl = elements.showingCount;
+            const srcEl = elements.sourceCount;
+            if (totalEl) totalEl.textContent = String(allLen);
+            if (showEl) showEl.textContent = String(showLen);
+            if (srcEl) srcEl.textContent = String(state._uniqueSourceCount);
+
+            if (elements.feedContainer) {
+                elements.feedContainer.setAttribute(
+                    'aria-label',
+                    `Showing ${showLen} of ${allLen} articles`
+                );
+            }
+        }
+
+        /** Reload snapshot first; optional background live merge (header Refresh). */
+        async function refreshDashboardFeeds(options = {}) {
+            const backgroundLive = options.backgroundLive === true;
+            resolveDashboardElements();
+            setErrorVisible(false);
+            setRetryVisible(false);
+            setFeedSkeletonVisible(true);
+            state._filterCache.key = null;
+
+            const snap = await loadStaticSnapshot({ bypassCache: true });
+            if (snap) {
+                setFeedSkeletonVisible(false);
+                finishDashboardBoot();
+                updateFeedStatusLine(snap, false);
+            }
+
+            if (!backgroundLive) {
+                if (!snap) {
+                    setFeedSkeletonVisible(false);
+                    return fetchAllFeeds({ hardRefresh: true }).then(finishDashboardBoot);
+                }
+                return;
+            }
+
+            if (!snap) {
+                setFeedSkeletonVisible(false);
+                return fetchAllFeeds({ hardRefresh: false }).then(finishDashboardBoot).catch(() => {});
+            }
+
+            return fetchAllFeeds({ hardRefresh: false, background: true })
+                .then(finishDashboardBoot)
+                .catch(() => {});
         }
 
         // Source categories mapping
         const sourceCategories = {
             'government': {
                 name: '🏛️ Government & Critical Infrastructure',
+                shortName: 'Government',
                 icon: '🏛️',
                 keywords: ['CISA', 'CERT', 'NIST', 'NCSC', 'US-CERT', 'Government']
             },
             'news': {
                 name: '🕵️ Investigative Journalism & Breaking News',
+                shortName: 'News',
                 icon: '🕵️',
                 keywords: ['Krebs', 'Hacker News', 'Dark Reading', 'BleepingComputer', 'Schneier', 'Risky Business', 'Graham Cluley', 'SecurityWeek', 'Help Net Security', 'Security Affairs', 'Cyber Security News', 'HackRead']
             },
             'research': {
                 name: '🔬 Threat Research & Malware Analysis',
+                shortName: 'Research',
                 icon: '🔬',
                 keywords: ['Project Zero', 'Talos', 'SANS', 'Mandiant', 'Securelist', 'Sophos Threat', 'Malwarebytes', 'Check Point', 'Unit 42', 'WeLiveSecurity', 'CrowdStrike', 'TAG', 'Trail of Bits', 'Zero Day Initiative']
             },
             'offensive': {
                 name: '🛡️ Offensive Security & Hacking Techniques',
+                shortName: 'Offensive',
                 icon: '🛡️',
                 keywords: ['OffSec', 'Offensive Security', 'Bishop Fox', 'Hacking The Cloud', 'Hack The Box', 'KitPloit', 'MalwareTech', 'DFIR', 'InfoSec Writeups', 'Pentest']
             },
             'cloud': {
                 name: '☁️ Platform & Cloud Security',
+                shortName: 'Cloud',
                 icon: '☁️',
                 keywords: ['AWS Security', 'Microsoft Security', 'MSRC', 'Cloud']
             },
+            'tools': {
+                name: '🔧 Security Operations & Tools',
+                shortName: 'SecOps',
+                icon: '🔧',
+                keywords: ['Sophos Security Ops', 'Naked Security', 'Security Operations']
+            },
             'community': {
                 name: '👥 Community & Forums',
+                shortName: 'Community',
                 icon: '👥',
                 keywords: ['reddit', 'r/netsec', 'r/blueteamsec', 'Hacker News', 'Community']
             },
             'bugbounty': {
                 name: '🎯 Bug Bounty & Responsible Disclosure',
+                shortName: 'Bug Bounty',
                 icon: '🎯',
                 keywords: ['Bug Bounty', 'Intigriti', 'YesWeHack', 'HackerOne', 'Bug Bounty Writeups']
+            },
+            'other': {
+                name: '📰 Other Sources',
+                shortName: 'Other',
+                icon: '📰',
+                keywords: []
             }
         };
 
         function getSourceCategory(sourceName) {
+            const configured = rssFeeds.find((f) => f.name === sourceName);
+            if (configured?.category && sourceCategories[configured.category]) {
+                return configured.category;
+            }
             const nameLower = sourceName.toLowerCase();
             for (const [key, category] of Object.entries(sourceCategories)) {
                 if (category.keywords.some(keyword => nameLower.includes(keyword.toLowerCase()))) {
@@ -1192,203 +2250,241 @@
             return 'other';
         }
 
+        // ============================================================
+        // Sidebar source filters — rebuilt ONCE, then mutated in place.
+        //
+        // Old code rebuilt all ~55 checkboxes (and bound 55 fresh `change`
+        // listeners) every keystroke in the source-search input and every
+        // time the article list grew. That re-paint of the sidebar was
+        // visible as a "flash" on every keystroke and added GC pressure.
+        //
+        // New strategy:
+        //   • Build the sidebar DOM exactly once, when feeds finish loading.
+        //   • A single delegated `change` listener on `#sourceFilters` handles
+        //     all 55 checkboxes (vanilla React.memo equivalent for the row).
+        //   • Source-search input filters via a class toggle on each row —
+        //     no DOM is recreated.
+        //   • Live source-count updates mutate a <span> textContent rather
+        //     than rebuilding the row.
+        // ============================================================
+        const SOURCE_FILTER_BUILD_VERSION = '5';
+
+        const FOLDER_SELECT_ICON = `<svg class="folder-action__icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2.5-2.5a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z"/></svg>`;
+
+        let _sourceTreeDelegatesBound = false;
+
+        function bindSourceTreeDelegates() {
+            if (_sourceTreeDelegatesBound || !elements.sourceFilters) return;
+            _sourceTreeDelegatesBound = true;
+            elements.sourceFilters.classList.add('source-tree');
+            elements.sourceFilters.addEventListener('change', onSidebarChange);
+            elements.sourceFilters.addEventListener('click', onSidebarClick);
+            elements.sourceFilters.addEventListener('keydown', onSidebarKeydown);
+        }
+
         function initializeSourceFilters() {
-            // Get all available sources from rssFeeds
-            const allAvailableSources = rssFeeds.map(feed => feed.name);
-            
-            // Get sources that have items loaded
-            const loadedSources = new Set(state.allItems.map(item => item.sourceName));
-            
-            // Get source counts
-            const sourceCounts = {};
-            state.allItems.forEach(item => {
-                sourceCounts[item.sourceName] = (sourceCounts[item.sourceName] || 0) + 1;
-            });
-            
-            // Filter sources based on search
-            const searchQuery = (elements.sourceSearch.value || '').toLowerCase();
-            
-            // Group sources by category
-            const categorizedSources = {};
-            allAvailableSources.forEach(source => {
-                if (searchQuery && !source.toLowerCase().includes(searchQuery)) {
-                    return; // Skip if doesn't match search
-                }
-                
-                const category = getSourceCategory(source);
-                if (!categorizedSources[category]) {
-                    categorizedSources[category] = [];
-                }
-                categorizedSources[category].push(source);
-            });
-            
-            elements.sourceFilters.innerHTML = '';
-            
-            if (Object.keys(categorizedSources).length === 0) {
-                const noResults = document.createElement('div');
-                noResults.className = 'source-filters-empty';
-                noResults.innerHTML = `
-                    <div class="source-filters-empty-icon">🔍</div>
-                    <h3>No sources found</h3>
-                    <p>Try adjusting your search query or clear the search</p>
-                `;
-                elements.sourceFilters.appendChild(noResults);
+            if (!elements.sourceFilters) return;
+
+            if (!rssFeeds.length) {
+                elements.sourceFilters.innerHTML =
+                    '<p class="source-filters-status" role="status">No feed sources configured. Check <code>_data/stayupdated-feeds.yml</code>.</p>';
+                return;
+            }
+
+            // If already built, just refresh dynamic bits (counts, statuses).
+            if (elements.sourceFilters.dataset.built === '1'
+                && elements.sourceFilters.dataset.buildVersion === SOURCE_FILTER_BUILD_VERSION) {
+                refreshSourceCountsAndStatus();
                 updateSourceFilterCount();
                 return;
             }
-            
-            // Render categories
+
+            const allAvailableSources = rssFeeds.map(feed => feed.name);
+            const loadedSources = new Set(state.allItems.map(item => item.sourceName));
+
+            const sourceCounts = {};
+            for (let i = 0; i < state.allItems.length; i++) {
+                const n = state.allItems[i].sourceName;
+                sourceCounts[n] = (sourceCounts[n] || 0) + 1;
+            }
+
+            const categorizedSources = {};
+            allAvailableSources.forEach(source => {
+                const cat = getSourceCategory(source);
+                (categorizedSources[cat] = categorizedSources[cat] || []).push(source);
+            });
+
+            elements.sourceFilters.innerHTML = '';
+
             Object.entries(categorizedSources).forEach(([categoryKey, sources]) => {
                 const category = sourceCategories[categoryKey] || { name: '📰 Other Sources', icon: '📰' };
-                
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'source-category';
-                categoryDiv.dataset.category = categoryKey;
-                
-                const header = document.createElement('div');
-                header.className = 'category-header';
-                // Default to expanded if not in state (first load)
-                const isExpanded = (state.expandedCategories && state.expandedCategories.has(categoryKey)) || !state.expandedCategories || state.expandedCategories.size === 0;
-                header.dataset.expanded = isExpanded ? 'true' : 'false';
-                if (isExpanded && state.expandedCategories && !state.expandedCategories.has(categoryKey)) {
-                    state.expandedCategories.add(categoryKey);
-                }
-                
-                const titleDiv = document.createElement('div');
-                titleDiv.className = 'category-title';
-                titleDiv.innerHTML = `
-                    <span class="category-icon">${category.icon}</span>
-                    <span>${category.name.replace(category.icon, '').trim()}</span>
-                    <span class="category-badge">${sources.length}</span>
+
+                const details = document.createElement('details');
+                details.className = 'source-category';
+                details.dataset.category = categoryKey;
+
+                const isExpanded = !state.expandedCategories.size || state.expandedCategories.has(categoryKey);
+                details.open = isExpanded;
+                if (isExpanded) state.expandedCategories.add(categoryKey);
+
+                const folderLabel = category.shortName
+                    || category.name.replace(category.icon, '').trim();
+                const safeFolderLabel = escapeHtml(folderLabel);
+                const safeIcon = escapeHtml(category.icon);
+
+                const summary = document.createElement('summary');
+                summary.className = 'source-folder-summary';
+                summary.innerHTML = `
+                    <span class="folder-title-group">
+                        <span class="folder-chevron${isExpanded ? '' : ' is-collapsed'}" aria-hidden="true"></span>
+                        <span class="folder-icon" aria-hidden="true">${safeIcon}</span>
+                        <span class="folder-name">${safeFolderLabel}</span>
+                        <span class="folder-badge">${sources.length}</span>
+                    </span>
+                    <span class="folder-actions">
+                        <span class="folder-action"
+                              data-action="select-all-cat"
+                              role="button"
+                              tabindex="0"
+                              title="Select all in ${safeFolderLabel}"
+                              aria-label="Select all sources in ${safeFolderLabel}">${FOLDER_SELECT_ICON}</span>
+                    </span>
                 `;
-                
+
                 const content = document.createElement('div');
-                content.className = 'category-content expanded';
-                
-                const selectAllBtn = document.createElement('button');
-                selectAllBtn.className = 'category-select-all';
-                selectAllBtn.textContent = 'Select All';
-                selectAllBtn.title = 'Select all sources in this category';
-                selectAllBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const checkboxes = content.querySelectorAll('input[type="checkbox"]:not(:disabled)');
-                    checkboxes.forEach(checkbox => {
-                        checkbox.checked = true;
-                        state.selectedSources.add(checkbox.value);
-                        checkbox.closest('.source-filter-item')?.classList.add('checked');
-                    });
-                    savePreferences();
-                    applyFilters();
-                    updateSourceFilterCount();
-                });
-                
-                const toggle = document.createElement('span');
-                toggle.className = 'category-toggle';
-                toggle.textContent = isExpanded ? '▼' : '▶';
-                if (!isExpanded) {
-                    toggle.classList.add('collapsed');
-                }
-                
-                header.appendChild(titleDiv);
-                header.appendChild(selectAllBtn);
-                header.appendChild(toggle);
-                
-                // Sort sources
+                content.className = 'source-folder-content';
+
                 sources.sort().forEach(source => {
                     const isLoaded = loadedSources.has(source);
-                    const item = createSourceFilterItem(source, isLoaded, sourceCounts[source] || 0);
-                    content.appendChild(item);
+                    content.appendChild(createSourceFilterItem(source, isLoaded, sourceCounts[source] || 0));
                 });
-                
-                // Toggle functionality
-                header.addEventListener('click', (e) => {
-                    if (e.target === selectAllBtn || e.target.closest('.category-select-all')) return;
-                    const currentlyExpanded = header.dataset.expanded === 'true';
-                    const newExpanded = !currentlyExpanded;
-                    header.dataset.expanded = newExpanded ? 'true' : 'false';
-                    content.classList.toggle('expanded', newExpanded);
-                    toggle.textContent = newExpanded ? '▼' : '▶';
-                    toggle.classList.toggle('collapsed', !newExpanded);
-                    if (newExpanded) {
+
+                details.append(summary, content);
+                details.addEventListener('toggle', () => {
+                    const chevron = summary.querySelector('.folder-chevron');
+                    if (details.open) {
                         state.expandedCategories.add(categoryKey);
+                        chevron?.classList.remove('is-collapsed');
                     } else {
                         state.expandedCategories.delete(categoryKey);
+                        chevron?.classList.add('is-collapsed');
                     }
                     savePreferences();
                 });
-                
-                categoryDiv.appendChild(header);
-                categoryDiv.appendChild(content);
-                elements.sourceFilters.appendChild(categoryDiv);
+                elements.sourceFilters.appendChild(details);
             });
-            
+
+            bindSourceTreeDelegates();
+
+            elements.sourceFilters.dataset.built = '1';
+            elements.sourceFilters.dataset.buildVersion = SOURCE_FILTER_BUILD_VERSION;
             updateSourceFilterCount();
+        }
+
+        // Cheap update path: re-uses the already-built DOM, just patches
+        // counts and status dots. Called every time a batch of feeds finishes
+        // loading.
+        function refreshSourceCountsAndStatus() {
+            if (!elements.sourceFilters) return;
+            const loadedSources = new Set(state.allItems.map(item => item.sourceName));
+            const sourceCounts = {};
+            for (let i = 0; i < state.allItems.length; i++) {
+                const n = state.allItems[i].sourceName;
+                sourceCounts[n] = (sourceCounts[n] || 0) + 1;
+            }
+            const items = elements.sourceFilters.querySelectorAll('.source-filter-item');
+            items.forEach(item => {
+                const source = item.dataset.source;
+                const isLoaded = loadedSources.has(source);
+                const isError = state.feedStatus[source] === 'error';
+                item.classList.toggle('disabled', !isLoaded && !isError);
+                const countEl = item.querySelector('.source-count');
+                if (countEl) countEl.textContent = isLoaded ? (sourceCounts[source] || 0) : (isError ? '!' : '…');
+                const statusEl = item.querySelector('.source-status');
+                if (statusEl) {
+                    statusEl.classList.toggle('loading', !isLoaded && !isError);
+                    statusEl.classList.toggle('error', isError);
+                }
+                const cb = item.querySelector('input[type="checkbox"]');
+                if (cb) cb.disabled = !isLoaded;
+            });
+        }
+
+        function onSidebarChange(e) {
+            const cb = e.target;
+            if (cb.tagName !== 'INPUT' || cb.type !== 'checkbox') return;
+            const source = cb.value;
+            const row = cb.closest('.source-filter-item');
+            if (cb.checked) {
+                state.selectedSources.add(source);
+                row && row.classList.add('checked');
+            } else {
+                state.selectedSources.delete(source);
+                row && row.classList.remove('checked');
+            }
+            savePreferences();
+            updateSourceFilterCount();
+            scheduleRender();
+        }
+
+        function onSidebarKeydown(e) {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const action = e.target.closest('.folder-action[data-action]');
+            if (action) {
+                e.preventDefault();
+                action.click();
+            }
+        }
+
+        function onSidebarClick(e) {
+            // Per-category select-all (icon control)
+            const selBtn = e.target.closest('[data-action="select-all-cat"]');
+            if (selBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                const catDiv = selBtn.closest('.source-category');
+                const checkboxes = catDiv.querySelectorAll('input[type="checkbox"]:not(:disabled)');
+                checkboxes.forEach(c => {
+                    if (!c.checked) {
+                        c.checked = true;
+                        state.selectedSources.add(c.value);
+                        c.closest('.source-filter-item').classList.add('checked');
+                    }
+                });
+                savePreferences();
+                updateSourceFilterCount();
+                scheduleRender();
+            }
         }
 
         function createSourceFilterItem(source, isLoaded, count) {
             const item = document.createElement('div');
-            item.className = 'source-filter-item';
-            
-            if (!isLoaded) {
-                item.classList.add('disabled');
-            }
-            
-            const status = document.createElement('div');
-            status.className = 'source-status';
-            if (!isLoaded) {
-                status.classList.add('loading');
-            }
-            
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = `source-${source.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')}`;
-            checkbox.value = source;
-            
-            // Initialize: if no sources selected, select all loaded sources
-            // Otherwise, use saved preferences
+            item.className = 'source-filter-item form-check';
+            item.dataset.source = source;
+            if (!isLoaded) item.classList.add('disabled');
+
+            const safeId = `source-${source.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')}`;
+
+            const safeSource = escapeHtml(source);
+            item.innerHTML = `
+                <span class="source-status${!isLoaded ? ' loading' : ''}" aria-hidden="true"></span>
+                <input type="checkbox" class="form-check-input" id="${safeId}" value="${source.replace(/"/g, '&quot;')}"${isLoaded ? '' : ' disabled'}>
+                <label class="form-check-label source-filter-item__label" for="${safeId}">${safeSource}</label>
+                <span class="source-count">${isLoaded ? count : '…'}</span>
+            `;
+
+            // Initial check state (no listener — delegated handler above).
+            const cb = item.querySelector('input[type="checkbox"]');
             if (state.selectedSources.size === 0) {
                 if (isLoaded) {
                     state.selectedSources.add(source);
-                    checkbox.checked = true;
-                } else {
-                    checkbox.checked = false;
+                    cb.checked = true;
                 }
             } else {
-                checkbox.checked = state.selectedSources.has(source);
+                cb.checked = state.selectedSources.has(source);
             }
-            
-            checkbox.disabled = !isLoaded;
-            
-            if (checkbox.checked) {
-                item.classList.add('checked');
-            }
-            
-            checkbox.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    state.selectedSources.add(source);
-                    item.classList.add('checked');
-                } else {
-                    state.selectedSources.delete(source);
-                    item.classList.remove('checked');
-                }
-                savePreferences();
-                applyFilters();
-                updateSourceFilterCount();
-            });
-            
-            const label = document.createElement('label');
-            label.htmlFor = checkbox.id;
-            label.textContent = source;
-            
-            const countSpan = document.createElement('span');
-            countSpan.className = 'source-count';
-            countSpan.textContent = isLoaded ? count : '...';
-            
-            item.appendChild(status);
-            item.appendChild(checkbox);
-            item.appendChild(label);
-            item.appendChild(countSpan);
-            
+            if (cb.checked) item.classList.add('checked');
+
             return item;
         }
 
@@ -1396,7 +2492,8 @@
             const selectedCount = state.selectedSources.size;
             const totalCount = rssFeeds.length;
             const badge = elements.sourceFilterCount;
-            
+            if (!badge) return;
+
             if (selectedCount === 0) {
                 badge.textContent = 'None selected';
                 badge.title = 'No sources selected. Click "All" to select all sources.';
@@ -1412,11 +2509,12 @@
             }
         }
 
+        function wireDashboardControlListeners() {
         // Debounce search for better performance with visual feedback
         let searchTimeout = null;
         let lastSearchQuery = '';
         
-        elements.searchInput.addEventListener('input', (e) => {
+        if (elements.searchInput) elements.searchInput.addEventListener('input', (e) => {
             const query = e.target.value;
             state.searchQuery = query;
             
@@ -1434,64 +2532,105 @@
                 elements.feedContainer.setAttribute('aria-busy', 'false');
             }
             
-            // Debounce search to avoid excessive filtering
+            // Debounced search → coalesced render via rAF.
             searchTimeout = setTimeout(() => {
-                applyFilters();
+                savePreferences();
+                scheduleRender();
                 elements.feedContainer.setAttribute('aria-busy', 'false');
                 lastSearchQuery = query;
-                
-                // Provide helpful feedback
-                if (state.filteredItems.length === 0 && query.length > 0) {
-                    // Empty state will handle this
-                } else if (state.filteredItems.length > 0 && query.length > 0) {
-                    // Subtle feedback that search worked
-                    const searchResults = state.filteredItems.length;
-                    if (searchResults < 5 && query.length > 3) {
-                        // Very few results - could show hint
-                    }
+            }, 180); // 180ms feels much snappier than 300ms and the memoised
+                     // filter is fast enough to keep up at this cadence.
+        });
+
+        if (elements.searchInput) elements.searchInput.addEventListener('focus', () => {
+            elements.searchInput.classList.remove('is-hotkey-focus');
+        });
+
+        if (elements.searchInput) elements.searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                if (elements.searchInput.value) {
+                    elements.searchInput.value = '';
+                    state.searchQuery = '';
+                    clearTimeout(searchTimeout);
+                    savePreferences();
+                    scheduleRender();
                 }
-            }, 300);
-        });
-        
-        // Clear search button functionality
-        elements.searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && elements.searchInput.value) {
-                elements.searchInput.value = '';
-                state.searchQuery = '';
-                clearTimeout(searchTimeout);
-                applyFilters();
-                showNotification('Search cleared', 'info', 1500);
+                blurMainSearch();
             }
         });
 
-        elements.sortSelect.addEventListener('change', (e) => {
-            state.sortBy = e.target.value;
-            savePreferences();
-            applyFilters();
-        });
+        const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', toggleSourcesSidebar);
+        }
 
-        elements.dateFilter.addEventListener('change', (e) => {
-            state.dateFilter = e.target.value;
-            
-            // Show/hide custom date range inputs
-            if (state.dateFilter === 'custom') {
-                elements.customDateRange.style.display = 'flex';
-            } else {
-                elements.customDateRange.style.display = 'none';
-                state.dateFrom = null;
-                state.dateTo = null;
-            }
-            
-            savePreferences();
-            applyFilters();
-        });
+        const sidebarPanelCloseBtn = document.getElementById('sidebarPanelCloseBtn');
+        if (sidebarPanelCloseBtn) {
+            sidebarPanelCloseBtn.addEventListener('click', () => {
+                if (!state.sidebarCollapsed) toggleSourcesSidebar();
+            });
+        }
 
-        // Set max date to today for date inputs
+        const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+        if (sidebarBackdrop) {
+            sidebarBackdrop.addEventListener('click', () => {
+                if (!state.sidebarCollapsed) {
+                    state.sidebarCollapsed = true;
+                    applySidebarUi();
+                    savePreferences();
+                }
+            });
+        }
+
+        if (typeof SU_MOBILE_MQ.addEventListener === 'function') {
+            SU_MOBILE_MQ.addEventListener('change', () => {
+                if (isMobileLayout()) {
+                    state.sidebarCollapsed = true;
+                }
+                applySidebarUi();
+            });
+        } else if (typeof SU_MOBILE_MQ.addListener === 'function') {
+            SU_MOBILE_MQ.addListener(() => {
+                if (isMobileLayout()) {
+                    state.sidebarCollapsed = true;
+                }
+                applySidebarUi();
+            });
+        }
+
+        if (elements.sortSelect) {
+            elements.sortSelect.addEventListener('change', (e) => {
+                state.sortBy = e.target.value;
+                savePreferences();
+                scheduleRender();
+            });
+        }
+
+        if (elements.dateFilter) {
+            elements.dateFilter.addEventListener('change', (e) => {
+                state.dateFilter = e.target.value;
+                if (state.dateFilter === 'all') {
+                    state._fastBoot = false;
+                    invalidateFilterCache();
+                }
+                if (state.dateFilter === 'custom') {
+                    if (elements.customDateRange) elements.customDateRange.hidden = false;
+                } else {
+                    if (elements.customDateRange) elements.customDateRange.hidden = true;
+                    state.dateFrom = null;
+                    state.dateTo = null;
+                }
+                savePreferences();
+                scheduleRender();
+            });
+        }
+
         const today = new Date().toISOString().split('T')[0];
-        elements.dateFrom.setAttribute('max', today);
-        elements.dateTo.setAttribute('max', today);
+        if (elements.dateFrom) elements.dateFrom.setAttribute('max', today);
+        if (elements.dateTo) elements.dateTo.setAttribute('max', today);
 
-        elements.dateFrom.addEventListener('change', (e) => {
+        if (elements.dateFrom) elements.dateFrom.addEventListener('change', (e) => {
             const selectedDate = e.target.value;
             
             // Validate date is not in the future
@@ -1521,10 +2660,10 @@
             }
             
             savePreferences();
-            applyFilters();
+            scheduleRender();
         });
 
-        elements.dateTo.addEventListener('change', (e) => {
+        if (elements.dateTo) elements.dateTo.addEventListener('change', (e) => {
             const selectedDate = e.target.value;
             
             // Validate date is not in the future
@@ -1552,67 +2691,94 @@
                     showNotification('Date range is very large. Results may take longer to load.', 'warning', 3000);
                 }
             }
-            
+
             savePreferences();
-            applyFilters();
+            scheduleRender();
         });
 
-        elements.sourceSearch.addEventListener('input', (e) => {
-            initializeSourceFilters();
-            // Clear preset active state when searching
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+        // PERF: source-search no longer rebuilds the sidebar. We just toggle a
+        // `.is-hidden` class on each row. ~55 className writes vs. recreating
+        // 55 DOM nodes + 55 listeners on every keystroke.
+        let sourceSearchRaf = null;
+        if (elements.sourceSearch) elements.sourceSearch.addEventListener('input', (e) => {
+            const q = e.target.value.trim().toLowerCase();
+            if (sourceSearchRaf) cancelAnimationFrame(sourceSearchRaf);
+            sourceSearchRaf = requestAnimationFrame(() => {
+                sourceSearchRaf = null;
+                const rows = elements.sourceFilters.querySelectorAll('.source-filter-item');
+                let visibleCount = 0;
+                rows.forEach(row => {
+                    const match = !q || row.dataset.source.toLowerCase().indexOf(q) !== -1;
+                    row.classList.toggle('is-hidden', !match);
+                    if (match) visibleCount++;
+                });
+                // Hide entirely-empty categories so the sidebar stays clean.
+                elements.sourceFilters.querySelectorAll('.source-category').forEach(cat => {
+                    const visible = cat.querySelectorAll('.source-filter-item:not(.is-hidden)').length;
+                    cat.classList.toggle('is-hidden', visible === 0);
+                });
+                document.querySelectorAll('.stay-updated-dashboard .filter-presets .post-tag').forEach(btn => btn.classList.remove('is-active'));
+                if (visibleCount === 0) {
+                    elements.sourceFilters.classList.add('has-no-results');
+                } else {
+                    elements.sourceFilters.classList.remove('has-no-results');
+                }
+            });
         });
 
-        elements.selectAllSources.addEventListener('click', () => {
+        bindClickableAction(elements.selectAllSources, () => {
             const checkboxes = elements.sourceFilters.querySelectorAll('input[type="checkbox"]:not(:disabled)');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = true;
-                state.selectedSources.add(checkbox.value);
-                checkbox.closest('.source-filter-item')?.classList.add('checked');
+            checkboxes.forEach(cb => {
+                cb.checked = true;
+                state.selectedSources.add(cb.value);
+                cb.closest('.source-filter-item')?.classList.add('checked');
             });
             savePreferences();
-            applyFilters();
             updateSourceFilterCount();
+            scheduleRender();
         });
 
-        elements.deselectAllSources.addEventListener('click', () => {
+        bindClickableAction(elements.deselectAllSources, () => {
             state.selectedSources.clear();
-            const checkboxes = elements.sourceFilters.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-                checkbox.closest('.source-filter-item')?.classList.remove('checked');
+            elements.sourceFilters.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.source-filter-item')?.classList.remove('checked');
             });
             savePreferences();
-            applyFilters();
             updateSourceFilterCount();
+            scheduleRender();
         });
 
-        elements.expandAllCategories.addEventListener('click', () => {
-            const headers = elements.sourceFilters.querySelectorAll('.category-header');
-            headers.forEach(header => {
-                if (header.dataset.expanded !== 'true') {
-                    header.click();
-                }
+        if (elements.expandAllCategories) {
+            elements.expandAllCategories.addEventListener('click', () => {
+                elements.sourceFilters.querySelectorAll('details.source-category').forEach((details) => {
+                    details.open = true;
+                    const cat = details.dataset.category;
+                    if (cat) state.expandedCategories.add(cat);
+                    details.querySelector('.folder-chevron')?.classList.remove('is-collapsed');
+                });
+                savePreferences();
             });
-        });
+        }
 
-        elements.collapseAllCategories.addEventListener('click', () => {
-            const headers = elements.sourceFilters.querySelectorAll('.category-header');
-            headers.forEach(header => {
-                if (header.dataset.expanded === 'true') {
-                    header.click();
-                }
+        if (elements.collapseAllCategories) {
+            elements.collapseAllCategories.addEventListener('click', () => {
+                elements.sourceFilters.querySelectorAll('details.source-category').forEach((details) => {
+                    details.open = false;
+                    const cat = details.dataset.category;
+                    if (cat) state.expandedCategories.delete(cat);
+                    details.querySelector('.folder-chevron')?.classList.add('is-collapsed');
+                });
+                savePreferences();
             });
-        });
+        }
 
-        // Preset buttons with better feedback
-        document.querySelectorAll('.preset-btn').forEach(btn => {
+        document.querySelectorAll('.stay-updated-dashboard .filter-presets .post-tag').forEach(btn => {
             btn.addEventListener('click', () => {
                 const preset = btn.dataset.preset;
-                
-                // Remove active from all
-                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+
+                document.querySelectorAll('.stay-updated-dashboard .filter-presets .post-tag').forEach(b => b.classList.remove('is-active'));
+                btn.classList.add('is-active');
                 
                 // Deselect all first
                 state.selectedSources.clear();
@@ -1634,17 +2800,18 @@
                         selectedCount++;
                     });
                     
-                    // Expand the category
-                    const header = categoryDiv.querySelector('.category-header');
-                    if (header.dataset.expanded !== 'true') {
-                        header.click();
+                    if (categoryDiv && !categoryDiv.open) {
+                        categoryDiv.open = true;
+                        state.expandedCategories.add(preset);
+                        categoryDiv.querySelector('.folder-chevron')?.classList.remove('is-collapsed');
                     }
                 }
                 
                 savePreferences();
-                applyFilters();
                 updateSourceFilterCount();
-                
+                scheduleRender();
+                collapseSidebarIfMobile();
+
                 const presetNames = {
                     government: 'Government',
                     news: 'News',
@@ -1663,96 +2830,137 @@
             });
         });
 
-        elements.retryButton.addEventListener('click', fetchAllFeeds);
-
-        // Welcome banner close
-        const closeWelcomeBanner = document.getElementById('closeWelcomeBanner');
-        const welcomeBanner = document.getElementById('welcomeBanner');
-        if (closeWelcomeBanner && welcomeBanner) {
-            closeWelcomeBanner.addEventListener('click', () => {
-                welcomeBanner.classList.add('hidden');
-                localStorage.setItem('welcomeBannerDismissed', 'true');
+        if (elements.retryButton) {
+            elements.retryButton.addEventListener('click', () => {
+                fetchAllFeeds({ hardRefresh: true }).then(finishDashboardBoot).catch(() => {});
             });
-            
-            // Check if banner was previously dismissed
-            if (localStorage.getItem('welcomeBannerDismissed') === 'true') {
-                welcomeBanner.classList.add('hidden');
-            }
         }
+
+        // ============================================================
+        // Welcome banner — dismissal persisted to localStorage.
+        // Hardened against:
+        //   • localStorage being unavailable (private browsing / disabled).
+        //   • The hidden state being applied AFTER the banner has painted
+        //     (caused a brief flash). We now read storage synchronously
+        //     before the first frame.
+        // ============================================================
+        (function setupWelcomeBanner() {
+            const banner = document.getElementById('welcomeBanner');
+            const closeBtn = document.getElementById('closeWelcomeBanner');
+            if (!banner) return;
+
+            let dismissed = false;
+            try { dismissed = localStorage.getItem('welcomeBannerDismissed') === 'true'; } catch {}
+            if (dismissed) banner.classList.add('hidden');
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    banner.classList.add('hidden');
+                    try { localStorage.setItem('welcomeBannerDismissed', 'true'); } catch {}
+                });
+            }
+        })();
 
         // Header refresh button with better UX
         const headerRefreshBtn = document.getElementById('headerRefreshBtn');
         if (headerRefreshBtn) {
             headerRefreshBtn.addEventListener('click', () => {
-                if (headerRefreshBtn.disabled) return; // Prevent double-click
-                
+                if (headerRefreshBtn.disabled) return;
+
                 headerRefreshBtn.classList.add('loading');
                 headerRefreshBtn.disabled = true;
-                const originalHTML = headerRefreshBtn.innerHTML;
-                headerRefreshBtn.innerHTML = '<span class="refresh-icon">⏳</span><span>Refreshing...</span>';
-                
-                // Clear cache to force fresh fetch
-                const cacheKeys = Object.keys(localStorage).filter(key => key.startsWith('feed_'));
-                cacheKeys.forEach(key => localStorage.removeItem(key));
-                
-                fetchAllFeeds().finally(() => {
+                headerRefreshBtn.setAttribute('aria-busy', 'true');
+
+                refreshDashboardFeeds({ backgroundLive: true }).finally(() => {
                     setTimeout(() => {
                         headerRefreshBtn.classList.remove('loading');
                         headerRefreshBtn.disabled = false;
-                        headerRefreshBtn.innerHTML = originalHTML;
+                        headerRefreshBtn.setAttribute('aria-busy', 'false');
                     }, 500);
                 });
             });
         }
 
-        elements.toggleButton.addEventListener('click', () => {
-            const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100;
-            if (isAtBottom) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                elements.arrowIcon.textContent = '↑';
-            } else {
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                elements.arrowIcon.textContent = '↓';
-            }
-        });
+        if (elements.toggleButton) {
+            elements.toggleButton.addEventListener('click', () => {
+                const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100;
+                if (isAtBottom) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    if (elements.arrowIcon) elements.arrowIcon.textContent = '↑';
+                } else {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    if (elements.arrowIcon) elements.arrowIcon.textContent = '↓';
+                }
+            });
+        }
 
-        // Toggle auto-refresh with click and keyboard support
-        function toggleAutoRefresh() {
-            state.autoRefreshEnabled = !state.autoRefreshEnabled;
-            elements.autoRefreshToggle.classList.toggle('active', state.autoRefreshEnabled);
-            elements.autoRefreshToggle.setAttribute('aria-checked', state.autoRefreshEnabled);
+        function toggleAutoRefresh(e) {
+            const enabled = typeof e?.target?.checked === 'boolean'
+                ? e.target.checked
+                : !state.autoRefreshEnabled;
+            state.autoRefreshEnabled = enabled;
+            if (elements.autoRefreshToggle) {
+                elements.autoRefreshToggle.checked = enabled;
+            }
             savePreferences();
-            
+
             if (state.autoRefreshEnabled) {
                 startAutoRefresh();
-                showNotification('Auto-refresh enabled. Feeds will update every 30 minutes.', 'success', 3000);
+                showNotification(
+                    `Auto-refresh enabled. Feeds will update every ${state.refreshIntervalMinutes} minutes.`,
+                    'success',
+                    3000
+                );
             } else {
                 stopAutoRefresh();
                 showNotification('Auto-refresh disabled.', 'info', 2000);
             }
         }
 
-        elements.autoRefreshToggle.addEventListener('click', toggleAutoRefresh);
-        
-        // Keyboard support for toggle switch
-        elements.autoRefreshToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleAutoRefresh();
-            }
-        });
+        if (elements.autoRefreshToggle) {
+            elements.autoRefreshToggle.addEventListener('change', toggleAutoRefresh);
+        }
 
-        // Auto-refresh
+        if (elements.refreshIntervalSelect) {
+            elements.refreshIntervalSelect.addEventListener('change', (e) => {
+                const mins = Number(e.target.value);
+                if (!Number.isFinite(mins) || mins < 5) return;
+                state.refreshIntervalMinutes = mins;
+                savePreferences();
+                if (state.autoRefreshEnabled) {
+                    startAutoRefresh();
+                }
+            });
+        }
+
+        // ============================================================
+        // Auto-refresh — hardened.
+        //
+        // Bug fixes vs. previous version:
+        //   1. startAutoRefresh() now *always* calls stopAutoRefresh() first
+        //      and only ever leaves ONE active interval — protects against
+        //      double-toggling, page-visibility races, and the situation
+        //      where the toggle is clicked while a fetch is in-flight.
+        //   2. lastFeedRefresh is *not* deleted on stop — the page-visibility
+        //      handler needs that timestamp to know if a re-show should
+        //      trigger a refresh.
+        //   3. Page-unload cleans up the interval to avoid stranded timers
+        //      during bfcache restores in some browsers.
+        // ============================================================
         function startAutoRefresh() {
             stopAutoRefresh();
             state.refreshTimer = setInterval(() => {
+                // Don't bother refreshing if the tab is in the background —
+                // the visibilitychange listener will catch up when we return.
+                if (document.hidden) return;
                 fetchAllFeeds();
-            }, CONFIG.AUTO_REFRESH_INTERVAL);
-            
-            const minutes = CONFIG.AUTO_REFRESH_INTERVAL / 60000;
-            elements.refreshInterval.textContent = `${minutes} min`;
-            elements.autoRefreshToggle.setAttribute('aria-checked', 'true');
-            localStorage.setItem('lastFeedRefresh', Date.now().toString());
+            }, getRefreshIntervalMs());
+
+            const minutes = state.refreshIntervalMinutes;
+            if (elements.refreshInterval) elements.refreshInterval.textContent = `${minutes} min`;
+            if (elements.refreshIntervalSelect) elements.refreshIntervalSelect.value = String(minutes);
+            if (elements.autoRefreshToggle) elements.autoRefreshToggle.checked = true;
+            try { localStorage.setItem('lastFeedRefresh', String(Date.now())); } catch {}
         }
 
         function stopAutoRefresh() {
@@ -1760,13 +2968,57 @@
                 clearInterval(state.refreshTimer);
                 state.refreshTimer = null;
             }
-            elements.refreshInterval.textContent = 'Off';
-            elements.autoRefreshToggle.setAttribute('aria-checked', 'false');
-            localStorage.removeItem('lastFeedRefresh');
+            if (elements.refreshInterval) elements.refreshInterval.textContent = 'Off';
+            if (elements.refreshIntervalSelect && !state.autoRefreshEnabled) {
+                elements.refreshIntervalSelect.disabled = false;
+            }
+            if (elements.autoRefreshToggle && !state.autoRefreshEnabled) {
+                elements.autoRefreshToggle.checked = false;
+            }
+            // NB: deliberately *not* removing lastFeedRefresh — used by the
+            // visibilitychange handler to decide if a stale tab should refresh.
         }
 
+        // ============================================================
+        // Memory-safety: tear down the interval on every code path that
+        // can take this document out of the user's foreground attention.
+        //   • pagehide   → BFCache + tab close + cross-doc navigation
+        //                  (the only reliable unload event on iOS/Safari).
+        //   • beforeunload → covers some legacy unload paths that pagehide
+        //                    doesn't fire on synchronously.
+        //   • visibility hidden ≥ 5 min → idle background tabs are torn
+        //                                 down to free the timer slot.
+        // Each listener routes through the same idempotent stopAutoRefresh().
+        // We DON'T pass { once: true } because some browsers fire pagehide
+        // multiple times during navigation (e.g. bfcache restore + push).
+        // stopAutoRefresh is idempotent so that's safe.
+        // ============================================================
+        const teardown = () => {
+            try { stopAutoRefresh(); } catch {}
+        };
+        window.addEventListener('pagehide', teardown);
+        window.addEventListener('beforeunload', teardown);
+
+        // Idle-tab pruning: if the tab has been hidden for 5+ minutes,
+        // proactively clear the interval. The visibilitychange handler
+        // below will re-arm it when the tab returns to foreground.
+        let _hiddenSince = 0;
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                _hiddenSince = Date.now();
+            } else if (_hiddenSince &&
+                       (Date.now() - _hiddenSince) > 5 * 60 * 1000 &&
+                       state.refreshTimer) {
+                // Tab was hidden long enough that the timer is just burning
+                // memory — restart it cleanly on return.
+                stopAutoRefresh();
+                if (state.autoRefreshEnabled) startAutoRefresh();
+                _hiddenSince = 0;
+            }
+        });
+
         // Export functionality with better feedback
-        elements.exportBtn.addEventListener('click', () => {
+        if (elements.exportBtn) elements.exportBtn.addEventListener('click', () => {
             if (state.filteredItems.length === 0) {
                 showNotification('No articles to export. Try adjusting your filters.', 'warning', 3000);
                 return;
@@ -1823,9 +3075,9 @@
         });
 
         // Clear filters with confirmation for better UX
-        elements.clearFiltersBtn.addEventListener('click', () => {
-            const hasActiveFilters = state.searchQuery || 
-                                   state.dateFilter !== 'all' || 
+        if (elements.clearFiltersBtn) elements.clearFiltersBtn.addEventListener('click', () => {
+            const hasActiveFilters = state.searchQuery ||
+                                   state.dateFilter !== '3days' ||
                                    state.selectedSources.size < rssFeeds.length;
             
             if (!hasActiveFilters) {
@@ -1839,28 +3091,35 @@
             
             setTimeout(() => {
                 state.searchQuery = '';
-                state.dateFilter = 'all';
+                state.dateFilter = '3days';
                 state.dateFrom = null;
                 state.dateTo = null;
                 state.selectedSources.clear();
                 
                 elements.searchInput.value = '';
-                elements.dateFilter.value = 'all';
+                elements.dateFilter.value = '3days';
                 elements.dateFrom.value = '';
                 elements.dateTo.value = '';
-                elements.customDateRange.style.display = 'none';
+                elements.customDateRange.hidden = true;
                 
-                initializeSourceFilters();
+                // Reset all rows' checked state in the persistent sidebar.
+                elements.sourceFilters.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    cb.checked = false;
+                    cb.closest('.source-filter-item')?.classList.remove('checked');
+                });
+                document.querySelectorAll('.stay-updated-dashboard .filter-presets .post-tag').forEach(b => b.classList.remove('is-active'));
+
                 savePreferences();
-                applyFilters();
-                
+                updateSourceFilterCount();
+                scheduleRender();
+
                 elements.feedContainer.style.opacity = '1';
                 showNotification('All filters cleared', 'success', 2000);
             }, 200);
         });
 
         // Help modal with comprehensive tips
-        elements.helpBtn.addEventListener('click', () => {
+        if (elements.helpBtn) elements.helpBtn.addEventListener('click', () => {
             const helpModal = document.createElement('div');
             helpModal.style.cssText = `
                 position: fixed;
@@ -1873,7 +3132,6 @@
                 align-items: center;
                 justify-content: center;
                 z-index: 10000;
-                backdrop-filter: blur(5px);
                 overflow-y: auto;
                 padding: 20px;
             `;
@@ -1942,152 +3200,343 @@
                         </ul>
                     </div>
 
-                    <button class="button" onclick="this.closest('div[style*=\"position: fixed\"]').remove()" style="width: 100%; margin-top: 20px;">
+                    <button type="button" class="button su-help-modal__close" style="width: 100%; margin-top: 20px;">
                         Got it! Close
                     </button>
                 </div>
             `;
             document.body.appendChild(helpModal);
+            const closeHelp = () => helpModal.remove();
+            helpModal.querySelector('.su-help-modal__close')?.addEventListener('click', closeHelp);
             helpModal.addEventListener('click', (e) => {
-                if (e.target === helpModal) helpModal.remove();
+                if (e.target === helpModal) closeHelp();
             });
         });
 
         // Enhanced keyboard shortcuts with better UX
         document.addEventListener('keydown', (e) => {
-            // Don't interfere with input fields
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
-                if (e.key === 'Escape') {
-                    e.target.blur();
-                    showNotification('Search cleared', 'info', 1500);
-                }
-                // Allow Ctrl/Cmd + K to clear search
-                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                    e.preventDefault();
-                    if (e.target === elements.searchInput) {
-                        elements.searchInput.value = '';
-                        state.searchQuery = '';
-                        applyFilters();
-                        showNotification('Search cleared', 'info', 1500);
+            if (!dashboardRoot()) return;
+
+            const key = e.key;
+            const typing = isTypingContext(e.target);
+            const inMainSearch = e.target === elements.searchInput;
+
+            if (typing) {
+                if (key === 'Escape') {
+                    if (inMainSearch) {
+                        e.preventDefault();
+                        if (elements.searchInput.value) {
+                            elements.searchInput.value = '';
+                            state.searchQuery = '';
+                            savePreferences();
+                            scheduleRender();
+                        }
+                        blurMainSearch();
+                    } else {
+                        e.target.blur();
                     }
+                    return;
+                }
+                if (inMainSearch && (e.ctrlKey || e.metaKey) && key === 'k') {
+                    e.preventDefault();
+                    elements.searchInput.value = '';
+                    state.searchQuery = '';
+                    savePreferences();
+                    scheduleRender();
                 }
                 return;
             }
-            
-            // Global shortcuts
-            if (e.key === '/' || e.key === 'f' || ((e.ctrlKey || e.metaKey) && e.key === 'k')) {
+
+            if (key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
                 e.preventDefault();
-                elements.searchInput.focus();
-                elements.searchInput.select();
-                showNotification('Search focused. Type to search articles.', 'info', 2000);
-            } else if (e.key === 'r' && (e.ctrlKey || e.metaKey)) {
+                focusMainSearch(true);
+                return;
+            }
+
+            if (key === 'Escape') {
+                document.querySelectorAll('div[style*="z-index: 10000"]').forEach((m) => m.remove());
+                clearKeyboardCardFocus();
+                state._keyboardIndex = -1;
+                blurMainSearch();
+                return;
+            }
+
+            if (key === 'j' || key === 'J' || key === 'ArrowDown') {
+                e.preventDefault();
+                moveKeyboardCardFocus(1);
+                return;
+            }
+            if (key === 'k' || key === 'K' || key === 'ArrowUp') {
+                e.preventDefault();
+                moveKeyboardCardFocus(-1);
+                return;
+            }
+            if (key === 'Enter' && state._keyboardIndex >= 0) {
+                e.preventDefault();
+                openKeyboardFocusedCard();
+                return;
+            }
+
+            if (key === 'f' || ((e.ctrlKey || e.metaKey) && key === 'k')) {
+                e.preventDefault();
+                focusMainSearch(true);
+            } else if (key === 'r' && (e.ctrlKey || e.metaKey)) {
                 e.preventDefault();
                 if (headerRefreshBtn && !headerRefreshBtn.disabled) {
                     headerRefreshBtn.click();
                 } else {
                     fetchAllFeeds();
                 }
-            } else if (e.key === 'Escape') {
-                const modals = document.querySelectorAll('div[style*="position: fixed"][style*="z-index: 10000"]');
-                modals.forEach(modal => modal.remove());
-                // Also clear search if focused
-                if (document.activeElement === elements.searchInput && elements.searchInput.value) {
-                    elements.searchInput.value = '';
-                    state.searchQuery = '';
-                    applyFilters();
-                }
-            } else if (e.key === '?' || ((e.ctrlKey || e.metaKey) && e.key === '/')) {
+            } else if (key === '?' || ((e.ctrlKey || e.metaKey) && key === '/')) {
                 e.preventDefault();
-                elements.helpBtn.click();
+                elements.helpBtn?.click();
+            } else if (key === 'i' || key === 'I') {
+                e.preventDefault();
+                toggleSourcesSidebar();
             }
         });
 
-        // Initialize with better UX
-        let isInitialized = false;
-        function init() {
-            // Prevent duplicate initialization
-            if (isInitialized) {
+        } // wireDashboardControlListeners
+
+        // Initialization lifecycle.
+        //
+        // Designed to run safely inside ANY host page — including the
+        // Chirpy theme, which loads its own JS bundle that finishes
+        // mounting AFTER `defer` scripts execute but BEFORE the `load`
+        // event. The wrapper below guarantees:
+        //
+        //   1. We never touch the DOM if our target hook `#feed-container`
+        //      isn't present on the current page (so dropping the script
+        //      into Chirpy's global asset list is a no-op on unrelated
+        //      pages — zero leak risk).
+        //   2. We work at every readyState ('loading' | 'interactive' |
+        //      'complete') without race conditions.
+        //   3. We are *idempotent* — a duplicated <script> tag or a
+        //      hot-reload won't double-bind handlers or re-fetch feeds.
+        //   4. Initial render is flushed via the page's own rAF-scheduled
+        //      pipeline (`scheduleRender`), so cached articles paint on
+        //      the same frame the script becomes ready — no manual
+        //      refresh required.
+        // ============================================================
+        function initDashboard() {
+            resolveDashboardElements();
+
+            if (elements.dateFilter) {
+                elements.dateFilter.value = state.dateFilter;
+                if (state.dateFilter === 'custom' && elements.customDateRange) {
+                    elements.customDateRange.hidden = false;
+                    if (state.dateFrom && elements.dateFrom) elements.dateFrom.value = state.dateFrom;
+                    if (state.dateTo && elements.dateTo) elements.dateTo.value = state.dateTo;
+                } else if (elements.customDateRange) {
+                    elements.customDateRange.hidden = true;
+                }
+            }
+            if (elements.searchInput) {
+                elements.searchInput.value = state.searchQuery || '';
+            }
+            if (elements.refreshIntervalSelect) {
+                elements.refreshIntervalSelect.value = String(state.refreshIntervalMinutes || 30);
+            }
+            if (elements.autoRefreshToggle) {
+                elements.autoRefreshToggle.checked = state.autoRefreshEnabled === true;
+            }
+
+            syncSelectedSourcesWithData();
+            if (state.selectedSources.size > 0) savePreferences();
+
+            state._fastBoot = state.dateFilter === '3days' && !state._lazyArchiveReady;
+            if (elements.sourceFilters) {
+                elements.sourceFilters.dataset.built = '';
+            }
+            initializeSourceFilters();
+            scheduleRender();
+            if (state.autoRefreshEnabled) startAutoRefresh();
+
+            /* Background archive ingest after first filtered paint */
+            if (!state._lazyArchiveReady && state.allItems.length > CONFIG.MAX_INITIAL_PAINT) {
+                requestAnimationFrame(() => {
+                    if (!state._lazyArchiveReady) scheduleLazyArchiveBuild();
+                });
+            }
+        }
+
+        const finishDashboardBoot = initDashboard;
+
+        async function bootStayUpdated() {
+            const resolved = resolveDashboardElements();
+            if (!resolved) return;
+            wireDashboardListenersOnce();
+
+            const root = elements.feedContainer;
+
+            setLoadingVisible(true);
+            setFeedSkeletonVisible(true);
+            setErrorVisible(false);
+            setRetryVisible(false);
+
+            // Paint source tree from YAML immediately (do not wait for fetch).
+            _sourceTreeDelegatesBound = false;
+            if (elements.sourceFilters) {
+                elements.sourceFilters.dataset.built = '';
+            }
+            initializeSourceFilters();
+
+            if (!rssFeeds.length) {
+                setLoadingVisible(false);
+                setFeedSkeletonVisible(false);
+                setLoadingVisible(false);
+                if (elements.errorMessage) {
+                    elements.errorMessage.innerHTML = '<p><strong>Feed configuration missing.</strong> Check <code>_data/stayupdated-feeds.yml</code>.</p>';
+                    setErrorVisible(true);
+                }
                 return;
             }
-            isInitialized = true;
-            
-            // Show loading immediately
-            elements.loadingMessage.style.display = 'flex';
-            
-            // Load preferences
-            loadPreferences();
-            
-            // Restore welcome banner state
-            const welcomeBanner = document.getElementById('welcomeBanner');
-            if (welcomeBanner && localStorage.getItem('welcomeBannerDismissed') === 'true') {
-                welcomeBanner.classList.add('hidden');
+
+            /* Hydrate analyst workspace from localStorage before any paint */
+            try { loadPreferences(); } catch {}
+
+            const finishBootWithLiveFallback = () => {
+                if (restoreSnapshot()) {
+                    finishDashboardBoot();
+                    setLoadingVisible(false);
+                    fetchAllFeeds({ hardRefresh: false, background: true })
+                        .then(finishDashboardBoot)
+                        .catch(() => {});
+                    return;
+                }
+                fetchAllFeeds({ hardRefresh: false })
+                    .then(finishDashboardBoot)
+                    .catch(handleBootError);
+            };
+
+            function handleBootError(error) {
+                if (window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1') {
+                    console.error('[StayUpdated] Initialization error:', error);
+                }
+                setLoadingVisible(false);
+                setFeedSkeletonVisible(false);
+                if (elements.errorMessage) {
+                    const snapHint = getSnapshotUrl()
+                        ? '<p style="font-size:0.85em;margin:0.5rem 0 0;color:var(--text-muted-color)">Ensure <code>assets/data/feeds-snapshot.json</code> is deployed (run the feed-sync GitHub Action or commit the snapshot).</p>'
+                        : '';
+                    elements.errorMessage.innerHTML = `
+                        <p><strong>Could not load feeds.</strong></p>
+                        <p style="color:var(--text-muted-color);font-size:0.9em;margin:0">
+                          ${(error && error.message) || 'Check your connection and try again.'}
+                        </p>
+                        ${snapHint}
+                    `;
+                    setErrorVisible(true);
+                    setRetryVisible(true);
+                }
+                root.dataset.stayUpdatedBound = '';
             }
-            
-            // Fetch feeds with error handling
-            fetchAllFeeds().then(() => {
-                // Initialize filters after data is loaded
-                if (state.selectedSources.size === 0 && state.allItems.length > 0) {
-                    const loadedSources = new Set(state.allItems.map(item => item.sourceName));
-                    state.selectedSources = new Set(loadedSources);
-                    savePreferences();
+
+            // Idempotency guard. If a previous boot already wired this
+            // root, exit early. Survives livereload, Turbo/Pjax-style
+            // navigation, and accidental duplicate <script> tags.
+            if (root.dataset.stayUpdatedBound === '1') {
+                if (state.allItems.length > 0) {
+                    resolveDashboardElements();
+                    scheduleRender();
+                    return;
                 }
-                initializeSourceFilters();
-                applyFilters();
-                if (state.autoRefreshEnabled) {
-                    startAutoRefresh();
+                root.dataset.stayUpdatedBound = '';
+            }
+            root.dataset.stayUpdatedBound = '1';
+
+            if (!state._listenersWired) {
+                state._listenersWired = true;
+                try {
+                    const banner = document.getElementById('welcomeBanner');
+                    if (banner && localStorage.getItem('welcomeBannerDismissed') === 'true') {
+                        banner.classList.add('hidden');
+                    }
+                } catch {}
+            }
+
+            // --- 1. Static snapshot (GitHub Actions / assets/data) ----------
+            const staticSnap = await loadStaticSnapshot();
+            if (staticSnap) {
+                setLoadingVisible(false);
+                setFeedSkeletonVisible(false);
+                finishDashboardBoot();
+                updateFeedStatusLine(staticSnap, false);
+                const stale = isStaticSnapshotStale(staticSnap.generatedAt);
+                if (stale) {
+                    fetchAllFeeds({ hardRefresh: false, background: true })
+                        .then(finishDashboardBoot)
+                        .catch((err) => {
+                        });
                 }
-            }).catch(error => {
-                // Log initialization errors
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                    console.error('Initialization error:', error);
-                }
-                elements.loadingMessage.style.display = 'none';
-                elements.errorMessage.innerHTML = `
-                    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <div style="font-size: 2em;">⚠️</div>
-                        <div><strong>Failed to initialize</strong></div>
-                        <div style="font-size: 0.9em; color: #999;">
-                            ${error.message || 'An unexpected error occurred'}
-                        </div>
-                        <button class="button" onclick="location.reload()" style="margin-top: 12px;">
-                            Reload Page
-                        </button>
-                    </div>
-                `;
-                elements.errorMessage.style.display = 'block';
-                isInitialized = false; // Allow retry
-            });
+                return;
+            }
+
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.warn(
+                    '[StayUpdated] Static snapshot missing at',
+                    getSnapshotUrl() || '(no data-snapshot-url)',
+                    '— falling back to live fetch.'
+                );
+            }
+
+            finishBootWithLiveFallback();
         }
 
-        // Handle page visibility changes for better UX
+        // --- 3. Page-visibility refresh hook ----------------------------
+        // Wired at module load (not inside bootStayUpdated) so a tab that
+        // is hidden during the initial paint still resumes cleanly when
+        // brought forward. Cheap, single listener — safe everywhere.
         document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && state.autoRefreshEnabled) {
-                // Page became visible - check if refresh is needed
-                const lastRefresh = localStorage.getItem('lastFeedRefresh');
-                if (lastRefresh) {
-                    const timeSinceRefresh = Date.now() - parseInt(lastRefresh);
-                    if (timeSinceRefresh > CONFIG.AUTO_REFRESH_INTERVAL) {
-                        // Auto-refresh if it's been more than the interval
-                        fetchAllFeeds();
-                    }
-                }
+            if (document.hidden || !state.autoRefreshEnabled) return;
+            const last = parseInt(localStorage.getItem('lastFeedRefresh') || '0', 10);
+            if (last && (Date.now() - last) > getRefreshIntervalMs()) {
+                fetchAllFeeds({ hardRefresh: false });
             }
         });
 
-        // Initialize on load with proper timing
+        window.addEventListener('pageshow', (event) => {
+            if (!document.querySelector('.stay-updated-dashboard[data-app="stay-updated"]')) return;
+            resolveDashboardElements();
+            const rootPs = elements.feedContainer;
+            if (!rootPs) return;
+            if (event.persisted || (rootPs.dataset.stayUpdatedBound === '1' && state.allItems.length === 0)) {
+                rootPs.dataset.stayUpdatedBound = '';
+                restoreSnapshot();
+                bootStayUpdated();
+            }
+        });
+
+        // --- 4. Lifecycle dispatch --------------------------------------
+        // Branches on document.readyState so we work correctly whether
+        // the script is `defer`red (Chirpy aggregator layout), inline at
+        // the bottom of <body> (legacy standalone), or injected by a
+        // dynamic loader. `requestAnimationFrame` gives the browser one
+        // frame to finish layout calc before we start measuring/painting.
+        function dispatchBoot() {
+            if (!document.querySelector('.stay-updated-dashboard[data-app="stay-updated"]')) return;
+            if (typeof requestAnimationFrame === 'function') {
+                requestAnimationFrame(bootStayUpdated);
+            } else {
+                bootStayUpdated();
+            }
+        }
+
+        function wireDashboardListenersOnce() {
+            if (state._listenersWired) return;
+            if (!resolveDashboardElements()) return;
+            state._listenersWired = true;
+            wireDashboardControlListeners();
+        }
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(init, 50); // Small delay to ensure DOM is ready
-            });
+                wireDashboardListenersOnce();
+                dispatchBoot();
+            }, { once: true });
         } else {
-            // DOM already loaded
-            setTimeout(init, 50);
+            wireDashboardListenersOnce();
+            dispatchBoot();
         }
-        
-        // Fallback initialization check
-        window.addEventListener('load', () => {
-            if (!isInitialized && state.allItems.length === 0) {
-                setTimeout(init, 100);
-            }
-        });
-    
+

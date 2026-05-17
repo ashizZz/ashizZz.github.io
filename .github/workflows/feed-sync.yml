@@ -1,0 +1,45 @@
+name: Sync feed snapshot
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feed-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install sync dependencies
+        working-directory: scripts
+        run: npm ci
+
+      - name: Build feeds-snapshot.json
+        working-directory: scripts
+        run: node sync-feeds.mjs
+
+      - name: Commit snapshot
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore(feeds): refresh static snapshot'
+          file_pattern: assets/data/feeds-snapshot.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com

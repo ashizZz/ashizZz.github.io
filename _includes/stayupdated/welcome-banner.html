@@ -1,14 +1,26 @@
-<!-- Welcome Banner -->
-<div class="welcome-banner" id="welcomeBanner">
-    <div class="welcome-banner-icon">💡</div>
-    <div class="welcome-banner-content">
-        <div class="welcome-banner-title">Quick Start Guide</div>
-        <div class="welcome-banner-text">
-            <strong>Welcome!</strong> This page aggregates cybersecurity news from 55+ trusted sources. 
-            <strong>Quick tips:</strong> Use filter buttons for topics, search with keywords, or click article cards to read. 
-            Press <kbd>/</kbd> to focus search. Your preferences are saved automatically.
-        </div>
+{%- comment -%}
+  Welcome banner — low-profile tip alert.
+  Visual style modelled on Chirpy's own `{: .prompt-tip }` component:
+  thin left accent stripe, soft tinted background, no shadow stack.
+  Dismissal state is persisted to localStorage by stayupdated.js
+  under the `welcomeBannerDismissed` key, so the banner only shows
+  on a user's first visit.
+{%- endcomment -%}
+<aside class="welcome-banner" id="welcomeBanner" role="note" aria-label="Quick start tips">
+    <span class="welcome-banner__icon" aria-hidden="true">💡</span>
+    <div class="welcome-banner__body">
+        <p class="welcome-banner__title">Quick Start Guide</p>
+        <p class="welcome-banner__text">
+            Aggregates 55+ trusted cybersecurity sources. Filter by topic, search by keyword,
+            or press <kbd>/</kbd> to jump to search. Preferences are saved automatically.
+        </p>
     </div>
-    <button class="welcome-banner-close" id="closeWelcomeBanner" aria-label="Close welcome message">×</button>
-</div>
-
+    <button class="welcome-banner__close"
+            id="closeWelcomeBanner"
+            type="button"
+            aria-label="Dismiss quick start guide">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+            <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+    </button>
+</aside>

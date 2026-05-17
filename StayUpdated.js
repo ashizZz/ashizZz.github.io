@@ -9,8 +9,9 @@
 
     // Configuration
     const CONFIG = {
-        targetPath: '/StayUpdated/',
+        targetPath: '/stay-updated/',
         routePath: '/StayUpdated',
+        canonicalPath: '/stay-updated/',
         preserveQuery: true,
         preserveHash: true,
         enableAnalytics: true,
@@ -160,8 +161,8 @@
     function cleanUrl() {
         const currentPath = window.location.pathname;
         const currentHref = window.location.href;
-        const cleanPath = '/StayUpdated';
-        const cleanPathWithSlash = '/StayUpdated/';
+        const cleanPath = '/stay-updated';
+        const cleanPathWithSlash = '/stay-updated/';
         
         // Case-insensitive check for StayUpdated path
         const stayUpdatedPattern = /\/stayupdated/i;
@@ -178,8 +179,8 @@
             if (isStayUpdatedPath) {
                 newPath = currentPath.replace(/\/index\.html.*$/i, '/');
                 // Ensure it ends with /StayUpdated/ (normalize case)
-                if (!/\/stayupdated\/$/i.test(newPath)) {
-                    newPath = newPath.replace(/\/stayupdated.*$/i, '/StayUpdated/');
+                if (!/\/stay-updated\/$/i.test(newPath)) {
+                    newPath = newPath.replace(/\/stayupdated.*$/i, CONFIG.canonicalPath);
                 }
             } else {
                 newPath = cleanPathWithSlash;
@@ -278,12 +279,12 @@
         
         // If on StayUpdated path (case-insensitive), check if case needs normalization
         if (isStayUpdatedPath) {
-            // If case is not canonical (/StayUpdated/), redirect to canonical
-            if (currentPath !== '/StayUpdated/' && currentPath !== '/StayUpdated') {
-                performRedirect();
-                return;
-            }
-            // If already on canonical path, just ensure it's clean
+            // Legacy /StayUpdated/ → /stay-updated/
+            performRedirect();
+            return;
+        }
+
+        if (/^\/stay-updated\/?$/i.test(currentPath) && currentPath !== CONFIG.canonicalPath) {
             cleanUrl();
             return;
         }

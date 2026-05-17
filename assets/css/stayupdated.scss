@@ -1,119 +1,185 @@
 ---
 ---
 
-/* Light mode (default) - matching main theme */
-:root {
-    --background-color: white;
-    --header-color: rgba(255, 255, 255, 0.98);
-    --text-color: #34343c;
-    --text-color-bright: #2a2a2a;
-    --text-muted-color: #757575;
-    --highlight-color: #0056b2;
-    --error-color: #df3c30;
-    --success-color: #03b303;
-    --warning-color: #ef9c03;
-    --loading-color: #ef9c03;
-    --card-background: white;
-    --card-hover: #e2e2e2;
-    --hover-background: #0d6efd;
-    --border-color: #f3f3f3;
-    --input-background: #ffffff;
-    --sidebar-bg: #f6f8fa;
-    --sidebar-border: #efefef;
-    --shadow: rgb(104 104 104 / 5%) 0 2px 6px 0, rgb(211 209 209 / 15%) 0 0 0 1px;
-    --shadow-hover: rgb(104 104 104 / 10%) 0 4px 12px 0, rgb(211 209 209 / 20%) 0 0 0 1px;
-    --gradient-primary: linear-gradient(135deg, #0056b2 0%, #0d6efd 50%, #1e7eeb 100%);
-    --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 248, 250, 0.95) 100%);
-    --glow-primary: 0 0 20px rgba(0, 86, 178, 0.15);
-    --glow-hover: 0 0 30px rgba(13, 110, 253, 0.25);
+/* ==============================================================
+   Stay Updated — Chirpy theme integration (cotes2020/jekyll-theme-chirpy)
+
+   Dashboard colors: .stay-updated-dashboard aliases in this file (after
+   @import stayupdated-dashboard) map to Chirpy globals — --main-bg,
+   --card-bg, --text-color, --link-color, etc. No per-mode @media blocks.
+
+   Legacy body.su-standalone below is isolated to /StayUpdated/ old layout.
+   ============================================================== */
+body.su-standalone {
+    /* ---------- 4-pt spacing rhythm (standalone page only) ---------- */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+
+    /* ---------- Semantic surface aliases ---------- */
+    --background-color:    var(--main-bg);
+    --header-color:        transparent;
+    --card-background:     var(--card-bg);
+    --card-surface:        var(--card-bg);
+    --card-surface-hover:  var(--card-hover-bg);
+    --card-hover:          var(--card-hover-bg);
+    --card-border:         var(--main-border-color);
+    --border-color:        var(--main-border-color);
+    --sidebar-border:      var(--sidebar-border-color);
+    --input-background:    var(--button-bg);
+    --shadow:              var(--card-shadow);
+    --shadow-hover:        var(--card-shadow);
+
+    /* ---------- Text variants ---------- */
+    /* --text-color and --text-muted-color come straight from Chirpy. */
+    --text-color-bright:   var(--heading-color);
+    --text-dim:            var(--text-muted-color);
+    --text-dim-strong:     var(--text-muted-highlight-color);
+
+    /* ---------- Brand accent (single source of truth) ---------- */
+    --highlight-color:     var(--link-color);
+    --hover-background:    var(--link-color);
+
+    /* ---------- Status colours (mapped to Chirpy prompt icons,
+                  which keep contrast in both themes) ---------- */
+    --error-color:    var(--prompt-danger-icon-color);
+    --success-color:  var(--prompt-tip-icon-color);
+    --warning-color:  var(--prompt-warning-icon-color);
+    --loading-color:  var(--prompt-warning-icon-color);
+
+    /* ---------- Decorative accents ----------
+       These intentionally NOT tied to theme tokens — they're
+       brand chrome (gradient header glow, focal accent ring).
+       color-mix gives the brand its tint while still tracking
+       Chirpy's link/card hue across themes. */
+    --gradient-primary: linear-gradient(
+        135deg,
+        var(--link-color) 0%,
+        color-mix(in srgb, var(--link-color) 70%, #ffffff) 100%
+    );
+    --gradient-card: linear-gradient(
+        180deg,
+        var(--card-bg) 0%,
+        color-mix(in srgb, var(--card-bg) 92%, var(--main-bg)) 100%
+    );
+    --glow-primary: 0 0 20px color-mix(in srgb, var(--link-color) 18%, transparent);
+    --glow-hover:   0 0 30px color-mix(in srgb, var(--link-color) 28%, transparent);
 }
 
-/* Dark mode - matching main theme */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: rgb(27, 27, 30);
-        --header-color: rgba(27, 27, 30, 0.98);
-        --text-color: rgb(175, 176, 177);
-        --text-color-bright: #cccccc;
-        --text-muted-color: #868686;
-        --highlight-color: rgb(138, 180, 248);
-        --error-color: #cd0202;
-        --success-color: rgb(15, 164, 15);
-        --warning-color: rgb(255, 165, 0);
-        --loading-color: rgb(255, 165, 0);
-        --card-background: #1e1e1e;
-        --card-hover: #464d51;
-        --hover-background: rgb(138, 180, 248);
-        --border-color: rgb(44, 45, 45);
-        --input-background: #232328;
-        --sidebar-bg: #1e1e1e;
-        --sidebar-border: #292929;
-        --shadow: rgb(21 21 21 / 72%) 0 6px 18px 0, rgb(137 135 135 / 24%) 0 0 0 1px;
-        --shadow-hover: rgb(21 21 21 / 85%) 0 8px 24px 0, rgb(137 135 135 / 30%) 0 0 0 1px;
-        --gradient-primary: linear-gradient(135deg, rgb(138, 180, 248) 0%, rgb(116, 178, 243) 50%, rgb(74, 158, 255) 100%);
-        --gradient-card: linear-gradient(180deg, rgba(30, 30, 30, 0.98) 0%, rgba(27, 27, 30, 0.95) 100%);
-        --glow-primary: 0 0 20px rgba(138, 180, 248, 0.2);
-        --glow-hover: 0 0 30px rgba(138, 180, 248, 0.35);
-    }
-}
-
-/* Dark mode via data attribute (for theme toggle) */
-[data-mode="dark"] {
-    --background-color: rgb(27, 27, 30);
-    --header-color: rgba(27, 27, 30, 0.98);
-    --text-color: rgb(175, 176, 177);
-    --text-color-bright: #cccccc;
-    --text-muted-color: #868686;
-    --highlight-color: rgb(138, 180, 248);
-    --error-color: #cd0202;
-    --success-color: rgb(15, 164, 15);
-    --warning-color: rgb(255, 165, 0);
-    --loading-color: rgb(255, 165, 0);
-    --card-background: #1e1e1e;
-    --card-hover: #464d51;
-    --hover-background: rgb(138, 180, 248);
-    --border-color: rgb(44, 45, 45);
-    --input-background: #232328;
-    --sidebar-bg: #1e1e1e;
-    --sidebar-border: #292929;
-    --shadow: rgb(21 21 21 / 72%) 0 6px 18px 0, rgb(137 135 135 / 24%) 0 0 0 1px;
-    --shadow-hover: rgb(21 21 21 / 85%) 0 8px 24px 0, rgb(137 135 135 / 30%) 0 0 0 1px;
-    --gradient-primary: linear-gradient(135deg, rgb(138, 180, 248) 0%, rgb(116, 178, 243) 50%, rgb(74, 158, 255) 100%);
-    --gradient-card: linear-gradient(180deg, rgba(30, 30, 30, 0.98) 0%, rgba(27, 27, 30, 0.95) 100%);
-    --glow-primary: 0 0 20px rgba(138, 180, 248, 0.2);
-    --glow-hover: 0 0 30px rgba(138, 180, 248, 0.35);
-}
-
-/* Light mode via data attribute */
-[data-mode="light"] {
-    --background-color: white;
-    --header-color: rgba(255, 255, 255, 0.98);
-    --text-color: #34343c;
-    --text-color-bright: #2a2a2a;
-    --text-muted-color: #757575;
-    --highlight-color: #0056b2;
-    --error-color: #df3c30;
-    --success-color: #03b303;
-    --warning-color: #ef9c03;
-    --loading-color: #ef9c03;
-    --card-background: white;
-    --card-hover: #e2e2e2;
-    --hover-background: #0d6efd;
-    --border-color: #f3f3f3;
-    --input-background: #ffffff;
-    --sidebar-bg: #f6f8fa;
-    --sidebar-border: #efefef;
-    --shadow: rgb(104 104 104 / 5%) 0 2px 6px 0, rgb(211 209 209 / 15%) 0 0 0 1px;
-    --shadow-hover: rgb(104 104 104 / 10%) 0 4px 12px 0, rgb(211 209 209 / 20%) 0 0 0 1px;
-    --gradient-primary: linear-gradient(135deg, #0056b2 0%, #0d6efd 50%, #1e7eeb 100%);
-    --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 248, 250, 0.95) 100%);
-    --glow-primary: 0 0 20px rgba(0, 86, 178, 0.15);
-    --glow-hover: 0 0 30px rgba(13, 110, 253, 0.25);
-}
   * {
     box-sizing: border-box;
 }
-  body {
+
+@import "stayupdated-dashboard";
+
+/* =============================================================================
+   Stay Updated — Chirpy-native color map (cotes2020/jekyll-theme-chirpy)
+   All theme-aware colors alias Chirpy globals from _sass/themes/_dark.scss
+   and _light.scss. No hex surfaces — toggling html[data-mode] updates instantly.
+   ============================================================================= */
+.stay-updated-dashboard {
+  /* Canvas & surfaces (Chirpy cotes2020/jekyll-theme-chirpy) */
+  --su-canvas: transparent;
+  --su-surface: var(--card-bg);
+  --su-surface-raised: var(--button-bg);
+  --su-surface-hover: var(--sidebar-bg);
+  --su-border: var(--main-border-color);
+  --su-card-shadow: var(--card-shadow);
+
+  /* Typography — inherits Chirpy body stack (Source Sans Pro / system) */
+  --su-text: var(--text-color);
+  --su-muted: var(--text-muted-color);
+  --su-muted-dim: var(--label-color);
+  font-family: inherit;
+
+  /* Interactive / accent */
+  --su-accent: var(--link-color);
+  --su-accent-hover: var(--toc-highlight);
+  --su-accent-ring: color-mix(in srgb, var(--link-color) 30%, transparent);
+  /* Chirpy buttons use --button-bg (not .btn-box-shadow — that class applies shadow only) */
+  --su-btn-bg: var(--button-bg);
+  --su-btn-border: var(--btn-border-color);
+  --su-input-focus: var(--input-focus-border-color);
+  --su-checkbox: var(--checkbox-checked-color);
+
+  /* Source tree row highlight (archive timeline tone) */
+  --su-row-hover: color-mix(in srgb, var(--timeline-node-bg) 10%, transparent);
+  --su-selection-tint: color-mix(in srgb, var(--timeline-node-bg) 14%, var(--card-bg));
+  --su-match-bg: color-mix(in srgb, var(--link-color) 18%, transparent);
+  --su-match-text: var(--text-color);
+
+  /* Status metric dots — Chirpy prompt / link tokens */
+  --su-dot-violet: var(--toc-highlight);
+  --su-dot-blue: var(--link-color);
+  --su-dot-green: var(--prompt-tip-icon-color);
+  --su-dot-amber: var(--prompt-warning-icon-color);
+
+  /* Media placeholder shimmer */
+  --su-shimmer-a: var(--card-bg);
+  --su-shimmer-b: color-mix(in srgb, var(--card-bg) 88%, var(--main-bg));
+}
+
+/* =============================================================================
+   MODULE 0 — Chirpy layout bridge (full-width analyst canvas)
+   ============================================================================= */
+#main-wrapper .row.flex-grow-1:has(.stay-updated-dashboard) {
+  justify-content: flex-start !important;
+}
+
+main:has(.stay-updated-dashboard) {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  width: 100%;
+  padding-left: clamp(0.5rem, 1.5vw, 1rem) !important;
+  padding-right: clamp(0.5rem, 1.5vw, 1rem) !important;
+  background: var(--main-bg);
+  overflow-x: hidden;
+}
+
+main:has(.stay-updated-dashboard) ~ #panel-wrapper {
+  display: none !important;
+}
+
+#main-wrapper > .container > .row.flex-grow-1:has(.stay-updated-dashboard) + .row #tail-wrapper {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
+
+article:has(.stay-updated-dashboard) {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: clip;
+}
+
+article:has(.stay-updated-dashboard) .content {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+}
+
+/* Enterprise UI (Modules 1–4) lives in stayupdated-dashboard.scss — scoped to
+   .stay-updated-dashboard only; imported above. */
+
+@import "stayupdated-ui-lock";
+
+/* End STAY-UPDATED DASHBOARD module
+   ================================================================ */
+  /* Scoped to body.su-standalone so the legacy /StayUpdated/ page keeps
+     its full-bleed gradient, while the Chirpy-integrated /stay-updated/
+     page lets Chirpy own the body background. */
+  body.su-standalone {
     font-family: 'Inter', 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -128,9 +194,9 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
+
   /* Skip to content link for accessibility */
-.skip-to-content {
+  .skip-to-content {
     position: absolute;
     top: -100px;
     left: 0;
@@ -148,7 +214,9 @@
     outline: 3px solid var(--hover-background);
     outline-offset: 2px;
 }
-  header {
+  /* Standalone-page header styling. Scoped so it never matches
+     Chirpy's <header> elements (topbar, sidebar profile-wrapper, etc). */
+  body.su-standalone header {
     background: var(--gradient-card);
     padding: clamp(15px, 3vw, 25px) clamp(15px, 4vw, 20px);
     padding-top: clamp(60px, 8vw, 70px);
@@ -159,9 +227,16 @@
     z-index: 1000;
     box-shadow: var(--shadow);
     border-bottom: 1px solid var(--border-color);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    /* Mobile drops the blur entirely — a sticky element with a
+       backdrop-filter forces a full-screen compositor pass on every
+       scroll frame, which kills jank-budget on low-end devices. */
     position: relative;
+}
+@media (min-width: 768px) {
+    body.su-standalone header {
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
 }
   .header-top {
     position: absolute;
@@ -181,16 +256,21 @@
     text-decoration: none;
     font-size: 0.9em;
     font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    /* PERF: backdrop-filter removed — the home button sits inside the
+       sticky header which already provides the blur. Stacking another
+       blur layer here forced a separate compositor pass. */
 }
-  .home-button:hover {
-    background: var(--card-hover);
-    border-color: var(--highlight-color);
-    color: var(--highlight-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+  /* Hover motion gated to non-touch — keeps mobile scroll smooth */
+  @media (hover: hover) and (pointer: fine) {
+    .home-button:hover {
+        background: var(--card-hover);
+        border-color: var(--highlight-color);
+        color: var(--highlight-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+    }
 }
   .home-icon {
     font-size: 1.2em;
@@ -254,104 +334,152 @@
     flex: 1;
     min-width: 0;
 }
+  /* ===========================================================
+     Filter row (controls panel)
+     -------------------------------------------------------------
+     CSS Grid based — no more flex-wrap surprises.
+       primary row   →  [search 1fr] [sort auto]
+       secondary row →  date-filter-group (with custom range)
+     Density: 16px row gap, 12px column gap, sized so search,
+     sort, and date filter all line up on a 4-pt rhythm.
+     =========================================================== */
   .controls-panel {
-    background: var(--gradient-card);
-    padding: clamp(16px, 3vw, 24px);
-    margin-bottom: clamp(16px, 3vw, 24px);
-    border-radius: clamp(10px, 2vw, 14px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1.5px solid var(--border-color);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    display: grid;
+    row-gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    margin: 0 0 var(--space-5);
+    background: var(--card-bg);
+    border: 1px solid var(--main-border-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
-  .controls-panel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-  .controls-panel:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(74, 158, 255, 0.1);
-    transform: translateY(-1px);
-}
-  .controls-panel:hover::before {
-    opacity: 1;
-}
+
   .controls-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: grid;
     align-items: center;
-    margin-bottom: 15px;
+    column-gap: var(--space-3);
+    row-gap: var(--space-3);
 }
-  .controls-row:last-child {
-    margin-bottom: 0;
+  .controls-row--primary {
+    grid-template-columns: minmax(0, 1fr) auto;
 }
+  .controls-row--secondary {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+  /* Search box — fills available width without minimum overflow */
   .search-container {
-    flex: 1;
-    min-width: 250px;
     position: relative;
+    min-width: 0;
 }
   .search-input {
     width: 100%;
-    padding: 14px 45px 14px 18px;
-    background: var(--input-background);
-    border: 1.5px solid var(--border-color);
-    border-radius: 12px;
+    padding: 10px 40px 10px 14px;
+    background: var(--button-bg);
+    border: 1px solid var(--search-border-color);
+    border-radius: 8px;
     color: var(--text-color);
-    font-size: 0.95em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
   .search-input::placeholder {
-    color: var(--text-muted-color);
+    color: var(--search-icon-color);
 }
   .search-input:focus {
     outline: none;
-    border-color: var(--highlight-color);
-    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
-    background: var(--card-background);
-    transform: translateY(-1px);
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--link-color) 18%, transparent);
+    background: var(--card-bg);
 }
+
   .search-icon {
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted-color);
+    color: var(--search-icon-color);
     pointer-events: none;
+    font-size: 0.95rem;
 }
-  .filter-group {
+
+  /* Select controls — share a single visual language with .search-input */
+  .filter-select,
+  .sort-select {
+    padding: 9px 32px 9px 14px;
+    background: var(--button-bg);
+    border: 1px solid var(--search-border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    /* Caret — single SVG, no extra DOM */
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+        calc(100% - 16px) calc(50% - 2px),
+        calc(100% - 11px) calc(50% - 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+  .filter-select:focus,
+  .sort-select:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--link-color) 18%, transparent);
+    background-color: var(--card-bg);
+}
+
+  /* Date range — label and selects line up on the same axis */
+  .date-filter-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     align-items: center;
+    gap: var(--space-3);
 }
-  .filter-select, .sort-select {
-    padding: 12px 18px;
-    background: var(--input-background);
-    border: 1.5px solid var(--border-color);
-    border-radius: 10px;
-    color: var(--text-color);
-    font-size: 0.9em;
+  .date-filter-group__label {
+    margin: 0;
+    font-size: 0.82rem;
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-muted-color);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
 }
-  .filter-select:hover, .sort-select:hover {
-    border-color: var(--highlight-color);
-    background: var(--card-background);
+  .date-range {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
 }
-  .filter-select:focus, .sort-select:focus {
-    outline: none;
-    border-color: var(--highlight-color);
-    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
-    background: var(--card-background);
+  .date-range[hidden] {
+    display: none;
+}
+  .date-range__sep {
+    color: var(--text-muted-color);
+    font-weight: 500;
+    line-height: 1;
+}
+  .date-range__input {
+    padding: 8px 10px;
+    min-width: 0;
+}
+
+  /* Hover micro-interaction on the panel — desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .controls-panel:hover {
+        border-color: var(--input-focus-border-color);
+    }
+    .filter-select:hover,
+    .sort-select:hover {
+        border-color: var(--input-focus-border-color);
+        background-color: var(--card-bg);
+    }
 }
   /* Enhanced focus indicators for better accessibility */
 button:focus-visible,
@@ -372,12 +500,12 @@ textarea:focus-visible {
 }
   .source-filters-container {
     width: 100%;
-    background: var(--gradient-card);
-    border-radius: clamp(10px, 2vw, 12px);
-    padding: clamp(16px, 3vw, 20px);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+    background: var(--card-surface);
+    border-radius: 12px;
+    padding: var(--space-5);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: box-shadow 0.25s ease;
 }
   .source-filters-container:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -656,7 +784,8 @@ textarea:focus-visible {
     border-radius: 3px;
     margin: 0;
 }
-  .source-filter-item label {
+  .source-filter-item label,
+.source-filter-item .source-filter-item__label {
     font-size: 0.82em;
     cursor: pointer;
     user-select: none;
@@ -667,9 +796,25 @@ textarea:focus-visible {
     line-height: 1.4;
 }
   .source-filter-item:hover label,
-.source-filter-item.checked label {
+.source-filter-item:hover .source-filter-item__label,
+.source-filter-item.checked label,
+.source-filter-item.checked .source-filter-item__label {
     color: var(--text-color-bright);
     font-weight: 500;
+}
+  /* Hide rows that don't match the source-search query — replaces the
+     previous "rebuild the whole sidebar on every keystroke" path. */
+  .source-filter-item.is-hidden,
+.source-category.is-hidden {
+    display: none !important;
+}
+  .source-filters.has-no-results::after {
+    content: "No sources match";
+    display: block;
+    text-align: center;
+    color: var(--text-dim);
+    padding: var(--space-4);
+    font-size: 0.85em;
 }
   .source-filter-item.disabled {
     opacity: 0.3;
@@ -701,108 +846,125 @@ textarea:focus-visible {
     border-radius: 50%;
     background: var(--success-color);
     flex-shrink: 0;
-    box-shadow: 0 0 8px var(--success-color);
+    /* PERF: dropped the box-shadow glow on the success state — 55 sidebar
+       rows + 300 card status dots = ~355 elements painting an outer shadow.
+       Loading/error keep the glow for signal value. */
 }
   .source-status.error {
     background: var(--error-color);
-    box-shadow: 0 0 8px var(--error-color);
+    box-shadow: 0 0 6px var(--error-color);
 }
   .source-status.loading {
     background: var(--warning-color);
-    box-shadow: 0 0 8px var(--warning-color);
+    box-shadow: 0 0 6px var(--warning-color);
     animation: pulse 2s infinite;
 }
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
+  /* ===========================================================
+     Stats bar — analytics badges + auto-refresh + quick actions
+     -------------------------------------------------------------
+     Two-cell grid:  [stats 1fr]  [actions auto]
+     Each cell flex-wraps internally, so the row never crowds.
+     Badges are pill-shaped, share the same border colour as the
+     panel surrounding them for visual cohesion.
+     =========================================================== */
   .stats-bar {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
+    column-gap: var(--space-5);
+    row-gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    margin: 0 0 var(--space-5);
+    background: var(--card-bg);
+    border: 1px solid var(--main-border-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+  .stats-bar__stats,
+  .stats-bar__actions {
+    display: flex;
     flex-wrap: wrap;
-    gap: clamp(12px, 2.5vw, 20px);
-    padding: clamp(15px, 3vw, 20px) clamp(18px, 3.5vw, 28px);
-    background: var(--gradient-card);
-    margin-bottom: clamp(16px, 3vw, 24px);
-    border-radius: clamp(10px, 2vw, 14px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1.5px solid var(--border-color);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-  .stats-bar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-  .stats-bar:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(74, 158, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transform: translateY(-1px);
-}
-  .stats-bar:hover::before {
-    opacity: 0.6;
-}
-  .quick-actions {
-    display: flex;
-    gap: 10px;
     align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
 }
-  .quick-action-btn {
-    padding: 10px 18px;
-    background: var(--card-background);
-    border: 1.5px solid var(--border-color);
-    border-radius: 10px;
-    color: var(--text-color);
-    font-size: 0.85em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+  .stats-bar__actions {
+    justify-content: flex-end;
+    gap: var(--space-4);
 }
-  .quick-action-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(74, 158, 255, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.4s, height 0.4s;
-}
-  .quick-action-btn:hover::before {
-    width: 200px;
-    height: 200px;
-}
-  .quick-action-btn:hover {
-    background: var(--card-hover);
-    border-color: var(--highlight-color);
-    color: var(--highlight-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
+
+  /* Single analytics badge — pill, tabular numerals, no jitter */
   .stat-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9em;
+    gap: var(--space-2);
+    padding: 4px var(--space-3);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--text-muted-color);
+    background: color-mix(in srgb, var(--main-border-color) 50%, transparent);
+    border: 1px solid var(--main-border-color);
+    border-radius: 999px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+  .stat-item__label {
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
   .stat-value {
-    color: var(--highlight-color);
-    font-weight: 600;
+    color: var(--heading-color);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.15s ease;
+}
+
+  /* Quick-actions row */
+  .quick-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+  .quick-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 7px 14px;
+    background: var(--button-bg);
+    border: 1px solid var(--btn-border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+  .quick-action-btn:focus-visible {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--link-color) 18%, transparent);
+}
+
+  /* Hover micro-interactions — desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .stats-bar:hover {
+        border-color: var(--input-focus-border-color);
+    }
+    .stat-item:hover {
+        border-color: var(--input-focus-border-color);
+        color: var(--heading-color);
+    }
+    .quick-action-btn:hover {
+        background: var(--card-hover-bg);
+        border-color: var(--input-focus-border-color);
+        color: var(--heading-color);
+    }
 }
   .last-updated {
     font-size: 0.85em;
@@ -900,66 +1062,89 @@ textarea:focus-visible {
     grid-gap: clamp(15px, 3vw, 25px);
     padding: 0 0 clamp(30px, 5vw, 40px) 0;
 }
+  /* ============================================================
+     .feed-item — the big perf win.
+     Old version:
+       • background: linear-gradient(...)  → extra paint cost ×300
+       • transition: all 0.3s              → animates every property
+       • transform: translateY(-4px) scale(1.01) on hover
+                                            → forces full layer composite
+       • animation-delay: index * 0.03s    → 9s-long cascade on filter
+     New version:
+       • Solid rgba surface (var(--card-surface))
+       • Explicit transition list (only props that should animate)
+       • will-change scoped to hoverable devices only
+       • Stagger animation capped to first 24 cards (set in JS)
+     ============================================================ */
   .feed-item {
-    background: var(--gradient-card);
+    background: var(--card-surface);
     padding: clamp(18px, 3vw, 24px);
     border-radius: clamp(10px, 2vw, 14px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    border: 1.5px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--card-border);
     display: flex;
     flex-direction: column;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.2s ease,
+        background-color 0.2s ease;
     position: relative;
     overflow: hidden;
-    animation: fadeIn 0.5s ease;
+    contain: layout paint; /* Isolates each card so a hover repaint doesn't
+                              invalidate neighbours. Huge win for 300+ grids. */
 }
-  .feed-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    border-color: var(--highlight-color);
-}
-  @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+  /* Apply will-change ONLY on devices that actually hover. On touch this is
+     pure cost (extra GPU layer per card) for zero benefit. */
+  @media (hover: hover) and (pointer: fine) {
+    .feed-item {
+        will-change: transform;
     }
 }
-  @keyframes shimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
+  /* Tag for off-screen / filtered-out cards. display:none keeps them out of
+     paint, layout, and accessibility tree — but the node lives on in memory
+     for instant re-show when filters change. */
+  .feed-item.is-hidden {
+    display: none !important;
+}
+  /* Capped entry animation — only the first ~24 visible cards animate in.
+     Beyond that the stagger becomes visual noise and a perf tax. */
+  .feed-item[data-animated] {
+    animation: feedItemIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+  @keyframes feedItemIn {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
   .feed-item::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 3px;
     height: 100%;
     background: var(--highlight-color);
     transform: scaleY(0);
-    transition: transform 0.3s;
+    transform-origin: top;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-  .feed-item:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: var(--shadow-hover), var(--glow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    border-color: var(--highlight-color);
-    background: var(--card-hover);
+  @media (hover: hover) and (pointer: fine) {
+    .feed-item:hover {
+        /* PERF: dropped the 1.01 scale — composite-layer scaling on 300+
+           cards was the worst hover offender. translate3d alone is GPU-cheap
+           and still gives a satisfying lift. */
+        transform: translate3d(0, -4px, 0);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        border-color: var(--highlight-color);
+        background: var(--card-surface-hover);
+    }
+    .feed-item:hover::before {
+        transform: scaleY(1);
+    }
 }
-  .feed-item:hover::before {
-    transform: scaleY(1);
-    box-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
-}
-  .feed-item.hidden {
-    display: none;
-}
+  /* Back-compat: legacy `.hidden` class kept working alongside the new
+     `.is-hidden` token. */
+  .feed-item.hidden { display: none; }
   .feed-item a {
     color: inherit;
     text-decoration: none;
@@ -991,100 +1176,105 @@ textarea:focus-visible {
     background: var(--input-background);
     transition: transform 0.3s;
 }
-  .feed-item:hover img {
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .feed-item:hover img {
+        transform: scale(1.05);
+    }
 }
+  /* ============================================================
+     Article thumbnail fallback / skeleton.
+     Old version had a heavy double-gradient background + a grid
+     overlay + a glowing pulsing square (3 stacked layers animating
+     simultaneously). Replaced with a single low-profile shimmer
+     bar — clean, subtle, and animates one cheap background-position
+     property at 60fps. The legacy `.no-image` selector is kept as
+     an alias for back-compat. */
+  /* ===========================================================
+     Image fallback — Chirpy-native shimmer skeleton
+     -------------------------------------------------------------
+     Two stacked backgrounds:
+       1. var(--img-bg)     →  Chirpy's soft radial card-image tone
+       2. var(--shimmer-bg) →  Chirpy's 90deg moving-light gradient
+     We animate ONLY background-position on the shimmer layer.
+     `translateZ(0)` and `will-change: background-position` promote
+     to a GPU layer so the animation runs off the main thread and
+     doesn't trigger layout shifts (height is fixed via clamp).
+     =========================================================== */
+  .feed-item .feed-item__skeleton,
   .feed-item .no-image {
+    position: relative;
     width: 100%;
     height: clamp(150px, 25vw, 180px);
-    background: var(--card-background);
-    background-image: linear-gradient(135deg, var(--card-background) 0%, var(--sidebar-bg) 50%, var(--card-background) 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 4s ease infinite;
-    border-radius: clamp(6px, 1.5vw, 8px);
     margin-bottom: clamp(12px, 2vw, 15px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: clamp(6px, 1.5vw, 8px);
+    background-color: var(--card-bg);
+    background-image: var(--shimmer-bg), var(--img-bg);
+    background-repeat: no-repeat;
+    background-size: 200% 100%, 100% 100%;
+    background-position: 200% 0, center;
+    animation: feedItemShimmer 1.8s linear infinite;
+    transform: translateZ(0);
+    will-change: background-position;
+    contain: paint;
 }
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+  @keyframes feedItemShimmer {
+    0%   { background-position: 200% 0, center; }
+    100% { background-position: -200% 0, center; }
 }
-  .feed-item .no-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(74, 158, 255, 0.03) 2px, rgba(74, 158, 255, 0.03) 4px),
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(74, 158, 255, 0.03) 2px, rgba(74, 158, 255, 0.03) 4px);
-    opacity: 0.5;
-}
-  .feed-item .no-image::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: 
-        radial-gradient(circle at 30% 30%, rgba(74, 158, 255, 0.3), transparent 50%),
-        linear-gradient(45deg, transparent 30%, rgba(74, 158, 255, 0.1) 50%, transparent 70%);
-    border: 2px solid rgba(74, 158, 255, 0.3);
-    border-radius: 8px;
-    box-shadow: 
-        0 0 20px rgba(74, 158, 255, 0.2),
-        inset 0 0 20px rgba(74, 158, 255, 0.1);
-    animation: pulse 2s ease-in-out infinite;
-}
-  @keyframes pulse {
-    0%, 100% { 
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% { 
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
+
+  /* ===========================================================
+     Card typography — explicit visual hierarchy:
+       1. h2 (title)        →  1.05–1.18rem, 700 weight, heading-color
+       2. .source (badge)   →  0.7rem,       600 weight, muted
+       3. .pub-date (meta)  →  0.78rem,      500 weight, muted
+     Title outweighs the source tag and timestamp on every axis
+     (size + weight + contrast) so it always wins eye attention.
+     =========================================================== */
   .feed-item h2 {
-    font-size: clamp(1.1em, 2.5vw, 1.25em);
-    color: var(--text-color-bright);
-    margin: 0 0 clamp(10px, 2vw, 14px) 0;
-    line-height: 1.5;
+    margin: 0 0 var(--space-2);
+    font-size: clamp(1.05rem, 2.2vw, 1.18rem);
     font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -0.012em;
+    color: var(--heading-color);
+    transition: color 0.2s ease;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    transition: color 0.3s ease;
 }
-  .feed-item:hover h2 {
-    color: var(--highlight-color);
-}
+
   .feed-item .pub-date {
-    font-size: 0.8em;
-    color: var(--text-muted-color);
-    margin-bottom: 8px;
+    margin: 0 0 var(--space-3);
     display: flex;
     align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+    color: var(--text-muted-color);
+}
+  .feed-item .pub-date__sep {
+    color: var(--text-muted-color);
+    opacity: 0.55;
+    font-weight: 400;
 }
   .feed-item .reading-time {
-    font-size: 0.75em;
     color: var(--text-muted-color);
+    font-size: inherit;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+}
+
+  /* Hover title — desktop only, single fast colour swap */
+  @media (hover: hover) and (pointer: fine) {
+    .feed-item:hover h2 { color: var(--link-color); }
 }
   .feed-item .article-actions {
     position: absolute;
@@ -1103,44 +1293,61 @@ textarea:focus-visible {
     width: 32px;
     height: 32px;
     border-radius: 6px;
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
+    /* PERF: solid rgba instead of var(--card-background)+blur. 600 of these
+       buttons (2 per card × 300) previously triggered hundreds of compositor
+       layers due to backdrop-filter. */
+    background: var(--card-surface);
+    border: 1px solid var(--card-border);
     color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(10px);
+    transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
     font-size: 0.9em;
     opacity: 0.95;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  .action-btn:hover {
-    background: var(--highlight-color);
-    border-color: var(--highlight-color);
-    color: var(--text-color-bright);
-    transform: scale(1.1);
+  @media (hover: hover) and (pointer: fine) {
+    .action-btn:hover {
+        background: var(--highlight-color);
+        border-color: var(--highlight-color);
+        color: var(--text-color-bright);
+        transform: scale(1.08);
+    }
 }
+  .action-btn.action-btn--ok {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    color: #fff;
+}
+  /* Source badge — subordinate to title: smaller, ALL-CAPS micro-type,
+     muted colour, sits at the bottom of the card. Gets the link colour
+     on hover (desktop only) for a subtle wayfinding cue. */
   .feed-item .source {
-    font-size: 0.75em;
-    color: var(--highlight-color);
     margin-top: auto;
-    padding-top: 14px;
-    border-top: 1.5px solid var(--border-color);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--main-border-color);
+    font-size: 0.7rem;
     font-weight: 600;
+    color: var(--text-muted-color);
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    transition: all 0.3s ease;
+    letter-spacing: 0.06em;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
-  .feed-item:hover .source {
-    color: var(--hover-background);
-    border-color: var(--highlight-color);
+
+  @media (hover: hover) and (pointer: fine) {
+    .feed-item:hover .source {
+        color: var(--link-color);
+        border-color: color-mix(in srgb, var(--link-color) 35%, transparent);
+    }
 }
+
+  /* Body excerpt — readable but de-emphasised vs. title */
   .feed-item p {
-    font-size: clamp(0.85em, 2vw, 0.9em);
-    line-height: 1.6;
-    margin-bottom: clamp(10px, 2vw, 12px);
+    margin: 0 0 var(--space-3);
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    line-height: 1.55;
     color: var(--text-color);
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -1153,21 +1360,24 @@ textarea:focus-visible {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--success-color);
-    box-shadow: 0 0 10px var(--success-color);
+    /* PERF: success dot is a flat circle (was a glowing 12px disc on each
+       of 300+ cards). Error variant keeps a subtle ring for visibility. */
     z-index: 5;
     cursor: help;
     transition: transform 0.2s ease;
 }
-  .feed-status:hover {
-    transform: scale(1.2);
+  @media (hover: hover) and (pointer: fine) {
+    .feed-status:hover {
+        transform: scale(1.2);
+    }
 }
   .feed-status.error {
     background: var(--error-color);
-    box-shadow: 0 0 10px var(--error-color);
+    box-shadow: 0 0 0 2px rgba(205, 2, 2, 0.25);
 }
   .empty-state {
     text-align: center;
@@ -1220,15 +1430,17 @@ textarea:focus-visible {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
 }
-  .button:hover::before {
-    left: 100%;
-}
-  .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(74, 158, 255, 0.4), var(--glow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-  .button:active {
-    transform: translateY(0);
+  @media (hover: hover) and (pointer: fine) {
+    .button:hover::before {
+        left: 100%;
+    }
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(74, 158, 255, 0.4), var(--glow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .button:active {
+        transform: translateY(0);
+    }
 }
   .navigation-button {
     position: fixed;
@@ -1267,11 +1479,15 @@ textarea:focus-visible {
     width: 100%;
     height: 100%;
 }
-  .navigation-button:hover {
-    transform: scale(1.1) rotate(180deg);
-    box-shadow: 0 8px 30px rgba(74, 158, 255, 0.5), var(--glow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  @media (hover: hover) and (pointer: fine) {
+    .navigation-button:hover {
+        transform: scale(1.1) rotate(180deg);
+        box-shadow: 0 8px 30px rgba(74, 158, 255, 0.5), var(--glow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
 }
-  footer {
+  /* Standalone-page footer styling. Scoped so it never matches
+     Chirpy's <footer>. */
+  body.su-standalone footer {
     margin-top: 60px;
     padding: 30px 20px;
     font-size: 0.9em;
@@ -1379,7 +1595,7 @@ textarea:focus-visible {
       .home-icon {
         font-size: 1.4em;
     }
-      header {
+      body.su-standalone header {
         padding-top: 50px;
     }
       .sidebar {
@@ -1475,7 +1691,7 @@ textarea:focus-visible {
       .home-icon {
         font-size: 1.4em;
     }
-      header {
+      body.su-standalone header {
         padding: 15px 12px;
         padding-top: 45px;
     }
@@ -1653,7 +1869,7 @@ textarea:focus-visible {
       .toggle-switch.active::after {
         transform: translateX(22px);
     }
-      footer {
+      body.su-standalone footer {
         padding: 20px 12px;
         font-size: 0.85em;
     }
@@ -1684,7 +1900,7 @@ textarea:focus-visible {
         margin: 5px 0;
         gap: 10px;
     }
-      header {
+      body.su-standalone header {
         padding: 12px 10px;
         padding-top: 40px;
     }
@@ -1743,7 +1959,7 @@ textarea:focus-visible {
       .source-filters {
         max-height: 250px;
     }
-      header {
+      body.su-standalone header {
         padding: 12px 20px;
         padding-top: 50px;
     }
@@ -1905,39 +2121,34 @@ textarea:focus-visible {
     white-space: nowrap;
     border-width: 0;
 }
-  /* Improved stat items for better readability */
-.stat-item {
-    padding: 8px 12px;
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(90, 170, 255, 0.05));
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    position: relative;
-}
-  .stat-item:hover {
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(90, 170, 255, 0.1));
-    border-color: var(--highlight-color);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-  .stat-item[title]:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--card-background);
-    color: var(--text-color);
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-size: 0.75em;
-    white-space: nowrap;
-    margin-bottom: 5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-color);
-    z-index: 1000;
-    pointer-events: none;
+  /* NOTE: the previous `.stat-item` block (gradient pill + heavy
+     glow shadow + duplicate translateY hover) lived here. It has
+     been removed because the new pill design in the .stats-bar
+     refactor above already provides surface + hover.
+     Tooltip-on-hover via [title] is preserved below, but gated to
+     non-touch devices. */
+  @media (hover: hover) and (pointer: fine) {
+    .stat-item[title] {
+        position: relative;
+    }
+    .stat-item[title]:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 6px;
+        padding: 6px 10px;
+        font-size: 0.74rem;
+        white-space: nowrap;
+        color: var(--text-color);
+        background: var(--card-bg);
+        border: 1px solid var(--main-border-color);
+        border-radius: 6px;
+        box-shadow: var(--card-shadow);
+        z-index: 1000;
+        pointer-events: none;
+    }
 }
   /* Better visual hierarchy for source filter count */
 .source-filter-count-badge {
@@ -1953,9 +2164,11 @@ textarea:focus-visible {
     transition: all 0.2s ease;
     cursor: help;
 }
-  .source-filter-count-badge:hover {
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.3), rgba(90, 170, 255, 0.25));
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .source-filter-count-badge:hover {
+        background: linear-gradient(135deg, rgba(74, 158, 255, 0.3), rgba(90, 170, 255, 0.25));
+        transform: scale(1.05);
+    }
 }
   /* Improved button states */
 .button:disabled,
@@ -2024,76 +2237,99 @@ textarea:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
-  /* Welcome banner / Tips */
+  /* ===========================================================
+     Welcome banner — modelled on Chirpy's `.prompt-tip` callout.
+     Low-profile by design:
+       • tinted background from --prompt-tip-bg (theme-aware)
+       • single 3px left accent stripe in --prompt-tip-icon-color
+       • no shadow stack, no gradient overlays
+       • dismissible — JS toggles `.hidden` and persists to LS
+     =========================================================== */
 .welcome-banner {
-    background: linear-gradient(135deg, rgba(74, 158, 255, 0.12), rgba(90, 170, 255, 0.08));
-    border: 1.5px solid var(--highlight-color);
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    animation: slideInFromTop 0.4s ease;
-    box-shadow: 0 4px 16px rgba(74, 158, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-3) var(--space-4);
+    margin: 0 0 var(--space-5);
+    background: var(--prompt-tip-bg);
+    border: 1px solid color-mix(in srgb, var(--prompt-tip-icon-color) 18%, transparent);
+    border-left: 3px solid var(--prompt-tip-icon-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    animation: slideInFromTop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-  .welcome-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-}
-  .welcome-banner.hidden {
+
+.welcome-banner.hidden {
     display: none;
 }
-  .welcome-banner-icon {
-    font-size: 1.5em;
+
+.welcome-banner__icon {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--prompt-tip-icon-color);
     flex-shrink: 0;
 }
-  .welcome-banner-content {
-    flex: 1;
+
+.welcome-banner__body {
+    min-width: 0;
 }
-  .welcome-banner-title {
+
+.welcome-banner__title {
+    margin: 0 0 var(--space-1);
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-color-bright);
-    margin-bottom: 6px;
-    font-size: 0.95em;
+    color: var(--heading-color);
+    letter-spacing: -0.005em;
 }
-  .welcome-banner-text {
-    font-size: 0.85em;
+
+.welcome-banner__text {
+    margin: 0;
+    font-size: 0.86rem;
     color: var(--text-color);
-    line-height: 1.6;
-    margin-bottom: 8px;
+    line-height: 1.55;
 }
-  .welcome-banner-text kbd {
-    background: rgba(74, 158, 255, 0.2);
-    border: 1px solid rgba(74, 158, 255, 0.4);
+
+.welcome-banner__text kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    margin: 0 1px;
+    font: 600 0.78rem/1 ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--kbd-text-color);
+    background: var(--kbd-bg-color);
+    border: 1px solid var(--kbd-wrap-color);
     border-radius: 4px;
-    padding: 2px 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    color: var(--highlight-color);
-    font-weight: 600;
+    vertical-align: baseline;
 }
-  .welcome-banner-close {
+
+.welcome-banner__close {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: -2px -4px 0 0;
+    color: var(--text-muted-color);
     background: transparent;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.2em;
-    cursor: pointer;
-    padding: 4px 8px;
+    border: 0;
     border-radius: 4px;
-    transition: all 0.2s;
-    flex-shrink: 0;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
 }
-  .welcome-banner-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--highlight-color);
+
+.welcome-banner__close:hover,
+.welcome-banner__close:focus-visible {
+    color: var(--heading-color);
+    background: color-mix(in srgb, var(--prompt-tip-icon-color) 14%, transparent);
+    outline: none;
+}
+
+.welcome-banner__close svg {
+    display: block;
 }
   /* Search hints */
 .search-hint {
@@ -2229,17 +2465,19 @@ select:disabled {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.5s ease;
 }
-  .refresh-btn:hover::before {
-    left: 100%;
-}
-  .refresh-btn:hover {
-    background: var(--gradient-primary);
-    color: var(--text-color-bright);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(74, 158, 255, 0.3), var(--glow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-  .refresh-btn:active {
-    transform: translateY(0);
+  @media (hover: hover) and (pointer: fine) {
+    .refresh-btn:hover::before {
+        left: 100%;
+    }
+    .refresh-btn:hover {
+        background: var(--gradient-primary);
+        color: var(--text-color-bright);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(74, 158, 255, 0.3), var(--glow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .refresh-btn:active {
+        transform: translateY(0);
+    }
 }
   .refresh-btn.loading {
     opacity: 0.6;
@@ -2270,7 +2508,7 @@ select:disabled {
         padding: 12px 16px;
         margin: 0 10px 15px 10px;
     }
-      header {
+      body.su-standalone header {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -2290,5 +2528,6 @@ select:disabled {
         min-height: 28px;
     }
 }
+} /* end body.su-standalone — legacy styles do not apply on /stay-updated/ */
 
 

@@ -206,6 +206,10 @@ compress_html:
   ignore:
     envs: [development]
 
+# Static feed snapshot (built by .github/workflows/feed-sync.yml)
+include:
+  - assets/data/feeds-snapshot.json
+
 exclude:
   - "*.gem"
   - "*.gemspec"
