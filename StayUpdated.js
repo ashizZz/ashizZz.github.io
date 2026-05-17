@@ -43,7 +43,7 @@
         if (/stayupdated\.html/i.test(pathname)) {
             return true;
         }
-        if (pathname.includes('/index.html') && /stayupdated/i.test(pathname)) {
+        if (/stayupdated/i.test(pathname) && pathname.includes('/index.html')) {
             return true;
         }
         return /^\/stayupdated\/?$/i.test(normalizePath(pathname));
@@ -168,19 +168,13 @@
         let needsCleaning = false;
         let newPath = cleanPathWithSlash;
         
-        // Check if URL contains index.html (most common case for directory structure)
-        if (currentPath.includes('/index.html') || currentPath.endsWith('index.html') || 
-            currentHref.includes('/index.html')) {
+        // index.html cleanup — only under Stay Updated paths (never site home /index.html)
+        if (isStayUpdatedPath &&
+            (currentPath.includes('/index.html') || currentPath.endsWith('index.html'))) {
             needsCleaning = true;
-            // For file:// URLs, extract the directory path (case-insensitive)
-            if (isStayUpdatedPath) {
-                newPath = currentPath.replace(/\/index\.html.*$/i, '/');
-                // Ensure it ends with /StayUpdated/ (normalize case)
-                if (!/\/stay-updated\/$/i.test(newPath)) {
-                    newPath = newPath.replace(/\/stayupdated.*$/i, CONFIG.canonicalPath);
-                }
-            } else {
-                newPath = cleanPathWithSlash;
+            newPath = currentPath.replace(/\/index\.html.*$/i, '/');
+            if (!/\/stay-updated\/$/i.test(newPath) && !/^\/StayUpdated\/$/i.test(newPath)) {
+                newPath = newPath.replace(/\/stayupdated.*$/i, CONFIG.canonicalPath);
             }
         }
         // Check if URL contains .html extension and needs cleaning (case-insensitive)
@@ -259,8 +253,9 @@
         const stayUpdatedPattern = /\/stayupdated/i;
         const isStayUpdatedPath = stayUpdatedPattern.test(currentPath);
         
-        // If URL contains index.html, clean it immediately
-        if (currentPath.includes('/index.html') || currentPath.endsWith('index.html')) {
+        // Stay Updated index.html only (not site home /index.html)
+        if (isStayUpdatedPath &&
+            (currentPath.includes('/index.html') || currentPath.endsWith('index.html'))) {
             cleanUrl();
             return;
         }
