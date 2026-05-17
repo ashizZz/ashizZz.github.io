@@ -27,36 +27,33 @@
         return path.replace(/\/+$/, '') || '/';
     }
 
+    /** Valid dashboard URLs — both serve layout: aggregator (no cross-redirect). */
+    function isAllowedDashboardPath(pathname) {
+        return /^\/StayUpdated\/?$/i.test(pathname) || /^\/stay-updated\/?$/i.test(pathname);
+    }
+
     /**
-     * Check if current path matches the route pattern (case-insensitive)
-     * @param {string} pathname - Current pathname
-     * @returns {boolean} True if path matches route
+     * Paths that should redirect to the canonical Chirpy tab URL (/stay-updated/).
+     * Wrong-case aliases only; /StayUpdated/ is intentionally kept as legacy.
+     */
+    function needsCanonicalRedirect(pathname) {
+        if (isAllowedDashboardPath(pathname)) {
+            return false;
+        }
+        if (/stayupdated\.html/i.test(pathname)) {
+            return true;
+        }
+        if (pathname.includes('/index.html') && /stayupdated/i.test(pathname)) {
+            return true;
+        }
+        return /^\/stayupdated\/?$/i.test(normalizePath(pathname));
+    }
+
+    /**
+     * @deprecated Use needsCanonicalRedirect — kept for external API.
      */
     function matchesRoute(pathname) {
-        const normalized = normalizePath(pathname);
-        const normalizedRoute = normalizePath(CONFIG.routePath);
-        
-        // Convert to lowercase for case-insensitive comparison
-        const lowerNormalized = normalized.toLowerCase();
-        const lowerRoute = normalizedRoute.toLowerCase();
-        
-        // Exact match (case-insensitive)
-        if (lowerNormalized === lowerRoute) {
-            return true;
-        }
-        
-        // Match with trailing slash (case-insensitive)
-        if (lowerNormalized === lowerRoute + '/') {
-            return true;
-        }
-        
-        // Match any case variation of StayUpdated (e.g., /stayupdated, /STAYUPDATED, /StayUpdated)
-        const routePattern = /^\/stayupdated\/?$/i;
-        if (routePattern.test(normalized)) {
-            return true;
-        }
-        
-        return false;
+        return needsCanonicalRedirect(pathname);
     }
 
     /**
@@ -191,14 +188,16 @@
             needsCleaning = true;
             newPath = cleanPathWithSlash;
         }
-        // Ensure trailing slash for directory structure (case-insensitive)
-        else if (currentPath.toLowerCase() === cleanPath.toLowerCase() || 
-                 (isStayUpdatedPath && !currentPath.endsWith('/') && !currentPath.includes('.'))) {
+        // Trailing slash only (preserve which valid URL the user chose)
+        else if (/^\/stay-updated$/i.test(currentPath)) {
             needsCleaning = true;
-            newPath = cleanPathWithSlash;
+            newPath = '/stay-updated/';
+        } else if (/^\/StayUpdated$/i.test(currentPath)) {
+            needsCleaning = true;
+            newPath = '/StayUpdated/';
         }
-        // Handle case variations (e.g., /stayupdated, /STAYUPDATED) - redirect to canonical /StayUpdated/
-        else if (isStayUpdatedPath && currentPath.toLowerCase() !== cleanPathWithSlash.toLowerCase()) {
+        // Wrong-case /stayupdated → canonical tab URL
+        else if (isStayUpdatedPath && !isAllowedDashboardPath(currentPath)) {
             needsCleaning = true;
             newPath = cleanPathWithSlash;
         }
@@ -277,20 +276,18 @@
             return;
         }
         
-        // If on StayUpdated path (case-insensitive), check if case needs normalization
-        if (isStayUpdatedPath) {
-            // Legacy /StayUpdated/ → /stay-updated/
-            performRedirect();
-            return;
-        }
-
         if (/^\/stay-updated\/?$/i.test(currentPath) && currentPath !== CONFIG.canonicalPath) {
             cleanUrl();
             return;
         }
-        
-        // Check if we're on the route path (case-insensitive) - redirect to canonical
-        if (matchesRoute(currentPath)) {
+
+        if (/^\/StayUpdated\/?$/i.test(currentPath) && currentPath !== '/StayUpdated/') {
+            cleanUrl();
+            return;
+        }
+
+        // Wrong-case or .html aliases → /stay-updated/
+        if (needsCanonicalRedirect(currentPath)) {
             // Small delay to ensure DOM is ready (if needed)
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', performRedirect);

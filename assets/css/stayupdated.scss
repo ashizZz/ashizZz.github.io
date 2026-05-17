@@ -1,11 +1,13 @@
 ---
 ---
 
+@use "sass:meta";
+
 /* ==============================================================
    Stay Updated — Chirpy theme integration (cotes2020/jekyll-theme-chirpy)
 
    Dashboard colors: .stay-updated-dashboard aliases in this file (after
-   @import stayupdated-dashboard) map to Chirpy globals — --main-bg,
+   stayupdated-dashboard partial) map to Chirpy globals — --main-bg,
    --card-bg, --text-color, --link-color, etc. No per-mode @media blocks.
 
    Legacy body.su-standalone below is isolated to /StayUpdated/ old layout.
@@ -75,7 +77,7 @@ body.su-standalone {
     box-sizing: border-box;
 }
 
-@import "stayupdated-dashboard";
+@include meta.load-css("stayupdated-dashboard");
 
 /* =============================================================================
    Stay Updated — Chirpy-native color map (cotes2020/jekyll-theme-chirpy)
@@ -170,9 +172,9 @@ article:has(.stay-updated-dashboard) .content {
 }
 
 /* Enterprise UI (Modules 1–4) lives in stayupdated-dashboard.scss — scoped to
-   .stay-updated-dashboard only; imported above. */
+   .stay-updated-dashboard only; loaded above. */
 
-@import "stayupdated-ui-lock";
+@include meta.load-css("stayupdated-ui-lock");
 
 /* End STAY-UPDATED DASHBOARD module
    ================================================================ */
