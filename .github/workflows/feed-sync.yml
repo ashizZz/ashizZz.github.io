@@ -1,7 +1,11 @@
+# Refreshes assets/data/feeds-snapshot.json for Stay Updated.
+# Billing: GitHub Actions minutes are free for public repos. This job does not
+# run on private repositories (see job `if` below).
 name: Sync feed snapshot
 
 on:
   schedule:
+    # Every 6 hours — lightweight; no charge on public repos
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
@@ -15,6 +19,8 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    # Skip entirely if the repo is not public (private repos use billable minutes)
+    if: github.event.repository.visibility == 'public'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
