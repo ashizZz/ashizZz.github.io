@@ -14,21 +14,24 @@ const ROOT = path.join(__dirname, '..');
 const FEEDS_YML = path.join(ROOT, '_data', 'stayupdated-feeds.yml');
 const OUT_FILE = path.join(ROOT, 'assets', 'data', 'feeds-snapshot.json');
 
+const IS_CI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+const SKIP_OG = IS_CI || process.env.FEED_SYNC_SKIP_OG === '1';
+
 const MAX_ITEMS_PER_FEED = 10;
 const MAX_AGE_DAYS = 7;
-const CONCURRENCY = 8;
-const FETCH_TIMEOUT_MS = 20000;
-const MAX_OG_FETCH = 80;
+const CONCURRENCY = IS_CI ? 10 : 8;
+const FETCH_TIMEOUT_MS = IS_CI ? 12000 : 20000;
+const MAX_OG_FETCH = SKIP_OG ? 0 : 80;
 const OG_FETCH_CONCURRENCY = 5;
-const OG_PAGE_TIMEOUT_MS = 9000;
+const OG_PAGE_TIMEOUT_MS = IS_CI ? 5000 : 9000;
+const JOB_TIMEOUT_MS = IS_CI ? 8 * 60 * 1000 : 20 * 60 * 1000;
 
-const parser = new Parser({
-  timeout: FETCH_TIMEOUT_MS,
-  headers: {
-    'User-Agent': 'ashizZz-github-io-feed-sync/1.0 (+https://ashizZz.github.io/stay-updated/)',
-    Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*'
-  }
-});
+const RSS_HEADERS = {
+  'User-Agent': 'ashizZz-github-io-feed-sync/1.0 (+https://ashizZz.github.io/stay-updated/)',
+  Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*'
+};
+
+const parser = new Parser({ timeout: FETCH_TIMEOUT_MS, headers: RSS_HEADERS });
 
 function stripHtml(html) {
   if (!html) return '';
@@ -164,9 +167,22 @@ function normalizeItem(entry, feed, cutoff) {
   };
 }
 
+async function fetchFeedXml(url) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow', headers: RSS_HEADERS });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function fetchOneFeed(feed, cutoff) {
   try {
-    const rss = await parser.parseURL(feed.url);
+    const xml = await fetchFeedXml(feed.url);
+    const rss = await parser.parseString(xml);
     const items = [];
     for (const entry of rss.items || []) {
       const row = normalizeItem(entry, feed, cutoff);
@@ -210,11 +226,17 @@ async function enrichOgImages(items) {
 }
 
 async function main() {
+  const deadline = setTimeout(() => {
+    console.error(`Aborting: job exceeded ${JOB_TIMEOUT_MS / 1000}s`);
+    process.exit(1);
+  }, JOB_TIMEOUT_MS);
+
   const feeds = loadFeeds();
   const cutoff = new Date(Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000);
   const generatedAt = new Date().toISOString();
 
-  console.log(`Syncing ${feeds.length} feeds (max ${MAX_ITEMS_PER_FEED} items, ${MAX_AGE_DAYS}d window)...`);
+  const mode = SKIP_OG ? 'CI/fast (no og:image fetch)' : 'full';
+  console.log(`Syncing ${feeds.length} feeds [${mode}] (max ${MAX_ITEMS_PER_FEED} items, ${MAX_AGE_DAYS}d window)...`);
 
   const results = await mapPool(feeds, CONCURRENCY, (feed) => fetchOneFeed(feed, cutoff));
 
@@ -255,6 +277,8 @@ async function main() {
     console.error('Warning: snapshot has zero items.');
     process.exitCode = 1;
   }
+
+  clearTimeout(deadline);
 }
 
 main().catch((err) => {

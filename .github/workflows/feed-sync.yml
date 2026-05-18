@@ -14,11 +14,12 @@ permissions:
 
 concurrency:
   group: feed-sync
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     # Skip entirely if the repo is not public (private repos use billable minutes)
     if: github.event.repository.visibility == 'public'
     steps:
@@ -38,6 +39,10 @@ jobs:
 
       - name: Build feeds-snapshot.json
         working-directory: scripts
+        timeout-minutes: 8
+        env:
+          CI: 'true'
+          FEED_SYNC_SKIP_OG: '1'
         run: node sync-feeds.mjs
 
       - name: Commit snapshot
