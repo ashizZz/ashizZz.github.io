@@ -1000,6 +1000,29 @@
             );
         }
 
+        function getArticleLinkFromCard(card) {
+            if (!card) return null;
+            const anchor = card.querySelector('a.article-card__title-link, a.article-card__link');
+            if (anchor?.href && anchor.href !== '#' && !anchor.dataset.invalid) {
+                return anchor.href;
+            }
+            const key = card.dataset.key;
+            const item = state.allItems.find((it) => it._key === key);
+            if (!item?.link) return null;
+            try {
+                return new URL(item.link).href;
+            } catch {
+                return null;
+            }
+        }
+
+        function openArticleFromCard(card) {
+            const url = getArticleLinkFromCard(card);
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        }
+
         function setCardSelected(cardEl) {
             if (!cardEl) return;
             const key = cardEl.dataset.key;
@@ -1085,12 +1108,7 @@
         function openKeyboardFocusedCard() {
             const cards = getVisibleArticleCards();
             if (state._keyboardIndex < 0 || !cards[state._keyboardIndex]) return;
-            const link = cards[state._keyboardIndex].querySelector(
-                'a.article-card__title-link, a.article-card__link, a[href]'
-            );
-            if (link?.href && link.href !== '#') {
-                window.open(link.href, '_blank', 'noopener,noreferrer');
-            }
+            openArticleFromCard(cards[state._keyboardIndex]);
         }
 
         function focusMainSearch(fromHotkey) {
@@ -1501,11 +1519,19 @@
             if (elements.feedContainer.dataset.delegated === '1') return;
             elements.feedContainer.dataset.delegated = '1';
             elements.feedContainer.addEventListener('click', (e) => {
-                if (e.target.closest('a.article-card__title-link')) return;
+                if (e.target.closest('.action-btn')) return;
+                if (e.target.closest('a.article-card__title-link, a.article-card__link')) return;
                 const card = e.target.closest('.article-card');
-                if (card && !e.target.closest('.action-btn')) {
-                    setCardSelected(card);
-                }
+                if (card) openArticleFromCard(card);
+            });
+            elements.feedContainer.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                if (isTypingContext(e.target)) return;
+                const card = e.target.closest('.article-card');
+                if (!card || !card.contains(e.target)) return;
+                if (e.target.closest('a, button, input, select, textarea, [role="button"]')) return;
+                e.preventDefault();
+                openArticleFromCard(card);
             });
             elements.feedContainer.addEventListener('click', (e) => {
                 const btn = e.target.closest('.action-btn');
