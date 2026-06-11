@@ -1,11 +1,16 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-10T20:30:43.014Z",
+  "generatedAt": "2026-06-11T03:59:43.107Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
-  "itemCount": 225,
+  "itemCount": 209,
   "feedErrors": [
+    {
+      "name": "Help Net Security",
+      "url": "https://www.helpnetsecurity.com/feed",
+      "error": "fetch failed"
+    },
     {
       "name": "Cisco Talos Intelligence",
       "url": "https://talosintelligence.com/rss",
@@ -32,6 +37,11 @@
       "error": "Unexpected close tag\nLine: 72\nColumn: 79\nChar: >"
     },
     {
+      "name": "About DFIR",
+      "url": "https://aboutdfir.com/feed",
+      "error": "HTTP 415"
+    },
+    {
       "name": "Microsoft Security Response Center",
       "url": "https://msrc-blog.microsoft.com/feed",
       "error": "HTTP 404"
@@ -48,6 +58,149 @@
     }
   ],
   "items": [
+    {
+      "title": "GhostTrace – CLI forensic scanner for Windows: 22 modules, MITRE ATT&CK mapped, read-only by default",
+      "link": "https://www.reddit.com/r/blueteamsec/comments/1u2nd4d/ghosttrace_cli_forensic_scanner_for_windows_22/",
+      "description": "I've released GhostTrace, a Windows forensic scanner focused on finding persistence artifacts and execution evidence left behind after uninstallation or compromise. Forensic coverage: TA0003 Persistence: Run/RunOnce, services/drivers, ASEP entries (Winlogon, IFEO, AppInit_DLLs, LSA packages), scheduled tasks, Ghost Tasks via TaskCache\\Tree anomalies, WMI subscriptions (T1546.003) TA0002 Execution: AppCompatCache (Win8.1/10/11 format), Prefetch with XPRESS-Huffman decode (v26/30/31), BAM/DAM timestamps per SID, UserAssist (ROT13), MUICache User activity: PSReadLine history with encoded cradle detection (T1059.001), RDP outbound history (T1021.001), RecentDocs, USB history (T1052/T1091), hosts redirects Design: read-only scan by default, explicit YES confirmation for any cleanup, zero network calls, offline-only. Built on .NET 10 / C#. GitHub: https://github.com/Devzinh/GhostTrace Playbook included for scheduled task correlation and Ghost Task investigation. submitted by /u/Green-Necessary-2325 [link] [comments]",
+      "guid": "t3_1u2nd4d",
+      "pubDate": "2026-06-11T03:12:10.000Z",
+      "sourceName": "r/blueteamsec",
+      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Anthropic’s Claude Fable 5 Jailbroken to Generate Stack Exploits",
+      "link": "https://cybersecuritynews.com/anthropics-claude-fable-5-jailbroken/",
+      "description": "Anthropic launched Claude Fable 5 on June 9, 2026, as the first publicly available model in its new Mythos class, its most capable AI to date, excelling in software engineering, knowledge work, and vision benchmarks. Researcher “Pliny the Liberator” defeats Claude Fable 5’s safety classifiers using multi-agent decomposition, Unicode tricks, and narrative framing, leaking the […] The post Anthropic’s Claude Fable 5 Jailbroken to Generate Stack Exploits appeared first on Cyber Security News.",
+      "guid": "https://cybersecuritynews.com/?p=152459",
+      "pubDate": "2026-06-11T03:06:46.000Z",
+      "sourceName": "Cyber Security News",
+      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
+      "category": "news",
+      "imageUrl": "https://s.w.org/images/core/emoji/17.0.2/72x72/1f6a8.png"
+    },
+    {
+      "title": "ISC Stormcast For Thursday, June 11th, 2026 https://isc.sans.edu/podcastdetail/9968, (Thu, Jun 11th)",
+      "link": "https://isc.sans.edu/diary/rss/33070",
+      "description": "(c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "guid": "https://isc.sans.edu/diary/rss/33070",
+      "pubDate": "2026-06-11T02:25:21.000Z",
+      "sourceName": "SANS Internet Storm Center",
+      "sourceUrl": "https://isc.sans.edu/rssfeed_full.xml",
+      "category": "research"
+    },
+    {
+      "title": "AI agent runs amok in Fedora and elsewhere",
+      "link": "https://lwn.net/SubscriberLink/1077035/c7e7c14fbd60fae9/",
+      "description": "Comments",
+      "guid": "https://lwn.net/SubscriberLink/1077035/c7e7c14fbd60fae9/",
+      "pubDate": "2026-06-11T00:10:08.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Guía Fundamental Sobre Information Disclosure",
+      "link": "https://medium.com/@jpablo13/gu%C3%ADa-fundamental-sobre-information-disclosure-8e489a8ae3cd?source=rss------bug_bounty-5",
+      "description": "Domina las vulnerabilidades de divulgación de información: descubre vectores, explota fugas y mitiga riesgos de seguridad web. Continue reading on Medium »",
+      "guid": "https://medium.com/p/8e489a8ae3cd",
+      "pubDate": "2026-06-11T00:01:01.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*y827hluPlrQwjTUim7r-Aw.png"
+    },
+    {
+      "title": "Chinese, N. Korean Threat Groups Build on Asia-Pacific Success",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/chinese-korean-threat-groups-asia-pacific-success",
+      "description": "North Korea's gross domestic product (GDP) has grown, in part because of the cybercrime gains of groups linked to the nation, which target business and financial firms.",
+      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/chinese-korean-threat-groups-asia-pacific-success",
+      "pubDate": "2026-06-11T00:01:00.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
+      "title": "I Found a Critical OAuth Vulnerability in Open edX — Here’s How It Happened",
+      "link": "https://medium.com/@abdurrahimjamalzada/i-found-a-critical-oauth-vulnerability-in-open-edx-heres-how-it-happened-48b01b2370d9?source=rss------bug_bounty-5",
+      "description": "CVE-2026–53636 | CVSS 7.5 High | Affecting 45M+ users worldwide Continue reading on Medium »",
+      "guid": "https://medium.com/p/48b01b2370d9",
+      "pubDate": "2026-06-10T23:23:39.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty"
+    },
+    {
+      "title": "Smashing Security podcast #471: This AI worm just rewrote its own rules",
+      "link": "https://grahamcluley.com/smashing-security-podcast-471/",
+      "description": "Researchers at the University of Toronto have built a worm that thinks for itself. Using free off-the-shelf AI models it works out how to break into each new computer it encounters, and hijacks the powerful ones to host its own AI brain. And then the researchers discovered their creation had quietly removed the list of machines it wasn't supposed to attack. Meanwhile, Meta's shiny new AI customer support agent has been cheerfully helping hackers help themselves to other people's Instagram accounts. Just keep asking, politely but firmly, to have a password reset sent to a different email address - and the AI will eventually agree. All this and more in episode 471 of the \"Smashing Security\" podcast with cybersecurity expert and keynote speaker Graham Cluley, and special guest James Ball.",
+      "guid": "https://grahamcluley.com/?p=17351505",
+      "pubDate": "2026-06-10T23:15:08.000Z",
+      "sourceName": "Graham Cluley",
+      "sourceUrl": "https://www.grahamcluley.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Miasma-style supply chain attacks",
+      "link": "https://www.reddit.com/r/blueteamsec/comments/1u2i3oc/miasmastyle_supply_chain_attacks/",
+      "description": "Miasma has opened the doorway to a brand-new style of supply chain attacks that even the most security-conscious organizations are finding difficult to defend. Almost every repo these days uses 3rd party packages, has CI/CD automation, and has coding agent config files. Checkout the blog on this topic: Hardening the Agentic Supply Chain submitted by /u/3Pointers [link] [comments]",
+      "guid": "t3_1u2i3oc",
+      "pubDate": "2026-06-10T23:12:54.000Z",
+      "sourceName": "r/blueteamsec",
+      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Sequoyah’s syllabary created a written language for the Cherokee",
+      "link": "https://www.smithsonianmag.com/innovation/man-created-written-language-cherokee-did-efficiently-elegantly-peers-thought-magic-180988850/",
+      "description": "Comments",
+      "guid": "https://www.smithsonianmag.com/innovation/man-created-written-language-cherokee-did-efficiently-elegantly-peers-thought-magic-180988850/",
+      "pubDate": "2026-06-10T22:07:52.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Path traversal flaw in AI dev platform Langflow exploited in attacks",
+      "link": "https://www.bleepingcomputer.com/news/security/path-traversal-flaw-in-ai-dev-platform-langflow-exploited-in-attacks/",
+      "description": "Attackers are actively exploiting CVE-2026-5027, a high-severity path traversal vulnerability in the AI development platform Langflow, to write arbitrary files on exposed servers. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/path-traversal-flaw-in-ai-dev-platform-langflow-exploited-in-attacks/",
+      "pubDate": "2026-06-10T21:23:44.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "CISA Rewrites Federal Patching Requirements for AI Threat Era",
+      "link": "https://www.darkreading.com/cyber-risk/cisa-rewrites-federal-patching-requirements-ai-threat-era",
+      "description": "The new directive gives federal agencies three days to fix the most dangerous flaws, while less severe issues can be deferred.",
+      "guid": "https://www.darkreading.com/cyber-risk/cisa-rewrites-federal-patching-requirements-ai-threat-era",
+      "pubDate": "2026-06-10T21:17:12.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
+      "title": "SSRF Exploitation: From Reading Internal Pages to Dumping System Files",
+      "link": "https://infosecwriteups.com/ssrf-exploitation-from-reading-internal-pages-to-dumping-system-files-4ebe9dbc566a?source=rss------bug_bounty-5",
+      "description": "We already proved the server takes requests from us. Now let’s see how far that actually goes. Part 2 of the SSRF series. Continue reading on InfoSec Write-ups »",
+      "guid": "https://medium.com/p/4ebe9dbc566a",
+      "pubDate": "2026-06-10T21:02:49.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1232/1*-o_-hTb23PfTMAcsfkEQxw.png"
+    },
+    {
+      "title": "FBI Seizes China-Linked Fake Consulting Sites Targeting US Clearance Holders",
+      "link": "https://hackread.com/fbi-seizes-china-fake-consulting-sites-us-clearance/",
+      "description": "The Justice Department and FBI seized 13 fake consulting websites that officials say targeted US clearance holders with paid research work designed to obtain sensitive government information.",
+      "guid": "https://hackread.com/?p=146364",
+      "pubDate": "2026-06-10T20:53:52.000Z",
+      "sourceName": "HackRead",
+      "sourceUrl": "https://www.hackread.com/feed",
+      "category": "news"
+    },
     {
       "title": "The ‘Miasma’ worm source code briefly leaked on GitHub",
       "link": "https://www.bleepingcomputer.com/news/security/the-miasma-worm-source-code-briefly-leaked-on-github/",
@@ -79,6 +232,16 @@
       "category": "news"
     },
     {
+      "title": "AI Risk Worries Insurers and Businesses Alike",
+      "link": "https://www.darkreading.com/cyber-risk/ai-risk-worries-insurers-businesses-alike",
+      "description": "As companies adopt AI, many insurance firms are explicitly excluding AI risks, while others are forging ahead to create the right framework. What risks can firms reasonably manage?",
+      "guid": "https://www.darkreading.com/cyber-risk/ai-risk-worries-insurers-businesses-alike",
+      "pubDate": "2026-06-10T19:34:43.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
       "title": "Pre-auth XXE → HTTP SSRF on ArubaOS 8.13.2 closed as \"theoretical / no valid PoC\" despite TCP pcap, sshd localhost log, and internal port scan — documenting for community review",
       "link": "https://www.reddit.com/r/netsec/comments/1u2bc4n/preauth_xxe_http_ssrf_on_arubaos_8132_closed_as/",
       "description": "Pre-auth XXE on ArubaOS 8.13.2 port 32000 (default-xml-api, no auth required). Evidence: TCP pcap + sshd 127.0.0.1 log + 9 internal ports via SSRF. Closed as \"theoretical / no valid PoC.\" Full writeup + PoC + pcap on GitHub. submitted by /u/Pale_Surround_3924 [link] [comments]",
@@ -89,21 +252,11 @@
       "category": "community"
     },
     {
-      "title": "ΠFS",
+      "title": "πFS",
       "link": "https://github.com/philipl/pifs",
       "description": "Comments",
       "guid": "https://github.com/philipl/pifs",
       "pubDate": "2026-06-10T18:54:54.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Anthropic's Model Naming, Extrapolated",
-      "link": "https://samwilkinson.io/posts/2026-06-09-anthropics-model-naming-extrapolated",
-      "description": "Comments",
-      "guid": "https://samwilkinson.io/posts/2026-06-09-anthropics-model-naming-extrapolated",
-      "pubDate": "2026-06-10T18:45:20.000Z",
       "sourceName": "Hacker News",
       "sourceUrl": "https://news.ycombinator.com/rss",
       "category": "community"
@@ -191,16 +344,6 @@
       "category": "community"
     },
     {
-      "title": "Claude Desktop spins up a VM without no way of stopping it",
-      "link": "https://github.com/anthropics/claude-code/issues/29045",
-      "description": "Comments",
-      "guid": "https://github.com/anthropics/claude-code/issues/29045",
-      "pubDate": "2026-06-10T17:11:56.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Hackers Use Tax Phishing Emails to Deploy In-Memory Malware on Windows Systems",
       "link": "https://cybersecuritynews.com/hackers-use-tax-phishing-emails/",
       "description": "Hackers are using fake tax notification emails to trick Windows users into downloading dangerous multi-stage malware that runs entirely in memory, leaving almost no trace behind. The campaign, tracked as Operation TaxShadow, has been active since at least May 20, 2026, targeting individuals by impersonating official Indian government tax authorities. The emails are crafted to create […] The post Hackers Use Tax Phishing Emails to Deploy In-Memory Malware on Windows Systems appeared first on Cyber Security News.",
@@ -285,6 +428,16 @@
       "category": "community"
     },
     {
+      "title": "Cybersecurity researchers aren't happy about the guardrails on Anthropic's Fable",
+      "link": "https://techcrunch.com/2026/06/10/cybersecurity-researchers-arent-happy-about-the-guardrails-on-anthropics-fable/",
+      "description": "Comments",
+      "guid": "https://techcrunch.com/2026/06/10/cybersecurity-researchers-arent-happy-about-the-guardrails-on-anthropics-fable/",
+      "pubDate": "2026-06-10T16:42:00.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
       "title": "Nightmare-Eclipse Drops Yet Another Microsoft Exploit, RoguePlanet",
       "link": "https://www.darkreading.com/vulnerabilities-threats/nightmare-eclipse-microsoft-exploit-rogueplanet",
       "description": "The disgruntled researcher released yet another PoC for a Windows Defender bug that allows for system takeover, showing no signs of abandoning their ongoing feud with Microsoft.",
@@ -336,16 +489,6 @@
       "sourceUrl": "https://www.microsoft.com/security/blog/feed",
       "category": "cloud",
       "imageUrl": "https://commandline.microsoft.com/wp-content/uploads/2026/06/UPDATED_ASSERT_Evaluation_Framework.jpg-1024x591.jpeg"
-    },
-    {
-      "title": "GitHub Authentication issues related to API requests",
-      "link": "https://www.githubstatus.com/incidents/fcj3088jg1wx",
-      "description": "Comments",
-      "guid": "https://www.githubstatus.com/incidents/fcj3088jg1wx",
-      "pubDate": "2026-06-10T15:29:52.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "ServiceNow Discloses Security Incident Exposing Customer Data",
@@ -441,16 +584,6 @@
       "category": "news"
     },
     {
-      "title": "Critical OpenSSL Vulnerabilities Enable Remote Code Execution Attacks",
-      "link": "https://cybersecuritynews.com/openssl-rce-vulnerability/",
-      "description": "A security advisory from OpenSSL on June 9, 2026, warns of a critical vulnerability that could allow remote code execution when applications process specially crafted PKCS7 or S/MIME signed messages. The flaw, tracked as CVE‑2026‑45447, is a heap use‑after‑free bug in the PKCS7_verify function that can corrupt memory and, in some deployment scenarios, allow attackers to run arbitrary […] The post Critical OpenSSL Vulnerabilities Enable Remote Code Execution Attacks appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=152374",
-      "pubDate": "2026-06-10T14:45:24.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "CISA Adds Cisco, Chrome, and Arista Flaws to KEV Catalog Amid Active Exploitation",
       "link": "https://thehackernews.com/2026/06/cisa-adds-cisco-chrome-and-arista-flaws.html",
       "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added three new vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation. The list of vulnerabilities is as follows - CVE-2026-20245 (CVSS score: 7.8) - An improper encoding or escaping of output vulnerability in Cisco Catalyst SD-WAN Manager that could allow an",
@@ -460,16 +593,6 @@
       "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
       "category": "news",
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyS_5xYGR8v-Lv2x6gLklggySrwxfhnOTIwaLNXWT0xCUHcG8742JNest-ScZPBIUEqChp4KxYPdOnrWOJUJ-Dcv1VYYBOGY6eMYgwOw5tIxBxD2RPbFM-xR05SpacfiwmIKeL6jAFpw8PScLXjV_gR9ZNRqQ8HmsOBAbom73N_i3JRkAsf-dZVoBpGVlI/s1600/cisaa.jpg"
-    },
-    {
-      "title": "Identity theft is turning into a chain reaction for victims",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/identity-theft-incidents-itrc-report/",
-      "description": "For a growing number of victims, identity theft no longer ends with a fraudulent charge or a compromised account. More than one in four people who contacted the Identity Theft Resource Center during the reporting period were dealing with multiple identity-related incidents, according to the organization’s 2026 Trends in Identity Report. The report is based on data from 6,188 individuals who sought assistance between April 2025 and March 2026. “Identity crimes are no longer isolated, … More → The post Identity theft is turning into a chain reaction for victims appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374072",
-      "pubDate": "2026-06-10T14:23:44.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
     },
     {
       "title": "The 5 Best Practices for Secure Identity Verification",
@@ -544,16 +667,6 @@
       "category": "news"
     },
     {
-      "title": "AISLE Snapshot keeps source code under enterprise control during vulnerability scanning",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/aisle-snapshot-keeps-source-code-under-enterprise-control-during-vulnerability-scanning/",
-      "description": "AISLE has introduced AISLE Snapshot, a new offering that gives regulated and security-sensitive enterprises access to frontier-class vulnerability detection inside their own environments, at a fraction of the cost, with source code and security data that never leave their control. Organizations are under increasing pressure to secure growing codebases against a rapidly expanding vulnerability landscape. Reported CVEs are up 42.5% year-over-year through mid-2026, and attackers are leveraging AI to accelerate discovery and exploitation at the … More → The post AISLE Snapshot keeps source code under enterprise control during vulnerability scanning appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374068",
-      "pubDate": "2026-06-10T13:41:59.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
       "title": "Russian APTs Still Exploiting Patched WinRAR Flaw CVE-2025-8088",
       "link": "https://securityaffairs.com/193476/apt/russian-apts-still-exploiting-patched-winrar-flaw-cve-2025-8088.html",
       "description": "Despite a 2025 patch, Russian-linked groups still exploit a WinRAR flaw (CVE-2025-8088) to deploy malware via phishing archives. CVE-2025-8088 is a path traversal flaw in WinRAR that lets an attacker write files outside the extraction directory using NTFS Alternate Data Streams. WinRAR fixed it in version 7.13 in July 2025. Nearly a year later, Trend […]",
@@ -563,26 +676,6 @@
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news",
       "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/06/image-28.png?resize=1024%2C700&#038;ssl=1"
-    },
-    {
-      "title": "Drata brings visibility, control and auditability to enterprise AI agents",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/drata-ai-agent-governance/",
-      "description": "Drata has introduced AI Agent Governance, a new security category focused on managing the risks and oversight requirements of AI agents, while extending its trust platform to support enterprise adoption of autonomous AI systems. While McKinsey finds 57% of business leaders cite governance friction as the top blocker to deploying more AI, this move is a strategic shift grounded in platform trends Drata is uniquely positioned to observe. Over the last nine months, the company … More → The post Drata brings visibility, control and auditability to enterprise AI agents appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374062",
-      "pubDate": "2026-06-10T13:31:30.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "New Intel 471 assessment helps organizations measure CTI program maturity",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/intel-471-cti-maturity-pulse-check/",
-      "description": "Intel 471 has announced its new Cyber Threat Intelligence (CTI) Maturity Pulse Check, a free, lightweight self-assessment for practitioners based on the Cyber Threat Intelligence Capability Maturity Model (CTI-CMM v1.3). The CTI Maturity Pulse Check offers a quick, structured way for organizations to reflect on their CTI program’s current capabilities, highlight areas that warrant a closer look and help security teams prepare for a more thorough assessment using the official CTI-CMM tool. “The CTI-CMM is … More → The post New Intel 471 assessment helps organizations measure CTI program maturity appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374058",
-      "pubDate": "2026-06-10T13:19:56.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
     },
     {
       "title": "Why schools remain one of cybercriminals’ favourite targets",
@@ -595,16 +688,6 @@
       "category": "news"
     },
     {
-      "title": "Critical Ivanti Sentry flaw allows root-level remote code execution (CVE-2026-10520)",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/ivanti-sentry-cve-2026-10520-cve-2026-10523/",
-      "description": "Ivanti has patched two critical vulnerabilities (CVE-2026-10520 and CVE-2026-10523) in Ivanti Sentry and has urged customers to implement the fix right away. Though the vulnerabilities are not known to be actively exploited, security researchers have already released technical details about the former, which may be used by attackers to craft a working exploit. About Ivanty Sentry and the vulnerabilities Ivanti Sentry is a security gateway that acts as a gatekeeper between mobile devices outside of … More → The post Critical Ivanti Sentry flaw allows root-level remote code execution (CVE-2026-10520) appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374044",
-      "pubDate": "2026-06-10T13:02:54.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
       "title": "Cloud Security Report Finds Fragmented Tools Widening the Cloud Complexity Gap",
       "link": "https://hackread.com/cloud-security-report-finds-fragmented-tools-widening-the-cloud-complexity-gap/",
       "description": "Washington D.C., USA, 10th June 2026, CyberNewswire",
@@ -613,26 +696,6 @@
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
       "category": "news"
-    },
-    {
-      "title": "New Browser-in-the-Browser phishing uses fake login popups to steal Microsoft 365 credentials",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/browser-in-the-browser-phishing-microsoft-365-users/",
-      "description": "A new Browser-in-the-Browser (BitB) phishing campaign is targeting Microsoft 365 users with fake login popups designed to closely mimic legitimate browser authentication windows, according to Palo Alto Networks Unit 42. The attack relies on a fake browser window embedded within a webpage. Victims who click a Microsoft sign-in button are presented with what appears to be a standard authentication prompt, complete with a spoofed Microsoft OAuth URL and a login form. Phishing page displaying a … More → The post New Browser-in-the-Browser phishing uses fake login popups to steal Microsoft 365 credentials appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374016",
-      "pubDate": "2026-06-10T12:53:58.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "Building an HTML-first site doubled our users overnight",
-      "link": "https://mohkohn.co.uk/writing/html-first/",
-      "description": "Comments",
-      "guid": "https://mohkohn.co.uk/writing/html-first/",
-      "pubDate": "2026-06-10T12:45:47.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "Microsoft’s biggest-ever Patch Tuesday fixes 206 bugs, including 3 zero-days",
@@ -696,31 +759,11 @@
       "category": "news"
     },
     {
-      "title": "Infosec News Nuggets — June 10, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-10-2026/",
-      "description": "Self-replicating Miasma worm hits 73 Microsoft GitHub repositories in supply chain attack The Miasma worm has reached Microsoft’s own GitHub repositories, forcing GitHub to disable 73 repos across Azure, Azure-Samples, Microsoft, and MicrosoftDocs after the worm planted malicious code designed to harvest developer credentials. The attack exploited previously compromised contributor credentials — the same account […] The post Infosec News Nuggets — June 10, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9186",
-      "pubDate": "2026-06-10T11:57:33.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "How Fraudsters Bypass Facial Recognition and Stay Hidden in 2026",
       "link": "https://www.reddit.com/r/netsec/comments/1u1zy6g/how_fraudsters_bypass_facial_recognition_and_stay/",
       "description": "submitted by /u/Sumsub_Insights [link] [comments]",
       "guid": "t3_1u1zy6g",
       "pubDate": "2026-06-10T11:51:26.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "FedRAMP Penetration Testing: How to Pass Your ATO Review and Get Cloud Authorized Faster",
-      "link": "https://www.reddit.com/r/netsec/comments/1u1zvgq/fedramp_penetration_testing_how_to_pass_your_ato/",
-      "description": "submitted by /u/socketzora [link] [comments]",
-      "guid": "t3_1u1zvgq",
-      "pubDate": "2026-06-10T11:47:48.000Z",
       "sourceName": "r/netsec",
       "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
@@ -747,16 +790,6 @@
       "category": "news"
     },
     {
-      "title": "Building reusable workflows with custom agents in Copilot CLI",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/uilding-reusable-workflows-copilot-cli-custom-agents/",
-      "description": "Developers spend much of their working time in the terminal, generating commands, debugging issues, and running scripts close to their systems. Repeated terminal work tends to pile up small steps such as re-running the same commands, re-explaining context, and translating logs into a form a team can act on. Custom agents in GitHub Copilot CLI address these patterns by turning repeated tasks into reusable workflows. “A custom agent is a Copilot agent that can be … More → The post Building reusable workflows with custom agents in Copilot CLI appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=374011",
-      "pubDate": "2026-06-10T11:34:59.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
       "title": "Microsoft: Some Windows PCs fail to install latest monthly updates",
       "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-some-upgraded-windows-pcs-fail-to-install-monthly-updates/",
       "description": "Microsoft warned customers on Tuesday that they may have issues installing the latest monthly updates on some Windows devices that were upgraded to Windows 11 24H2 or 25H2. [...]",
@@ -765,17 +798,6 @@
       "sourceName": "BleepingComputer",
       "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
-    },
-    {
-      "title": "Recon Is Everything — Where Real Bugs Actually Hide",
-      "link": "https://kd-200.medium.com/recon-is-everything-where-real-bugs-actually-hide-95f349e2b726?source=rss------bug_bounty-5",
-      "description": "Mapping out a target, like a detective board Continue reading on Medium »",
-      "guid": "https://medium.com/p/95f349e2b726",
-      "pubDate": "2026-06-10T11:31:00.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1200/0*a0gSWblamMHQgYbE"
     },
     {
       "title": "U.S. CISA adds Cisco Catalyst SD-WAN, Arista Extensible Operating System (EOS), and Google Chromium V8 flaws to its Known Exploited Vulnerabilities catalog",
@@ -806,27 +828,6 @@
       "sourceName": "SecurityWeek",
       "sourceUrl": "https://www.securityweek.com/rss",
       "category": "news"
-    },
-    {
-      "title": "Record Microsoft Patch Tuesday, fresh zero-day",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/microsoft-patch-tuesday-rogueplanet/",
-      "description": "Microsoft marked its largest-ever Patch Tuesday this month, by shipping fixes for nearly 200 vulnerabilities. Within hours, “Nightmare Eclipse”, the researcher behind weeks of escalating Windows exploit releases, dropped a proof-of-concept exploit for a new zero-day: “RoguePlanet”, which abuses a race condition in Windows Defender to spawn a command shell running with SYSTEM-level privileges. Various researchers have confirmed that the PoC exploit works to achieve local privilege escalation. “In initial development, it was confirmed that … More → The post Record Microsoft Patch Tuesday, fresh zero-day appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=373994",
-      "pubDate": "2026-06-10T10:56:37.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "Building The Discipline to Study Security Every Day",
-      "link": "https://medium.com/@iamabraham/building-the-discipline-to-study-security-every-day-8a43ad3c46dd?source=rss------bug_bounty-5",
-      "description": "Why Consistency Beats Talent in Cybersecurity, Blockchain Security, and Smart Contract Auditing Continue reading on Medium »",
-      "guid": "https://medium.com/p/8a43ad3c46dd",
-      "pubDate": "2026-06-10T10:41:09.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*btQzdHOobtd_buVjdFDIJA.png"
     },
     {
       "title": "Your Automated Pentest Looks Clean. See What It Missed in This Expert Webinar",
@@ -882,26 +883,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDOIX9PorKjXDciuKmL8xLL9vrOVtBou5tBhn4T-u7cgllDKei3HRDr8vsXGM-MllL1eb6E_pdEID5s_sRUxbjHiA6AhlLUQLFi6vDXM5v0Mq0hM43eWSh8Pc_qdYtcjqushm7Wl-S64w6qEGg5P6ETD_o9l5VGGoflzGo3VpgFqmL9NhIe2RUuilVAB0c/s1600/windows-patch.jpg"
     },
     {
-      "title": "Rubrik launches Autonomous Business Recovery to rebuild cloud applications after cyberattacks",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/rubrik-autonomous-business-recovery/",
-      "description": "Rubrik has unveiled Autonomous Business Recovery (ABR) for Cloud Applications, the agentic cyber resilience solution that recovers cloud applications from data to network, identity and configurations. The end result is a rebuild of an organization’s Minimum Viable Business (MVB) at machine speed. At a time when powerful AI models collapse the window between vulnerability discovery and exploitation from months to seconds, the imperative to plan in advance for cyber resilience has never been greater. ABR … More → The post Rubrik launches Autonomous Business Recovery to rebuild cloud applications after cyberattacks appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=373974",
-      "pubDate": "2026-06-10T09:33:49.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "Apple extends Private Cloud Compute to third-party data centers",
-      "link": "https://www.helpnetsecurity.com/2026/06/10/apple-private-cloud-compute-google-cloud-expansion/",
-      "description": "Apple is bringing its Private Cloud Compute (PCC) platform to Google Cloud, expanding the infrastructure behind Apple Intelligence to third-party data centers. Introduced in 2024, PCC provides cloud-based processing for AI workloads that exceed the capabilities of on-device models while maintaining Apple’s security and privacy guarantees. The system was originally built on Apple silicon and operated exclusively within Apple’s infrastructure. Building on confidential computing The expansion leaves PCC’s core security model unchanged. The system is … More → The post Apple extends Private Cloud Compute to third-party data centers appeared first on Help Net Security.",
-      "guid": "https://www.helpnetsecurity.com/?p=373923",
-      "pubDate": "2026-06-10T09:33:34.000Z",
-      "sourceName": "Help Net Security",
-      "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
       "title": "Microsoft June 2026 Patch Tuesday Fixes 206 Flaws and 3 Zero-Days",
       "link": "https://hackread.com/microsoft-june-2026-patch-tuesday-fixes-d-days-flaws/",
       "description": "Microsoft’s June 2026 patch Tuesday resolves 206 vulnerabilities, including 3 critical zero-days and severe 9.8 CVSS kernel, network and HTTP.sys flaws.",
@@ -910,16 +891,6 @@
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
       "category": "news"
-    },
-    {
-      "title": "From S3 Bucket Discovery to Impact Analysis: A Real Cloud Security Assessment",
-      "link": "https://medium.com/@silenthacker180/from-s3-bucket-discovery-to-impact-analysis-a-real-cloud-security-assessment-937fff949e47?source=rss------bug_bounty-5",
-      "description": "A cloud security case study exploring public storage exposure, impact validation, and the difference between an exposed resource and a… Continue reading on Medium »",
-      "guid": "https://medium.com/p/937fff949e47",
-      "pubDate": "2026-06-10T09:09:45.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty"
     },
     {
       "title": "Hack The Box and Semperis Form Strategic Technology Alliance to Advance Enterprise Identity Resilience",
@@ -993,16 +964,6 @@
       "sourceName": "YesWeHack",
       "sourceUrl": "https://www.yeswehack.com/rss.xml",
       "category": "bugbounty"
-    },
-    {
-      "title": "Mercedes‑Benz starts large‑scale production of electric axial flux motor",
-      "link": "https://media.mercedes-benz.com/en/article/bebac2af-acdc-465a-9538-adb0bf3d8ccf",
-      "description": "Comments",
-      "guid": "https://media.mercedes-benz.com/en/article/bebac2af-acdc-465a-9538-adb0bf3d8ccf",
-      "pubDate": "2026-06-10T07:44:49.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "ICS Patch Tuesday: Vulnerabilities Fixed by Siemens, Schneider, Phoenix Contact",
@@ -1129,14 +1090,14 @@
       "category": "community"
     },
     {
-      "title": "Anthropic rolls out Claude Fable 5, but it's available for a limited time",
-      "link": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-rolls-out-claude-fable-5-but-its-available-for-a-limited-time/",
-      "description": "Anthropic has begun rolling out a new model called \"Fable,\" which is based on the same underlying model as Mythos, its most powerful AI model class. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-rolls-out-claude-fable-5-but-its-available-for-a-limited-time/",
-      "pubDate": "2026-06-10T02:03:31.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
+      "title": "Vacuum-Form Signage",
+      "link": "https://bethmathews.substack.com/p/the-history-behind-the-signs-lighting",
+      "description": "Comments",
+      "guid": "https://bethmathews.substack.com/p/the-history-behind-the-signs-lighting",
+      "pubDate": "2026-06-10T02:48:20.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "ISC Stormcast For Wednesday, June 10th, 2026 https://isc.sans.edu/podcastdetail/9966, (Wed, Jun 10th)",
@@ -1190,9 +1151,9 @@
       "imageUrl": "https://unit42.paloaltonetworks.com/wp-content/uploads/2026/06/11_Cloud_cybersecurity_research_Overview_1920x900.jpg"
     },
     {
-      "title": "The Invisible Battlefield: How Cyber War Is Reshaping Everyday Life",
+      "title": "The Invisible Battlefield: How Cyberwar Is Reshaping Everyday Life",
       "link": "https://www.darkreading.com/endpoint-security/invisible-battlefield-cyber-war-reshaping-everyday-life",
-      "description": "Former National Cyber Director Chris Inglis warns that cyber attacks threaten hospitals, utilities and essential services.",
+      "description": "Former National Cyber Director Chris Inglis warns that cyberattacks threaten hospitals, utilities, and essential services.",
       "guid": "https://www.darkreading.com/endpoint-security/invisible-battlefield-cyber-war-reshaping-everyday-life",
       "pubDate": "2026-06-09T21:57:11.000Z",
       "sourceName": "Dark Reading",
@@ -1280,16 +1241,6 @@
       "category": "cloud"
     },
     {
-      "title": "Maximizing IOC Impact",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1u1by04/maximizing_ioc_impact/",
-      "description": "What are your recommendations for platforms to post IOCs on? submitted by /u/netresec [link] [comments]",
-      "guid": "t3_1u1by04",
-      "pubDate": "2026-06-09T17:34:45.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Microsoft June 2026 Patch Tuesday, (Tue, Jun 9th)",
       "link": "https://isc.sans.edu/diary/rss/33064",
       "description": "Microsoft today released patches for 204 vulnerabilities. 38 of these vulnerabilities are considered critical, and three have been disclosed before today. Six of the vulnerabilities affect Microsoft cloud solutions and do not require any user action. In addition, Microsoft incorporated 360 different vulnerabilities affecting Chromium into its Edge browser.",
@@ -1298,6 +1249,16 @@
       "sourceName": "SANS Internet Storm Center",
       "sourceUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "category": "research"
+    },
+    {
+      "title": "Anthropic requires 30 day data retention for Fable and Mythos",
+      "link": "https://support.claude.com/en/articles/15425996-data-retention-practices-for-mythos-class-models",
+      "description": "Comments",
+      "guid": "https://support.claude.com/en/articles/15425996-data-retention-practices-for-mythos-class-models",
+      "pubDate": "2026-06-09T17:23:40.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "Critical Veeam RCE Flaw Lets Low-Privilege Users Take Over Backup Servers",
@@ -1460,16 +1421,6 @@
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
       "category": "news"
-    },
-    {
-      "title": "Infosec News Nuggets — June 9, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-9-2026/",
-      "description": "Critical Check Point VPN Flaw Exploited to Bypass Passwords in IKEv1 Setups — Check Point disclosed active exploitation of CVE-2026-50751 (CVSS 9.3), a logic flaw in certificate validation affecting Remote Access VPN and Mobile Access deployments using the deprecated IKEv1 protocol. The bug lets an unauthenticated remote attacker establish a VPN session without a valid […] The post Infosec News Nuggets — June 9, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9184",
-      "pubDate": "2026-06-09T11:16:26.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "Update Chrome: Google patches actively exploited vulnerability and 73 others",
@@ -1686,16 +1637,6 @@
       "category": "bugbounty"
     },
     {
-      "title": "What are the best risk-based vulnerability management tools for tracking active exploitation in 2026?",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1u0xjx7/what_are_the_best_riskbased_vulnerability/",
-      "description": "our vuln backlog is sitting around 40k open findings instances rn and honestly nobody looks at the whole queue anymore. team of 3 doing triage across infra + appsec. we start with crit/high first but with 40k open honestly at this point its basically vibes. the process mostly turns into trying to figure out which things might realistically blow up before the next scan cycle dumps another few thousand tickets on top. same CVE shows up from tenable, snyk and trivy with slightly different scores and different asset context so half the discussion ends up being whether we're looking at one issue or three. then you get into ownership and it gets worse. some findings still route into ServiceNow groups that havent had active members since a reorg last year. tickets just sit there aging until somebody notices during SLA review. thing that finally shook leadership a bit was missing a KEV because it got buried in the noise. wasnt hidden. scanner saw it. we dont have a clean way to surface whether something is actively exploited in the wild unless someone manually checks. half the time we find out from a pentest or a slack message, not from our own tooling. Jira ticket existed. nobody escalated it because there were already too many other “critical” findings sitting ahead of it waiting for review. ops only found out after they started asking for an emergency patch window. thats the part thats burning analysts out. half the time people are flipping between KEV pages and Jira tickets during triage calls trying to figure out whether something actually needs escalation right away or not. and.. i still cant tell sometimes whether the bigger problem is prioritization or ownership routing because fixing one doesnt really seem to improve the other much. how people are handling this once the queue gets large enough that “critical” stops meaning anything operationally. submitted by /u/Bright-View-8289 [link] [comments]",
-      "guid": "t3_1u0xjx7",
-      "pubDate": "2026-06-09T06:56:52.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "AI Agents May Always Fall for Prompt Injections",
       "link": "https://www.reddit.com/r/netsec/comments/1u0wykc/ai_agents_may_always_fall_for_prompt_injections/",
       "description": "submitted by /u/User_Deprecated [link] [comments]",
@@ -1706,20 +1647,10 @@
       "category": "community"
     },
     {
-      "title": "L'Affaire Siloxane",
-      "link": "https://mceglowski.substack.com/p/laffaire-siloxane",
-      "description": "Comments",
-      "guid": "https://mceglowski.substack.com/p/laffaire-siloxane",
-      "pubDate": "2026-06-09T05:21:39.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "CrowdStrike 2026 Technology Threat Landscape Report: China&rsquo;s Ambitions Fuel Attacks",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-technology-threat-landscape-report/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=135738",
+      "guid": "https://www.crowdstrike.com/?p=504833",
       "pubDate": "2026-06-09T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1729,7 +1660,7 @@
       "title": "June 2026 Patch Tuesday: Microsoft Patches 206 Vulnerabilities Including Three Publicly Disclosed Zero-Days",
       "link": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-june-2026/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=388120",
+      "guid": "https://www.crowdstrike.com/?p=234362",
       "pubDate": "2026-06-09T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1767,26 +1698,6 @@
       "imageUrl": "https://unit42.paloaltonetworks.com/wp-content/uploads/2026/06/02_Opinion_Overview_1920x900.jpg"
     },
     {
-      "title": "WhatsApp Says It Blocked Pegasus Spyware Campaign Linked to NSO",
-      "link": "https://hackread.com/whatsapp-blocked-pegasus-spyware-campaign-nso/",
-      "description": "WhatsApp says it blocked Israeli firm NSO’s Pegasus spyware activity and is asking a US court to treat the targeting as an injunction breach.",
-      "guid": "https://hackread.com/?p=146240",
-      "pubDate": "2026-06-08T22:51:26.000Z",
-      "sourceName": "HackRead",
-      "sourceUrl": "https://www.hackread.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "AI Slop Will Kill Cybersecurity Storytelling If We Let It",
-      "link": "https://www.darkreading.com/cyber-risk/ai-slop-kill-cybersecurity-storytelling-we-let-it",
-      "description": "AI-generated content threatens credibility in cybersecurity. This \"Ask the Expert\" column explores why human oversight matters and how to maintain authentic narratives.",
-      "guid": "https://www.darkreading.com/cyber-risk/ai-slop-kill-cybersecurity-storytelling-we-let-it",
-      "pubDate": "2026-06-08T22:05:49.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
       "title": "ICYMI: May 2026 @AWS Security",
       "link": "https://aws.amazon.com/blogs/security/icymi-may-2026-aws-security/",
       "description": "Read all about the latest AWS security features, compliance updates, and hands-on resources in our new, monthly digest posts. You’ll find expert blog posts, new service capabilities, code samples, and workshops. AWS Security Blog posts This month’s AWS Security Blog posts covered AI security, network protection, identity management, compliance frameworks, and supply chain security. Read […]",
@@ -1798,24 +1709,14 @@
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/06/08/Rodolfo-Brenes-author.jpeg"
     },
     {
-      "title": "Silent Ransom Group Hits US Law Firms in Escalating Extortion Attacks",
-      "link": "https://www.darkreading.com/cyberattacks-data-breaches/silent-ransom-us-law-firms-extortion-attacks",
-      "description": "The financially motivated group is combining vishing, IT impersonation, and in-person office intrusions to steal data and extort victims.",
-      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/silent-ransom-us-law-firms-extortion-attacks",
-      "pubDate": "2026-06-08T20:59:52.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
-      "title": "Check Point VPN Flaw Exploited Since Early May",
-      "link": "https://www.darkreading.com/vulnerabilities-threats/check-point-vpn-flaw-exploited-early-may",
-      "description": "A newly discovered, critical zero-day vulnerability is under attack; a Qilin ransomware affiliate has been blamed for at least one incident.",
-      "guid": "https://www.darkreading.com/vulnerabilities-threats/check-point-vpn-flaw-exploited-early-may",
-      "pubDate": "2026-06-08T20:28:35.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
+      "title": "Klondike Solitaire game for curses in 5k of C",
+      "link": "https://nanochess.org/klondike_in_c.html",
+      "description": "Comments",
+      "guid": "https://nanochess.org/klondike_in_c.html",
+      "pubDate": "2026-06-08T19:08:12.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "TeamPCP Supply Chain Campaign: Activity Through 2026-06-07, (Mon, Jun 8th)",
@@ -1880,16 +1781,6 @@
       "category": "research"
     },
     {
-      "title": "Infosec News Nuggets — June 8, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-8-2026/",
-      "description": "New HTTP/2 Bomb Vulnerability Allows Remote DoS on NGINX, Apache, IIS, Envoy & Cloudflare — Security researchers at Calif have disclosed a novel denial-of-service technique, dubbed the HTTP/2 Bomb, that weaponizes two well-known mechanisms — HPACK header compression and Slowloris-style connection holding — in a previously unseen combination. Rather than stuffing large values into the […] The post Infosec News Nuggets — June 8, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9181",
-      "pubDate": "2026-06-08T13:45:40.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
       "link": "https://www.cisa.gov/news-events/alerts/2026/06/08/cisa-adds-two-known-exploited-vulnerabilities-catalog",
       "description": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation. CVE-2026-42271 BerriAI LiteLLM Command Injection Vulnerability CVE-2026-50751 Check Point Security Gateway Improper Authentication Vulnerability These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise. Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities established the KEV Catalog as a living list of known Common Vulnerabilities and Exposures (CVEs) that carry significant risk to the federal enterprise. BOD 22-01 requires Federal Civilian Executive Branch (FCEB) agencies to remediate identified vulnerabilities by the due date to protect FCEB networks against active threats. See the BOD 22-01 Fact Sheet for more information. Although BOD 22-01 only applies to FCEB agencies, CISA strongly urges all organizations to reduce their exposure to cyberattacks by prioritizing timely remediation of KEV Catalog vulnerabilities as part of their vulnerability management practice. CISA will continue to add vulnerabilities to the catalog that meet the specified criteria.",
@@ -1933,7 +1824,7 @@
       "title": "CrowdStrike and Zscaler Bring Continuous Identity to Zero Trust Access",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-zscaler-bring-continuous-identity-security-to-zero-trust-access/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=205882",
+      "guid": "https://www.crowdstrike.com/?p=576005",
       "pubDate": "2026-06-08T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1981,6 +1872,16 @@
       "sourceUrl": "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty",
       "category": "bugbounty",
       "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*lb_MtFqcOc1LB7Uc3vQswg.png"
+    },
+    {
+      "title": "EDRChoker: Choking The Telemetry Stream to Bypass Defenses",
+      "link": "https://www.reddit.com/r/netsec/comments/1tz81jo/edrchoker_choking_the_telemetry_stream_to_bypass/",
+      "description": "EDRChoker uses Policy-based Quality of Service (QoS) to set hard bandwidth caps (throttling) on Endpoint Detection and Response (EDR) agents, causing them to always time out - effectively blocking them. submitted by /u/Cold-Dinosaur [link] [comments]",
+      "guid": "t3_1tz81jo",
+      "pubDate": "2026-06-07T10:00:34.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
     },
     {
       "title": "CTO at NCSC Summary: week ending June 7th",
@@ -2076,16 +1977,6 @@
       "category": "government"
     },
     {
-      "title": "Infosec News Nuggets — June 5, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-5-2026/",
-      "description": "Hackers Spied on a Stock Exchange Executive’s Outlook Mailbox for Five Months Unknown attackers spent at least five months quietly inside the Outlook mailbox of a senior executive at a major global stock exchange, exfiltrating the inbox in small, repeated batches and routing the stolen data through Dropbox and OneDrive so the traffic blended in […] The post Infosec News Nuggets — June 5, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9178",
-      "pubDate": "2026-06-05T10:46:32.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "AI: Threat, tool, or both?",
       "link": "https://www.malwarebytes.com/blog/ai/2026/06/ai-threat-tool-or-both",
       "description": "Public concern about AI is rising. We look at what's driving it, and why cybersecurity occupies a unique place in this debate.",
@@ -2121,7 +2012,7 @@
       "title": "3 Principles to Safely Scale Agentic AI",
       "link": "https://www.crowdstrike.com/en-us/blog/three-principles-to-safely-scale-agentic-ai/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=588545",
+      "guid": "https://www.crowdstrike.com/?p=710190",
       "pubDate": "2026-06-05T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -2261,16 +2152,6 @@
       "category": "government"
     },
     {
-      "title": "Infosec News Nuggets — June 4, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-4-2026/",
-      "description": "The Worst Hacks and Breaches of 2026 (So Far) Halfway through what’s shaping up to be a brutal year for cybersecurity, a comprehensive roundup catalogs the most damaging digital incidents of 2026, including DOGE’s alleged upload of a live Social Security database to an unsecured server, Iranian state-backed hackers remotely wiping tens of thousands of […] The post Infosec News Nuggets — June 4, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9176",
-      "pubDate": "2026-06-04T11:27:23.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "Hacking Meta’s AI Chatbot",
       "link": "https://www.schneier.com/blog/archives/2026/06/hacking-metas-ai-chatbot.html",
       "description": "Hackers are convincing Meta’s AI support chatbot to let them take over other peoples’ accounts: A video posted on X showed the step-by-step process to hack someone’s Instagram account. The hacker allegedly used a VPN to spoof the targets’ presumed location to avoid triggering Instagram’s automated account protections. Then, the hacker opened a chat with Meta AI Support Assistant and asked the bot to add a new email address to the target’s account. The chatbot can be seen sending a verification code to the email address provided by the hacker; the hacker then shares the verification code with the chatbot, which prompts the chatbot to show a button to “Reset Password.” The hacker enters a new password and takes over the victim’s account. […] On Monday, Instagram spokesperson Andy Stone said in a reply to Wong’s post and others that the issue was now fixed. It’s unclear how many Instagram users had their accounts improperly accessed. It’s not that easy. Probably this particular tactic is now blocked. But there are others, many others, and they cannot be blocked as a class. The real problem is that LLM chatbots are not trustworthy enough for this application. Another news article.",
@@ -2328,41 +2209,11 @@
       "title": "ISO 42001:2023 and the New Reality of Cloud AI Data Risk",
       "link": "https://www.crowdstrike.com/en-us/blog/iso-42001-2023-and-new-reality-of-cloud-ai-data-risk/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=475400",
+      "guid": "https://www.crowdstrike.com/?p=809251",
       "pubDate": "2026-06-04T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
       "category": "research"
-    },
-    {
-      "title": "ISC Stormcast For Thursday, June 4th, 2026 https://isc.sans.edu/podcastdetail/9958, (Thu, Jun 4th)",
-      "link": "https://isc.sans.edu/diary/rss/33046",
-      "description": "(c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
-      "guid": "https://isc.sans.edu/diary/rss/33046",
-      "pubDate": "2026-06-04T02:00:03.000Z",
-      "sourceName": "SANS Internet Storm Center",
-      "sourceUrl": "https://isc.sans.edu/rssfeed_full.xml",
-      "category": "research"
-    },
-    {
-      "title": "You do surprise me.exe: An unexpected executable in Hola Browser",
-      "link": "https://www.sophos.com/en-us/blog/you-do-surprise-me-exe-an-unexpected-executable-in-hola-browser",
-      "description": "Following a certification test, Sophos X-Ops found an unexpected guest had hitched a ride Categories: Threat Research Tags: Crypto mining, Supply chain",
-      "guid": "blt539c771ac6e2db29",
-      "pubDate": "2026-06-04T00:00:00.000Z",
-      "sourceName": "Sophos Threat Research",
-      "sourceUrl": "https://news.sophos.com/en-us/category/threat-research/feed/",
-      "category": "research"
-    },
-    {
-      "title": "Smashing Security podcast #470: This AI security flaw might be impossible to fix",
-      "link": "https://grahamcluley.com/smashing-security-podcast-470/",
-      "description": "A website called \"UK visa portal\" has been quietly collecting passport scans, selfies, and personal data from thousands of travellers who thought they were applying through official channels. They weren't. And when a journalist tried to warn the company, it was lawyers who responded. Meanwhile, a paper from Cornell suggests that prompt injection - the technique malicious actors use to trick AI agents into doing things they really shouldn't - may be fundamentally unsolvable. Which is err... awkward, because everyone is rushing to plug AI agents into their email, files, and corporate networks. Plus don't miss our featured interview with Andrea Sivieri of CoreView, who tells us how hackers can lock your entire organisation out of its Microsoft 365 environment... without having to trick you into running a single piece of malicious code or handing over a password. All this and more in episode 470 of the \"Smashing Security\" podcast with cybersecurity expert and keynote speaker Graham Cluley, and special guest Tanya Janca.",
-      "guid": "https://grahamcluley.com/?p=17351461",
-      "pubDate": "2026-06-03T23:15:58.000Z",
-      "sourceName": "Graham Cluley",
-      "sourceUrl": "https://www.grahamcluley.com/feed/",
-      "category": "news"
     }
   ]
 }
