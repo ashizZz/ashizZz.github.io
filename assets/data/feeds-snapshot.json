@@ -1,11 +1,16 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-22T16:58:07.469Z",
+  "generatedAt": "2026-06-22T20:48:33.293Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
-  "itemCount": 217,
+  "itemCount": 204,
   "feedErrors": [
+    {
+      "name": "Cyber Security News",
+      "url": "https://www.cybersecuritynews.com/feed/",
+      "error": "Invalid character in entity name\nLine: 0\nColumn: 120\nChar: ="
+    },
     {
       "name": "Cisco Talos Intelligence",
       "url": "https://talosintelligence.com/rss",
@@ -37,6 +42,11 @@
       "error": "Unexpected close tag\nLine: 72\nColumn: 79\nChar: >"
     },
     {
+      "name": "About DFIR",
+      "url": "https://aboutdfir.com/feed",
+      "error": "HTTP 415"
+    },
+    {
       "name": "Microsoft Security Response Center",
       "url": "https://msrc-blog.microsoft.com/feed",
       "error": "HTTP 404"
@@ -59,6 +69,170 @@
   ],
   "items": [
     {
+      "title": "FortiBleed campaign used custom FortiGate sniffer to steal credentials",
+      "link": "https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-fortigate-sniffer-to-steal-credentials/",
+      "description": "Security firm SOCRadar says the large-scale FortiBleed campaign targeting Fortinet FortiGate devices used custom sniffers to harvest authentication secrets from compromised firewalls and steal credentials. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/fortibleed-campaign-used-custom-fortigate-sniffer-to-steal-credentials/",
+      "pubDate": "2026-06-22T20:01:02.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "British Columbia, Time Zones, and Postgres",
+      "link": "https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes",
+      "description": "Comments",
+      "guid": "https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes",
+      "pubDate": "2026-06-22T19:21:00.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Optocam Zero: a Pi Zero based digital camera made using off the shelf components",
+      "link": "https://github.com/dorukkumkumoglu/optocamzero",
+      "description": "Comments",
+      "guid": "https://github.com/dorukkumkumoglu/optocamzero",
+      "pubDate": "2026-06-22T19:19:55.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Guarding AI memory",
+      "link": "https://www.microsoft.com/en-us/security/blog/2026/06/22/guarding-ai-memory/",
+      "description": "What happens when threat actors target what AI remembers? Microsoft breaks down the risks and the defenses. The post Guarding AI memory appeared first on Microsoft Security Blog.",
+      "guid": "https://www.microsoft.com/en-us/security/blog/?p=148262",
+      "pubDate": "2026-06-22T19:07:28.000Z",
+      "sourceName": "Microsoft Security Blog",
+      "sourceUrl": "https://www.microsoft.com/security/blog/feed",
+      "category": "cloud",
+      "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/06/image-48.webp"
+    },
+    {
+      "title": "VU#936962: Multiple file parsing vulnerabilities in FastStone Image Viewer 8.3.0.0",
+      "link": "https://kb.cert.org/vuls/id/936962",
+      "description": "Overview Two vulnerabilities have been identified in FastStone Image Viewer 8.3 that may allow remote code execution or control-flow corruption when processing specially crafted image files. The affected components include the JPEG 2000 (JP2) parser and the PSD file parser. An attacker can exploit these vulnerabilities by causing the application to automatically or interactively process malicious image files. Description FastStone Image Viewer is a software tool for browsing, editing, and managing images, offering features like full‑screen viewing, batch processing, red‑eye removal, and a wide range of editing effects. It supports virtually all major image and RAW formats and includes conveniences like slideshows, comparison tools, scanner support, and screen capture. CVE-2026-30040 A critical heap-based buffer overflow vulnerability exists in FastStone Image Viewer, versions 8.3 and earlier. The issue is triggered during the parsing of JPEG 2000 (JP2) files due to a malformed QCD (quantization default, 0xFF5C) marker in the FSViewer.exe process. By exploiting this flaw, a remote attacker can overwrite the EIP (instruction pointer) and execute arbitrary code in the context of the current process via a crafted JP2 file. Notably, this issue does not require the victim to directly open the crafted JP2 file. When the application enumerates directories during automatic thumbnail generation, files within two directory levels are parsed by the JP2 decoder. If the malicious JP2 file is present within this enumeration range (for example in the user’s Downloads folder), the vulnerability is triggered automatically. CVE-2026-30041 An integer overflow vulnerability exists in the PSD parser of FastStone Image Viewer, versions 8.3 and earlier. The vulnerability is caused by a lack of proper validation for the height value in PSD files, leading to a subsequent heap-based buffer overflow. Successful exploitation could allow a remote attacker to execute arbitrary code or cause a per",
+      "guid": "https://kb.cert.org/vuls/id/936962",
+      "pubDate": "2026-06-22T18:41:47.640Z",
+      "sourceName": "CERT Vulnerability Notes",
+      "sourceUrl": "https://www.kb.cert.org/vulfeed/",
+      "category": "government"
+    },
+    {
+      "title": "CVE-2026-25860 turn XSS to RCE",
+      "link": "https://www.reddit.com/r/netsec/comments/1ucsrw0/cve202625860_turn_xss_to_rce/",
+      "description": "submitted by /u/AlbatrossMaximum4489 [link] [comments]",
+      "guid": "t3_1ucsrw0",
+      "pubDate": "2026-06-22T18:31:27.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Linux and Secure Boot certificate expiration (2025)",
+      "link": "https://lwn.net/Articles/1029767/",
+      "description": "Comments",
+      "guid": "https://lwn.net/Articles/1029767/",
+      "pubDate": "2026-06-22T18:24:29.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Texas Parks & Wildlife (TPWD) Data Breach impacts 3 Million People",
+      "link": "https://securityaffairs.com/194023/data-breach/texas-parks-wildlife-tpwd-data-breach-impacts-3-million-people.html",
+      "description": "Texas Parks and Wildlife Department (TPWD) breach exposed data of 3M people via a third-party license vendor, including sensitive personal information. The Texas Parks and Wildlife Department (TPWD) disclosed a data breach affecting around 3 million individuals after a third-party vendor used for hunting and fishing license sales was compromised. The Texas Parks and Wildlife […]",
+      "guid": "https://securityaffairs.com/?p=194023",
+      "pubDate": "2026-06-22T18:13:20.000Z",
+      "sourceName": "Security Affairs",
+      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
+      "category": "news"
+    },
+    {
+      "title": "ShapedPlugin WordPress Pro Plugins Backdoored in Supply Chain Attack",
+      "link": "https://thehackernews.com/2026/06/shapedplugin-wordpress-pro-plugins.html",
+      "description": "Multiple WordPress plugins from ShapedPlugin were compromised in a supply chain attack after unknown threat actors managed to tamper with the official release channels and push backdoor code. \"Attackers compromised the vendor's build and distribution pipeline, injecting backdoor code into Pro plugin releases distributed through official licensed update channels,\" Wordfence said in an analysis",
+      "guid": "https://thehackernews.com/2026/06/shapedplugin-wordpress-pro-plugins.html",
+      "pubDate": "2026-06-22T18:00:48.000Z",
+      "sourceName": "The Hacker News",
+      "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
+      "category": "news",
+      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgd4DchiVkQLBMvGHgWrojoZUdyk2SwEhEj5q6cOYzKCUWF1Lz3Mxeizurg1O-SLVi2jg319ib4SJsSoVWixAkl5WLPu4rL1cMoYXUM6EziOVyt42ESt1zmMo_iLEfHx9XSAXpsDd1FEtRSgKk4AhDzA7DjJN8c__pUgogxTQgaGjsxM04WNiesgRnbEVHN/s1600/wordpress-plugin.jpg"
+    },
+    {
+      "title": "Beats Studio Buds Flaw Could Let Nearby Attackers Eavesdrop on Users",
+      "link": "https://hackread.com/beats-studio-buds-flaw-attackers-eavesdrop-users/",
+      "description": "Apple has released a security update to patch a Beats Studio Buds flaw that let nearby hackers listen to conversations through the microphone.",
+      "guid": "https://hackread.com/?p=146851",
+      "pubDate": "2026-06-22T17:57:36.000Z",
+      "sourceName": "HackRead",
+      "sourceUrl": "https://www.hackread.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "Advanced SQLMap Techniques & WAF Bypass: A Deep Dive for Security Professionals",
+      "link": "https://medium.com/@tanvir.infosec/advanced-sqlmap-techniques-waf-bypass-a-deep-dive-for-security-professionals-7142b20c9ea5?source=rss------bug_bounty-5",
+      "description": "A comprehensive guide to leveraging SQLMap’s advanced capabilities in authorized penetration testing engagements Continue reading on Medium »",
+      "guid": "https://medium.com/p/7142b20c9ea5",
+      "pubDate": "2026-06-22T17:53:43.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/2330/1*ItI14lcFtlzEqEKi9UrwSw.png"
+    },
+    {
+      "title": "Microsoft says Windows 11 26H2 is coming soon, details upgrade process",
+      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-windows-11-26h2-is-coming-soon-details-upgrade-process/",
+      "description": "Microsoft has confirmed that Windows 11 version 26H2 will be the next feature update and that devices running Windows 11 24H2 and 25H2 will be able to upgrade using a small enablement package. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/microsoft/microsoft-says-windows-11-26h2-is-coming-soon-details-upgrade-process/",
+      "pubDate": "2026-06-22T17:41:31.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Microsoft fixes AutoGen Studio flaw that enabled code execution",
+      "link": "https://www.bleepingcomputer.com/news/security/microsoft-fixes-autogen-studio-flaw-that-enabled-code-execution/",
+      "description": "A vulnerability chain dubbed AutoJack in Microsoft's AutoGen Studio interface for prototyping AI agents could let attackers manipulate an agent into executing arbitrary commands on its host system simply by visiting a malicious webpage. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/microsoft-fixes-autogen-studio-flaw-that-enabled-code-execution/",
+      "pubDate": "2026-06-22T17:28:57.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Steam Machine launches today",
+      "link": "https://store.steampowered.com/news/group/45479024/view/685257114654870245",
+      "description": "Comments",
+      "guid": "https://store.steampowered.com/news/group/45479024/view/685257114654870245",
+      "pubDate": "2026-06-22T17:09:51.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Blogger defeats photographer's copyright claim",
+      "link": "https://blog.ericgoldman.org/archives/2026/06/blogger-defeats-photographers-copyright-claim-sokolskyfilm-v-messiah.htm",
+      "description": "Comments",
+      "guid": "https://blog.ericgoldman.org/archives/2026/06/blogger-defeats-photographers-copyright-claim-sokolskyfilm-v-messiah.htm",
+      "pubDate": "2026-06-22T17:06:10.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Bug Reporting Tool Every Developer Wished Existed",
+      "link": "https://medium.com/codex/bug-reporting-tool-every-developer-wished-existed-3b5d7912a145?source=rss------bug_bounty-5",
+      "description": "No more “works on my machine.” No more half-baked tickets. Just complete context, automatically. Continue reading on CodeX »",
+      "guid": "https://medium.com/p/3b5d7912a145",
+      "pubDate": "2026-06-22T17:06:07.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/2036/1*9-ZUGSk7YVrkG31Kje6bbw.png"
+    },
+    {
       "title": "How I Found a Chain of Critical Vulnerabilities in a Public Platform’s GraphQL API",
       "link": "https://osintteam.blog/how-i-found-a-chain-of-critical-vulnerabilities-in-a-public-platforms-graphql-api-1093c85b2b0f?source=rss------bug_bounty-5",
       "description": "What’s up folks — after a long break, I’m back with something good. While testing a an application, I discovered a chain of GraphQL… Continue reading on OSINT Team »",
@@ -79,48 +253,6 @@
       "sourceUrl": "https://blog.trailofbits.com/feed/",
       "category": "research",
       "imageUrl": "https://blog.trailofbits.com/2026/06/22/introducing-patch-the-planet/ptp-image-1.gif"
-    },
-    {
-      "title": "Microsoft Entra Conditional Access Policies Can Be Bypassed Via Nested App Authentication",
-      "link": "https://cybersecuritynews.com/microsoft-entra-access-policies-nested-app/",
-      "description": "Microsoft Entra Conditional Access Policies (CAPs), a core security control for Azure and Microsoft 365 tenants, were recently found vulnerable to a bypass technique involving Nested App Authentication (NAA), according to research disclosed by NetSPI. CAPs are widely deployed to enforce strong authentication requirements such as multi-factor authentication, device compliance, and location-based restrictions. They are […] The post Microsoft Entra Conditional Access Policies Can Be Bypassed Via Nested App Authentication appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153444",
-      "pubDate": "2026-06-22T16:25:31.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzzWBsdz-82dKWs_CiRBtcGX7CjC5VF1Xy_9MuVNzUpMywVLr5f5tmCywHQItxr3eyXmtNFkhzYQgEOLbLjh7cW7z0gjCDKWhFa2byxGZ8UsH3ZeiQf36QGrLN0XN91JJJ5gG0HxE7pRsE3iFp3Dr7DVtBJB_4QooTE9l_F1e-xO2jJNHydpxAVht4E0U/s1600/Screenshot%202026-06-22%20200207%20%281%29.webp"
-    },
-    {
-      "title": "National Science Foundation slashes basic science to fund new tech initiative",
-      "link": "https://www.science.org/content/article/exclusive-nsf-slashes-research-programs-support-new-tech-initiative-insiders-say",
-      "description": "Comments",
-      "guid": "https://www.science.org/content/article/exclusive-nsf-slashes-research-programs-support-new-tech-initiative-insiders-say",
-      "pubDate": "2026-06-22T16:25:02.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "AI-Powered iOS Apps Leaking LLM API Credentials Through Network Traffic",
-      "link": "https://cybersecuritynews.com/ai-ios-apps-leaking-llm-credentials/",
-      "description": "AI-powered iOS applications are increasingly leaking large language model (LLM) API credentials through network traffic, exposing developers to large-scale abuse of their LLM accounts and cloud resources. A recent empirical study of 444 free, LLM-enabled iOS apps from the US App Store found that 282 of them, or 64%, leaked exploitable LLM credentials when their […] The post AI-Powered iOS Apps Leaking LLM API Credentials Through Network Traffic appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153428",
-      "pubDate": "2026-06-22T16:21:33.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYe-JvzQ9TQgOi2RR42-2DIoqFu545zLMiZQUdeazVg2ZtLxb75Ul57xS63mNgIAjzop7OV5FbYolkOKy5rE84SpYQEhgKrAMHExcVV-s4qG-T4MtyHCjrXSCiLcPR0TrNVxgvKQGwDP7ryuLfLpGBRMJXwXPqHbnSEXoZMUsvZSPGEXb4zAQK5KxHkh4/s1600/Screenshot%202026-06-22%20174550%20%281%29.webp"
-    },
-    {
-      "title": "Apple Beats Studio Buds Vulnerability Allows Hackers to Eavesdrop on Users",
-      "link": "https://cybersecuritynews.com/apple-beats-studio-buds-vulnerability/",
-      "description": "Apple has addressed a high-severity vulnerability in the Beats Studio Buds that could allow nearby attackers to eavesdrop on users via the device’s microphone, even when the earbuds are not actively paired. Apple fixed the Bluetooth vulnerability in Beats Firmware Update 1B211, released on June 16, 2026, addressing a flaw that could be exploited by […] The post Apple Beats Studio Buds Vulnerability Allows Hackers to Eavesdrop on Users appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153425",
-      "pubDate": "2026-06-22T16:17:13.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
     },
     {
       "title": "VU#226679: Microsoft WinRE allows for bypass of UEFI/BIOS password enforcement",
@@ -154,27 +286,6 @@
       "category": "news"
     },
     {
-      "title": "Klue Hack Leads to Data Breach Across Multiple Cybersecurity Companies",
-      "link": "https://cybersecuritynews.com/klue-hack-cybersecurity-companies/",
-      "description": "A sophisticated supply chain attack on market intelligence platform Klue has compromised Salesforce data across at least nine organizations, including several high-profile cybersecurity firms, with the newly emerged Icarus extortion group claiming responsibility and threatening to release stolen data. The attack began on June 11–12, 2026, when threat actors gained unauthorized access to Klue’s integration […] The post Klue Hack Leads to Data Breach Across Multiple Cybersecurity Companies appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153453",
-      "pubDate": "2026-06-22T16:07:22.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "Hackers Use RemotePC RMM and PowerShell Stagers to Deploy Prinz Eugen Ransomware",
-      "link": "https://cybersecuritynews.com/hackers-use-remotepc-rmm-and-powershell-stagers/",
-      "description": "A newly identified ransomware group is using remote management software and scripted attack tools to compromise organizations and deploy a sophisticated encryption threat called Prinz Eugen. The campaign has claimed victims across multiple countries, with targets ranging from major financial institutions to regional training firms. Prinz Eugen first surfaced on April 16, 2026, when a […] The post Hackers Use RemotePC RMM and PowerShell Stagers to Deploy Prinz Eugen Ransomware appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153396",
-      "pubDate": "2026-06-22T16:01:11.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYF_RXO_iZchGUjyWfg8SSqvYQqys9MmWzRvuy05XouNo7J1WYB8y3MPkFqZuYrANf3kxgY0G07_i9I0G7ACAuwPL7sYN9PtCUFaWh7jql0gygLgCi98aNsd_xKFcgd5MrjYj5v9JRcj6XM7Nzjk4ujvHyohvMBLjRalil7goq3octi-aMnM19v5vgGd0/s16000/File%20iteration%20logic%20with%20the%20most%20recently%20modified%20files%20displayed%20first%20(Source%20-%20ThreatDown).webp"
-    },
-    {
       "title": "22nd June – Threat Intelligence Report",
       "link": "https://research.checkpoint.com/2026/22nd-june-threat-intelligence-report/",
       "description": "For the latest discoveries in cyber research for the week of 22nd June, please download our Threat Intelligence Bulletin. TOP ATTACKS AND BREACHES Texas Parks and Wildlife Department has been affected by a third-party data breach involving its license system vendor. The incident exposed driver’s license information, passport numbers, emails, phone numbers, and residential addresses for […] The post 22nd June – Threat Intelligence Report appeared first on Check Point Research.",
@@ -183,6 +294,16 @@
       "sourceName": "Check Point Research",
       "sourceUrl": "https://research.checkpoint.com/feed",
       "category": "research"
+    },
+    {
+      "title": "One intrusion, two cyberattackers: Uncovering parallel threat activity",
+      "link": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+      "description": "Ransomware case reveals two parallel threat actors, blending tactics and evasion—showing why isolated signals can often miss modern, overlapping cyberattacks. The post One intrusion, two cyberattackers: Uncovering parallel threat activity appeared first on Microsoft Security Blog.",
+      "guid": "https://www.microsoft.com/en-us/security/blog/?p=148144",
+      "pubDate": "2026-06-22T16:00:00.000Z",
+      "sourceName": "Microsoft Security Blog",
+      "sourceUrl": "https://www.microsoft.com/security/blog/feed",
+      "category": "cloud"
     },
     {
       "title": "Prevent data exfiltration: AWS egress controls for cloud workloads",
@@ -196,14 +317,24 @@
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/06/15/egress-under-control1.png"
     },
     {
-      "title": "29-Year-Old ‘Squidbleed’ Vulnerability Discovered With the Aid of Claude Mythos Preview",
-      "link": "https://cybersecuritynews.com/squidbleed-vulnerability/",
-      "description": "A Heartbleed-style heap buffer overread lurking in Squid Proxy since 1997 can silently leak HTTP headers, including passwords and API keys, from other users on the same proxy. Security researchers at Calif.io have disclosed a critical memory disclosure vulnerability in Squid Proxy, dubbed Squidbleed, discovered with the assistance of Anthropic’s Claude Mythos Preview AI model. […] The post 29-Year-Old ‘Squidbleed’ Vulnerability Discovered With the Aid of Claude Mythos Preview appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153449",
-      "pubDate": "2026-06-22T15:35:22.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
+      "title": "Prompt Injection as Role Confusion",
+      "link": "https://role-confusion.github.io",
+      "description": "Comments",
+      "guid": "https://role-confusion.github.io",
+      "pubDate": "2026-06-22T15:48:55.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Show HN: Oak – Git replacement designed for agents",
+      "link": "https://oak.space/oak/oak",
+      "description": "Comments",
+      "guid": "https://oak.space/oak/oak",
+      "pubDate": "2026-06-22T15:37:48.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "Thousands of D-Link routers under control of AryStinger botnet",
@@ -226,16 +357,6 @@
       "category": "news"
     },
     {
-      "title": "Microsoft’s New Option Allows Organizations to Block Copilot Access to Office Files",
-      "link": "https://cybersecuritynews.com/microsoft-copilot-block-office-files/",
-      "description": "Microsoft has announced a significant update to its Microsoft 365 security and compliance features, introducing enhanced controls that allow organizations to block Copilot and other connected experiences from analyzing content in Office files. The update is tied to Microsoft Purview sensitivity labels and is designed to strengthen enterprise data protection. According to Microsoft Message Center […] The post Microsoft’s New Option Allows Organizations to Block Copilot Access to Office Files appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153412",
-      "pubDate": "2026-06-22T14:45:31.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "29-Year-Old Squid Proxy Bug 'Squidbleed' Can Leak Cleartext HTTP Requests",
       "link": "https://thehackernews.com/2026/06/29-year-old-squid-proxy-bug-squidbleed.html",
       "description": "A heap over-read in the Squid web proxy can leak another user's cleartext HTTP request, including any credentials or session tokens it carries, to anyone already allowed to send traffic through the same proxy. The bug traces to a 1997 FTP-parsing change and is still live in Squid's default configuration. Researchers at Calif.io disclosed it in June and named it Squidbleed (",
@@ -255,16 +376,6 @@
       "sourceName": "Hack The Box (All)",
       "sourceUrl": "https://www.hackthebox.com/rss/blog/all",
       "category": "offensive"
-    },
-    {
-      "title": "Claude Code's \"extended thinking\" is a summary- not authentic thinking",
-      "link": "https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/",
-      "description": "Comments",
-      "guid": "https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/",
-      "pubDate": "2026-06-22T14:22:46.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "SOP vs CORS vs Preflight vs SameSite Cookies — A Guide for Bug Bounty Hunters",
@@ -348,36 +459,6 @@
       "sourceName": "Security Affairs",
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news"
-    },
-    {
-      "title": "Never Give Them Your Face",
-      "link": "https://nevergivethemyourface.com/",
-      "description": "Comments",
-      "guid": "https://nevergivethemyourface.com/",
-      "pubDate": "2026-06-22T13:45:48.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Pledging Another $400k to the Zig Software Foundation",
-      "link": "https://mitchellh.com/writing/zig-donation-2026",
-      "description": "Comments",
-      "guid": "https://mitchellh.com/writing/zig-donation-2026",
-      "pubDate": "2026-06-22T13:43:01.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Die analysis of the 8087 math coprocessor's fast bit shifter (2020)",
-      "link": "https://www.righto.com/2020/05/die-analysis-of-8087-math-coprocessors.html",
-      "description": "Comments",
-      "guid": "https://www.righto.com/2020/05/die-analysis-of-8087-math-coprocessors.html",
-      "pubDate": "2026-06-22T13:40:16.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "“Bug Bounty Bootcamp #52: Shodan — The Internet’s Search Engine”",
@@ -466,16 +547,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisV9q8kKe0eopbInTHgwScUvzjKlnPTpk74j7M6F-6BH46hVr9wcadvztA2RYJdKDQDzpV89bN4wH0hEL9qTfIh2_4f3FEIT1OWwSeYehcOb-sVNNkEshTBBC6qviBMlFuwMXQL2iG_VVVBaT6NoGnbdcVBfcMm61T6NosKLtOdMgIebKCRh7hukQxIOk/s1600/playstore.jpg"
     },
     {
-      "title": "InfoSec News Nuggets – 06/22/2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-06-22-2026/",
-      "description": "Canada’s Spy Agency Used First-of-Its-Kind Warrant to Clean Botnet-Infected Devices Canada’s Security Intelligence Service obtained a first-of-its-kind judicial warrant that permitted it to reach into infected servers, home routers, and IoT devices on Canadian soil — including Ring doorbells, security cameras, and smart TVs — and neutralize two foreign-run botnets without the owners’ knowledge or […] The post InfoSec News Nuggets – 06/22/2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9206",
-      "pubDate": "2026-06-22T12:33:53.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "SindriKit: Offensive Development Deserves Better Architecture",
       "link": "https://www.reddit.com/r/netsec/comments/1ucjc0r/sindrikit_offensive_development_deserves_better/",
       "description": "submitted by /u/Important_Map6928 [link] [comments]",
@@ -517,28 +588,6 @@
       "category": "news"
     },
     {
-      "title": "Microsoft has urged IT Admins to Prepare for Windows 11, Version 26H2 Update",
-      "link": "https://cybersecuritynews.com/microsoft-urged-windows-11-26h2-update/",
-      "description": "Microsoft has urged IT administrators to begin preparing for the upcoming Windows 11 version 26H2 update, which is now available for testing through the Windows Insider Program. The release continues Microsoft’s shift toward a predictable, low-disruption servicing model designed to simplify enterprise deployment and maintenance. Unlike traditional feature upgrades, Windows 11 version 26H2 uses the […] The post Microsoft has urged IT Admins to Prepare for Windows 11, Version 26H2 Update appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153407",
-      "pubDate": "2026-06-22T11:40:37.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6banNlik_PK198mtqYfH4X5W9mqDRnlKsGc6ptjmkNa6QZMj9ah_Chj49gyQrTWu45UMiiT0B-KBKS4P8wBvcD7ssDA4thBsMJm0_6pJ7M_XtlsvDeFXO30dRkMr0_E2UERi2XutQj9_3hNbgvlGezWBwfgESvBvuhzoLNG9HoOHY3YecTbRvVUHTS1Q/s1600/Screenshot%202026-06-22%20155633%20%281%29.webp"
-    },
-    {
-      "title": "New Malware Attack Via WhatsApp Attacking Windows System to Enable Remote Access For Attackers",
-      "link": "https://cybersecuritynews.com/new-malware-attack-via-whatsapp-attacking-windows-system/",
-      "description": "A new and active malware campaign is spreading through WhatsApp, targeting everyday Windows users across more than a dozen countries. The threat uses malicious script files disguised as routine financial documents, tricking people into running harmful code on their own machines. Once opened, the file quietly sets off a chain of events that ends with […] The post New Malware Attack Via WhatsApp Attacking Windows System to Enable Remote Access For Attackers appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153417",
-      "pubDate": "2026-06-22T11:36:12.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOOXaYN3QDEh1r1lS43ugOyLyJOmf9IFJEFftV4YSn0O_gmMZsoDafsZrNa12QVxjijbOFPBUudbeF3jZ7x5PZq1DlAtuLdQhro7SOgk2uEwH6IpQVWUhGytDQsFH_ikUlYOpylHAhYwsw8gxgfCUeflXNODMyJldDvpUQyXCY2hhzEQb8ALuIyUFNQfI/s16000/Overview%20of%20the%20WhatsApp-based%20VBScript%20infection%20chain%20(Source%20-%20Securelist).webp"
-    },
-    {
       "title": "North Korean Hackers Blamed for Mastra NPM Supply Chain Attack",
       "link": "https://www.securityweek.com/north-korean-hackers-blamed-for-mastra-npm-supply-chain-attack/",
       "description": "A malicious dependency the attackers added to over 140 Mastra packages fetches a payload targeting cryptocurrency extensions. The post North Korean Hackers Blamed for Mastra NPM Supply Chain Attack appeared first on SecurityWeek.",
@@ -578,16 +627,6 @@
       "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
       "category": "news",
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjWTle5JU3HMoV1yUzXt6nAYO-EtyfOp22bJldi9N4fwakWmzrwwjBKfQNkprStB3B9K5HyUchIUCoNpGs-Kn2EHwClO7xJOV-qZQeDKFllNQrZ-TYq6OiikJkwi65NdfFcR7XhMTuIpmwSdoglwRcMcI43rLGB1B462ZXhd7nkh-q-FNnpPKoeUyL7bUqs/s1600/recap-main.gif"
-    },
-    {
-      "title": "GitHub Actions Checkout Update Blocks Workflows Triggered by Malicious pull_request_target",
-      "link": "https://cybersecuritynews.com/github-actions-checkout-update-workflow/",
-      "description": "GitHub has rolled out a significant security enhancement to GitHub Actions by updating actions/checkout to block unsafe workflows that abuse the pull_request_target event. The pull_request_target trigger is widely known as one of the most misused events because it runs with the base repository’s GITHUB_TOKEN, secrets, and default-branch cache access, even when the pull request comes from an untrusted fork. When maintainers check […] The post GitHub Actions Checkout Update Blocks Workflows Triggered by Malicious pull_request_target appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=153390",
-      "pubDate": "2026-06-22T10:52:45.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
     },
     {
       "title": "What the Latest ShinyHunters Breaches Reveal About Modern Cyberattacks",
@@ -662,17 +701,6 @@
       "category": "news"
     },
     {
-      "title": "Client-Side Path Traversal (CSPT): I Found It, Chained It, and Wiped an Entire Organization",
-      "link": "https://mugh33ra.medium.com/client-side-path-traversal-cspt-i-found-it-chained-it-and-wiped-an-entire-organization-a793d3f3d8eb?source=rss------bug_bounty-5",
-      "description": "The Target Continue reading on Medium »",
-      "guid": "https://medium.com/p/a793d3f3d8eb",
-      "pubDate": "2026-06-22T08:57:33.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*cmtdlt1KgCGja5FuRWQttQ.jpeg"
-    },
-    {
       "title": "4,300+ Outdated Routers Hijacked in Stealthy Spy Infrastructure by AryStinger malware",
       "link": "https://securityaffairs.com/193987/security/4300-outdated-routers-hijacked-in-stealthy-spy-infrastructure-by-arystinger-malware.html",
       "description": "AryStinger hijacks outdated routers via old flaws, turning 4,300+ devices into a stealth network for reconnaissance and intrusion support. On March 12, 2026, QiAnXin’s XLab threat detection system flagged a single IP address, 107.150.106.14, spreading a Linux binary through two vulnerabilities that were disclosed in 2013 and 2016 respectively. The binary had zero detections on […]",
@@ -694,37 +722,6 @@
       "category": "news"
     },
     {
-      "title": "Codex logging bug may write TBs to local SSDs",
-      "link": "https://github.com/openai/codex/issues/28224",
-      "description": "Comments",
-      "guid": "https://github.com/openai/codex/issues/28224",
-      "pubDate": "2026-06-22T07:30:17.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "GLM 5.2 vs. Opus",
-      "link": "https://techstackups.com/comparisons/glm-5.2-vs-opus/",
-      "description": "Comments",
-      "guid": "https://techstackups.com/comparisons/glm-5.2-vs-opus/",
-      "pubDate": "2026-06-22T07:22:03.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "The Recon Workflow I Built After 10 Rejections",
-      "link": "https://ismailtasdelen.medium.com/the-recon-workflow-i-built-after-10-rejections-b81c5a3b8427?source=rss------bug_bounty-5",
-      "description": "Six phases, zero wasted hours — the process I wish I had on day one. Continue reading on Medium »",
-      "guid": "https://medium.com/p/b81c5a3b8427",
-      "pubDate": "2026-06-22T07:21:49.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1600/1*iHo1lcWQ7muw3D957Z0iWQ.png"
-    },
-    {
       "title": "usbliter8 Brings Unpatchable BootROM Exploit to Apple A12 and A13 Devices",
       "link": "https://securityaffairs.com/193965/hacking/usbliter8-brings-unpatchable-bootrom-exploit-to-apple-a12-and-a13-devices.html",
       "description": "usbliter8 is an unpatchable BootROM exploit affecting A12/A13 devices, enabling code execution and extending checkm8-like risks to newer iPhones. Security researchers at Paradigm Shift published a working exploit on June 18, 2026, called usbliter8, that achieves arbitrary code execution inside the SecureROM of Apple’s A12 and A13 chips. SecureROM is the first code that runs […]",
@@ -734,17 +731,6 @@
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news",
       "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/06/image-55.png?resize=840%2C195&#038;ssl=1"
-    },
-    {
-      "title": "Introducing PenTest Toolkit v2.0.0: A Modern AI-Powered Penetration Testing Framework",
-      "link": "https://mhmmuneef.medium.com/introducing-pentest-toolkit-v2-0-0-a-modern-ai-powered-penetration-testing-framework-39b4f1490335?source=rss------bug_bounty-5",
-      "description": "Introduction Continue reading on Medium »",
-      "guid": "https://medium.com/p/39b4f1490335",
-      "pubDate": "2026-06-22T07:05:41.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*IzUjHR0XepEoemSnE-y4tA.png"
     },
     {
       "title": "A week in security (June 15 &#8211; June 21)",
@@ -842,7 +828,7 @@
       "title": "94% of Organizations Report Cloud Breaches: CrowdStrike State of CDR Survey",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-state-of-cdr-survey-key-takeaways/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=632895",
+      "guid": "https://www.crowdstrike.com/?p=444120",
       "pubDate": "2026-06-22T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -887,16 +873,6 @@
       "sourceName": "Help Net Security",
       "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
-    },
-    {
-      "title": "Nintendo Wii U games running from a 1980's Bernoulli disk [video]",
-      "link": "https://www.youtube.com/watch?v=8GZDOpV2OXk",
-      "description": "Comments",
-      "guid": "https://www.youtube.com/watch?v=8GZDOpV2OXk",
-      "pubDate": "2026-06-21T20:19:06.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "SECURITY AFFAIRS MALWARE NEWSLETTER ROUND 102",
@@ -988,17 +964,6 @@
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
       "category": "news"
-    },
-    {
-      "title": "Hackers Exploit Gravity SMTP WordPress Plugin Bug to Expose API Keys",
-      "link": "https://thehackernews.com/2026/06/hackers-exploit-gravity-smtp-wordpress.html",
-      "description": "Threat actors are exploiting a recently patched security flaw impacting Gravity SMTP, a WordPress plugin that's installed on about 100,000 sites. The vulnerability, tracked as CVE-2026-4020 (CVSS score: 5.3), is a medium-severity information disclosure flaw that can allow unauthenticated attackers to extract sensitive data, such as configuration data, API keys, secrets, and OAuth tokens",
-      "guid": "https://thehackernews.com/2026/06/hackers-exploit-gravity-smtp-wordpress.html",
-      "pubDate": "2026-06-20T09:56:04.000Z",
-      "sourceName": "The Hacker News",
-      "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL1kN23KhnFjdjHcR0i-iySK1Zv-kkApPs6yBq11670ubXx0NiAbgDMoYSfwQNyq9asso5AG9KcPRXEL4LU8-BmcsC0Q_1YIYDfY89hIFd_hSNJ2yZJRAO5l6JaQbpItuI8cpwIvNDBOqNfc-0d1DMv_DOh04J5_2EvpEcxCtoQUziipbjfNod-tzdH1__/s1600/1000082862.jpg"
     },
     {
       "title": "French President Urges US to Share Cutting-Edge AI and Democracies to Cooperate on Regulation",
@@ -1144,16 +1109,6 @@
       "category": "news"
     },
     {
-      "title": "InfoSec News Nuggets – 06/19/2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-06-19-2026/",
-      "description": "F5 Patches Two Critical NGINX Open Source Flaws Enabling Remote Code Execution F5 released out-of-band security updates for two critical NGINX vulnerabilities — CVE-2026-42530 (CVSS 9.2), a use-after-free flaw in the HTTP/3 QUIC module, and CVE-2026-42055 (CVSS 9.2), a heap-based buffer overflow in the HTTP/2 proxy and gRPC modules — both exploitable by unauthenticated remote […] The post InfoSec News Nuggets – 06/19/2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9204",
-      "pubDate": "2026-06-19T13:58:42.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "Imposter scams cost Americans $3.5 billion in 2025 – and it’s getting worse",
       "link": "https://www.fortra.com/blog/imposter-scams-cost-americans-35-billion-2025-and-its-getting-worse",
       "description": "Someone is pretending to be your bank, your government, or your local planning office. And according to the FTC, they're making billions doing it. Read more in my article on the Fortra blog.",
@@ -1171,16 +1126,6 @@
       "pubDate": "2026-06-19T13:49:50.000Z",
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "14,971 WordPress Sites Cleaned in Global SocGholish Takedown",
-      "link": "https://securityaffairs.com/193893/malware/14971-wordpress-sites-cleaned-in-global-socgholish-takedown.html",
-      "description": "Operation EndGame disrupted SocGholish, taking down 106 servers and cleaning 14,971 WordPress sites used to spread fake-update malware. On June 18, 2026, law enforcement agencies from the Netherlands, Canada, the United States, and Germany, coordinated through Europol, executed a joint action week against SocGholish, one of the most persistent and widely deployed malware distribution networks […]",
-      "guid": "https://securityaffairs.com/?p=193893",
-      "pubDate": "2026-06-19T13:41:56.000Z",
-      "sourceName": "Security Affairs",
-      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news"
     },
     {
@@ -1204,16 +1149,6 @@
       "category": "community"
     },
     {
-      "title": "Every AI Agent Is an Identity. Most Organizations Don't Treat Them That Way",
-      "link": "https://www.bleepingcomputer.com/news/security/every-ai-agent-is-an-identity-most-organizations-dont-treat-them-that-way/",
-      "description": "AI agents can access data, trigger workflows, deploy code, and interact with critical business systems, often with little oversight. Token Security breaks down why AI agents are becoming a new identity and governance challenge. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/every-ai-agent-is-an-identity-most-organizations-dont-treat-them-that-way/",
-      "pubDate": "2026-06-19T13:10:19.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "Stressors, AI Forcing Changes to Cybersecurity Teams",
       "link": "https://www.darkreading.com/cybersecurity-operations/stressors-ai-changes-cybersecurity-teams",
       "description": "As threats proliferate and AI complicates cybersecurity, CISOs say the job is getting harder, but more companies still want cybersecurity expertise, if even on a part-time basis.",
@@ -1231,16 +1166,6 @@
       "pubDate": "2026-06-19T12:57:39.000Z",
       "sourceName": "Help Net Security",
       "sourceUrl": "https://www.helpnetsecurity.com/feed",
-      "category": "news"
-    },
-    {
-      "title": "Webinar: How attackers bypass MFA and how defenders can respond",
-      "link": "https://www.bleepingcomputer.com/news/security/webinar-how-attackers-bypass-mfa-and-how-defenders-can-respond/",
-      "description": "Modern phishing attacks, including Device Code phishing, can undermine MFA protections and grant attackers access to corporate accounts without stealing passwords. This webinar explores how behavioral AI can help security teams detect compromised accounts faster and automate response workflows. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/webinar-how-attackers-bypass-mfa-and-how-defenders-can-respond/",
-      "pubDate": "2026-06-19T12:12:20.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
     },
     {
@@ -1264,14 +1189,14 @@
       "category": "research"
     },
     {
-      "title": "Microsoft: June 2026 Windows updates break Recycle Bin prompts",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-recycle-bin-bug-on-all-supported-windows-releases/",
-      "description": "Microsoft has confirmed a confusing Windows bug that causes different filenames to appear in the confirmation dialog when deleting a file from the Recycle Bin. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-recycle-bin-bug-on-all-supported-windows-releases/",
-      "pubDate": "2026-06-19T11:32:34.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
+      "title": "My Mathematical Regression",
+      "link": "https://blog.dahl.dev/posts/my-mathematical-regression/",
+      "description": "Comments",
+      "guid": "https://blog.dahl.dev/posts/my-mathematical-regression/",
+      "pubDate": "2026-06-19T11:06:04.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "Breaking Down Two Simple Vulnerabilities That Exposed A School’s Admission Records",
@@ -1402,16 +1327,6 @@
       "sourceName": "r/netsec",
       "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
-    },
-    {
-      "title": "FIFA World Cup 2026: Hackers Target Football Fans With Fake Tickets Sites",
-      "link": "https://hackread.com/fifa-world-cup-2026-hackers-football-fake-tickets-sites/",
-      "description": "Cybersecurity experts warn that active hacking networks are using fake hotel bookings, cloned websites, and live chat features to scam FIFA World Cup 2026 fans.",
-      "guid": "https://hackread.com/?p=146732",
-      "pubDate": "2026-06-19T09:56:33.000Z",
-      "sourceName": "HackRead",
-      "sourceUrl": "https://www.hackread.com/feed",
-      "category": "news"
     },
     {
       "title": "Tip of the AIceberg, prioritising prioritisation in aviation, Anthropic forced to shut down latest models – offsec roundup for CISOs",
@@ -1579,16 +1494,6 @@
       "sourceUrl": "https://www.malwarebytes.com/blog/feed",
       "category": "research",
       "imageUrl": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/06/MBAM_detection.png"
-    },
-    {
-      "title": "InfoSec News Nuggets – 06/18/2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-06-18-2026/",
-      "description": "Microsoft Confirms RoguePlanet Defender Zero-Day, Says Patch is in Development Microsoft formally acknowledged RoguePlanet, a Defender zero-day now tracked as CVE-2026-50656 with a CVSS score of 7.8, confirming it is working on a fix for the privilege escalation flaw in the Microsoft Malware Protection Engine nearly a week after a researcher going by Chaotic Eclipse […] The post InfoSec News Nuggets – 06/18/2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9202",
-      "pubDate": "2026-06-18T12:11:51.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "CISA Urges Hardening Fortinet Devices After Reports of Credential Exposure",
@@ -1852,7 +1757,7 @@
       "title": "New Abuse of the ClickOnce Technology, Part 2: Stop Threat Actors from Clicking Once and Staying Forever",
       "link": "https://www.crowdstrike.com/en-us/blog/new-abuse-of-the-clickonce-technology-part-two/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=732810",
+      "guid": "https://www.crowdstrike.com/?p=397979",
       "pubDate": "2026-06-18T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1862,7 +1767,7 @@
       "title": "New Abuse of the ClickOnce Technology, Part 1: The Inner Workings of ClickOnce Application Deployment",
       "link": "https://www.crowdstrike.com/en-us/blog/new-abuse-of-the-clickonce-technology-part-one/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=172074",
+      "guid": "https://www.crowdstrike.com/?p=222330",
       "pubDate": "2026-06-18T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -2058,16 +1963,6 @@
       "imageUrl": "https://research.checkpoint.com/wp-content/uploads/2026/06/image-18-1024x558.png"
     },
     {
-      "title": "InfoSec News Nuggets – 06/17/2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-06-17-2026/",
-      "description": "144 Mastra npm Packages Compromised via Hijacked Contributor Account A software supply chain attack codenamed easy-day-js compromised 144 npm packages associated with the Mastra namespace, a popular open-source framework for building AI applications, after attackers mass-published more than 140 malicious packages within an 88-minute automated window using a single hijacked npm account. The malicious code was introduced through a third-party dependency named […] The post InfoSec News Nuggets – 06/17/2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9200",
-      "pubDate": "2026-06-17T12:37:56.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "NCSC CEO: Hostile states linked to three-quarters of cyber attacks affecting UK's critical systems",
       "link": "https://www.ncsc.gov.uk/news/ncsc-ceo-hostile-states-linked-to-three-quarters-of-cyber-attacks",
       "description": "Dr Richard Horne highlighted the scale of cyber threats against the UK’s critical infrastructure at RUSI’s Annual Security Lecture.",
@@ -2101,7 +1996,7 @@
       "title": "After Executive Order 14409: Next Steps for Securing AI",
       "link": "https://www.crowdstrike.com/en-us/blog/after-executive-order-14409-next-steps-for-securing-ai/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=716735",
+      "guid": "https://www.crowdstrike.com/?p=389972",
       "pubDate": "2026-06-17T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -2158,16 +2053,6 @@
       "category": "bugbounty"
     },
     {
-      "title": "27 Years in the Dark: OpenBSD Fixes Ancient Remote Kernel Auth Bypass",
-      "link": "https://www.reddit.com/r/netsec/comments/1u7p4rj/27_years_in_the_dark_openbsd_fixes_ancient_remote/",
-      "description": "Absolutely wild find by Argus-Systems. A remote authentication bypass hiding in OpenBSD's kernel PPP stack since it was imported from FreeBSD in July 1999. An attacker could essentially bypass authentication via a null-auth flaw and intercept/read PPPoE traffic without credentials. It survived every single release for nearly three decades until the patch. OpenBSD already released a patch. submitted by /u/Emergency_Stable_923 [link] [comments]",
-      "guid": "t3_1u7p4rj",
-      "pubDate": "2026-06-16T20:26:26.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Threat tactic spotlight: Subdomain takeover",
       "link": "https://aws.amazon.com/blogs/security/threat-tactic-spotlight-subdomain-takeover/",
       "description": "In this blog post you’ll learn how to detect and prevent subdomain takeover – a tactic where threat actors exploit dangling DNS records to redirect traffic to attacker-controlled resources. We’ll explain the issue, how the situation arises, and how you can use various AWS features and services to help mitigate the impact of this tactic. […]",
@@ -2186,16 +2071,6 @@
       "pubDate": "2026-06-16T13:00:00.000Z",
       "sourceName": "Bishop Fox",
       "sourceUrl": "https://bishopfox.com/feeds/blog.rss",
-      "category": "offensive"
-    },
-    {
-      "title": "Infosec News Nuggets — June 16, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-june-16-2026/",
-      "description": "Cisco Fixes SD-WAN Manager Zero-Day Exploited in the Wild Cisco released patches for CVE-2026-20262, a zero-day in Catalyst SD-WAN Manager (formerly vManage) that has been actively exploited to escalate privileges to root, affecting all deployment types including on-prem, cloud-managed, and FedRAMP environments. The vulnerability stems from insufficient validation of user-supplied input during file uploads, allowing […] The post Infosec News Nuggets — June 16, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9197",
-      "pubDate": "2026-06-16T11:40:49.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
       "category": "offensive"
     },
     {
@@ -2277,7 +2152,7 @@
       "title": "Falcon Exposure Management Now Available for Third-Party Environments",
       "link": "https://www.crowdstrike.com/en-us/blog/falcon-exposure-management-now-available-for-third-party-environments/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=315708",
+      "guid": "https://www.crowdstrike.com/?p=451133",
       "pubDate": "2026-06-16T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
