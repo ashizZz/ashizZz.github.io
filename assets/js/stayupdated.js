@@ -276,13 +276,6 @@
             notification.setAttribute('role', 'alert');
             notification.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
             
-            const icons = {
-                success: '✅',
-                error: '❌',
-                warning: '⚠️',
-                info: 'ℹ️'
-            };
-            
             const colors = {
                 success: 'var(--success-color)',
                 error: 'var(--error-color)',
@@ -296,23 +289,19 @@
                 right: 20px;
                 background: var(--gradient-card);
                 color: var(--text-color);
-                padding: 16px 20px;
+                padding: 14px 18px;
                 border-radius: 12px;
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px ${colors[type]}, inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 border: 1.5px solid ${colors[type]};
+                border-left-width: 4px;
                 z-index: 10000;
                 animation: slideInFromTop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 max-width: 400px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
                 font-weight: 500;
+                line-height: 1.45;
             `;
             
-            notification.innerHTML = `
-                <span style="font-size: 1.2em; flex-shrink: 0;">${icons[type] || icons.info}</span>
-                <span style="flex: 1;">${message}</span>
-            `;
+            notification.textContent = message;
             
             document.body.appendChild(notification);
             
@@ -1536,7 +1525,6 @@
             if (state.allItems.length === 0) {
                 elements.errorMessage.innerHTML = `
                     <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-                        <div style="font-size: 2em;">⚠️</div>
                         <div><strong>No feeds could be loaded</strong></div>
                         <div style="font-size: 0.9em; color: #999; margin-top: 8px;">
                             This could be due to:<br>
@@ -1545,7 +1533,7 @@
                             • Some feeds being temporarily unavailable
                         </div>
                         <div style="font-size: 0.85em; color: #777; margin-top: 12px;">
-                            💡 <strong>Tip:</strong> Check your internet connection and try again. Cached articles may still be available.
+                            <strong>Tip:</strong> Check your internet connection and try again. Cached articles may still be available.
                         </div>
                     </div>
                 `;
@@ -1612,7 +1600,7 @@
                 if (btn.dataset.action === 'copy') {
                     copyToClipboard(item.link, 'Article link copied to clipboard!');
                     const orig = btn.textContent;
-                    btn.textContent = '✓';
+                    btn.textContent = 'OK';
                     btn.classList.add('action-btn--ok');
                     setTimeout(() => {
                         btn.textContent = orig;
@@ -1802,8 +1790,8 @@
             const actions = document.createElement('div');
             actions.className = 'article-actions';
             actions.innerHTML =
-                '<button class="action-btn" data-action="copy" title="Copy link" aria-label="Copy article link">🔗</button>' +
-                '<button class="action-btn" data-action="share" title="Share article" aria-label="Share article">📤</button>';
+                '<button class="action-btn" data-action="copy" title="Copy link" aria-label="Copy article link">Copy</button>' +
+                '<button class="action-btn" data-action="share" title="Share article" aria-label="Share article">Share</button>';
             feedItem.appendChild(actions);
 
             const link = document.createElement('a');
@@ -1897,7 +1885,7 @@
                 }</p>
                 ${hasFilters ? '<button type="button" class="su-btn su-btn--action" id="emptyStateClear" style="margin-top:1rem">Clear filters</button>' : ''}
                 <div class="empty-state-help">
-                    <div class="empty-state-help-title">💡 ${hasFilters ? 'Tips to find more articles:' : 'Getting Started:'}</div>
+                    <div class="empty-state-help-title">${hasFilters ? 'Tips to find more articles:' : 'Getting Started:'}</div>
                     <ul class="empty-state-help-text">${tipsHtml}</ul>
                 </div>
             `;
@@ -2273,57 +2261,57 @@
         // Source categories mapping
         const sourceCategories = {
             'government': {
-                name: '🏛️ Government & Critical Infrastructure',
+                name: 'Government & Critical Infrastructure',
                 shortName: 'Government',
-                icon: '🏛️',
+                icon: '',
                 keywords: ['CISA', 'CERT', 'NIST', 'NCSC', 'US-CERT', 'Government']
             },
             'news': {
-                name: '🕵️ Investigative Journalism & Breaking News',
+                name: 'Investigative Journalism & Breaking News',
                 shortName: 'News',
-                icon: '🕵️',
+                icon: '',
                 keywords: ['Krebs', 'Hacker News', 'Dark Reading', 'BleepingComputer', 'Schneier', 'Risky Business', 'Graham Cluley', 'SecurityWeek', 'Help Net Security', 'Security Affairs', 'Cyber Security News', 'HackRead']
             },
             'research': {
-                name: '🔬 Threat Research & Malware Analysis',
+                name: 'Threat Research & Malware Analysis',
                 shortName: 'Research',
-                icon: '🔬',
+                icon: '',
                 keywords: ['Project Zero', 'Talos', 'SANS', 'Mandiant', 'Securelist', 'Sophos Threat', 'Malwarebytes', 'Check Point', 'Unit 42', 'WeLiveSecurity', 'CrowdStrike', 'TAG', 'Trail of Bits', 'Zero Day Initiative']
             },
             'offensive': {
-                name: '🛡️ Offensive Security & Hacking Techniques',
+                name: 'Offensive Security & Hacking Techniques',
                 shortName: 'Offensive',
-                icon: '🛡️',
+                icon: '',
                 keywords: ['OffSec', 'Offensive Security', 'Bishop Fox', 'Hacking The Cloud', 'Hack The Box', 'KitPloit', 'MalwareTech', 'DFIR', 'InfoSec Writeups', 'Pentest']
             },
             'cloud': {
-                name: '☁️ Platform & Cloud Security',
+                name: 'Platform & Cloud Security',
                 shortName: 'Cloud',
-                icon: '☁️',
+                icon: '',
                 keywords: ['AWS Security', 'Microsoft Security', 'MSRC', 'Cloud']
             },
             'tools': {
-                name: '🔧 Security Operations & Tools',
+                name: 'Security Operations & Tools',
                 shortName: 'SecOps',
-                icon: '🔧',
+                icon: '',
                 keywords: ['Sophos Security Ops', 'Naked Security', 'Security Operations']
             },
             'community': {
-                name: '👥 Community & Forums',
+                name: 'Community & Forums',
                 shortName: 'Community',
-                icon: '👥',
+                icon: '',
                 keywords: ['reddit', 'r/netsec', 'r/blueteamsec', 'Hacker News', 'Community']
             },
             'bugbounty': {
-                name: '🎯 Bug Bounty & Responsible Disclosure',
+                name: 'Bug Bounty & Responsible Disclosure',
                 shortName: 'Bug Bounty',
-                icon: '🎯',
+                icon: '',
                 keywords: ['Bug Bounty', 'Intigriti', 'YesWeHack', 'HackerOne', 'Bug Bounty Writeups']
             },
             'other': {
-                name: '📰 Other Sources',
+                name: 'Other Sources',
                 shortName: 'Other',
-                icon: '📰',
+                icon: '',
                 keywords: []
             }
         };
@@ -2409,7 +2397,7 @@
             elements.sourceFilters.innerHTML = '';
 
             Object.entries(categorizedSources).forEach(([categoryKey, sources]) => {
-                const category = sourceCategories[categoryKey] || { name: '📰 Other Sources', icon: '📰' };
+                const category = sourceCategories[categoryKey] || { name: 'Other Sources', icon: '' };
 
                 const details = document.createElement('details');
                 details.className = 'source-category';
@@ -2422,14 +2410,16 @@
                 const folderLabel = category.shortName
                     || category.name.replace(category.icon, '').trim();
                 const safeFolderLabel = escapeHtml(folderLabel);
-                const safeIcon = escapeHtml(category.icon);
+                const iconHtml = category.icon
+                    ? `<span class="folder-icon" aria-hidden="true">${escapeHtml(category.icon)}</span>`
+                    : '';
 
                 const summary = document.createElement('summary');
                 summary.className = 'source-folder-summary';
                 summary.innerHTML = `
                     <span class="folder-title-group">
                         <span class="folder-chevron${isExpanded ? '' : ' is-collapsed'}" aria-hidden="true"></span>
-                        <span class="folder-icon" aria-hidden="true">${safeIcon}</span>
+                        ${iconHtml}
                         <span class="folder-name">${safeFolderLabel}</span>
                         <span class="folder-badge">${sources.length}</span>
                     </span>
@@ -3239,13 +3229,10 @@
                     max-height: 90vh;
                     overflow-y: auto;
                 ">
-                    <h2 style="margin-top: 0; color: var(--highlight-color); display: flex; align-items: center; gap: 10px;">
-                        <span>💡</span>
-                        <span>Help & Tips</span>
-                    </h2>
+                    <h2 style="margin-top: 0; color: var(--highlight-color);">Help & Tips</h2>
                     
                     <div style="margin: 25px 0;">
-                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">⌨️ Keyboard Shortcuts</h3>
+                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">Keyboard Shortcuts</h3>
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-color);">
                                 <span style="display: flex; gap: 6px;"><kbd>/</kbd> or <kbd>F</kbd></span>
@@ -3263,7 +3250,7 @@
                     </div>
 
                     <div style="margin: 25px 0;">
-                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">🔍 Search Tips</h3>
+                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">Search Tips</h3>
                         <ul style="color: var(--text-color); line-height: 1.8; padding-left: 20px; margin: 0;">
                             <li>Search by article title, description, or source name</li>
                             <li>Try keywords like "ransomware", "vulnerability", "CVE"</li>
@@ -3273,7 +3260,7 @@
                     </div>
 
                     <div style="margin: 25px 0;">
-                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">🎯 Quick Filters</h3>
+                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">Quick Filters</h3>
                         <ul style="color: var(--text-color); line-height: 1.8; padding-left: 20px; margin: 0;">
                             <li>Use preset buttons to quickly filter by category</li>
                             <li>Click multiple presets to combine categories</li>
@@ -3283,7 +3270,7 @@
                     </div>
 
                     <div style="margin: 25px 0;">
-                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">⚡ Features</h3>
+                        <h3 style="color: var(--text-color-bright); font-size: 1.1em; margin-bottom: 12px;">Features</h3>
                         <ul style="color: var(--text-color); line-height: 1.8; padding-left: 20px; margin: 0;">
                             <li><strong>Auto-refresh:</strong> Automatically update feeds every 30 minutes</li>
                             <li><strong>Export:</strong> Download filtered articles as JSON</li>
