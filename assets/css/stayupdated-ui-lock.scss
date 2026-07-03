@@ -483,40 +483,81 @@
   }
 }
 
-/* ---- Chirpy search row (dashboard-scoped) ---- */
-.stay-updated-dashboard .su-command__search search {
+/* ---- Search row (icon + input, no overlap) ---- */
+.stay-updated-dashboard .su-command__search .su-search {
+  position: relative;
   display: flex;
-  width: 100%;
   align-items: center;
+  width: 100%;
   min-height: var(--su-control-h);
-  border-radius: 1rem;
-  border: 1px solid var(--search-border-color);
-  background: var(--main-bg);
-  padding: 0 0.5rem;
+  padding: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: var(--su-radius);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.stay-updated-dashboard .su-command__search search i {
-  font-size: 0.9rem;
-  color: var(--search-icon-color);
+.stay-updated-dashboard .su-command__search .su-search:focus-within {
+  border-color: var(--su-input-focus);
+  box-shadow: 0 0 0 2px var(--su-accent-ring);
 }
 
-.stay-updated-dashboard .su-command__search search .form-control {
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  padding-left: 0.35rem;
+.stay-updated-dashboard .su-command__search .su-search > .fa-search {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 1rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: var(--text-muted-color);
+  pointer-events: none;
+  text-align: center;
+}
+
+.stay-updated-dashboard .su-command__search .su-search .form-control,
+.stay-updated-dashboard .su-command__search .su-search #search-input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: var(--su-control-h);
+  margin: 0;
+  padding: 0 12px 0 2.25rem;
+  font: inherit;
   font-size: 0.88rem;
   color: var(--text-color);
-}
-
-.stay-updated-dashboard .su-command__search search .form-control:focus {
+  background: transparent;
+  border: 0;
+  border-radius: var(--su-radius);
   box-shadow: none;
 }
 
-.stay-updated-dashboard .su-command__search search .form-control.is-hotkey-focus {
+.stay-updated-dashboard .su-command__search .su-search .form-control:focus,
+.stay-updated-dashboard .su-command__search .su-search #search-input:focus,
+.stay-updated-dashboard .su-command__search .su-search .form-control.is-hotkey-focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--su-accent-ring);
-  border-radius: 0.35rem;
+  background: transparent;
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.stay-updated-dashboard .su-command__search .su-search .form-control::placeholder,
+.stay-updated-dashboard .su-command__search .su-search #search-input::placeholder {
+  color: var(--text-muted-color);
+  opacity: 0.85;
+}
+
+html[data-mode='dark'] .stay-updated-dashboard .su-command__search .su-search {
+  background-color: var(--card-bg);
+  border-color: var(--main-border-color);
+}
+
+html[data-mode='dark'] .stay-updated-dashboard .su-command__search .su-search .form-control,
+html[data-mode='dark'] .stay-updated-dashboard .su-command__search .su-search #search-input {
+  color: var(--text-color);
+  background: transparent;
 }
 
 /* ---- Auto-refresh Bootstrap switch ---- */
@@ -609,78 +650,6 @@
 
 .stay-updated-dashboard .article-card__footer-read {
   color: var(--text-muted-color);
-}
-
-/* ---- Search row (Chirpy/Bootstrap form-control override) ---- */
-.stay-updated-dashboard .su-search {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-height: var(--su-control-h);
-  padding: 0 12px 0 36px;
-  background: var(--card-bg);
-  border: 1px solid var(--main-border-color);
-  border-radius: var(--su-radius);
-  box-shadow: var(--card-shadow);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.stay-updated-dashboard .su-search:focus-within {
-  border-color: var(--su-input-focus);
-  box-shadow: 0 0 0 2px var(--su-accent-ring);
-}
-
-.stay-updated-dashboard .su-search > .fa-search {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted-color);
-  pointer-events: none;
-  font-size: 0.85rem;
-}
-
-.stay-updated-dashboard .su-search .form-control,
-.stay-updated-dashboard .su-search #search-input {
-  flex: 1;
-  min-width: 0;
-  height: calc(var(--su-control-h) - 2px);
-  padding: 0;
-  font: inherit;
-  font-size: 0.88rem;
-  color: var(--text-color);
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.stay-updated-dashboard .su-search .form-control:focus,
-.stay-updated-dashboard .su-search #search-input:focus {
-  outline: none;
-  background: transparent;
-  color: var(--text-color);
-  box-shadow: none;
-}
-
-.stay-updated-dashboard .su-search .form-control::placeholder,
-.stay-updated-dashboard .su-search #search-input::placeholder {
-  color: var(--text-muted-color);
-  opacity: 0.85;
-}
-
-html[data-mode='dark'] .stay-updated-dashboard .su-search,
-html[data-mode='dark'] .stay-updated-dashboard button.su-btn {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border-color: var(--main-border-color);
-}
-
-html[data-mode='dark'] .stay-updated-dashboard .su-search .form-control,
-html[data-mode='dark'] .stay-updated-dashboard .su-search #search-input {
-  color: var(--text-color);
-  background: transparent;
 }
 
 /* ---- Ribbon action buttons (avoid browser/Bootstrap default chrome) ---- */
