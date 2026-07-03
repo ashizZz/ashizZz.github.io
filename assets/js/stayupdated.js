@@ -399,6 +399,21 @@
             }
         }
 
+        /** Skip favicons, emoji sprites, tiny brand icons — they blow up in the card hero. */
+        function isUsableCardThumbnail(url) {
+            if (!url || !isValidHttpUrl(url)) return false;
+            const u = url.toLowerCase();
+            if (/\.(svg|ico)(\?|$)/i.test(u)) return false;
+            if (/emoji|favicon|apple-touch|site-icon|avatar|gravatar|1x1|pixel\.gif|spacer|transparent\.png|badge|web-onboard|githubassets\.com\/images\/modules|opengraph\.jpg|logo[-_]?only/i.test(u)) {
+                return false;
+            }
+            const widthParam = u.match(/(?:[?&](?:w|width)=)(\d+)/);
+            if (widthParam && parseInt(widthParam[1], 10) < 120) return false;
+            const maxSeg = u.match(/\/max\/(\d+)/i);
+            if (maxSeg && parseInt(maxSeg[1], 10) < 200) return false;
+            return true;
+        }
+
         function extractImageUrl(item) {
             try {
                 const candidates = [
@@ -409,12 +424,12 @@
                     item.enclosure?.url
                 ];
                 for (const url of candidates) {
-                    if (url && isValidHttpUrl(url)) return url;
+                    if (url && isUsableCardThumbnail(url)) return url;
                 }
 
                 const desc = item.description || item.content || '';
                 const imgMatch = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
-                if (imgMatch?.[1] && isValidHttpUrl(imgMatch[1]) && !/pixel|tracking|1x1|spacer/i.test(imgMatch[1])) {
+                if (imgMatch?.[1] && isUsableCardThumbnail(imgMatch[1]) && !/pixel|tracking|1x1|spacer/i.test(imgMatch[1])) {
                     return imgMatch[1];
                 }
             } catch {}
@@ -429,13 +444,22 @@
         function resolveCardThumbnailUrl(item) {
             const direct = extractImageUrl(item);
             if (direct) return direct;
-            if (item._ogImage && isValidHttpUrl(item._ogImage)) return item._ogImage;
+            if (item._ogImage && isUsableCardThumbnail(item._ogImage)) return item._ogImage;
             const cached = getCachedOgImage(item.link);
-            if (cached) {
+            if (cached && isUsableCardThumbnail(cached)) {
                 item._ogImage = cached;
                 return cached;
             }
             return null;
+        }
+
+        function rejectTinyCardImage(img, mediaEl, sourceName) {
+            if (!img || !mediaEl) return;
+            const w = img.naturalWidth || 0;
+            const h = img.naturalHeight || 0;
+            if ((w > 0 && w < 120) || (h > 0 && h < 80)) {
+                replaceMediaWithPlaceholder(mediaEl, sourceName);
+            }
         }
 
         function setArticleCardMediaImage(mediaEl, imageUrl, sourceName) {
@@ -454,6 +478,9 @@
             const srcName = sourceName || mediaEl.closest('.article-card')?.dataset?.source || 'Unknown';
             img.addEventListener('error', () => {
                 replaceMediaWithPlaceholder(mediaEl, srcName);
+            }, { once: true });
+            img.addEventListener('load', () => {
+                rejectTinyCardImage(img, mediaEl, srcName);
             }, { once: true });
             mediaEl.appendChild(img);
             mediaEl.dataset.hasImage = '1';
@@ -495,7 +522,7 @@
         }
 
         function finishOgThumbnailJob(job, imageUrl) {
-            if (imageUrl) {
+            if (imageUrl && isUsableCardThumbnail(imageUrl)) {
                 job.item._ogImage = imageUrl;
                 job.item.imageUrl = imageUrl;
                 writeOgImageCacheEntry(job.item.link, imageUrl);
@@ -892,6 +919,24 @@
             state._filterCache = { key: null, items: null };
         }
 
+        /** If the default date window hides every snapshot article, widen to All time. */
+        function ensureSnapshotDateFilter() {
+            if (!state.allItems.length || state.dateFilter === 'all') return false;
+            const dateRange = getDateRange(state.dateFilter);
+            if (!dateRange) return false;
+            let visible = 0;
+            for (let i = 0; i < state.allItems.length; i++) {
+                const item = state.allItems[i];
+                if (item?.title && isDateInRange(item.pubDate, dateRange)) visible++;
+            }
+            if (visible > 0) return false;
+            state.dateFilter = 'all';
+            if (elements.dateFilter) elements.dateFilter.value = 'all';
+            if (elements.customDateRange) elements.customDateRange.hidden = true;
+            invalidateFilterCache();
+            return true;
+        }
+
         function loadPreferences() {
             const prefs = loadFromStorage('feedPreferences');
             if (prefs) {
@@ -1171,7 +1216,8 @@
             }
         }
 
-        async function fetchFeed(feedConfig, useCache = true) {
+        async function fetchFeed(feedConfig, useCache = true, options = {}) {
+            const silent = options.silent === true;
             const cacheKey = getCacheKey(feedConfig.url);
             const cached = loadFromStorage(cacheKey);
             
@@ -1186,7 +1232,12 @@
                     CONFIG.FETCH_TIMEOUT
                 );
                 
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                if (!response.ok) {
+                    if (response.status === 429) {
+                        state._rateLimited = true;
+                    }
+                    throw new Error(`HTTP ${response.status}`);
+                }
                 
                 const data = await response.json();
                 
@@ -1206,8 +1257,10 @@
                     throw new Error('Invalid feed response');
                 }
             } catch (error) {
-                // Only log errors in development
-                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                const is429 = String(error?.message || '').includes('429');
+                const shouldLog = !silent && !is429
+                    && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+                if (shouldLog) {
                     console.error(`Error fetching feed: ${feedConfig.name}`, error);
                 }
                 state.feedStatus[feedConfig.name] = 'error';
@@ -1328,6 +1381,7 @@
                 preservedItems = state.allItems.slice();
                 state.allItems = [];
                 state.feedStatus = {};
+                invalidateFilterCache();
             } else if (!hadItems) {
                 if (elements.feedContainer) elements.feedContainer.innerHTML = '';
                 state._cardNodes.clear();
@@ -1339,6 +1393,7 @@
             }
 
             state._liveFeedRefresh = true;
+            state._rateLimited = false;
             setLoadingVisible((!hadItems || hardRefresh) && !background);
             setErrorVisible(false);
             setRetryVisible(false);
@@ -1405,9 +1460,10 @@
             }
 
             for (const batch of batches) {
+                if (state._rateLimited) break;
                 const batchPromises = batch.map(async (feed) => {
                     try {
-                        const result = await fetchFeed(feed, false); // Fresh fetch
+                        const result = await fetchFeed(feed, false, { silent: background });
                         completed++;
                         updateProgress();
                         
@@ -1420,8 +1476,9 @@
                     } catch (error) {
                         completed++;
                         updateProgress();
-                        // Only log errors in development
-                        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                        const is429 = String(error?.message || '').includes('429');
+                        if (!background && !is429
+                            && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
                             console.error(`Error fetching feed: ${feed.name}`, error);
                         }
                         return { status: 'error', source: feed.name, error: error.message };
@@ -1438,6 +1495,8 @@
 
             if (state.allItems.length === 0 && preservedItems?.length) {
                 state.allItems = preservedItems;
+                state._datasetVersion++;
+                invalidateFilterCache();
             }
 
             setLoadingVisible(false);
@@ -1445,7 +1504,14 @@
             updateFeedStatusLine(null, true);
             localStorage.setItem('lastFeedRefresh', Date.now().toString());
             saveSnapshot();
-            
+
+            if (background && state._rateLimited && preservedItems?.length) {
+                state.allItems = preservedItems;
+                state._datasetVersion++;
+                invalidateFilterCache();
+                scheduleRender();
+            }
+
             // Show success notification if we loaded new data
             const newItemsCount = state.allItems.length;
             const uniqueSourcesCount = new Set(state.allItems.map(i => i.sourceName)).size;
@@ -3375,6 +3441,9 @@
                 elements.sourceFilters.dataset.built = '';
             }
             initializeSourceFilters();
+            if (ensureSnapshotDateFilter()) {
+                state._fastBoot = false;
+            }
             scheduleRender();
             if (state.autoRefreshEnabled) startAutoRefresh();
 
@@ -3490,7 +3559,9 @@
                 finishDashboardBoot();
                 updateFeedStatusLine(staticSnap, false);
                 const stale = isStaticSnapshotStale(staticSnap.generatedAt);
-                if (stale) {
+                const isLocal = window.location.hostname === 'localhost'
+                    || window.location.hostname === '127.0.0.1';
+                if (stale && !isLocal) {
                     fetchAllFeeds({ hardRefresh: false, background: true })
                         .then(finishDashboardBoot)
                         .catch((err) => {

@@ -9,4 +9,6 @@ icon: fas fa-shield-halved
 order: 5
 permalink: /stay-updated/
 toc: false
+hide_panel: true
+full_width: true
 ---

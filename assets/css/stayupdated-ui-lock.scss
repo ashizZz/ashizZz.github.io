@@ -100,14 +100,18 @@
   margin: 0;
   font: inherit;
   font-size: 0.72rem;
+  font-weight: 500;
   cursor: pointer;
-  background: transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  color: var(--text-color);
+  background: var(--button-bg);
+  border: 1px solid var(--main-border-color);
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .stay-updated-dashboard .filter-presets .post-tag.is-active {
   color: var(--link-color);
   border-color: var(--link-color);
+  background: color-mix(in srgb, var(--link-color) 12%, var(--button-bg));
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -362,10 +366,6 @@
   display: none;
 }
 
-.stay-updated-dashboard .su-btn--action {
-  font-size: 0.78rem;
-}
-
 .stay-updated-dashboard .su-ribbon__date-group {
   display: inline-flex;
   align-items: center;
@@ -588,6 +588,7 @@
 
 .stay-updated-dashboard .article-card__new-badge {
   flex-shrink: 0;
+  margin-inline-start: 0.1rem;
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -607,5 +608,105 @@
 }
 
 .stay-updated-dashboard .article-card__footer-read {
+  color: var(--text-muted-color);
+}
+
+/* ---- Search row (Chirpy/Bootstrap form-control override) ---- */
+.stay-updated-dashboard .su-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--su-control-h);
+  padding: 0 12px 0 36px;
+  background: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: var(--su-radius);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stay-updated-dashboard .su-search:focus-within {
+  border-color: var(--su-input-focus);
+  box-shadow: 0 0 0 2px var(--su-accent-ring);
+}
+
+.stay-updated-dashboard .su-search > .fa-search {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted-color);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+.stay-updated-dashboard .su-search .form-control,
+.stay-updated-dashboard .su-search #search-input {
+  flex: 1;
+  min-width: 0;
+  height: calc(var(--su-control-h) - 2px);
+  padding: 0;
+  font: inherit;
+  font-size: 0.88rem;
+  color: var(--text-color);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.stay-updated-dashboard .su-search .form-control:focus,
+.stay-updated-dashboard .su-search #search-input:focus {
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.stay-updated-dashboard .su-search .form-control::placeholder,
+.stay-updated-dashboard .su-search #search-input::placeholder {
+  color: var(--text-muted-color);
+  opacity: 0.85;
+}
+
+html[data-mode='dark'] .stay-updated-dashboard .su-search,
+html[data-mode='dark'] .stay-updated-dashboard button.su-btn {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--main-border-color);
+}
+
+html[data-mode='dark'] .stay-updated-dashboard .su-search .form-control,
+html[data-mode='dark'] .stay-updated-dashboard .su-search #search-input {
+  color: var(--text-color);
+  background: transparent;
+}
+
+/* ---- Ribbon action buttons (avoid browser/Bootstrap default chrome) ---- */
+.stay-updated-dashboard button.su-btn,
+.stay-updated-dashboard select.su-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--text-color);
+  background-color: var(--button-bg);
+  border-color: var(--btn-border-color, var(--main-border-color));
+}
+
+.stay-updated-dashboard .su-btn--action {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--button-bg);
+  border: 1px solid var(--main-border-color);
+  box-shadow: none;
+}
+
+.stay-updated-dashboard .su-btn--ghost {
+  color: var(--text-color);
+  background-color: var(--button-bg);
+}
+
+.stay-updated-dashboard .su-btn--help {
   color: var(--text-muted-color);
 }
