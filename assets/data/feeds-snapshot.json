@@ -1,16 +1,11 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-31T19:23:42.094Z",
+  "generatedAt": "2026-08-01T02:46:25.867Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
-  "itemCount": 219,
+  "itemCount": 226,
   "feedErrors": [
-    {
-      "name": "Help Net Security",
-      "url": "https://www.helpnetsecurity.com/feed",
-      "error": "fetch failed"
-    },
     {
       "name": "Cisco Talos Intelligence",
       "url": "https://talosintelligence.com/rss",
@@ -42,6 +37,11 @@
       "error": "Unexpected close tag\nLine: 72\nColumn: 79\nChar: >"
     },
     {
+      "name": "About DFIR",
+      "url": "https://aboutdfir.com/feed",
+      "error": "HTTP 415"
+    },
+    {
       "name": "Microsoft Security Response Center",
       "url": "https://msrc-blog.microsoft.com/feed",
       "error": "HTTP 404"
@@ -64,6 +64,181 @@
   ],
   "items": [
     {
+      "title": "Threat Report / IoC Disclosure] Infostealer Campaign abusing DSE, Rogue Root CA & Fake System Binaries",
+      "link": "https://www.reddit.com/r/blueteamsec/comments/1vcaoau/threat_report_ioc_disclosure_infostealer_campaign/",
+      "description": "📌 Executive Summary Analysis of a recent infection originating from repackaged GSM unlocking utilities (e.g., TFT Unlock / SamFW Tool). The campaign deploys an infostealer and worm payload that achieves persistence by creating spoofed system binaries in non-standard system directories, installing a rogue Root CA certificate for potential HTTPS interception, enabling Test-Signing mode (`testsigning Yes`) to bypass Driver Signature Enforcement (DSE), and maintaining external C2/KMS connections. --- ## 🔍 Threat Overview & Behaviors * **Initial Vector:** Repackaged mobile unlocking tools (`SamFwToolSetup_v5.6.exe`, `TFTUnlock.exe`). * **Persistence Mechanism:** * Registry Run Key: `HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Run\\Explorer` -> points to fake binary in `C:\\Windows\\Resources\\Themes\\explorer.exe`. * **System Tampering:** * Executes `bcdedit /set testsigning on` to allow unsigned kernel drivers. * Installs a custom untrusted Root CA certificate (`UniversalADB`) into `Cert:\\LocalMachine\\Root` to intercept/decrypt SSL/TLS web traffic. * **Payload Execution:** * Drops obfuscated secondary payloads in `C:\\Windows\\Resources\\Themes\\` (`icsys.icn.exe`). * Mimics legitimate Windows processes (`explorer.exe`, `svchost.exe`) placed inside `C:\\Windows\\Resources\\`. --- ## Indicators of Compromise (IoCs) ### File Hashes (SHA-256) `6CC75E405EF0E7D6359ABA9764B86540C9AB2DD70EE73AAAC0FFF4BD62D69F31` (icsys.icn.exe) ### File Paths & Artifacts `C:\\Windows\\Resources\\Themes\\icsys.icn.exe` `C:\\Windows\\Resources\\Themes\\explorer.exe` (Fake Explorer) `C:\\Windows\\Resources\\svchost.exe` (Fake Svchost) ### Registry Modification Keys `HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Run\\Explorer` -> `C:\\Windows\\Resources\\Themes\\explorer.exe` `HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SoftwareProtectionPlatform\\KeyManagementServiceName` -> `158.178.234.166` ### Rogue Root Certificate (MITM Risk) Subject: `CN=UniversalADB` Thumbprint: `6820780B7BD5640DCF4",
+      "guid": "t3_1vcaoau",
+      "pubDate": "2026-08-01T02:20:39.000Z",
+      "sourceName": "r/blueteamsec",
+      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "How I Found a Critical Race Condition on Kruidvat — A Step-by-Step Bug Bounty Walkthrough",
+      "link": "https://medium.com/@Lelouchzero/how-i-found-a-critical-race-condition-on-kruidvat-a-step-by-step-bug-bounty-walkthrough-773f20a323f5?source=rss------bug_bounty-5",
+      "description": "Introduction Continue reading on Medium »",
+      "guid": "https://medium.com/p/773f20a323f5",
+      "pubDate": "2026-08-01T00:30:47.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/946/1*-gF-7ui5kp19hnUSZr841A.png"
+    },
+    {
+      "title": "How to Exist",
+      "link": "https://www.raptitude.com/2026/07/how-to-exist/",
+      "description": "Comments",
+      "guid": "https://www.raptitude.com/2026/07/how-to-exist/",
+      "pubDate": "2026-08-01T00:25:00.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Amgen says cloud data breach exposed patient health, proprietary info",
+      "link": "https://www.bleepingcomputer.com/news/security/amgen-says-cloud-data-breach-exposed-patient-health-proprietary-info/",
+      "description": "Pharmaceutical company Amgen says it suffered a data breach after threat actors stole corporate data and patient information stored in multiple cloud systems operated by third-party service providers. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/amgen-says-cloud-data-breach-exposed-patient-health-proprietary-info/",
+      "pubDate": "2026-07-31T22:16:42.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Arch Linux disables AUR package adoption to stop malware flood",
+      "link": "https://www.bleepingcomputer.com/news/security/arch-linux-disables-aur-package-adoption-to-stop-malware-flood/",
+      "description": "The Arch Linux project has temporarily disabled adoption of Arch User Repository (AUR) packages after a surge in malicious takeovers of existing packages. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/arch-linux-disables-aur-package-adoption-to-stop-malware-flood/",
+      "pubDate": "2026-07-31T21:38:08.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "South Korea Warns of State-Backed Watering Hole Attacks",
+      "link": "https://securityaffairs.com/196417/apt/south-korea-warns-of-state-backed-watering-hole-attacks.html",
+      "description": "South Korea warned that nation-state actors are using phishing and compromised websites to silently infect citizens and businesses. South Korea agencies (The National Intelligence Service, the National Police Agency, the Korea Internet & Security Agency, and the Financial Security Institute) jointly published an advisory warning that a state-backed hacking group is actively targeting South Korean […]",
+      "guid": "https://securityaffairs.com/?p=196417",
+      "pubDate": "2026-07-31T21:25:30.000Z",
+      "sourceName": "Security Affairs",
+      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
+      "category": "news"
+    },
+    {
+      "title": "Online ad firm Adform’s script compromised to steal cryptocurrency",
+      "link": "https://www.bleepingcomputer.com/news/security/online-ad-firm-adforms-script-compromised-to-steal-cryptocurrency/",
+      "description": "Online advertising firm Adform suffered a supply-chain attack that delivered cryptocurrency-stealing scripts to websites using its ad platform, replacing wallet addresses copied to visitors' clipboards with ones controlled by an attacker. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/online-ad-firm-adforms-script-compromised-to-steal-cryptocurrency/",
+      "pubDate": "2026-07-31T21:09:25.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Friday Squid Blogging: Squid Helps Discover New Marine Species",
+      "link": "https://www.schneier.com/blog/archives/2026/07/friday-squid-blogging-squid-helps-discover-new-marine-species.html",
+      "description": "The Squid is a new scientific machine: One of the technological breakthroughs was the onboard use of a spinning wheel confocal microscope, nicknamed the Squid, which uses lasers to scan microscopic details of how organisms are put together. “That opens up a whole new world of exploring. We could see cells interacting with each other, exchanging material and building skeletons. And we could do that live on the ship, when usually it takes a couple of weeks of staining and mounting to see anything,” Osborn said. The expedition discovered thirty-one new marine species in two weeks. The article doesn’t say if any of them were new species of squid. As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered. Blog moderation policy.",
+      "guid": "https://www.schneier.com/?p=72308",
+      "pubDate": "2026-07-31T21:06:46.000Z",
+      "sourceName": "Schneier on Security",
+      "sourceUrl": "https://www.schneier.com/feed/atom/",
+      "category": "news"
+    },
+    {
+      "title": "CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft",
+      "link": "https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+      "description": "Storm-2945, a sub-cluster of the Russian threat actor Midnight Blizzard, has been observed compromising the sign-in portals of hospitality-related organizations such as hotels since May 2026 in order to deliver malware to travelers and steal credentials in an operation we call CaptiveCrunch. The post CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft appeared first on Microsoft Security Blog.",
+      "guid": "https://www.microsoft.com/en-us/security/blog/?p=148935",
+      "pubDate": "2026-07-31T21:01:37.000Z",
+      "sourceName": "Microsoft Security Blog",
+      "sourceUrl": "https://www.microsoft.com/security/blog/feed",
+      "category": "cloud",
+      "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/image-43.webp"
+    },
+    {
+      "title": "How I Got My Highest Payout",
+      "link": "https://0xsponge.medium.com/how-i-got-my-highest-payout-466213a1cb47?source=rss------bug_bounty-5",
+      "description": "The target was an application portal. You register, you fill out a genuinely ENORMOUS form, and at the end it generates a PDF of… Continue reading on Medium »",
+      "guid": "https://medium.com/p/466213a1cb47",
+      "pubDate": "2026-07-31T21:01:01.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*uK49No-B5J4jP5zxC_Z8nQ.png"
+    },
+    {
+      "title": "Demystifying DRAM Read Disturbance: RowHammer and RowPress Phenomena",
+      "link": "https://arxiv.org/abs/2607.28233",
+      "description": "Comments",
+      "guid": "https://arxiv.org/abs/2607.28233",
+      "pubDate": "2026-07-31T20:44:29.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "CosmosEscape: Taking Over Every Database in Azure Cosmos DB",
+      "link": "https://www.reddit.com/r/blueteamsec/comments/1vc2by1/cosmosescape_taking_over_every_database_in_azure/",
+      "description": "submitted by /u/digicat [link] [comments]",
+      "guid": "t3_1vc2by1",
+      "pubDate": "2026-07-31T20:28:13.000Z",
+      "sourceName": "r/blueteamsec",
+      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Anthropic Says Claude Models Hacked 3 Organizations During Cyber Tests",
+      "link": "https://hackread.com/anthropic-claude-models-hacked-organizations-cyber-tests/",
+      "description": "Anthropic found Claude accessed systems at three real businesses after a testing error gave its AI models live internet access during cybersecurity evaluations.",
+      "guid": "https://hackread.com/?p=148093",
+      "pubDate": "2026-07-31T20:01:51.000Z",
+      "sourceName": "HackRead",
+      "sourceUrl": "https://www.hackread.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "HIPAA Security Rule on AWS – Technical Safeguards Implementation and Readiness Guidance",
+      "link": "https://aws.amazon.com/blogs/security/hipaa-security-rule-on-aws-technical-safeguards-implementation-and-readiness-guidance/",
+      "description": "Today, we’re releasing the HIPAA Security Rule on AWS: Technical Safeguards Implementation and Readiness Guidance. This helps covered entities and business associates configure, implement, and evidence compliance with the HIPAA Security Rule Technical Safeguard requirements (45 CFR §164.312) when building healthcare workloads on AWS. The HIPAA Security Rule’s Technical Safeguards (§164.312) define five standards and […]",
+      "guid": "04f386cbe6d21ff20565be667836be428046234c",
+      "pubDate": "2026-07-31T19:44:25.000Z",
+      "sourceName": "AWS Security Blog",
+      "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
+      "category": "cloud",
+      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2024/11/14/abdul-javid.png"
+    },
+    {
+      "title": "Stronger with every update: How we’re making Chrome and the web safer in the AI Era",
+      "link": "https://www.reddit.com/r/blueteamsec/comments/1vc0njx/stronger_with_every_update_how_were_making_chrome/",
+      "description": "submitted by /u/digicat [link] [comments]",
+      "guid": "t3_1vc0njx",
+      "pubDate": "2026-07-31T19:25:23.000Z",
+      "sourceName": "r/blueteamsec",
+      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "The Harness Is the Hack: What Agentic AI Means for Offensive Security in 2026",
+      "link": "https://expl0it32.medium.com/the-harness-is-the-hack-what-agentic-ai-means-for-offensive-security-in-2026-28fcf4af2dce?source=rss------bug_bounty-5",
+      "description": "For the last two years, most “AI hacking” hype has been about the model, how good is GPT-X or Claude-Y at finding a SQL injection. That… Continue reading on Medium »",
+      "guid": "https://medium.com/p/28fcf4af2dce",
+      "pubDate": "2026-07-31T19:24:26.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1360/1*NAYAmqfu_XjY_YST5Zxa_Q.png"
+    },
+    {
+      "title": "Bypassing Account Sign-up Restrictions with a Unicode Character",
+      "link": "https://dukrov.medium.com/bypassing-account-sign-up-restrictions-with-a-unicode-character-760d9fb6a313?source=rss------bug_bounty-5",
+      "description": "It’s been a while since I put a writeup up here, so I’m dusting off one of my favorites. The target was a user-management / identity… Continue reading on Medium »",
+      "guid": "https://medium.com/p/760d9fb6a313",
+      "pubDate": "2026-07-31T19:14:40.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty"
+    },
+    {
       "title": "Zero-click Admin Takeover via Unguarded login_email",
       "link": "https://dukrov.medium.com/zero-click-admin-takeover-via-unguarded-login-email-ab9bcc411641?source=rss------bug_bounty-5",
       "description": "Been meaning to write this one up since December. It’s a HR platform, name left out, and the bug is one of those ones where you can tell… Continue reading on Medium »",
@@ -72,16 +247,6 @@
       "sourceName": "Medium Bug Bounty Tag",
       "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
       "category": "bugbounty"
-    },
-    {
-      "title": "Tailscale didn't stop the Hugging Face intrusion",
-      "link": "https://tailscale.com/blog/hugging-face-intrusion",
-      "description": "Comments",
-      "guid": "https://tailscale.com/blog/hugging-face-intrusion",
-      "pubDate": "2026-07-31T19:03:45.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "OpenAI says its new GPT 5.6 models are becoming more cost-efficient",
@@ -115,11 +280,11 @@
       "category": "community"
     },
     {
-      "title": "Termixer (TUI DJ Mixer)",
-      "link": "https://github.com/l00sed/termixer",
+      "title": "June in Servo: real world compat, media queries, SharedWorker, and more",
+      "link": "https://servo.org/blog/2026/07/31/june-in-servo/",
       "description": "Comments",
-      "guid": "https://github.com/l00sed/termixer",
-      "pubDate": "2026-07-31T18:28:08.000Z",
+      "guid": "https://servo.org/blog/2026/07/31/june-in-servo/",
+      "pubDate": "2026-07-31T18:17:52.000Z",
       "sourceName": "Hacker News",
       "sourceUrl": "https://news.ycombinator.com/rss",
       "category": "community"
@@ -135,17 +300,7 @@
       "category": "news"
     },
     {
-      "title": "Everyone is building LLM routers, we deprecated ours",
-      "link": "https://manifest.build/blog/why-we-deprecated-our-llm-router/",
-      "description": "Comments",
-      "guid": "https://manifest.build/blog/why-we-deprecated-our-llm-router/",
-      "pubDate": "2026-07-31T18:06:39.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "qm",
+      "title": "qm – Multiplayer agent harness for work",
       "link": "https://github.com/yc-software/qm",
       "description": "Comments",
       "guid": "https://github.com/yc-software/qm",
@@ -279,16 +434,6 @@
       "category": "community"
     },
     {
-      "title": "Algorithms on billion-scale graph using 10GB RAM: I love DataFusion",
-      "link": "https://semyonsinchenko.github.io/ssinchenko/post/datafusion-graphs-cc-2/",
-      "description": "Comments",
-      "guid": "https://semyonsinchenko.github.io/ssinchenko/post/datafusion-graphs-cc-2/",
-      "pubDate": "2026-07-31T15:53:37.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "In Other News: OpenAI Open Source Tool, AWS Links Hacks to North Korea, Mythos Crypto Research",
       "link": "https://www.securityweek.com/in-other-news-openai-open-source-tool-aws-links-hacks-to-north-korea-mythos-crypto-research/",
       "description": "Noteworthy stories that might have slipped under the radar: parcel delivery company OnTrac hacked, Adobe patches, UK Department for Education loses 607,000 records. The post In Other News: OpenAI Open Source Tool, AWS Links Hacks to North Korea, Mythos Crypto Research appeared first on SecurityWeek.",
@@ -402,17 +547,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhxfc7_NuArKSujgjgzPzENagYVTlBxcvnFBXSbptnFs_TI1o-Zt5SINHtPEO5MNkJ3vwkKUTX68vwmCzVxRQVFcgnb9eXwAsLKayCtzMLVRuqwV3RDaWTgQNOm0CVXcV_jX1v4x4mgEthTDjAsZdF4BSPSuTTRqKnM6qbIhPVjZP38dHmpptNurSmXRM/s1600/android-tv.jpg"
     },
     {
-      "title": "From VirusTotal to Bug Bounty: What I Learned from My Cybersecurity Quiz",
-      "link": "https://medium.com/@habkaz124/from-virustotal-to-bug-bounty-what-i-learned-from-my-cybersecurity-quiz-1a707b9171f9?source=rss------bug_bounty-5",
-      "description": "As part of my cybersecurity learning journey, I recently completed a hands-on quiz that covered malware analysis, account security, Linux… Continue reading on Medium »",
-      "guid": "https://medium.com/p/1a707b9171f9",
-      "pubDate": "2026-07-31T14:42:47.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1366/1*ArYVvVaTOfDAfL-D_xH1gA.jpeg"
-    },
-    {
       "title": "Critical JetBrains Flaw Allows Attackers to Execute Malicious Code Remotely – Update Now",
       "link": "https://cybersecuritynews.com/jetbrains-vulnerability-execute-malicious-code/",
       "description": "JetBrains has announced a critical vulnerability in TeamCity On-Premises, identified as CVE-2026-63077. This vulnerability allows attackers to bypass authentication and execute arbitrary commands remotely. It affects all versions of TeamCity On-Premises. An attacker only requires HTTP or HTTPS access to a vulnerable TeamCity server to exploit this issue, with no need for a valid account, […] The post Critical JetBrains Flaw Allows Attackers to Execute Malicious Code Remotely – Update Now appeared first on Cyber Security News.",
@@ -454,28 +588,6 @@
       "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/07/image-93.png?resize=1024%2C576&#038;ssl=1"
     },
     {
-      "title": "How I Found My First Real-Life RCE: Exploiting CVE-2026–53576 in Kestra",
-      "link": "https://medium.com/@belalshohaip222/how-i-found-my-first-real-life-rce-exploiting-cve-2026-53576-in-kestra-897bd67c529c?source=rss------bug_bounty-5",
-      "description": "From spotting an exposed developer portal to bypassing authentication with a single path trick. Continue reading on Medium »",
-      "guid": "https://medium.com/p/897bd67c529c",
-      "pubDate": "2026-07-31T13:46:01.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*L9DRvesN9Oq1j7kxF7l-BA.png"
-    },
-    {
-      "title": "Pelajar SMA Asal Kalimantan Selatan Raih Surat Apresiasi dari NASA",
-      "link": "https://cybersecbjmbk.medium.com/pelajar-sma-asal-kalimantan-selatan-raih-surat-apresiasi-dari-nasa-b312b222e7cc?source=rss------bug_bounty-5",
-      "description": "Muhammad Abdillah NASA VDP Continue reading on Medium »",
-      "guid": "https://medium.com/p/b312b222e7cc",
-      "pubDate": "2026-07-31T13:42:17.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1080/1*VdicqBmD8d3P0Co-wi-yFQ.png"
-    },
-    {
       "title": "Interpol Leverages Global System to Curtail Fraud Payments",
       "link": "https://www.darkreading.com/cybersecurity-operations/interpol-leverages-global-system-curtail-fraud-payments",
       "description": "When a fraudulent transaction occurs, law enforcement agencies must work quickly to halt payments before cybercriminals cash out.",
@@ -496,20 +608,9 @@
       "category": "news"
     },
     {
-      "title": "From Developer Mindset to Security Researcher: What My First Bug Bounty Hunt Taught Me",
-      "link": "https://medium.com/@vishwamehtaofficial/from-developer-mindset-to-security-researcher-what-my-first-bug-bounty-hunt-taught-me-4aa483d88ad0?source=rss------bug_bounty-5",
-      "description": "Transitioning into cybersecurity is often framed around certifications, textbook theory, and guided lab environments like TryHackMe or… Continue reading on Medium »",
-      "guid": "https://medium.com/p/4aa483d88ad0",
-      "pubDate": "2026-07-31T13:20:00.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1376/1*Z5FMDZox-xJwoSq3pIziPQ.png"
-    },
-    {
       "title": "DROP Platform Lets Californians Reduce Digital Footprint",
       "link": "https://www.darkreading.com/data-privacy/drop-platform-lets-californians-ditch-their-data",
-      "description": "The Delete Request and Opt-out Platform (DROP) launches Aug. 1 and hundreds of thousands of California residents already registered. Other states could follow if the process goes smoothly.",
+      "description": "Hundreds of thousands of California residents have already registered for the Delete Request and Opt-out Platform (DROP), which launches Aug. 1. Other states could follow if the process goes smoothly.",
       "guid": "https://www.darkreading.com/data-privacy/drop-platform-lets-californians-ditch-their-data",
       "pubDate": "2026-07-31T13:19:36.000Z",
       "sourceName": "Dark Reading",
@@ -524,6 +625,16 @@
       "pubDate": "2026-07-31T13:07:14.000Z",
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "Cybercrime goes subscription: AI, malware and infrastructure on demand",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/infoblox-domain-abuse-campaigns-report/",
+      "description": "Cybercrime has become a commercialized ecosystem where criminals can buy or rent nearly every capability needed to launch sophisticated attacks. These services provide anonymity, plausible deniability, and access to short-lived infrastructure that is difficult to detect, attribute, and disrupt, enabling low-skilled actors to operate at scale, according to the Infoblox 2026 Threat Landscape Report. “Cybercrime is becoming more efficient, automated, and harder to stop. Driven by economics and fueled in part by frontier AI, it … More → The post Cybercrime goes subscription: AI, malware and infrastructure on demand appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=379602",
+      "pubDate": "2026-07-31T13:00:02.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
     },
     {
@@ -576,6 +687,16 @@
       "pubDate": "2026-07-31T12:22:25.000Z",
       "sourceName": "Security Affairs",
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
+      "category": "news"
+    },
+    {
+      "title": "Criminals used AI and children’s coding software to build a multimillion-dollar ad fraud empire",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/fuyao-ad-fraud-botnet-android-tv-boxes/",
+      "description": "A security investigation into inexpensive Android TV boxes led researchers to an ad fraud operation that had remained unnoticed for several years. Fuyao apps ecosystem (Source: Bitsight) According to Bitsight, the operation, named Fuyao, uses preinstalled Android apps, device identity spoofing, AI-generated websites, and residential proxy services to generate advertising revenue without device owners’ knowledge. “Fuyao’s business model operates under its ability to always identify where an ad lives on a website, spoof the device … More → The post Criminals used AI and children’s coding software to build a multimillion-dollar ad fraud empire appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380195",
+      "pubDate": "2026-07-31T12:19:31.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
     },
     {
@@ -674,16 +795,6 @@
       "category": "research"
     },
     {
-      "title": "Infosec News Nuggets — July 31, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-july-31-2026/",
-      "description": "Semiconductor Chip Titan Analog Devices Reports Data Breach Analog Devices told federal regulators that intruders gained unauthorized access to its systems in June and exfiltrated an unknown number of files, with outside cybersecurity experts and law enforcement now involved in the response. The Massachusetts-based chip maker, which posted more than $11 billion in revenue last […] The post Infosec News Nuggets — July 31, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9285",
-      "pubDate": "2026-07-31T10:44:51.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
-    },
-    {
       "title": "Google AI Uncovers 13-Year-Old Chrome Flaw Amid Record Patching Pace",
       "link": "https://www.securityweek.com/googles-ai-agent-uncovers-13-year-old-chrome-flaw-amid-record-patching-pace/",
       "description": "The internet giant has built an agent harness to find vulnerabilities across Chrome’s codebase. The post Google AI Uncovers 13-Year-Old Chrome Flaw Amid Record Patching Pace appeared first on SecurityWeek.",
@@ -692,6 +803,16 @@
       "sourceName": "SecurityWeek",
       "sourceUrl": "https://www.securityweek.com/rss",
       "category": "news"
+    },
+    {
+      "title": "Progressive Web Components",
+      "link": "https://arielsalminen.com/2026/progressive-web-components/",
+      "description": "Comments",
+      "guid": "https://arielsalminen.com/2026/progressive-web-components/",
+      "pubDate": "2026-07-31T10:04:40.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "CMMC Phase II Is Paused, But Contractors’ Data-Security Obligations Are Not",
@@ -737,6 +858,16 @@
       "category": "news"
     },
     {
+      "title": "Anthropic’s Claude breached three companies during security tests",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/anthropic-claude-cybersecurity-incidents/",
+      "description": "Anthropic has disclosed that its AI model Claude gained unauthorized access to the systems of three different organizations during cybersecurity evaluations. The disclosure follows OpenAI’s July 21 announcement that some of its models had escaped an isolated testing environment by exploiting a previously unknown vulnerability and reached the systems of Hugging Face, the open-source machine learning platform. “After reviewing 141,006 evaluation runs where Claude could have obtained internet access, we identified three incidents in which … More → The post Anthropic’s Claude breached three companies during security tests appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380160",
+      "pubDate": "2026-07-31T09:41:35.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
+    },
+    {
       "title": "Prompted by OpenAI Disclosure, Anthropic Finds Its Own Models Hacked 3 Organizations",
       "link": "https://www.securityweek.com/after-openai-disclosure-anthropic-finds-its-own-models-hacked-3-organizations/",
       "description": "A security company’s systems were hacked after it installed a malicious Python package deployed by Claude. The post Prompted by OpenAI Disclosure, Anthropic Finds Its Own Models Hacked 3 Organizations appeared first on SecurityWeek.",
@@ -779,16 +910,6 @@
       "category": "news"
     },
     {
-      "title": "GitHub - Jatinkapilaq1/intel-me-research: Talk to your Intel Management Engine directly — zero-dependency Python tool. Finds memory leaks, partition manifest, live MKHI probing. First public HECI Spy.",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vblgm9/github_jatinkapilaq1intelmeresearch_talk_to_your/",
-      "description": "submitted by /u/Frequent-Ad-9633 [link] [comments]",
-      "guid": "t3_1vblgm9",
-      "pubDate": "2026-07-31T08:55:53.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Anthropic Finds Claude Breached Real Companies During Security Evaluations",
       "link": "https://securityaffairs.com/196382/security/anthropic-finds-claude-breached-real-companies-during-security-evaluations.html",
       "description": "Anthropic says a misconfigured test let Claude access three real organizations, prompting tighter AI evaluation and monitoring controls. Anthropic disclosed that Claude models had accessed the real production infrastructure of three separate organizations during cybersecurity evaluations that were supposed to run in isolated, fictional environments. The company found the incidents after reviewing 141,006 evaluation runs […]",
@@ -799,14 +920,34 @@
       "category": "news"
     },
     {
-      "title": "DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis",
-      "link": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-      "description": "Comments",
-      "guid": "https://artificialanalysis.ai/models/deepseek-v4-flash",
-      "pubDate": "2026-07-31T07:59:11.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
+      "title": "Traefik Labs introduces Distro Zero secure runtime for API and AI gateways",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/traefik-labs-distro-zero-image/",
+      "description": "Traefik Labs has introduced the Distro Zero image, a hardened, vendor-supported secure runtime delivered as Traefik Hub in proxy mode. It gives platform and security teams a container whose entire executable content is a single memory-safe binary, with validated cryptography built inside it and every advanced capability, from API gateway to AI and MCP gateway to full API management, unlocked by license on that same binary. No binary swap, no migration, no re-validation as needs … More → The post Traefik Labs introduces Distro Zero secure runtime for API and AI gateways appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380155",
+      "pubDate": "2026-07-31T08:18:57.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "Horizon3.ai expands NodeZero with automated web application attack path testing",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/horizon3-ai-nodezero-webapp-pentesting/",
+      "description": "Horizon3.ai has expanded its NodeZero platform with AI-powered web application pentesting. The platform can now autonomously test web applications and identify attack paths that chain application vulnerabilities, credential theft, lateral movement, cloud access, and data exposure. Web applications have never been more exposed or more critical to secure. The rapid deployment of “vibe-coded” applications built with generative AI has introduced a wave of systems riddled with exploitable flaws. At the same time, threat actors are … More → The post Horizon3.ai expands NodeZero with automated web application attack path testing appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380150",
+      "pubDate": "2026-07-31T08:06:59.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "AttackIQ targets CTEM execution with AVA Agentic OS",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/attackiq-ava-agentic-os/",
+      "description": "AttackIQ has announced AVA Agentic OS, an agentic operating system designed to operationalize Continuous Threat Exposure Management. CTEM has emerged as the strategic framework for managing cyber risk, yet many organizations continue to struggle to operationalize CTEM across fragmented security technologies, disconnected workflows, and manual processes. Security teams have invested heavily in tools that identify risk, but they lack an intelligent operational layer that continuously transforms intelligence into action. AVA Agentic OS fills that gap … More → The post AttackIQ targets CTEM execution with AVA Agentic OS appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380146",
+      "pubDate": "2026-07-31T07:56:38.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
     },
     {
       "title": "CareCloud Data Breach Impacts Over 350,000",
@@ -816,6 +957,16 @@
       "pubDate": "2026-07-31T07:51:43.000Z",
       "sourceName": "SecurityWeek",
       "sourceUrl": "https://www.securityweek.com/rss",
+      "category": "news"
+    },
+    {
+      "title": "Resecurity expands threat intelligence integration ecosystem with IBM QRadar",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/resecurity-ibm-qradar/",
+      "description": "Resecurity has announced the availability of native integration with IBM QRadar SIEM, a widely used Security Information and Event Management (SIEM) platform used by the leading Fortune 100 corporations worldwide. The plugin is available for activation via IBM Application Exchange. The integration leverages open standards STIX and TAXII (including version 2.1) to ingest, normalize, and correlate indicators of compromise (IOCs) providing flexible configuration of data ingestion and processing workflows. Security teams can configure log sources … More → The post Resecurity expands threat intelligence integration ecosystem with IBM QRadar appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380140",
+      "pubDate": "2026-07-31T07:32:38.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
     },
     {
@@ -851,16 +1002,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ3hIjH82iCzMILnA0uACotjW9waDLj4siTRhyphenhyphenBSiVyis0Ul0j7-7FcWyDzmCAzZPLJ72iYRezpbd9dUAB_UMw5G4eMBRwph0Sb_aQr9yCRXeLXAkjGiNFekM_qDtOZNFsSk6LLC81Ef74JaqIrcJN58-5p2ShHmUuhKC1IYeVgpQ7D76NWXLnR44RN6G6/s1600/claude.jpg"
     },
     {
-      "title": "2026 Minimum Elements for a Software Bill of Materials (SBOM)",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vbiyb6/2026_minimum_elements_for_a_software_bill_of/",
-      "description": "submitted by /u/digicat [link] [comments]",
-      "guid": "t3_1vbiyb6",
-      "pubDate": "2026-07-31T06:34:48.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Huntress Threat Advisory: Widespread SonicWall Credential Stuffing Campaign",
       "link": "https://www.reddit.com/r/blueteamsec/comments/1vbiw1m/huntress_threat_advisory_widespread_sonicwall/",
       "description": "submitted by /u/digicat [link] [comments]",
@@ -881,24 +1022,34 @@
       "category": "community"
     },
     {
-      "title": "DeepSeek-V4-Flash Update",
-      "link": "https://api-docs.deepseek.com/updates/",
-      "description": "Comments",
-      "guid": "https://api-docs.deepseek.com/updates/",
-      "pubDate": "2026-07-31T06:08:36.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
+      "title": "Aviation cyber risk sits on the ground, the blindness sits in the air",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/eliran-almong-cyviation-aviation-cyber-risk/",
+      "description": "In this interview with Help Net Security, Eliran Almog, CEO of Cyviation, explains why airline cyber losses happen on the ground while the aircraft stays unmonitored. He walks through GNSS jamming that leaves no trace in a SIEM, and a PX4 Autopilot flaw his team disclosed where drone command channels accept unsigned messages. He argues the Electronic Flight Bag matters less than the data loading chain behind it, makes the case for digital twins, and … More → The post Aviation cyber risk sits on the ground, the blindness sits in the air appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=379714",
+      "pubDate": "2026-07-31T05:30:40.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
     },
     {
-      "title": "@copilot-mcp/apex: A macOS Infostealer Re-Published on npm After Takedown",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vbide3/copilotmcpapex_a_macos_infostealer_republished_on/",
-      "description": "submitted by /u/digicat [link] [comments]",
-      "guid": "t3_1vbide3",
-      "pubDate": "2026-07-31T06:04:43.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
+      "title": "Companies push AI, sysadmins keep it on a short leash",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/action1-sysadmins-ai-expectations-report/",
+      "description": "In 2024, sysadmins expected AI to automate patch management optimization, vulnerability prioritization, infrastructure monitoring, and incident response within two years. Action1’s 2026 Survey Report: AI Impact on Sysadmins found that those expectations proved overly optimistic. The largest shortfalls appeared in high-impact operational and security functions, where AI needs to understand business context, system dependencies, risk, and the consequences of an incorrect action. Areas with the widest expectation-reality gaps (Source: Action1) Sysadmins view patch management and … More → The post Companies push AI, sysadmins keep it on a short leash appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=379923",
+      "pubDate": "2026-07-31T05:00:26.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
+    },
+    {
+      "title": "AI agents are changing where cybersecurity seed funding lands",
+      "link": "https://www.helpnetsecurity.com/2026/07/31/ai-agents-cybersecurity-seed-funding/",
+      "description": "Founders pitching a cybersecurity seed round this summer are joining a line that keeps getting longer. Product Hunt launches hit their highest level since late 2023 last quarter, and the Census Bureau’s count of high-propensity business applications kept climbing. Seed deal volume in cyber ticked down. Those figures come from the Q2 2026 Insights report published by DataTribe, an early-stage cybersecurity investor. The money went up the stack. Nine-figure rounds took 81% of every venture … More → The post AI agents are changing where cybersecurity seed funding lands appeared first on Help Net Security.",
+      "guid": "https://www.helpnetsecurity.com/?p=380052",
+      "pubDate": "2026-07-31T04:30:21.000Z",
+      "sourceName": "Help Net Security",
+      "sourceUrl": "https://www.helpnetsecurity.com/feed",
+      "category": "news"
     },
     {
       "title": "ISC Stormcast For Friday, July 31st, 2026 https://isc.sans.edu/podcastdetail/10032, (Fri, Jul 31st)",
@@ -921,6 +1072,16 @@
       "category": "news"
     },
     {
+      "title": "When AI doesn’t know the target is real",
+      "link": "https://www.sophos.com/en-us/blog/when-ai-doesnt-know-the-target-is-real",
+      "description": "The follow-up to the Hugging Face breach is a disclosure from Anthropic Categories: Security Operations Tags: AI, Hugging Face, Anthropic, OpenAI",
+      "guid": "blt0492463f2a3ed7f4",
+      "pubDate": "2026-07-31T00:00:00.000Z",
+      "sourceName": "Sophos Security Ops",
+      "sourceUrl": "https://news.sophos.com/en-us/category/security-operations/feed/",
+      "category": "tools"
+    },
+    {
       "title": "Intigriti Bug Bytes #238 - July 2026 🚀",
       "link": "https://www.intigriti.com/researchers/blog/bug-bytes/intigriti-bug-bytes-238-july-2026",
       "description": "Hello hackers, Welcome to the latest edition of Bug Bytes! In this month's issue, we'll be featuring: Intigriti turns 10! RCE in GitHub.com and GitHub Enterprise Server Burp Suite going agentic with Burp AT Hacking Gemini Enterprise for $15,000 3,708 live credentials found by scanning GitHub Archive And so much more! Let's dive in! Intigriti turns 10! 🚀 Ten years ago, the idea that inviting hackers into your systems could make them safer was still a hard sell. Today, it is the new normal,…",
@@ -929,6 +1090,16 @@
       "sourceName": "Intigriti Blog",
       "sourceUrl": "https://www.intigriti.com/blog/feed",
       "category": "bugbounty"
+    },
+    {
+      "title": "The Absurdity of Albert Camus",
+      "link": "https://www.historytoday.com/archive/portrait-author-historian/absurdity-albert-camus",
+      "description": "Comments",
+      "guid": "https://www.historytoday.com/archive/portrait-author-historian/absurdity-albert-camus",
+      "pubDate": "2026-07-30T23:21:17.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "What an SSH Tunnel Actually Does and When You Should Use One",
@@ -1064,16 +1235,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCHbm6QCC9jjGwa-7P1N2PwhDjRvpC2hlS2hl09-DUZa5xdDeHt9qH1zISepl2ERqDzmDbdQ_zfE2vkHDsvE7G8QsetJHjzC45DpPr5-83lc1BGaLHfEwMfdYEA04d5xc7GL02_qkz1HjhIenSKBWF0FZqHnICaLn9agLEoEGnnN2n-smXxYFuQQaYNd8A/s1600/all-secure.jpg"
     },
     {
-      "title": "Amazon links Debug, Chalk NPM supply-chain attacks to North Korean hackers",
-      "link": "https://www.bleepingcomputer.com/news/security/amazon-links-debug-chalk-npm-supply-chain-attacks-to-north-korean-hackers/",
-      "description": "Amazon linked multiple high-profile open-source software supply chain attacks targeting the Node Package Manager (npm) ecosystem to North Korean hackers. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/amazon-links-debug-chalk-npm-supply-chain-attacks-to-north-korean-hackers/",
-      "pubDate": "2026-07-30T18:13:24.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "VU#281278: SGLang contains six different vulnerabilities including RCE, data exfiltration, and credential disclosure",
       "link": "https://kb.cert.org/vuls/id/281278",
       "description": "Overview Six vulnerabilities have been discovered within the SGLang project, including remote code execution (RCE), server-side request forgery (SSRF), local file read, credential leakage, and model weight exfiltration on a target server. Exploitation does not require authentication in most cases, and some vulnerabilities require only network access with no API keys or user credentials. At the time of publication, no patches are available from the project maintainers, and coordination attempts have been unsuccessful. Description SGLang is an open-source framework for serving large language models (LLMs) and multimodal AI models, supporting models such as Qwen, DeepSeek, Mistral, and Skywork, and is compatible with OpenAI APIs. Six vulnerabilities have been discovered within the tool and are tracked as follows: CVE-2026-15969 /load_lora_adapter_from_tensors by bypass of SafeUnpickler’s incomplete denylist, allowing arbitrary command execution through crafted base64-encoded pickle payloads. CVE-2026-15971 DUMPER_SERVER_PORT is set, enabling code execution on inference requests. CVE-2026-15974 /v1/chat/completions because image_url input is unsanitized, allowing access to internal metadata, secrets, and services. CVE-2026-15976 /update_weights_from_disk, where torch.load(..., weights_only=False) fallback enables pickle deserialization of .bin files. CVE-2026-15977 /server_info endpoint, which returns API keys and SSL keyfile information when only the --admin-api-key is configured. CVE-2026-15978 Impact If exploited, these vulnerabilities could allow an unauthenticated attacker to achieve remote code execution, exfiltrate model weights, or overwrite arbitrary files on the host machine running SGLang. Deployments that expose the affected interface to untrusted networks are at the highest risk of exploitation. Solution Until a patch is available, affected users should consider the following mitigations: Mitigations Restrict access to the service interfaces and ensure they",
@@ -1082,16 +1243,6 @@
       "sourceName": "CERT Vulnerability Notes",
       "sourceUrl": "https://www.kb.cert.org/vulfeed/",
       "category": "government"
-    },
-    {
-      "title": "VMware fixes three critical flaws allowing auth bypass, VM escapes",
-      "link": "https://www.bleepingcomputer.com/news/security/vmware-fixes-three-critical-flaws-allowing-auth-bypass-vm-escapes/",
-      "description": "Broadcom has released security updates to fix five vulnerabilities in VMware vCenter, ESX, Workstation, and Fusion, including three critical flaws that allow attackers to bypass authentication, execute arbitrary code, or escape from a virtual machine to the host. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/vmware-fixes-three-critical-flaws-allowing-auth-bypass-vm-escapes/",
-      "pubDate": "2026-07-30T18:00:51.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
     },
     {
       "title": "Extend Amazon Inspector SBOM Generator with Plugins",
@@ -1114,16 +1265,6 @@
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news",
       "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/07/image-88.png?resize=1024%2C474&#038;ssl=1"
-    },
-    {
-      "title": "Google says AI helped Chrome fix 1,072 security bugs in two releases",
-      "link": "https://www.bleepingcomputer.com/news/google/google-says-ai-helped-chrome-fix-1-072-security-bugs-in-two-releases/",
-      "description": "Google says artificial intelligence is dramatically increasing the number of security vulnerabilities it can find and fix in Chrome, with more than 1,000 security bugs patched across the browser's two most recent releases as it expands its use of AI. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/google/google-says-ai-helped-chrome-fix-1-072-security-bugs-in-two-releases/",
-      "pubDate": "2026-07-30T17:00:00.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
     },
     {
       "title": "Read This Before You Buy That TV Streaming Stick",
@@ -1322,7 +1463,7 @@
     {
       "title": "Watchfire Controller Software",
       "link": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-211-09",
-      "description": "View CSAF Summary Successful exploitation of this vulnerability could allow a malicious user the ability to deliver malicious firmware that can update and gain full control of the controller. The following versions of Watchfire Controller Software are affected: BC550 12.30 (CVE-2026-5846) BC750 11.33|12.35 (CVE-2026-5846) BC760 12.38|13.00 (CVE-2026-5846) BC760DC 12.39 (CVE-2026-5846) CVSS Vendor Equipment Vulnerabilities v3 5.7 Watchfire Watchfire Controller Software Use of Hard-coded Cryptographic Key Background Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Healthcare and Public Health, Financial Services Countries/Areas Deployed: United States, Dominican Republic, Canada, Peru, El Salvador Company Headquarters Location: United States Vulnerabilities Expand All + CVE-2026-5846 The affected product contains self-signed hard-coded RSA private keys and corresponding X.509 certificates used for authenticating and encrypting HTTPS/TLS connections to the controller's built-in web management interface. These keys are embedded in plaintext within the application patch binaries in the firmware directly from Watchfire's Remote Support filestore. View CVE Details Affected Products Watchfire Controller Software Vendor: Watchfire Product Version: Watchfire BC550: 12.30, Watchfire BC750: 11.33|12.35, Watchfire BC760: 12.38|13.00, Watchfire BC760DC: 12.39 Product Status: known_affected Remediations Mitigation Watchfire has applied the required security patch to all affected controllers under its management. Watchfire recommends users verify their controller software version and upgrade to one of the approved versions below, if they are not already on an approved patch level. Vendor fix Watchfire has issued patches to disable the use of the existing certificate as follows: BC550 12.30: Patch to 12.31 SP1BC750 11.33: Patch to 11.34BC750 12.35: Patch to 12.36 SP1BC760 12.38: Patch to 12.41 SP1BC760 13.00: Patch to 14.00 SP1BC760DC 12.39: Patch to 1",
+      "description": "View CSAF Summary Successful exploitation of this vulnerability could allow a malicious user the ability to deliver malicious firmware that can update and gain full control of the controller. The following versions of Watchfire Controller Software are affected: BC550 12.30 (CVE-2026-5846) BC750 11.33 (CVE-2026-5846) BC750 12.35 (CVE-2026-5846) BC760 12.38 (CVE-2026-5846) BC760 13.00 (CVE-2026-5846) BC760DC 12.39 (CVE-2026-5846) CVSS Vendor Equipment Vulnerabilities v3 5.7 Watchfire Watchfire Controller Software Use of Hard-coded Cryptographic Key Background Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Healthcare and Public Health, Financial Services Countries/Areas Deployed: United States, Dominican Republic, Canada, Peru, El Salvador Company Headquarters Location: United States Vulnerabilities Expand All + CVE-2026-5846 The affected product contains self-signed hard-coded RSA private keys and corresponding X.509 certificates used for authenticating and encrypting HTTPS/TLS connections to the controller's built-in web management interface. These keys are embedded in plaintext within the application patch binaries in the firmware directly from Watchfire's Remote Support filestore. View CVE Details Affected Products Watchfire Controller Software Vendor: Watchfire Product Version: Watchfire BC550: 12.30, Watchfire BC750: 11.33, Watchfire BC750: 12.35, Watchfire BC760: 12.38, Watchfire BC760: 13.00, Watchfire BC760DC: 12.39 Product Status: known_affected Remediations Mitigation Watchfire has applied the required security patch to all affected controllers under its management. Watchfire recommends users verify their controller software version and upgrade to one of the approved versions below, if they are not already on an approved patch level. Vendor fix Watchfire has issued patches to disable the use of the existing certificates. Users using BC550; 12.30 should upgrade to 12.31 SP1 Vendor fix Watchfire has issued patches to disable th",
       "guid": "/node/25247",
       "pubDate": "2026-07-30T12:00:00.000Z",
       "sourceName": "CISA Advisories",
@@ -1368,16 +1509,6 @@
       "sourceName": "CISA News",
       "sourceUrl": "https://www.cisa.gov/news.xml",
       "category": "government"
-    },
-    {
-      "title": "Infosec News Nuggets — July 30, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-july-30-2026/",
-      "description": "Coordinated Cyberattack Targets 30+ Minnesota Water Systems A coordinated intrusion hit operational technology at more than 30 community water and wastewater utilities across Minnesota on July 26 and 27, disrupting automated control functions and briefly knocking one city’s treatment plant offline while state and federal investigators, including the FBI, work to identify the attackers and […] The post Infosec News Nuggets — July 30, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9282",
-      "pubDate": "2026-07-30T11:17:55.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "Should You Use AI for a Task? Here’s a Simple Way to Decide",
@@ -1443,16 +1574,6 @@
       "category": "news"
     },
     {
-      "title": "U.S. CISA adds a Cisco Secure Firewall Management Center (FMC) flaw to its Known Exploited Vulnerabilities catalog",
-      "link": "https://securityaffairs.com/196289/security/u-s-cisa-adds-a-cisco-secure-firewall-management-center-fmc-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
-      "description": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds a Cisco Secure Firewall Management Center (FMC) flaw to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added a Cisco Secure Firewall Management Center (FMC) flaw, tracked as CVE-2026-20316 (CVSS score of 5.3), to its Known Exploited Vulnerabilities (KEV) catalog. CVE-2026-20316 is a […]",
-      "guid": "https://securityaffairs.com/?p=196289",
-      "pubDate": "2026-07-30T09:06:54.000Z",
-      "sourceName": "Security Affairs",
-      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
-      "category": "news"
-    },
-    {
       "title": "Beyond the screenshot: Why you should verify what you see",
       "link": "https://www.welivesecurity.com/en/cybersecurity/beyond-screenshot-why-verify-you-see/",
       "description": "The screenshot may look convincing, but it doesn’t necessarily prove that the payment, booking or conversation is genuine",
@@ -1477,7 +1598,7 @@
       "title": "Falcon AIDR Now Protects Copilot Studio Agents and Claude Code",
       "link": "https://www.crowdstrike.com/en-us/blog/falcon-aidr-protects-copilot-studio-agents-and-claude-code/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=508979",
+      "guid": "https://www.crowdstrike.com/?p=511148",
       "pubDate": "2026-07-30T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1576,16 +1697,6 @@
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2022/05/24/CJ_Moses.jpeg"
     },
     {
-      "title": "Why Authentication UX Deserves More Attention on B2B Platforms",
-      "link": "https://hackread.com/authentication-ux-deserves-attention-b2b-platforms/",
-      "description": "Better authentication UX helps B2B platforms reduce security fatigue, simplify account recovery, protect sensitive data, and keep business users engaged.",
-      "guid": "https://hackread.com/?p=148004",
-      "pubDate": "2026-07-29T17:34:51.000Z",
-      "sourceName": "HackRead",
-      "sourceUrl": "https://www.hackread.com/feed",
-      "category": "news"
-    },
-    {
       "title": "VU#293714: Arbitrary File Overwrite in Develar app-builder (zipx.Unzip) via Symlink Following on macOS (APFS)",
       "link": "https://kb.cert.org/vuls/id/293714",
       "description": "Overview A vulnerability in the zipx.Unzip extraction routine of Develar’s app-builder allows an attacker to overwrite arbitrary files on macOS using Apple File System (APFS). The issue arises from a combination of Unicode normalization collisions and unsafe symlink-following behavior. APFS treats certain Unicode equivalent filenames as identical (e.g., ß ↔ ss), while app builder performs no canonical normalization before validating or writing paths. Description Develar’s app-builder is a command‑line build tool used heavily in the Electron ecosystem to package, sign, notarize, and produce distributable application bundles for macOS, Windows, and Linux. It is popular because it is a transitive dependency of electron-builder, one of the most widely used packaging tools for Electron apps. The vulnerability arises from how the zipx.Unzip routine handles Unicode‑equivalent filenames and symbolic links during ZIP extraction. APFS treats certain Unicode representations as identical (e.g., ß and ss), but app-builder does not perform canonical normalization before validating output paths. As a result, an attacker can craft ZIP archives that combine Unicode normalization collisions with malicious symlinks to redirect writes outside the intended extraction directory. The GitHub Pull Request addresses the symlink-following variant of this vulnerability (CWE‑22 and CWE‑59) by rejecting any symlink whose resolved target escapes the intended output directory and by adding O_NOFOLLOW to regular file writes. Without these protections, an attacker can craft ZIP archives containing malicious symlinks and Unicode-colliding filenames to overwrite arbitrary files on APFS-backed systems. Impact Exploitation of this vulnerability allows an attacker to overwrite arbitrary files on macOS systems using APFS. By combining Unicode normalization collisions with symlink‑following behavior in the zipx.Unzip routine, an attacker can craft ZIP archives that bypass path‑validation checks and redirec",
@@ -1668,6 +1779,16 @@
       "category": "research"
     },
     {
+      "title": "Software for One",
+      "link": "https://www.ajwaxman.com/writing/software-for-one",
+      "description": "Comments",
+      "guid": "https://www.ajwaxman.com/writing/software-for-one",
+      "pubDate": "2026-07-29T12:29:20.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
       "title": "CISA and Partners Unveil Updated Software Bill of Materials Resource That Improves Transparency, Security and Risk-Informed Decision Making",
       "link": "https://www.cisa.gov/news-events/news/cisa-and-partners-unveil-updated-software-bill-materials-resource-improves-transparency-security-and",
       "description": "",
@@ -1686,16 +1807,6 @@
       "sourceName": "NCSC (UK)",
       "sourceUrl": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
       "category": "government"
-    },
-    {
-      "title": "Infosec News Nuggets — July 29, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-july-29-2026/",
-      "description": "Arista patches VeloCloud Orchestrator zero-day exploited in attacks Arista has shipped patches for a maximum-severity command injection flaw in on-premises VeloCloud Orchestrator deployments after confirming it is being actively exploited. The bug allows unauthenticated attackers with only network access to the web interface to reach privileged internal functionality, potentially compromising the confidentiality, integrity, and availability […] The post Infosec News Nuggets — July 29, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9279",
-      "pubDate": "2026-07-29T11:13:47.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "Long-Lived Vulnerability in Microsoft Secure Boot",
@@ -1862,7 +1973,7 @@
       "title": "Inside Astaroth's New Spambot Component",
       "link": "https://www.crowdstrike.com/en-us/blog/inside-astaroths-new-spambot-component/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=233885",
+      "guid": "https://www.crowdstrike.com/?p=196117",
       "pubDate": "2026-07-29T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1872,7 +1983,7 @@
       "title": "Falcon Cloud Security July 2026 Release: Helping Security Teams Move Faster in the Cloud",
       "link": "https://www.crowdstrike.com/en-us/blog/new-in-falcon-cloud-security-helping-security-teams-move-faster/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=659644",
+      "guid": "https://www.crowdstrike.com/?p=558508",
       "pubDate": "2026-07-29T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1882,7 +1993,7 @@
       "title": "Falcon Platform IOAs Arrive in Falcon Next-Gen SIEM to Identify New Threats",
       "link": "https://www.crowdstrike.com/en-us/blog/falcon-platform-ioas-arrive-in-falcon-next-gen-siem/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=796993",
+      "guid": "https://www.crowdstrike.com/?p=622933",
       "pubDate": "2026-07-29T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1990,16 +2101,6 @@
       "sourceUrl": "https://blog.trailofbits.com/feed/",
       "category": "research",
       "imageUrl": "https://blog.trailofbits.com/2026/07/28/how-we-use-goal-to-find-bugs-in-patch-the-planet/goal_ptp_figure_3_hu_2a14b2f59f76ba60.webp"
-    },
-    {
-      "title": "Infosec News Nuggets — July 28, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-july-28-2026/",
-      "description": "Hackers Target US Firms in FastJson RCE Zero-Day Attacks Attackers are actively exploiting a critical remote code execution flaw in the open-source FastJson Java library, a widely used component in Alibaba-linked enterprise software, without needing user interaction or elevated privileges. Tracked as CVE-2026-16723, the bug affects versions 1.2.68 through 1.2.83 under common Spring Boot fat-JAR […] The post Infosec News Nuggets — July 28, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9277",
-      "pubDate": "2026-07-28T10:51:08.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "How I found an IDOR in Google Classroom on Day 3 of my Hunting?",
@@ -2145,7 +2246,11 @@
       "title": "Enhancing AI security through global AI red teaming",
       "link": "https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming/",
       "description": "Microsoft's External Red Team Alliance (EXTRA) is a global AI security initiative designed to advance AI safety research and red teaming. By partnering with universities, researchers, and regional experts, EXTRA helps identify emerging AI risks, improve security testing, and strengthen the resilience of frontier AI systems. The post Enhancing AI security through global AI red teaming appeared first on Microsoft Security Blog.",
-      "guid": "https://www.microsoft.com/en-us/security/blog/?p=148771",
+      "guid": {
+        "$": {
+          "isPermaLink": "false"
+        }
+      },
       "pubDate": "2026-07-27T16:25:00.000Z",
       "sourceName": "Microsoft Security Blog",
       "sourceUrl": "https://www.microsoft.com/security/blog/feed",
@@ -2171,16 +2276,6 @@
       "sourceName": "Check Point Research",
       "sourceUrl": "https://research.checkpoint.com/feed",
       "category": "research"
-    },
-    {
-      "title": "Infosec News Nuggets — July 27, 2026",
-      "link": "https://aboutdfir.com/infosec-news-nuggets-july-27-2026/",
-      "description": "Certighost Exploit Lets Low-Privileged Active Directory Users Impersonate a Domain Controller Researchers published a working exploit on July 24 for a flaw dubbed Certighost that lets a low-privileged Active Directory user obtain a certificate for a Domain Controller and authenticate as that machine, then use the resulting Kerberos credential to pull the krbtgt secret through […] The post Infosec News Nuggets — July 27, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
-      "guid": "https://aboutdfir.com/?p=9275",
-      "pubDate": "2026-07-27T11:12:31.000Z",
-      "sourceName": "About DFIR",
-      "sourceUrl": "https://aboutdfir.com/feed",
-      "category": "offensive"
     },
     {
       "title": "Cognyte Sells a Mobile Cell Surveillance Van",
@@ -2250,7 +2345,7 @@
       "title": "5 High-Impact Use Cases for Falcon Onum",
       "link": "https://www.crowdstrike.com/en-us/blog/five-high-impact-use-cases-for-falcon-onum/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=557919",
+      "guid": "https://www.crowdstrike.com/?p=947914",
       "pubDate": "2026-07-27T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -2260,7 +2355,7 @@
       "title": "CrowdStrike Joins the Open Secure AI Alliance to Advance AI Safety and Security",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-joins-the-open-secure-ai-alliance/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=361182",
+      "guid": "https://www.crowdstrike.com/?p=888168",
       "pubDate": "2026-07-27T04:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -2305,27 +2400,6 @@
       "sourceName": "r/blueteamsec",
       "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
       "category": "community"
-    },
-    {
-      "title": "Friday Squid Blogging: Illex Squid Catch in the Falklands",
-      "link": "https://www.schneier.com/blog/archives/2026/07/friday-squid-blogging-illex-squid-catch-in-the-falklands.html",
-      "description": "Lower catch this year. As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered. Blog moderation policy.",
-      "guid": "https://www.schneier.com/?p=72306",
-      "pubDate": "2026-07-24T21:06:00.000Z",
-      "sourceName": "Schneier on Security",
-      "sourceUrl": "https://www.schneier.com/feed/atom/",
-      "category": "news"
-    },
-    {
-      "title": "Accelerating AWS Network Firewall troubleshooting with AWS DevOps Agent",
-      "link": "https://aws.amazon.com/blogs/security/accelerating-aws-network-firewall-troubleshooting-with-aws-devops-agent/",
-      "description": "When an administrator introduces a rule change in AWS Network Firewall and network connectivity is disrupted, pinpointing the cause requires inspecting multiple points in the traffic path. The firewall gives you stateless and stateful rule engines, domain rules, and routing to the firewall endpoint inside your Amazon Virtual Private Cloud (Amazon VPC). A network drop […]",
-      "guid": "501e8eb3d3a97490bc8182ffa5c899b0220adb5e",
-      "pubDate": "2026-07-24T19:54:48.000Z",
-      "sourceName": "AWS Security Blog",
-      "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
-      "category": "cloud",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/07/23/1.3710-NFW-ArchitectureDiagram.png"
     }
   ]
 }
