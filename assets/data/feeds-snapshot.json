@@ -1,11 +1,16 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-07T13:02:02.512Z",
+  "generatedAt": "2026-08-07T18:55:50.128Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
-  "itemCount": 179,
+  "itemCount": 171,
   "feedErrors": [
+    {
+      "name": "Cyber Security News",
+      "url": "https://www.cybersecuritynews.com/feed/",
+      "error": "Invalid character in entity name\nLine: 0\nColumn: 120\nChar: ="
+    },
     {
       "name": "HackRead",
       "url": "https://www.hackread.com/feed",
@@ -52,8 +57,8 @@
       "error": "Invalid character in entity name\nLine: 0\nColumn: 2838\nChar: ="
     },
     {
-      "name": "r/netsec",
-      "url": "https://www.reddit.com/r/netsec/.rss",
+      "name": "r/blueteamsec",
+      "url": "https://www.reddit.com/r/blueteamsec/.rss",
       "error": "HTTP 429"
     },
     {
@@ -64,25 +69,241 @@
   ],
   "items": [
     {
-      "title": "Hackers Breach Swiss Government SharePoint Servers, Compromise 200 Accounts",
-      "link": "https://cybersecuritynews.com/hackers-breach-swiss-sharepoint-servers/",
-      "description": "Swiss federal authorities have confirmed a cyberattack targeting SharePoint servers operated by the Federal Office for Information Technology and Telecommunication (BIT). The incident resulted in the compromise of login credentials linked to approximately 200 user and technical accounts. BIT detected unusual activity on its SharePoint environment on Tuesday, July 28. Security specialists quickly investigated the […] The post Hackers Breach Swiss Government SharePoint Servers, Compromise 200 Accounts appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158745",
-      "pubDate": "2026-08-07T12:57:31.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
+      "title": "tl;dv (Too Lazy; Didn't Validate): 181,874 Meetings Left Wide Open",
+      "link": "https://www.reddit.com/r/netsec/comments/1vi8ibp/tldv_too_lazy_didnt_validate_181874_meetings_left/",
+      "description": "The meetingscollection has no tenant isolation. Any authenticated tl;dv user can query every meeting across every account on the platform. Each meeting record hands you the creator's email address, the conference ID (which is a joinable Google Meet or Teams room), the provider, the recording status, and timestamps. I queried the Firestore meetings collection and saw there were 181,874 meeting records belonging to 84,312 unique users across 35,003 email domains. submitted by /u/kochurshak [link] [comments]",
+      "guid": "t3_1vi8ibp",
+      "pubDate": "2026-08-07T18:23:05.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Client-Controlled Role Assignment: A Critical Privilege Escalation Vulnerability",
+      "link": "https://medium.com/@devkumaoni9/client-controlled-role-assignment-a-critical-privilege-escalation-vulnerability-a2f0cbae4674?source=rss------bug_bounty-5",
+      "description": "Understanding and Preventing One of the Most Common Access Control Flaws Continue reading on Medium »",
+      "guid": "https://medium.com/p/a2f0cbae4674",
+      "pubDate": "2026-08-07T18:15:51.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty"
+    },
+    {
+      "title": "Assembly Hall of Shame",
+      "link": "https://github.com/xoreaxeaxeax/asm-hall-of-shame",
+      "description": "Comments",
+      "guid": "https://github.com/xoreaxeaxeax/asm-hall-of-shame",
+      "pubDate": "2026-08-07T18:01:30.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "The End of No Code",
+      "link": "https://blog.exe.dev/the-end-of-no-code",
+      "description": "Comments",
+      "guid": "https://blog.exe.dev/the-end-of-no-code",
+      "pubDate": "2026-08-07T17:59:19.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "DeepSeek V4 Flash 0731",
+      "link": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "description": "Comments",
+      "guid": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "pubDate": "2026-08-07T17:56:20.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Oracle bans AI-generated code from OpenJDK",
+      "link": "https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code",
+      "description": "Comments",
+      "guid": "https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code",
+      "pubDate": "2026-08-07T17:36:30.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "WordPress XSS2Shell Flaw Turns Simple Login Bug Into Full Server Takeover",
+      "link": "https://securityaffairs.com/196820/hacking/wordpress-xss2shell-flaw-turns-simple-login-bug-into-full-server-takeover.html",
+      "description": "WordPress XSS2Shell flaw enables admin takeover and remote code execution. Users should update to patched versions. Researchers at Pwn just published a report on a vulnerability chain they’re calling XSS2Shell, and the entry point is quite simple: type a username that doesn’t exist, and WordPress echoes it back with a tiny formatting flaw baked into […]",
+      "guid": "https://securityaffairs.com/?p=196820",
+      "pubDate": "2026-08-07T16:48:22.000Z",
+      "sourceName": "Security Affairs",
+      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
+      "category": "news",
+      "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/08/image-15.png?resize=1024%2C406&#038;ssl=1"
+    },
+    {
+      "title": "AI-Generated Patches Fail Half the Time",
+      "link": "https://www.darkreading.com/application-security/ai-generated-patches-fail-half-time",
+      "description": "A study of more than 6,000 patches found that even working patches can introduce new bugs, break something else, or are open to bypass.",
+      "guid": "https://www.darkreading.com/application-security/ai-generated-patches-fail-half-time",
+      "pubDate": "2026-08-07T16:47:43.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
       "category": "news"
     },
     {
-      "title": "Claude in Chrome Prompt Injection Steals Gmail Codes to Hijack Slack, X, and Claude.ai Accounts",
-      "link": "https://cybersecuritynews.com/claude-chrome-prompt-injection/",
-      "description": "An indirect prompt injection vulnerability in Claude on Chrome can be exploited to steal email verification codes and hijack accounts on platforms like Slack, X, and Claude.ai. The attack begins with a malicious email that lands in the victim’s Gmail inbox. When the user requests Claude in Chrome to summarize recent emails, the assistant may inadvertently read […] The post Claude in Chrome Prompt Injection Steals Gmail Codes to Hijack Slack, X, and Claude.ai Accounts appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158705",
-      "pubDate": "2026-08-07T12:53:44.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
+      "title": "Securing your Amazon S3 buckets: Identifying and remediating over-permissioned access",
+      "link": "https://aws.amazon.com/blogs/security/securing-your-amazon-s3-buckets-identifying-and-remediating-over-permissioned-access/",
+      "description": "Misconfigured Amazon Simple Storage Service (Amazon S3) buckets can expose your data to unauthorized access. Without proactive review, S3 bucket policies or Access Control Lists (ACLs) configured with broad access may go unnoticed in your environment. In this post, you learn how to identify and fix over-permissioned S3 buckets across your AWS environment, along with […]",
+      "guid": "d2a2a47bd24a9d71d4f9ddd6987866c13aa2ba0f",
+      "pubDate": "2026-08-07T16:46:40.000Z",
+      "sourceName": "AWS Security Blog",
+      "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
+      "category": "cloud",
+      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/08/03/s3-audit-flowchart-v3-Figure-1.png"
+    },
+    {
+      "title": "JWT Algorithm Confusion → Admin Account Takeover",
+      "link": "https://medium.com/@mehrankiya272/jwt-algorithm-confusion-admin-account-takeover-fe3779fd026d?source=rss------bug_bounty-5",
+      "description": "By Mehran — cyb3rsem Continue reading on Medium »",
+      "guid": "https://medium.com/p/fe3779fd026d",
+      "pubDate": "2026-08-07T16:03:03.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/2600/1*52ri3a7t378ZhgI41HpIww.jpeg"
+    },
+    {
+      "title": "Hackers Impersonate IT Support to Breach Leading Financial Companies",
+      "link": "https://securityaffairs.com/196800/security/hackers-impersonate-it-support-to-breach-leading-financial-companies.html",
+      "description": "Hackers used fake IT help desks to steal MFA credentials, targeting over 200 firms, including major financial companies. A hacking campaign operating under names including Redact, Pink, Falcon, and Helix has built credential-stealing websites targeting employees at Blackstone, Bridgewater Associates, Apollo Global Management, Bain Capital, KKR, TPG, CME Group, Clearlake Capital, and Moody’s, among dozens […]",
+      "guid": "https://securityaffairs.com/?p=196800",
+      "pubDate": "2026-08-07T15:50:50.000Z",
+      "sourceName": "Security Affairs",
+      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD-zChtO6vP5-jeS4bne4lpW10MEYxLBRwvKr90yC2cJGVZE_YkV6SWC6ZWdpqSSIpxsq3am4ZDTmYUKgldymWjA5fq9xOxKkMOXXDpRf-y3EH5can2QLj8OlvQuQCa6PJT9V7h6IoEOY4x1wz9h6855MPgMBMVQdEjVOHxcIoVVLV-279e1Er84HphnU/s1600/Claude%20Hijack%20Slack,%20%20%281%29.webp"
+      "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/08/image-13.png?resize=1024%2C632&#038;ssl=1"
+    },
+    {
+      "title": "Levi Strauss & Co. says hackers stole corporate data in cyberattack",
+      "link": "https://www.bleepingcomputer.com/news/security/levi-strauss-and-co-says-hackers-stole-corporate-data-in-cyberattack/",
+      "description": "Levi Strauss & Co. (Levi's) says that hackers used social engineering on three of its employees to gain access to and steal corporate data stored on their machines. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/levi-strauss-and-co-says-hackers-stole-corporate-data-in-cyberattack/",
+      "pubDate": "2026-08-07T15:48:20.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "Beware cut-price AI services that read your every word",
+      "link": "https://www.fortra.com/blog/beware-cut-price-ai-services-read-your-every-word",
+      "description": "f someone offered you 90% off the official price to access Claude, the powerful AI model from Anthropic, would you be tempted? It turns out that around 900 people were, and they may be regretting their decision. Read more in my article on the Fortra blog.",
+      "guid": "https://grahamcluley.com/?p=17351888",
+      "pubDate": "2026-08-07T15:33:08.000Z",
+      "sourceName": "Graham Cluley",
+      "sourceUrl": "https://www.grahamcluley.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "An all-sky map of half a million supermassive black holes",
+      "link": "https://www.sdss.org/black-hole-mapper-release-20/",
+      "description": "Comments",
+      "guid": "https://www.sdss.org/black-hole-mapper-release-20/",
+      "pubDate": "2026-08-07T15:24:53.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Möbius-Strip Crosswords",
+      "link": "https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/",
+      "description": "Comments",
+      "guid": "https://quuxplusone.github.io/blog/2026/08/04/mobius-crossword/",
+      "pubDate": "2026-08-07T15:10:34.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "TrustFall: When the Trusted Execution Environment Cannot Be Trusted",
+      "link": "https://www.reddit.com/r/netsec/comments/1vi380e/trustfall_when_the_trusted_execution_environment/",
+      "description": "ByteRay researchers have published a blog on a set of vulnerabilities they are calling TrustFall, and the findings land hard for any company that treats the Trusted Execution Environment as the part of a device you do not have to worry about. OP-TEE is the walled-off Secure World that phones, TVs, cars, and industrial gear lean on to guard keys, DRM, and identity, and the whole point of paying for that hardware isolation is the promise that even a compromised operating system cannot reach inside. TrustFall shows that promise was not as solid as buyers assumed. The researchers found several flaws that let the untrusted side reach into or knock over the Secure World, which is exactly the outcome the design exists to prevent. The bugs have since been fixed upstream, so patched builds are available, but the uncomfortable takeaway for vendors is that the vault they were told to trust had a way in, and \"it runs in the TEE\" is no longer an answer on its own. submitted by /u/Emergency_Stable_923 [link] [comments]",
+      "guid": "t3_1vi380e",
+      "pubDate": "2026-08-07T15:08:07.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "DVWA on Metasploitable 2: Web Exploitation for OSCP",
+      "link": "https://medium.com/@betigetin/dvwa-on-metasploitable-2-web-exploitation-for-oscp-b7aa7f99f12c?source=rss------bug_bounty-5",
+      "description": "A beginner-friendly, hands-on walkthrough of DVWA vulnerabilities at Low and Medium difficulty — built for OSCP preparation. Continue reading on Medium »",
+      "guid": "https://medium.com/p/b7aa7f99f12c",
+      "pubDate": "2026-08-07T15:05:54.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1229/1*g-yEZ2a9vcaLuAESNoaIgA.png"
+    },
+    {
+      "title": "Cyber Kill Chain: Understanding How Cyber Attacks Unfold",
+      "link": "https://medium.com/@rjstudio257/cyber-kill-chain-understanding-how-cyber-attacks-unfold-fc2ba4708b4e?source=rss------bug_bounty-5",
+      "description": "Cyberattacks rarely happen in a single step. Most successful intrusions follow a structured sequence of actions, allowing attackers to… Continue reading on Medium »",
+      "guid": "https://medium.com/p/fc2ba4708b4e",
+      "pubDate": "2026-08-07T14:33:42.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1672/1*iC9U6EMjupiCy4xWmrJisQ.png"
+    },
+    {
+      "title": "In Other News: AI Slop Limits Apple Bounties, North Carolina Port Attacks, Hackers Target Wall Street",
+      "link": "https://www.securityweek.com/in-other-news-ai-slop-limits-apple-bounties-north-carolina-port-attacks-hackers-target-wall-street/",
+      "description": "Noteworthy stories that might have slipped under the radar: ban on Chinese data center tech, QuickFox VPN supply chain attack, IEH Corporation mailbox breached via phishing. The post In Other News: AI Slop Limits Apple Bounties, North Carolina Port Attacks, Hackers Target Wall Street appeared first on SecurityWeek.",
+      "guid": "https://www.securityweek.com/?p=48485",
+      "pubDate": "2026-08-07T14:26:42.000Z",
+      "sourceName": "SecurityWeek",
+      "sourceUrl": "https://www.securityweek.com/rss",
+      "category": "news"
+    },
+    {
+      "title": "VU#987105: The nothings stb TrueType library, up to version 1.26, contains a heap buffer overflow vulnerability",
+      "link": "https://kb.cert.org/vuls/id/987105",
+      "description": "Overview A heap buffer overflow vulnerability exists in the stb TrueType library created by nothings. Exploitation of this vulnerability can occur when handling malformed font data and may lead to both Denial of Service (DoS) and Information Disclosure. Description The nothings stb repository, versions 1.26 and earlier, contains a collection of single-file public domain and MIT-licensed libraries for C/C++ projects. CVE-2026-18497 A heap buffer overflow vulnerability exists in the stbtt_GetGlyphShape() function within the stb_truetype.h library when handling malformed TrueType Font (TTF) data. The issue occurs during glyph contour parsing. The function iterates based on the number of contour endpoints specified in endPtsOfContours, but does not validate that the points pointer remains within the bounds of the glyph data buffer. As a result, operations such as flags = *points++; may read memory beyond the allocated region. An attacker can exploit this vulnerability by crafting a TTF file that specifies an excessively large endPtsOfContours value while providing truncated or minimal glyph data. When an application utilizing stb_truetype.h attempts to load, bake, or render this malformed font via stbtt_GetGlyphShape(), the parser will continue iterating past the end of the glyph data buffer, triggering the out-of-bounds heap read. Impact Exploitation of this vulnerability can lead to application crashes due to invalid reads of unmapped memory addresses, resulting in denial of service (DoS). In some cases, an attacker may also be able to read data from adjacent heap memory. Solution Unfortunately, we were unable to reach the stb maintainers to coordinate this vulnerability. Users are advised to monitor the project's GitHub repository for updates and install the latest version of this library once a fix has been released. At the time of this writing, the maintainer of this repository had the following message posted on the project's README page: \"This project discusses s",
+      "guid": "https://kb.cert.org/vuls/id/987105",
+      "pubDate": "2026-08-07T14:15:19.038Z",
+      "sourceName": "CERT Vulnerability Notes",
+      "sourceUrl": "https://www.kb.cert.org/vulfeed/",
+      "category": "government"
+    },
+    {
+      "title": "Real emails, hijacked payments: Two H1 2026 attack chains",
+      "link": "https://www.bleepingcomputer.com/news/security/real-emails-hijacked-payments-two-h1-2026-attack-chains/",
+      "description": "Gen's H1 2026 Threat Report examines two separate attack chains. One used compromised business inboxes and browser manipulation in a banking-malware campaign, while the other used clipboard hijacking to redirect cryptocurrency payments. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/real-emails-hijacked-payments-two-h1-2026-attack-chains/",
+      "pubDate": "2026-08-07T14:00:10.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "North Carolina Ports confirms cyberattack disrupting operations",
+      "link": "https://www.bleepingcomputer.com/news/security/north-carolina-ports-confirms-cyberattack-disrupting-operations/",
+      "description": "The North Carolina Ports Authority has confirmed that a cyberattack disrupted IT systems and slowed operations at Port of Wilmington, Port of Morehead City, and Charlotte Inland Port. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/north-carolina-ports-confirms-cyberattack-disrupting-operations/",
+      "pubDate": "2026-08-07T13:34:40.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "New WordPress Pre-Auth XSS Could Lead to PHP Code Execution - Patch ASAP",
+      "link": "https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html",
+      "description": "WordPress has fixed a pre-authentication reflected cross-site scripting (XSS) flaw in its login screen that affects every version of the content management system. pwn.ai demonstrated how the flaw can be chained into PHP code execution on the server when a logged-in administrator interacts with an attacker-controlled page. Tracked as CVE-2026-64638 (CVSS score: 8.9), the",
+      "guid": "https://thehackernews.com/2026/08/new-wordpress-pre-auth-xss-could-lead.html",
+      "pubDate": "2026-08-07T12:56:23.000Z",
+      "sourceName": "The Hacker News",
+      "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
+      "category": "news",
+      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge2pF0kPrHXARehOfrgRZzC4bsZvLQSss2mm4xJwNfV53riYQHKateFgF6HvgO5WoDDzjKhc8JFT_6pD2ggOORpEuUIBbySYIy79R_UTRAB4NpEUEi3dhenfNInEROpfShqpE6cTx_VqNfL1hf6fFJpzXLV7-RiFaJguVGvF-l_Ras_0YomMVjeV4ZdfM/s1600/wordpress-xss.jpg"
     },
     {
       "title": "200 accounts compromised in Swiss government’s Microsoft SharePoint breach",
@@ -93,6 +314,16 @@
       "sourceName": "Help Net Security",
       "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
+    },
+    {
+      "title": "Show HN: Wyzer Programming Language",
+      "link": "https://github.com/Wyzer-Lang/wyzer",
+      "description": "Comments",
+      "guid": "https://github.com/Wyzer-Lang/wyzer",
+      "pubDate": "2026-08-07T12:28:55.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "A Bank’s HR Team Was Hacking Themselves Every Time They Opened My Job Application",
@@ -117,6 +348,16 @@
       "imageUrl": "https://cdn-images-1.medium.com/max/1376/1*flMx_n9bNePDjQW6rIpwcQ.png"
     },
     {
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "link": "https://www.cisa.gov/news-events/alerts/2026/08/07/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "description": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation. CVE-2026-8037 Progress LoadMaster Command Injection Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA’s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied. While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities. CISA will continue to add vulnerabilities to the catalog that meet the specified criteria. Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA’s KEV Nomination Form. Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.",
+      "guid": "/node/25268",
+      "pubDate": "2026-08-07T12:00:00.000Z",
+      "sourceName": "CISA Advisories",
+      "sourceUrl": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+      "category": "government"
+    },
+    {
       "title": "Growing Up The Hard Way",
       "link": "https://thehackernews.com/2026/08/growing-up-hard-way.html",
       "description": "Open Source had a great childhood. For two decades it got to be a kid. It ran around barefoot, gave everything away, trusted strangers, and never once thought about who was watching. It ran the kind of lemonade stand that took IOUs from anyone who wandered up — take what you need, pay me back whenever, no need to leave a name. It was idyllic. It was also, in retrospect, a little feral. Then,",
@@ -138,16 +379,6 @@
       "category": "news"
     },
     {
-      "title": "Fake PDFs and Chat Apps Let Patchwork Spy on PCs and Android Phones",
-      "link": "https://cybersecuritynews.com/fake-pdfs-chat-apps-let-patchwork-spy/",
-      "description": "Patchwork, also known as Dropping Elephant, is using fake documents and chat applications to spy on computer and phone users. The long-running espionage group has built separate attack paths for Windows systems and Android devices, allowing it to collect sensitive information from both environments. On Windows, the operation starts with a shortcut file disguised as […] The post Fake PDFs and Chat Apps Let Patchwork Spy on PCs and Android Phones appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158751",
-      "pubDate": "2026-08-07T11:42:21.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "18-Year-Old Linux SCTP Flaw Could Let Local Users Gain Root and Escape Containers",
       "link": "https://thehackernews.com/2026/08/18-year-old-linux-sctp-flaw-could-let.html",
       "description": "A use-after-free bug in Linux's SCTP networking code can be turned into full root on a host, and Tencent researchers say they used it to escape a container and reach the machine underneath. The flaw has existed since 2008. The fix already shipped: stable kernels 7.1.6, 6.18.42, 6.12.101 and 6.6.148, released August 3, close it. Anyone running an older kernel with SCTP reachable should update.",
@@ -159,17 +390,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmTGemKyDLZPr_sBbt2AdOQMEBEcRFzic8_Ddtkx92vtPOfFdoiwxJ60b00usecTjHuIGUJuUIR2aB8MU2P7-GLc0NOuWsa3ctofrA2-wD38wgI4Fke3moSskWjiRJEXT8Yxl7Ye56NgGl9DZKr8zf974rHRsc1PtHie_iIPVyD18HMx49S02tGZ2EeDY/s1600/linux-sctp.jpg"
     },
     {
-      "title": "ChainDrop Worm Infects 400+ npm Packages to Steal GitHub and Cloud Credentials",
-      "link": "https://cybersecuritynews.com/chaindrop-worm-infects-npm-packages/",
-      "description": "ChainDrop has turned routine software installs into a route for credential theft. The self-propagating worm infected more than 400 npm packages, putting developer laptops, build systems and cloud environments at risk. Since compromised packages still work as expected, teams may not realize an update has opened a path into their environment. The campaign spreads through […] The post ChainDrop Worm Infects 400+ npm Packages to Steal GitHub and Cloud Credentials appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158739",
-      "pubDate": "2026-08-07T11:07:15.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMQt6xkJE_ZmxUA7D0M9u-TlWBfhzPcbeGZ3fI1cjWmbfiTrxqdx6OsaBOa8ahQBrA2zDwxUOmrFTYkyYK_eSB5AYIcAKCTlNnMMMPvaRg3IIgFVhHBxtZ7b52OXP7Ui1MTnwy_jMOCTzPBAXSQUTC1o4XBKRkQ_GPBROZYBht-m3yHyBAbDoE5V-uj5w/s1600/GitHub%20Actions%20runner%20memory%20scraping%20flow%20(Source%20-%20Unit42).webp"
-    },
-    {
       "title": "Vishing Extortion Group UNC6671 Rebrands After Making Millions",
       "link": "https://www.securityweek.com/vishing-extortion-group-unc6671-rebrands-after-making-millions/",
       "description": "Initially calling itself BlackFile, the group has expanded operations to the Redact, Pink, Helix, and Falcon brands. The post Vishing Extortion Group UNC6671 Rebrands After Making Millions appeared first on SecurityWeek.",
@@ -178,6 +398,16 @@
       "sourceName": "SecurityWeek",
       "sourceUrl": "https://www.securityweek.com/rss",
       "category": "news"
+    },
+    {
+      "title": "Making Postgres 300x faster for analytics: batching, operator fusion, and SIMD",
+      "link": "https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/",
+      "description": "Comments",
+      "guid": "https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/",
+      "pubDate": "2026-08-07T11:00:35.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "New NatJack Attacks Hijack TCP Sessions and Spoof DNS by Manipulating NAT Tables",
@@ -200,16 +430,6 @@
       "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
       "category": "news",
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgH78NjDW1Q_sIk9dwQ1scYlCkNCMutfjGx_9flqrKbE42fEXqvHT8s5EeHTnWjbBGvzCuHPEWStR5r6wjwtIuuHF1hyphenhyphenot22E_Q98xedC1zXVhIhwglw6hLWQs45oSrPKPflK6Tt1BlHTj9iokMPpVaTehuemHGHDLL02cn2sqZJ5iIVstxiVf5IZ5Khodp/s1600/ms-phish.jpg"
-    },
-    {
-      "title": "US strikes $1.2B deal to pay German firm to halt offshore wind projects",
-      "link": "https://www.bbc.com/news/articles/c1e1vg0gjl5o",
-      "description": "Comments",
-      "guid": "https://www.bbc.com/news/articles/c1e1vg0gjl5o",
-      "pubDate": "2026-08-07T10:28:55.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "ICE Is Buying Access to Credit Card Records",
@@ -274,17 +494,6 @@
       "category": "news"
     },
     {
-      "title": "UNC6671 Automates Microsoft 365 Data Theft After Hijacking Employee Sessions",
-      "link": "https://cybersecuritynews.com/unc6671-automates-microsoft-365/",
-      "description": "UNC6671 is carrying out data theft campaigns that begin with a phone call. The group poses as an IT helpdesk, claiming an urgent security migration is necessary. A convincing call and a fake sign-in page can turn an ordinary session into an entry point. The calls create urgency before employees can verify the request independently. […] The post UNC6671 Automates Microsoft 365 Data Theft After Hijacking Employee Sessions appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158730",
-      "pubDate": "2026-08-07T09:19:50.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4Uqo26t2J-Ikwuj7h1Ip_OeFh7JsZtuDjkAz1RgF0o-MbivqGtsfiyLwILOV3DpceJXCBNok8yhQ5FALgbDgB_p1pZb3UYwKvpfm1hrq32AaMNzJBQecUYgPzsarrvS1BKjZ7uv8lJVg1sKX5WTbZLGbi_YMqRQYx8knsGbDw-ZC2EUZgaDOzPiJFA4/s1600/Helix%20and%20Pink%20DLS%20(Source%20-%20Google%20Cloud).webp"
-    },
-    {
       "title": "Microsoft, Apple Release Fresh Security Updates",
       "link": "https://www.securityweek.com/microsoft-apple-release-fresh-security-updates/",
       "description": "Microsoft fixed critical vulnerabilities across Azure, Entra, and SharePoint, while Apple patched a high-severity authentication bypass. The post Microsoft, Apple Release Fresh Security Updates appeared first on SecurityWeek.",
@@ -316,27 +525,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj81b6_YckjrqqfRrJQNRdIf3nu4xfqLNScukFYEao4VeF5QNlt16sbEwrdutizdB9Q1nOWRQpqeSZg4gYZsL8cIhRSJ43XJqMKWKgdKF28oeTl19HQQ75dnOKVHsa6DtXr4zhlmIF43nbUWV5jyEh4D1TjIvBKjgoAX2MpUbjJH3cN4hd4zDvIu_t4Jec/s1600/windows-hello-keys.jpg"
     },
     {
-      "title": "IPv6 Trends in User Account Compromises",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vhv54q/ipv6_trends_in_user_account_compromises/",
-      "description": "submitted by /u/j0hn__f [link] [comments]",
-      "guid": "t3_1vhv54q",
-      "pubDate": "2026-08-07T08:48:07.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "Papyrus Mobile Ad Fraud Uses Hidden WebViews to Fake Clicks, Scrolls and Attention",
-      "link": "https://cybersecuritynews.com/papyrus-mobile-ad-fraud/",
-      "description": "Papyrus is a mobile ad fraud operation hiding behind apps built for reading serialized fiction. While people turn pages and follow stories, the apps can quietly open websites in the background and create traffic. The scheme takes advantage of long reading sessions, giving operators time to run concealed browser activity. That model echoes other hidden browser […] The post Papyrus Mobile Ad Fraud Uses Hidden WebViews to Fake Clicks, Scrolls and Attention appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158719",
-      "pubDate": "2026-08-07T08:46:26.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjxj-3j9SsMqBLauUqJ2Z8z2Brm_LkxN_TIWE4xt-iLGif1ldgVHH8S_4xlj6kf88pZnCDPA558BWgR_pbTxmGEJEkXZbz_bjc8rmUNbvPB4_f_Ah4GiPe31lFBqQDUJqatu07cwbEkSWhrEXkpbv78wX_3Ykkf8B1BWU6v9pACxVBkqPFFHHmlRxdy0A/s1600/Sample%20novel-reading%20apps%20associated%20with%20Papyrus%20(Source%20-%20IAS).webp"
-    },
-    {
       "title": "Claude Code and Gemini CLI Flaws Let a GitHub Issue Reach CI Workflow Secrets",
       "link": "https://thehackernews.com/2026/08/claude-code-and-gemini-cli-flaws-let.html",
       "description": "A GitHub issue opened by an account with no repository privileges was enough to execute code on the CI runners behind Anthropic's and Google's own coding-agent repositories. On OpenAI's, it was enough to hijack the next agent run. Novee Security ran the attack against each vendor's agent in the configuration that the vendor ships by default, and presented the work at Black Hat USA on August 5.",
@@ -348,16 +536,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguukj-eRhx9RtAq9X96hAxHi0IU3ZWgM_W5XkdWhF8ezevuBQygkpv-ku5PSri9Gt5hRkNVxe6HmJJr5Mg33X_PhOGziqaho9bwm-mkRZSBl2jo94XF3jRwTZOb_PocueKWJkEtvl7kG_YqmbVfUxNht8_ODzLOERIqQteMdPxnWpobM-c9-fHhn0cLMQ/s1600/claude-github.jpg"
     },
     {
-      "title": "Inside CanOworms: The 633-Server Proxy Network Hiding Criminal and State-Linked Activity",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vhum2o/inside_canoworms_the_633server_proxy_network/",
-      "description": "submitted by /u/campuscodi [link] [comments]",
-      "guid": "t3_1vhum2o",
-      "pubDate": "2026-08-07T08:16:07.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Manual SQL Injection: Extracting Data with GET Search SQLI lab in bWAPP",
       "link": "https://medium.com/@llombarotll/manual-sql-injection-extracting-data-with-get-search-sqli-lab-in-bwapp-ca02acd64db5?source=rss------bug_bounty-5",
       "description": "Introduction Continue reading on Medium »",
@@ -367,37 +545,6 @@
       "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
       "category": "bugbounty",
       "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*7W8RpuG_cEbLc01OwzeBDw.png"
-    },
-    {
-      "title": "Multiple Flaws in Enterprise Java Platforms Allow Attackers to Execute Remote Code",
-      "link": "https://cybersecuritynews.com/multiple-vulnerabilities-in-enterprise-java-platforms/",
-      "description": "Enterprise Java platforms remain attractive targets because middleware often exposes paths developers assumed were internal. New research presented for Black Hat 2026 describes 12 flaws across products, including a sandbox escape and four pre-authentication issues. The serious findings are two remote code execution chains affecting Bonita BPM and Apache OFBiz. Both chains begin before login […] The post Multiple Flaws in Enterprise Java Platforms Allow Attackers to Execute Remote Code appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158711",
-      "pubDate": "2026-08-07T07:45:57.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "Shai-Hulud CHAINDROP Worm Backdoors 400+ npm Packages With 1.3 Billion Monthly Downloads",
-      "link": "https://cybersecuritynews.com/shai-hulud-chaindrop-worm-backdoors/",
-      "description": "Shai-Hulud is back in the npm ecosystem, and this time its reach is unusually broad. A new self-propagating malware strain called CHAINDROP has backdoored more than 400 packages after attackers compromised the maintainer of the widely used keyv library. The campaign turns trusted software updates into a route for stealing developer credentials and spreading further. […] The post Shai-Hulud CHAINDROP Worm Backdoors 400+ npm Packages With 1.3 Billion Monthly Downloads appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158718",
-      "pubDate": "2026-08-07T07:26:08.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1zNo55m_O98DZbD4v4XE-u_gkxsYfS_bLdiWfDw3ede9uf_NRpfqUuGgRE0TF_R4YcPq_pbhwygakSCjwuJqIpz4fMPMm1xFQK5kWKBRuKR-v1PoVUOvPN2Sog3iWswJdeKnPfsXdxRQOmKuxx0cruwg48moMNUAZV-0d_v9uvkUAWhdnlEZWRkCAWM0/s1600/Supply%20Chain%20Monitor%20initial%20notifications%20(Source%20-%20Elastic).webp"
-    },
-    {
-      "title": "Kimi K3 AI Model Escapes Sandbox During Security Test to Fetch Answers",
-      "link": "https://cybersecuritynews.com/kimi-k3-ai-model-escapes-sandbox/",
-      "description": "Moonshot AI’s open-weight model Kimi K3 broke out of its isolated testing sandbox during a cybersecurity evaluation and reached the open internet, according to a new report from Wired. The incident, uncovered by US startup Frontier Security, is raising fresh concerns about the safety guardrails built into powerful open-weight AI models that are already freely […] The post Kimi K3 AI Model Escapes Sandbox During Security Test to Fetch Answers appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158720",
-      "pubDate": "2026-08-07T07:24:57.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news"
     },
     {
       "title": "Linux Shell Forensic: Let&#x3f;s Dive Into Atuin&#x21;, (Fri, Aug 7th)",
@@ -462,17 +609,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicYXbdZUBG2jW8962nmphGWa0sWoq3jKe6HAT9wa6qlZdPPYBZRdw-uWjUbUv15BxaRgugcEAPXPZ2rMYx3RzM_vLVH18F6oTwwAklstzIRehnPJXwBs9b-d6NKjJZVhO5n1SRnBTlweRonaWCFogLrbJkyzs-F9K3lffy0tfqf2Vownwe9lj06rEe8Nn2/s1600/TeamPCP.jpg"
     },
     {
-      "title": "Zbtlink Chinese Router Sold Worldwide Contains a Hidden Backdoor Affecting 20+ Models",
-      "link": "https://cybersecuritynews.com/zbtlink-chinese-router/",
-      "description": "Zbtlink routers sold in global markets have been found carrying a hidden remote-control implant that starts with the device. The discovery affects equipment used in homes, offices, temporary sites and vehicles, turning a trusted network gateway into a potential entry point. The affected devices may be present anywhere small, low-cost network hardware is deployed today. […] The post Zbtlink Chinese Router Sold Worldwide Contains a Hidden Backdoor Affecting 20+ Models appeared first on Cyber Security News.",
-      "guid": "https://cybersecuritynews.com/?p=158712",
-      "pubDate": "2026-08-07T06:38:52.000Z",
-      "sourceName": "Cyber Security News",
-      "sourceUrl": "https://www.cybersecuritynews.com/feed/",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZdXp8YQ6dI07TIFU74f-Wv6Be9F-vT-jjQE-9yULxkPbUtD9SKRiSuvMKCQ6wZV7QNdDwmC2qjbdMcuP8RUxrhMJvj2gd9vZx6ftEmIJrdL0-bYnBKShQvXpnQBvZihCKyJN2pnvX_oYGGg2hO46w-wx1TDXxfRrCu4n94jcz7UOjCbz8cfmmFAfavwk/s1600/zbtctl.epplink%5B.%5Dnet%20endpoint%20which%20currently%20resolves%20to%2047.100.190%5B.%5D96,%20hosted%20in%20Alibaba%20Cloud%20(Source%20-%20VunCheck).webp"
-    },
-    {
       "title": "Business Logic Vulnerability",
       "link": "https://medium.com/@mahfuzhrifaldi/business-logic-vulnerability-83f5eb00dede?source=rss------bug_bounty-5",
       "description": "apa itu Business Logic? business logic vulnerability itu adalah kerentanan kesalahan logika dari suatu sistem yg dibangun, dimana alur… Continue reading on Medium »",
@@ -525,15 +661,14 @@
       "category": "news"
     },
     {
-      "title": "From File Upload to Remote Code Execution: How I Bypassed MIME Type Validation",
-      "link": "https://rootvuln.medium.com/from-file-upload-to-remote-code-execution-how-i-bypassed-mime-type-validation-d571e7c27645?source=rss------bug_bounty-5",
-      "description": "Introduction Continue reading on Medium »",
-      "guid": "https://medium.com/p/d571e7c27645",
-      "pubDate": "2026-08-07T04:38:55.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/2600/1*zAmnjWRkl4GtBUEGeP6P5A.png"
+      "title": "CrowdStrike Threat Hunts for Shell Command Obfuscation on VMware ESX",
+      "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-hunts-for-shell-command-obfuscation-vmware-esx/",
+      "description": "",
+      "guid": "https://www.crowdstrike.com/?p=989577",
+      "pubDate": "2026-08-07T05:00:00.000Z",
+      "sourceName": "CrowdStrike Blog",
+      "sourceUrl": "https://www.crowdstrike.com/blog/feed",
+      "category": "research"
     },
     {
       "title": "ShieldFont fights AI scraping by handing crawlers the wrong words",
@@ -544,17 +679,6 @@
       "sourceName": "Help Net Security",
       "sourceUrl": "https://www.helpnetsecurity.com/feed",
       "category": "news"
-    },
-    {
-      "title": "PortSwigger Web Security Academy: All NoSQL Injection Labs Solved (Full Walkthrough)",
-      "link": "https://medium.com/@blueorionn/portswigger-web-security-academy-all-nosql-injection-labs-solved-full-walkthrough-c0c2bf201402?source=rss------bug_bounty-5",
-      "description": "The NoSQL Injection labs in PortSwigger Web Security Academy provide a practical introduction to exploiting modern web applications that… Continue reading on Medium »",
-      "guid": "https://medium.com/p/c0c2bf201402",
-      "pubDate": "2026-08-07T04:07:08.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*HKgrRGFhXzER7E3PVYovbQ.png"
     },
     {
       "title": "Gut feeling does nothing against AI spear phishing texts",
@@ -575,17 +699,6 @@
       "sourceName": "SANS Internet Storm Center",
       "sourceUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "category": "research"
-    },
-    {
-      "title": "LDAP Injection: Its As Simple As A TRUE/FALSE",
-      "link": "https://clarkvoss.medium.com/ldap-injection-its-as-simple-as-a-true-false-31577d5ea9f9?source=rss------bug_bounty-5",
-      "description": "How I pulled full employee directory data from Blind LDAP Injection in a Password Reset Form! Continue reading on Medium »",
-      "guid": "https://medium.com/p/31577d5ea9f9",
-      "pubDate": "2026-08-07T01:04:46.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/636/1*xmHVSFIRY5JhHrfTl5dGrQ.png"
     },
     {
       "title": "New Mexico court orders Meta to pay $567m over harms to children’s mental health",
@@ -640,17 +753,6 @@
       "imageUrl": "https://research.checkpoint.com/wp-content/uploads/2026/08/CCMUPI188K-image1.png"
     },
     {
-      "title": "How I Hijacked Lightspark’s JSR Package and Could Have Backdoored Every Developer Using Their…",
-      "link": "https://medium.com/@tushar.from.cyber/how-i-hijacked-lightsparks-jsr-package-and-could-have-backdoored-every-developer-using-their-11b258688243?source=rss------bug_bounty-5",
-      "description": "A supply chain attack on a Lightning Network payments company — found in 15 minutes using a simple methodology anyone can replicate. Continue reading on Medium »",
-      "guid": "https://medium.com/p/11b258688243",
-      "pubDate": "2026-08-06T22:14:31.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1894/1*ohdfbVd2kpGYz2LNW06VJQ.png"
-    },
-    {
       "title": "Automate certificates with ACME support in AWS Certificate Manager",
       "link": "https://aws.amazon.com/blogs/security/automate-certificates-with-acme-support-in-aws-certificate-manager/",
       "description": "Customers tell us that managing TLS certificates at scale is one of their biggest operational concerns. The Certification Authority Browser Forum (CA/Browser Forum) has mandated a phased reduction in maximum certificate validity for public certificates. By March 2027, the maximum validity drops to 100 days. By March 2029, it lasts for 47 days. For an […]",
@@ -672,24 +774,24 @@
       "category": "news"
     },
     {
-      "title": "Bioengineered chewing gum may offer a way to fight HPV and other microbes",
-      "link": "https://www.sciencedaily.com/releases/2026/08/260803080917.htm",
-      "description": "Comments",
-      "guid": "https://www.sciencedaily.com/releases/2026/08/260803080917.htm",
-      "pubDate": "2026-08-06T21:18:32.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
+      "title": "Claude Code RCE: How a Malicious PR Triggers Code Execution",
+      "link": "https://www.reddit.com/r/netsec/comments/1vhh5xw/claude_code_rce_how_a_malicious_pr_triggers_code/",
+      "description": "Abusing the trust boundary in Claude Code for RCE. Trust is never broken and that opens up a few avenues for abuse. Simply opening claude code on a PR can be enough to silently trigger attacker payloads. submitted by /u/kev-thehermit [link] [comments]",
+      "guid": "t3_1vhh5xw",
+      "pubDate": "2026-08-06T21:22:53.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
     },
     {
-      "title": "ENISA scales up its role in the CVE Program",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vhg779/enisa_scales_up_its_role_in_the_cve_program/",
-      "description": "submitted by /u/digicat [link] [comments]",
-      "guid": "t3_1vhg779",
-      "pubDate": "2026-08-06T20:45:08.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
+      "title": "Déjà Vu? Meta's AI Escapes Testing Lab in Hacking Joyride",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/meta-ai-escapes-lab-hacking-joyride",
+      "description": "In the span of three weeks, OpenAI, Anthropic, and Meta have all disclosed AI agent sandbox escape events affecting real organizations.",
+      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/meta-ai-escapes-lab-hacking-joyride",
+      "pubDate": "2026-08-06T20:39:30.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
     },
     {
       "title": "Researcher Claims Control of ChatGPT Secure Sandbox",
@@ -722,16 +824,6 @@
       "category": "news"
     },
     {
-      "title": "Toolkit Installation via SQL Injection Shows the Classics Still Hit",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vhf3y1/toolkit_installation_via_sql_injection_shows_the/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vhf3y1",
-      "pubDate": "2026-08-06T20:04:18.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "Route Amazon Bedrock Guardrails interventions to Amazon Security Lake",
       "link": "https://aws.amazon.com/blogs/security/route-amazon-bedrock-guardrails-interventions-to-amazon-security-lake/",
       "description": "Security teams investigating AI-related incidents need guardrail intervention data alongside their existing security telemetry. Routing Amazon Bedrock Guardrails violations to Amazon Security Lake makes this possible. With this integration, you can query guardrail events alongside identity, network, and application security data in a single layer. When a guardrail blocks a prompt injection attempt or redacts […]",
@@ -761,16 +853,6 @@
       "sourceName": "CERT Vulnerability Notes",
       "sourceUrl": "https://www.kb.cert.org/vulfeed/",
       "category": "government"
-    },
-    {
-      "title": "The Xcode Assassin Returns: A Deep Dive Into the Latest XCSSET Version",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vhci04/the_xcode_assassin_returns_a_deep_dive_into_the/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vhci04",
-      "pubDate": "2026-08-06T18:28:35.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
     },
     {
       "title": "Swiss government SharePoint breach compromised 200 accounts",
@@ -814,37 +896,6 @@
       "category": "news"
     },
     {
-      "title": "Cisco Patches 12 SD-WAN and IOS XE Flaws, Including Three 9.9 CVSS Score Bugs",
-      "link": "https://thehackernews.com/2026/08/cisco-patches-12-sd-wan-and-ios-xe.html",
-      "description": "Cisco has rolled out updates to address multiple critical security vulnerabilities impacting Catalyst SD-WAN and IOS XE Software as part of a comprehensive internal security review. The security issues affect Cisco Catalyst SD-WAN Software, regardless of device configuration, and Cisco IOS XE Software when it is running in autonomous or controller mode. \"These vulnerabilities were found",
-      "guid": "https://thehackernews.com/2026/08/cisco-patches-12-sd-wan-and-ios-xe.html",
-      "pubDate": "2026-08-06T17:13:15.000Z",
-      "sourceName": "The Hacker News",
-      "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
-      "category": "news",
-      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzkSwdiUeH8rB-KgSkEXrT-oNL19IyghM7Ks8UDOedxPYB5czgwO8pXNf0YUt7OHqAbRRDJkRvJffzJ0lfpEdqfLn-w-Bc9pwOa_1FNJjJkrVbD-diaZu9HRFqAlOBWogXEsZ4sSFRDW-HYmsaUmVD98QGQoyq2rHep_dwDa5ueafTUO0Lh6zsA-Czd3he/s1600/cisco-flaws.jpg"
-    },
-    {
-      "title": "Improving GPT‑5.6 Sol in ChatGPT, expanding GPT‑5.6 Luna access for free users",
-      "link": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
-      "description": "Comments",
-      "guid": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/",
-      "pubDate": "2026-08-06T17:02:04.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Taste Is All That's Left",
-      "link": "https://notashelf.dev/posts/taste-is-all-thats-left",
-      "description": "Comments",
-      "guid": "https://notashelf.dev/posts/taste-is-all-thats-left",
-      "pubDate": "2026-08-06T17:01:33.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Canadian Man Pleads Guilty in Snowflake Extortions",
       "link": "https://krebsonsecurity.com/2026/08/canadian-man-pleads-guilty-in-snowflake-extortions/",
       "description": "A 26-year-old Canadian man once described as one of the most consequential cybercrime threat actors of 2024 has pleaded guilty to computer fraud and conspiracy to hack and extort more than 165 organizations that used the cloud data storage provider Snowflake. Connor Riley Moucka, of Kitchener, Ontario, also admitted to stealing call and text history records of more than 100 million AT&T customers.",
@@ -885,26 +936,6 @@
       "sourceName": "BleepingComputer",
       "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
-    },
-    {
-      "title": "Dissecting Vanta Stealer, a Python-Based Cross-Platform Information Theft Malware",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vh86od/dissecting_vanta_stealer_a_pythonbased/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vh86od",
-      "pubDate": "2026-08-06T15:54:49.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "GitHub Actions and Pages are experiencing degraded availability",
-      "link": "https://www.githubstatus.com/incidents/qcvjkzcs7j74",
-      "description": "Comments",
-      "guid": "https://www.githubstatus.com/incidents/qcvjkzcs7j74",
-      "pubDate": "2026-08-06T15:49:38.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "Ransom Cartel Leader Sentenced to 16 Years in U.S.",
@@ -1028,16 +1059,6 @@
       "category": "research"
     },
     {
-      "title": "Critical Paperclip Flaw Allowed Admin Access, Code Execution",
-      "link": "https://www.securityweek.com/critical-paperclip-flaw-allowed-admin-access-code-execution/",
-      "description": "An attacker could self-register, sign in for board-level API access, and import a new company for code execution. The post Critical Paperclip Flaw Allowed Admin Access, Code Execution appeared first on SecurityWeek.",
-      "guid": "https://www.securityweek.com/?p=48455",
-      "pubDate": "2026-08-06T11:09:11.000Z",
-      "sourceName": "SecurityWeek",
-      "sourceUrl": "https://www.securityweek.com/rss",
-      "category": "news"
-    },
-    {
       "title": "Adversarial Clothing Designed to Fool Facial Recognition Systems",
       "link": "https://www.schneier.com/blog/archives/2026/08/adversarial-clothing-designed-to-fool-facial-recognition-systems.html",
       "description": "There are many companies manufacturing adversarial clothing designed to confuse facial recognition systems. It’s a cool idea, but I worry that it’s mostly security theater: “Our patterns play with that chaos, confuse algorithms and make it way harder to pin you down,” he said. Bell, however, said “none of these products are tried and tested, and a lot of these surveillance technologies can deal with a little resistance … [but] even if the designs don’t necessarily work perfectly, fashion is also a visible sign of resistance. “This is consumers collectively coming together to make a visible statement.” Without serious testing, there is no reason to trust the technology. And even with testing, there is no reason to trust that a new version of the facial recognition software doesn’t break the anti-surveillance properties. I don’t want people to mistakenly rely on this stuff.",
@@ -1133,11 +1154,21 @@
       "title": "Expanding AI Benchmarks in Cybersecurity Beyond Vulnerability Discovery",
       "link": "https://www.crowdstrike.com/en-us/blog/expanding-cybersecurity-ai-benchmarks-beyond-vulnerability-discovery/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=443219",
+      "guid": "https://www.crowdstrike.com/?p=267936",
       "pubDate": "2026-08-06T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
       "category": "research"
+    },
+    {
+      "title": "From wallet drains to a 12-year-old CryptoJS entropy bug: the Ill Bloom investigation",
+      "link": "https://www.reddit.com/r/netsec/comments/1vgr9gv/from_wallet_drains_to_a_12yearold_cryptojs/",
+      "description": "submitted by /u/coinspect [link] [comments]",
+      "guid": "t3_1vgr9gv",
+      "pubDate": "2026-08-06T02:12:20.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
     },
     {
       "title": "ISC Stormcast For Thursday, August 6th, 2026 https://isc.sans.edu/podcastdetail/10040, (Thu, Aug 6th)",
@@ -1201,16 +1232,6 @@
       "category": "news"
     },
     {
-      "title": "Ransom Cartel ransomware creator sentenced to 16 years in prison",
-      "link": "https://www.bleepingcomputer.com/news/security/ransom-cartel-ransomware-creator-sentenced-to-16-years-in-prison/",
-      "description": "Maksim Silnikau, the creator and administrator of the Ransom Cartel ransomware operation, was sentenced to 16 years in prison for his role in ransomware attacks against at least 18 companies worldwide. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/ransom-cartel-ransomware-creator-sentenced-to-16-years-in-prison/",
-      "pubDate": "2026-08-05T23:00:50.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "No Perfect Fix for AI Browser Prompt Injection Flaws",
       "link": "https://www.darkreading.com/application-security/no-perfect-fix-ai-browser-prompt-injection-flaws",
       "description": "AI browsers from top vendors remain vulnerable to prompt injection attacks despite multiple security guardrails, according to new research.",
@@ -1218,16 +1239,6 @@
       "pubDate": "2026-08-05T22:18:25.000Z",
       "sourceName": "Dark Reading",
       "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
-      "title": "Canadian pleads guilty to Snowflake cloud data-theft attacks",
-      "link": "https://www.bleepingcomputer.com/news/security/canadian-pleads-guilty-to-snowflake-cloud-data-theft-attacks/",
-      "description": "A Canadian man pleaded guilty today to his role in accessing company accounts at cloud storage provider Snowflake and stealing data from at least 165 organizations in a scheme to extort millions of dollars from victims. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/canadian-pleads-guilty-to-snowflake-cloud-data-theft-attacks/",
-      "pubDate": "2026-08-05T21:53:26.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
     },
     {
@@ -1242,16 +1253,6 @@
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/06/16/Chet-Kapoor-headshot.jpg"
     },
     {
-      "title": "Hackers run khunt post-exploitation toolkit from Oracle database",
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-run-khunt-post-exploitation-toolkit-from-oracle-database/",
-      "description": "Hackers exploited a SQL injection vulnerability to install a post-exploitation toolkit directly inside an Oracle database that was used to breach a corporate network. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/hackers-run-khunt-post-exploitation-toolkit-from-oracle-database/",
-      "pubDate": "2026-08-05T19:55:25.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
       "title": "CSS: The Hidden Threat Lurking in Your Inbox",
       "link": "https://www.darkreading.com/cyberattacks-data-breaches/css-hidden-threat-lurking-inbox",
       "description": "CSS was once just about design. Now researchers warn it's powerful enough to exfiltrate data from webmail — and some vendors aren't prepared.",
@@ -1262,52 +1263,11 @@
       "category": "news"
     },
     {
-      "title": "AI Deception Emerges in Cyber Tests as Agents Target Real People and Systems",
-      "link": "https://securityaffairs.com/196695/ai/ai-deception-emerges-in-cyber-tests-as-agents-target-real-people-and-systems.html",
-      "description": "AISI found AI agents taking unsanctioned online actions, including social engineering and code attacks, during controlled cyber tests. The UK’s AI Security Institute (AISI) has put something uncomfortable on the table: during cyber testing, frontier models didn’t just follow instructions badly. In some runs, they crossed into real-world actions, touched real people and organisations, and […]",
-      "guid": "https://securityaffairs.com/?p=196695",
-      "pubDate": "2026-08-05T19:39:58.000Z",
-      "sourceName": "Security Affairs",
-      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
-      "category": "news",
-      "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/08/image-9.png?resize=783%2C435&#038;ssl=1"
-    },
-    {
       "title": "15 TP-Link Bugs Expose Risks in Zero-Trust Provisioning",
       "link": "https://www.darkreading.com/endpoint-security/15-tp-link-bugs-risks-zero-trust-provisioning",
       "description": "Researchers are calling attention to the risks inherent in automated network device provisioning, using a world-leading device manufacturer as a case study.",
       "guid": "https://www.darkreading.com/endpoint-security/15-tp-link-bugs-risks-zero-trust-provisioning",
       "pubDate": "2026-08-05T19:08:36.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
-      "title": "Distributed npm Package Cluster Delivers Cross-Platform RAT Targeting Alibaba Developers",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vggrbd/distributed_npm_package_cluster_delivers/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vggrbd",
-      "pubDate": "2026-08-05T19:07:33.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "Incident Report: unsanctioned agent behaviour during cyber testing",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vgfwmj/incident_report_unsanctioned_agent_behaviour/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vgfwmj",
-      "pubDate": "2026-08-05T18:37:24.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "Flaws in Google APK for Python Unlock Agent-to-Agent Attack",
-      "link": "https://www.darkreading.com/vulnerabilities-threats/flaws-google-apk-python-agent-to-agent-attack",
-      "description": "Google has fixed the issues, which exploited a trust boundary between two AI agents with different privilege levels to trigger automation that could compromise the supply chain.",
-      "guid": "https://www.darkreading.com/vulnerabilities-threats/flaws-google-apk-python-agent-to-agent-attack",
-      "pubDate": "2026-08-05T18:03:31.000Z",
       "sourceName": "Dark Reading",
       "sourceUrl": "https://www.darkreading.com/rss.xml",
       "category": "news"
@@ -1345,17 +1305,6 @@
       "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/08/CombinedLeadershipFull-712x1024.webp"
     },
     {
-      "title": "Brown Health Medical Group-MA Data Breach Exposes Information of 311,000 Individuals",
-      "link": "https://securityaffairs.com/196681/uncategorized/brown-health-medical-group-ma-data-breach-exposes-information-of-311000-individuals.html",
-      "description": "Brown Health Medical Group-MA breach exposed personal, medical, and financial data of over 311,000 individuals after hackers accessed its servers. Brown Health Medical Group-MA data breach exposed personal, medical, and financial data of over 311,000 individuals after hackers accessed its servers. The healthcare group identified a data security breach involving a legacy file server on […]",
-      "guid": "https://securityaffairs.com/?p=196681",
-      "pubDate": "2026-08-05T16:27:17.000Z",
-      "sourceName": "Security Affairs",
-      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
-      "category": "news",
-      "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/08/image-8.png?resize=1024%2C195&#038;ssl=1"
-    },
-    {
       "title": "From open lures to cloaked gates: How a macOS ClickFix campaign learned to hide",
       "link": "https://www.microsoft.com/en-us/security/blog/2026/08/05/macos-clickfix-campaign-learned-hide/",
       "description": "A macOS ClickFix campaign shifted tactics from openly serving infostealer lures to hiding them behind a browser-fingerprinting gate. The change makes malicious infrastructure harder to detect while giving defenders new hunting opportunities. The post From open lures to cloaked gates: How a macOS ClickFix campaign learned to hide appeared first on Microsoft Security Blog.",
@@ -1367,23 +1316,13 @@
       "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/07/image-30.webp"
     },
     {
-      "title": "Scientists discover Kelvin-Helmholtz Instability on the surface of the Sun",
-      "link": "https://nso.edu/press-release/nsf-inouye-solar-telescope-enables-major-discovery-of-a-hidden-solar-process/",
-      "description": "Comments",
-      "guid": "https://nso.edu/press-release/nsf-inouye-solar-telescope-enables-major-discovery-of-a-hidden-solar-process/",
-      "pubDate": "2026-08-05T15:33:23.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "ENDLESSDOORS Is Phoning Home. Pick Up.",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vg9b1m/endlessdoors_is_phoning_home_pick_up/",
-      "description": "submitted by /u/jnazario [link] [comments]",
-      "guid": "t3_1vg9b1m",
-      "pubDate": "2026-08-05T14:42:35.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "title": "Stored XSS in Django's admin via an unvalidated URLField display path (CVE-2026-15920)",
+      "link": "https://www.reddit.com/r/netsec/comments/1vg9704/stored_xss_in_djangos_admin_via_an_unvalidated/",
+      "description": "submitted by /u/Sandwich_1337 [link] [comments]",
+      "guid": "t3_1vg9704",
+      "pubDate": "2026-08-05T14:38:12.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
     },
     {
@@ -1447,14 +1386,14 @@
       "category": "research"
     },
     {
-      "title": "Angola's Largest Telco Breached Hours Before IPO",
-      "link": "https://www.darkreading.com/cyberattacks-data-breaches/angolas-largest-telco-breached-hours-before-ipo",
-      "description": "Unitel, Angola's dominant mobile operator, continues to recover from a cyberattack that caused outages the day of the government-owned telco's public offering.",
-      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/angolas-largest-telco-breached-hours-before-ipo",
-      "pubDate": "2026-08-05T08:00:00.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
+      "title": "New Linux Bridge STP Vulnerability",
+      "link": "https://www.reddit.com/r/netsec/comments/1vg20wg/new_linux_bridge_stp_vulnerability/",
+      "description": "A use-after-free vulnerability in the Linux kernel bridge (net/bridge) Spanning Tree Protocol (STP) implementation. A bridge that is administratively down while kernel STP is enabled, together with a port driven into the LEARNING state, arms periodic STP timers without an IFF_UP guard. The teardown path taken by dellink never synchronously deletes those timers, so the backing net_device (which embeds struct net bridge as private data) is freed with a timer list still queued on a per-CPU timer base. The result is a slab use-after-free in the kmalloc-cg-8k cache. submitted by /u/SSDisclosure [link] [comments]",
+      "guid": "t3_1vg20wg",
+      "pubDate": "2026-08-05T09:04:29.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
     },
     {
       "title": "Risky Business #847 -- Oops! Claude's accidental hacking spree",
@@ -1486,6 +1425,16 @@
       "sourceUrl": "https://www.microsoft.com/security/blog/feed",
       "category": "cloud",
       "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/08/image.webp"
+    },
+    {
+      "title": "Bugtraq is back 🥹",
+      "link": "https://www.reddit.com/r/netsec/comments/1vfpmhg/bugtraq_is_back/",
+      "description": "submitted by /u/loselasso [link] [comments]",
+      "guid": "t3_1vfpmhg",
+      "pubDate": "2026-08-04T22:48:37.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
     },
     {
       "title": "Apple battles it out again with the UK over encrypted iCloud access",
@@ -1539,6 +1488,16 @@
       "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
       "category": "cloud",
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2025/07/03/Will-Black.jpeg"
+    },
+    {
+      "title": "Hardware Hacking: From zero to a Pre-Auth Stack Buffer Overflow on Amazon's best-selling router",
+      "link": "https://www.reddit.com/r/netsec/comments/1vfdep6/hardware_hacking_from_zero_to_a_preauth_stack/",
+      "description": "submitted by /u/Internal-Key64 [link] [comments]",
+      "guid": "t3_1vfdep6",
+      "pubDate": "2026-08-04T15:21:21.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
     },
     {
       "title": "The Frontier AI Vulnerability Burst: Industrializing Autonomous Zero-Day Discovery in Open-Source Software",
@@ -1654,6 +1613,16 @@
       "category": "news"
     },
     {
+      "title": "HEVD: From Stack Overflows to Modern Pool Grooming",
+      "link": "https://www.reddit.com/r/netsec/comments/1vf5zwc/hevd_from_stack_overflows_to_modern_pool_grooming/",
+      "description": "Hi. I just published a four-part deep dive into windows kernel exploitation, progressing from classic control flow hijacking to modern pool grooming and pure data-only attacks on windows 11. I wanted to highlight the real-world friction of modern security measures. A lot of the focus is on mitigating LFH randomization, and avoiding IoCompleteRequest bugchecks by dodging ReadFile for arbitrary reads. Hope this is helpful or insightful to some of you looking into modern kernel exploitation. submitted by /u/Important_Map6928 [link] [comments]",
+      "guid": "t3_1vf5zwc",
+      "pubDate": "2026-08-04T10:01:24.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
       "title": "Fake IRS letters target cryptocurrency holders",
       "link": "https://www.bitdefender.com/en-us/blog/hotforsecurity/fake-irs-letters-cryptocurrency",
       "description": "Do you hold cryptocurrency? Have you received a letter telling you that you must register with a so-called \"Digital Asset Compliance Portal\"? If so, it's time to hit the brakes, because it sounds like someone is trying to scam you. Read more in my article on the Hot for Security blog.",
@@ -1678,7 +1647,7 @@
       "title": "Secure Agent Harness Execution: Preventing Escape",
       "link": "https://www.crowdstrike.com/en-us/blog/secure-agent-harness-execution-preventing-escape/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=871632",
+      "guid": "https://www.crowdstrike.com/?p=402377",
       "pubDate": "2026-08-04T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1733,16 +1702,6 @@
       "sourceName": "Schneier on Security",
       "sourceUrl": "https://www.schneier.com/feed/atom/",
       "category": "news"
-    },
-    {
-      "title": "A quine in Piet – a GIF image that prints itself [video]",
-      "link": "https://www.youtube.com/watch?v=GwMtzhjCzyc",
-      "description": "Comments",
-      "guid": "https://www.youtube.com/watch?v=GwMtzhjCzyc",
-      "pubDate": "2026-08-03T14:20:45.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "3rd August – Threat Intelligence Report",
@@ -1800,7 +1759,7 @@
       "title": "CrowdStrike 2026 Threat Hunting Report: Exploitation Window Closes as AI Use Accelerates",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-threat-hunting-report/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=986738",
+      "guid": "https://www.crowdstrike.com/?p=656314",
       "pubDate": "2026-08-03T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1828,23 +1787,13 @@
       "imageUrl": "https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-01b.jpg"
     },
     {
-      "title": "São Paulo resident transforms degraded area into urban forest",
-      "link": "https://saopaulosecreto.com/en/tiquatira-linear-park-en/",
-      "description": "Comments",
-      "guid": "https://saopaulosecreto.com/en/tiquatira-linear-park-en/",
-      "pubDate": "2026-08-01T21:02:26.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "CTO at NCSC Summary: week ending August 2nd",
-      "link": "https://www.reddit.com/r/blueteamsec/comments/1vcgu6p/cto_at_ncsc_summary_week_ending_august_2nd/",
-      "description": "submitted by /u/digicat [link] [comments]",
-      "guid": "t3_1vcgu6p",
-      "pubDate": "2026-08-01T07:38:06.000Z",
-      "sourceName": "r/blueteamsec",
-      "sourceUrl": "https://www.reddit.com/r/blueteamsec/.rss",
+      "title": "r/netsec monthly discussion & tool thread",
+      "link": "https://www.reddit.com/r/netsec/comments/1vcngz2/rnetsec_monthly_discussion_tool_thread/",
+      "description": "Questions regarding netsec and discussion related directly to netsec are welcome here, as is sharing tool links. Rules & Guidelines Always maintain civil discourse. Be awesome to one another - moderator intervention will occur if necessary. Avoid NSFW content unless absolutely necessary. If used, mark it as being NSFW. If left unmarked, the comment will be removed entirely. If linking to classified content, mark it as such. If left unmarked, the comment will be removed entirely. Avoid use of memes. If you have something to say, say it with real words. All discussions and questions should directly relate to netsec. No tech support is to be requested or provided on r/netsec. As always, the content & discussion guidelines should also be observed on r/netsec. Feedback Feedback and suggestions are welcome, but don't post it here. Please send it to the moderator inbox. submitted by /u/albinowax [link] [comments]",
+      "guid": "t3_1vcngz2",
+      "pubDate": "2026-08-01T13:29:06.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
     },
     {
@@ -1878,36 +1827,6 @@
       "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
       "category": "cloud",
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2024/11/14/abdul-javid.png"
-    },
-    {
-      "title": "Anthropic’s Opus 5 Is Better at Resisting Prompt Injection",
-      "link": "https://www.schneier.com/blog/archives/2026/07/anthropics-opus-5-is-better-at-resisting-prompt-injection.html",
-      "description": "The chart is interesting. On the IPI benchmark, Opus 5 improved over Opus 4.8, reducing the probability of an attacker succeeding within 15 attempts from 5.5% to 2.0%, and from 0.5% to 0.2% on 1 attempt. It also improved on Sonnet 5 (5.9% at k=15) and Mythos 5 (2.6%), making it the most robust model evaluated. Opus 5 also outperformed all non-Claude models on this benchmark. The most robust non-Claude model was Muse Spark at 16.5% within 15 attempts—more than eight times Opus 5’s rate. The most capable GPT 5.6 variant, Sol, was comparable to its predecessor GPT 5.5 (20.0% versus 20.8% within 15 attempts), and was 10 times as likely to be successfully attacked as Claude Opus 5 at 2.0%. The other GPT 5.6 variants are less robust, at 30.4% (Terra) and 43.9% (Luna). A single attempt against GPT 5.6 Sol succeeded 3.1% of the time, higher than the 2.0% an attacker achieved against Opus 5 after fifteen attempts. We know that preventing prompt injection is impossible in the general case. But we are getting much better at blocking it in specific cases.",
-      "guid": "https://www.schneier.com/?p=72395",
-      "pubDate": "2026-07-31T17:23:16.000Z",
-      "sourceName": "Schneier on Security",
-      "sourceUrl": "https://www.schneier.com/feed/atom/",
-      "category": "news"
-    },
-    {
-      "title": "VU#243636: VPS.org one-click deployment templates contain multiple vulnerabilities",
-      "link": "https://kb.cert.org/vuls/id/243636",
-      "description": "Overview VPS.org's one-click deployment templates provision services with default passwords and predefined network bindings instead of generating randomized secrets or applying per-deployment hardening measures. Description VPS.org is a cloud and virtual private server hosting provider that offers a library of templates for quickly provisioning common applications and services. Multiple vulnerabilities exist in the one-click deployment templates feature. These vulnerabilities stem from the same root cause: content is directly instantiated from static templates, using default passwords and static secrets with no deployment-specific randomization or interface-binding hardening at provisioning time. CVE-2026-16503 The Supabase template provides an instance of PostgreSQL that is bound to all network interfaces (0.0.0.0:5432) and uses the hard-coded database password postgres. Because Docker manages its own iptables rules, this exposure can bypass standard host UFW firewall configurations. If the the instance is exposed to the internet, a remote attacker could connect to the host's published TCP port 5432 and authenticate as the postgres superuser account using the default postgres password. CVE-2026-16504 The Zulip template ships with a hard-coded application key secret_key: changeme, a default database password zulip, and the setting DISABLE_HTTPS=True. An attacker can use this public secret key to forge or validate signed session material, enabling session forgery and authentication bypass against the instance. If unchanged, the default database password zulip can be used to authenticate to the database. Furthermore, the DISABLE_HTTPS=True configuration causes all traffic to be sent over unencrypted HTTP by default, exposing credentials and session data to potential interception in certain deployments. Impact CVE-2026-16503 (Supabase template): PostgreSQL superuser access from the internet enables the following: CVE-2026-16504 (Zulip template): Authentication bypass a",
-      "guid": "https://kb.cert.org/vuls/id/243636",
-      "pubDate": "2026-07-31T15:15:50.485Z",
-      "sourceName": "CERT Vulnerability Notes",
-      "sourceUrl": "https://www.kb.cert.org/vulfeed/",
-      "category": "government"
-    },
-    {
-      "title": "This month in security with Tony Anscombe – July 2026 edition",
-      "link": "https://www.welivesecurity.com/en/videos/month-security-tony-anscombe-july-2026/",
-      "description": "OpenAI models going rogue, the first documented agentic ransomware operation, and an emergent AI-driven supply chain threat made for a packed July roundup",
-      "guid": "https://www.welivesecurity.com/en/videos/month-security-tony-anscombe-july-2026/",
-      "pubDate": "2026-07-31T14:14:15.000Z",
-      "sourceName": "WeLiveSecurity",
-      "sourceUrl": "https://www.welivesecurity.com/feed",
-      "category": "research"
     }
   ]
 }
