@@ -1,15 +1,15 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-14T13:04:51.912Z",
+  "generatedAt": "2026-08-14T18:53:04.590Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
-  "itemCount": 191,
+  "itemCount": 196,
   "feedErrors": [
     {
       "name": "Cyber Security News",
       "url": "https://www.cybersecuritynews.com/feed/",
-      "error": "fetch failed"
+      "error": "Invalid character in entity name\nLine: 0\nColumn: 120\nChar: ="
     },
     {
       "name": "HackRead",
@@ -47,11 +47,6 @@
       "error": "Unexpected close tag\nLine: 72\nColumn: 79\nChar: >"
     },
     {
-      "name": "About DFIR",
-      "url": "https://aboutdfir.com/feed",
-      "error": "HTTP 415"
-    },
-    {
       "name": "Microsoft Security Response Center",
       "url": "https://msrc-blog.microsoft.com/feed",
       "error": "HTTP 404"
@@ -74,6 +69,396 @@
   ],
   "items": [
     {
+      "title": "Hackers arrested over €30M bank fraud exploiting service provider flaw",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-arrested-over-30m-bank-fraud-exploiting-service-provider-flaw/",
+      "description": "Four cybercriminals were arrested in Brazil, and three others were charged in Europe over allegations that they exploited a vulnerability at a service provider, allowing them to withdraw funds from Commerzbank customers' bank accounts. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/hackers-arrested-over-30m-bank-fraud-exploiting-service-provider-flaw/",
+      "pubDate": "2026-08-14T18:04:26.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "One IDOR, Three Leaks, $3K in Payouts",
+      "link": "https://medium.com/@ferdusalam0/one-idor-three-leaks-3k-in-payouts-c5ff37e9f267?source=rss------bug_bounty-5",
+      "description": "A single access-control mistake across multiple sharing APIs turned into three accepted reports – and three payouts. Continue reading on Medium »",
+      "guid": "https://medium.com/p/c5ff37e9f267",
+      "pubDate": "2026-08-14T17:39:40.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*DA6wiB7oRMWYqKuDrg0hXQ@2x.jpeg"
+    },
+    {
+      "title": "Amid AI-Driven Bug Tsunami, NIST Looks to…AI",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/ai-driven-bug-tsunami-nist-looks-to-ai",
+      "description": "Driven by AI-augmented research and scanning, vulnerability volumes continue to surge, driving the National Institute of Standards and Technology to ask whether AI could be the answer.",
+      "guid": "https://www.darkreading.com/vulnerabilities-threats/ai-driven-bug-tsunami-nist-looks-to-ai",
+      "pubDate": "2026-08-14T17:32:46.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
+      "title": "Apple warned hundreds of users of mercenary spyware attacks",
+      "link": "https://securityaffairs.com/197208/malware/apple-warned-hundreds-of-users-of-mercenary-spyware-attacks.html",
+      "description": "Apple warns users of credible, targeted attacks and urges immediate verification, stronger protections, and expert assistance. Apple has sent a new round of threat notifications to users it believes may have been singled out by mercenary spyware. The company told TechCrunch the latest alerts reached people in 110 countries, adding to notifications it has already […]",
+      "guid": "https://securityaffairs.com/?p=197208",
+      "pubDate": "2026-08-14T17:09:46.000Z",
+      "sourceName": "Security Affairs",
+      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
+      "category": "news",
+      "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/08/image-39.png?resize=1024%2C331&#038;ssl=1"
+    },
+    {
+      "title": "Dorks that could get you a good bounty in 2026",
+      "link": "https://medium.com/@thenewdate24/dorks-that-could-get-you-a-good-bounty-in-2026-a8cde06f18ed?source=rss------bug_bounty-5",
+      "description": "Google can index far more than publicly intended webpages. During an authorized bug bounty assessment, search operators can help… Continue reading on Medium »",
+      "guid": "https://medium.com/p/a8cde06f18ed",
+      "pubDate": "2026-08-14T17:01:43.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1254/1*yBXStm0P4gKRhdyl79LfXw.png"
+    },
+    {
+      "title": "Our AI pentesting engine talked a production AI agent's prompt-injection guardrail into handing over its entire system prompt on its second attempt.",
+      "link": "https://www.reddit.com/r/netsec/comments/1vocxlt/our_ai_pentesting_engine_talked_a_production_ai/",
+      "description": "For full disclosure I'm part of the security engineering team at Escape but this finding is something I found really interesting and wanted to share to see! Our AI pentesting engine Cascade recently got a production AI agent to return its entire system prompt, just by wrapping the ask in a different pretext - framing it as a documentation request instead of an attack. The agent then handed over everything: full tool list, calling rules, citation format, and session IDs. What I found really interesting is there's nothing technical that broke because we didn't bypass the guardrail with a cleverer string but because the request just sounded reasonable to the agent. The Cascade engine, after being refused when asking for the prompt directly, simply adjusted the framing to get the agent to give up the informaiton. Thought this would be an interesting insight for the community and curious to hear if anyone else has seen similar discoveries in agents in prod? If you want to see more about the reproduction and write-up you can find it here submitted by /u/PriorPuzzleheaded880 [link] [comments]",
+      "guid": "t3_1vocxlt",
+      "pubDate": "2026-08-14T17:01:27.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "How I Systematically Find SQL Injection Bugs in Bug Bounty Programs (Step-by-Step Method)",
+      "link": "https://medium.com/@b0dj0x/how-i-systematically-find-sql-injection-bugs-in-bug-bounty-programs-step-by-step-method-0bbaf03c4722?source=rss------bug_bounty-5",
+      "description": "SQLi is decades old and still one of the highest-paying bug classes in 2026 — here’s the exact recon-to-report process that actually finds… Continue reading on Medium »",
+      "guid": "https://medium.com/p/0bbaf03c4722",
+      "pubDate": "2026-08-14T17:00:40.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/736/1*ZvZy3fN2PmzeCjYATC-gIw.jpeg"
+    },
+    {
+      "title": "Count Binface receives over a quarter of votes in Clacton by-election",
+      "link": "https://www.bbc.com/news/articles/ce97mm3vvemo",
+      "description": "Comments",
+      "guid": "https://www.bbc.com/news/articles/ce97mm3vvemo",
+      "pubDate": "2026-08-14T16:45:49.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Maximizing the value of your Claude Code sessions",
+      "link": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions",
+      "description": "Comments",
+      "guid": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions",
+      "pubDate": "2026-08-14T16:15:21.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Got My First $$ Bug Bounty",
+      "link": "https://infosecwriteups.com/got-my-first-bug-bounty-9d3d017b4342?source=rss------bug_bounty-5",
+      "description": "I finally got my first bug bounty. Continue reading on InfoSec Write-ups »",
+      "guid": "https://medium.com/p/9d3d017b4342",
+      "pubDate": "2026-08-14T16:13:13.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/966/1*HQB05VnyrtGflyP6f32K8A.png"
+    },
+    {
+      "title": "RustDesk now supports true unattended remote access on Wayland",
+      "link": "https://rustdesk.com/blog/unattended-remote-access-wayland/",
+      "description": "Comments",
+      "guid": "https://rustdesk.com/blog/unattended-remote-access-wayland/",
+      "pubDate": "2026-08-14T16:12:52.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Upcoming Speaking Engagements",
+      "link": "https://www.schneier.com/blog/archives/2026/08/upcoming-speaking-engagements-59.html",
+      "description": "This is a current list of where and when I am scheduled to speak: I’m speaking, signing books, and participating in panel discussions at LAcon V in Anaheim, California, USA. My full schedule is here. I’m speaking online (via Zoom) at a League of Women Voters event on Tuesday, September 22, 2026, at 5 PM ET. I’m speaking at Elevate Festival in Toronto, Canada. The conference runs September 22–24, 2026; my talk is on Wednesday, September 23. I’m speaking at CanSecWest 2026 in Vancouver, Canada. The conference runs September 30–October 1, 2026; the time of my talk is TBD. I’m speaking at ATTENTION: Democracy, Rebuilt in Montreal, Canada. The event runs October 21–23, 2026, and my talk is on Wednesday, October 21. The list is maintained on this page.",
+      "guid": "https://www.schneier.com/?p=72454",
+      "pubDate": "2026-08-14T16:01:59.000Z",
+      "sourceName": "Schneier on Security",
+      "sourceUrl": "https://www.schneier.com/feed/atom/",
+      "category": "news"
+    },
+    {
+      "title": "AI by Hand",
+      "link": "https://www.byhand.ai/",
+      "description": "Comments",
+      "guid": "https://www.byhand.ai/",
+      "pubDate": "2026-08-14T15:58:59.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Scottish Govt Suffers Potentially Widening Data Breach at Prosecutor's Office",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/scottish-govt-data-breach-prosecutors-office",
+      "description": "One Caledonian government agency reported a breach, thanks to a third party that may have serviced other agencies as well.",
+      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/scottish-govt-data-breach-prosecutors-office",
+      "pubDate": "2026-08-14T15:58:50.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
+      "title": "Bug Hunting #1",
+      "link": "https://medium.com/@the_phreak/bug-hunting-1-f9721f0ca753?source=rss------bug_bounty-5",
+      "description": "Hello everyone, Continue reading on Medium »",
+      "guid": "https://medium.com/p/f9721f0ca753",
+      "pubDate": "2026-08-14T15:50:43.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1549/1*o3uVTtPZ6qhWSMY_UGWVxA.png"
+    },
+    {
+      "title": "SSH for Beginners: Connect to Remote Servers Using VS Code",
+      "link": "https://infosecwriteups.com/ssh-for-beginners-connect-to-remote-servers-using-vs-code-a09b87056340?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/a09b87056340",
+      "pubDate": "2026-08-14T15:43:07.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*jww9jtn5RtxFnWtH7iomFw.png"
+    },
+    {
+      "title": "Cap: Easy Level HackTheBox Linux Machine [Walkthrough]",
+      "link": "https://infosecwriteups.com/cap-easy-level-hackthebox-linux-machine-feea61e860a5?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/feea61e860a5",
+      "pubDate": "2026-08-14T15:42:55.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*kc9kgTuGkCD5d_iJ6k_78A.png"
+    },
+    {
+      "title": "TryHackMe Walkthrough: Hacker Holidays Day 3 — Complimentary",
+      "link": "https://infosecwriteups.com/tryhackme-walkthrough-hacker-holidays-day-3-complimentary-85f90b704757?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/85f90b704757",
+      "pubDate": "2026-08-14T15:41:56.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/481/1*GrHnWEMZzpEnT9BlF1uiCw.png"
+    },
+    {
+      "title": "Hacker Holidays 2026: Day 5 Walkthrough (Beach Bar)",
+      "link": "https://infosecwriteups.com/hacker-holidays-2026-day-5-walkthrough-beach-bar-7976102d19f1?source=rss----7b722bfd1b8d---4",
+      "description": "A beach bar jukebox app had a YAML import feature with zero sanitization. We went from login page to root shell in under 15 minutes. Continue reading on InfoSec Write-ups »",
+      "guid": "https://medium.com/p/7976102d19f1",
+      "pubDate": "2026-08-14T15:41:33.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1061/1*aAg6srDfWRXAuaJSqsp1qg.png"
+    },
+    {
+      "title": "AWS Cloud Security Challenge: SSRF, IMDSv2, and Cloud Takeover",
+      "link": "https://infosecwriteups.com/aws-cloud-security-challenge-ssrf-imdsv2-and-cloud-takeover-4cc6374ef67f?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/4cc6374ef67f",
+      "pubDate": "2026-08-14T15:41:13.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*HY3tzXrbLx-7mCPxmdmqmQ.png"
+    },
+    {
+      "title": "Shadow AI: The Breach Nobody Approved, Signed Off On, or Even Saw Coming",
+      "link": "https://medium.com/@t3nv1/shadow-ai-the-breach-nobody-approved-signed-off-on-or-even-saw-coming-e97737fe30eb?source=rss------bug_bounty-5",
+      "description": "A developer at a mid-sized fintech company pasted a chunk of proprietary source code into a free AI chatbot last spring, just to get a… Continue reading on Medium »",
+      "guid": "https://medium.com/p/e97737fe30eb",
+      "pubDate": "2026-08-14T15:41:01.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/2600/0*bK3Ir9o0OPTNh2y1"
+    },
+    {
+      "title": "Escalating a Blind Upload to RCE via Path Traversal into Cron and DNS-Restricted Callback Bypass",
+      "link": "https://infosecwriteups.com/escalating-a-blind-upload-to-rce-via-path-traversal-into-cron-and-dns-restricted-callback-bypass-0f63db01be92?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/0f63db01be92",
+      "pubDate": "2026-08-14T15:40:43.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*VMHwx5VoWvXC54aXgmTCTg.png"
+    },
+    {
+      "title": "Escalating a Blind Upload to RCE via Path Traversal into Cron and DNS-Restricted Callback Bypass",
+      "link": "https://infosecwriteups.com/escalating-a-blind-upload-to-rce-via-path-traversal-into-cron-and-dns-restricted-callback-bypass-0f63db01be92?source=rss----7b722bfd1b8d--bug_bounty",
+      "description": "",
+      "guid": "https://medium.com/p/0f63db01be92",
+      "pubDate": "2026-08-14T15:40:43.000Z",
+      "sourceName": "Bug Bounty Writeups (Medium)",
+      "sourceUrl": "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*VMHwx5VoWvXC54aXgmTCTg.png"
+    },
+    {
+      "title": "PortSwigger File Path Traversal Lab Solution, Simple Case",
+      "link": "https://medium.com/@arhamhaiderr99999/portswigger-file-path-traversal-lab-solution-simple-case-d6b110ef993f?source=rss------bug_bounty-5",
+      "description": "Web Security Academy by PortSwigger Continue reading on Medium »",
+      "guid": "https://medium.com/p/d6b110ef993f",
+      "pubDate": "2026-08-14T15:26:43.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1895/1*avNtrSXOR77P-JJ4h0_HJw.png"
+    },
+    {
+      "title": "Revisiting JWT Token Forgery Attack on Recent Bounty Target",
+      "link": "https://infosecwriteups.com/revisiting-jwt-token-forgery-attack-on-a-recent-bounty-target-bfe4a423f3df?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/bfe4a423f3df",
+      "pubDate": "2026-08-14T15:25:59.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*GmMG4qbzAFBbObG23LF3bA.png"
+    },
+    {
+      "title": "Revisiting JWT Token Forgery Attack on Recent Bounty Target",
+      "link": "https://infosecwriteups.com/revisiting-jwt-token-forgery-attack-on-a-recent-bounty-target-bfe4a423f3df?source=rss----7b722bfd1b8d--bug_bounty",
+      "description": "",
+      "guid": "https://medium.com/p/bfe4a423f3df",
+      "pubDate": "2026-08-14T15:25:59.000Z",
+      "sourceName": "Bug Bounty Writeups (Medium)",
+      "sourceUrl": "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*GmMG4qbzAFBbObG23LF3bA.png"
+    },
+    {
+      "title": "tryhackme beach bar day - 05 writeup",
+      "link": "https://infosecwriteups.com/tryhackme-beach-bar-day-05-writeup-86beb05cd3d4?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/86beb05cd3d4",
+      "pubDate": "2026-08-14T15:25:53.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*dfcPXGvGtXqIygHEoOARrA.png"
+    },
+    {
+      "title": "LetsDefend Practical Case: Corporate Policy Violation | Browser Forensics | Incident Responder…",
+      "link": "https://infosecwriteups.com/letsdefend-practical-case-corporate-policy-violation-browser-forensics-incident-responder-e3b9c833a4dc?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/e3b9c833a4dc",
+      "pubDate": "2026-08-14T15:25:47.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/0*QloUGGEvqaTqxrbd.png"
+    },
+    {
+      "title": "When HTTP Cookies Become a Covert Channel: Packed Light",
+      "link": "https://infosecwriteups.com/when-http-cookies-become-a-covert-channel-packed-light-aa6255eddaa5?source=rss----7b722bfd1b8d---4",
+      "description": "",
+      "guid": "https://medium.com/p/aa6255eddaa5",
+      "pubDate": "2026-08-14T15:25:38.000Z",
+      "sourceName": "InfoSec Writeups",
+      "sourceUrl": "https://infosecwriteups.com/feed",
+      "category": "offensive",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*iXl1IUKuZeL4ucP75Dqf4g.png"
+    },
+    {
+      "title": "Introducing Toast 1",
+      "link": "https://www.mixedbread.com/blog/toast-1",
+      "description": "Comments",
+      "guid": "https://www.mixedbread.com/blog/toast-1",
+      "pubDate": "2026-08-14T15:07:57.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Seven books I keep close because I love them",
+      "link": "https://blog.plover.com/2026/08/02/",
+      "description": "Comments",
+      "guid": "https://blog.plover.com/2026/08/02/",
+      "pubDate": "2026-08-14T15:03:26.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Qwen 3.8 27B",
+      "link": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
+      "description": "Comments",
+      "guid": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
+      "pubDate": "2026-08-14T15:00:00.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "Hackers exploit macOS Screen Sharing flaw to deploy Monero miner",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-macos-screen-sharing-flaw-to-deploy-monero-miner/",
+      "description": "The Netherlands' National Cyber Security Centre (NCSC) is warning that hackers are actively exploiting a macOS authentication bypass vulnerability after public exploit code emerged. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/hackers-exploit-macos-screen-sharing-flaw-to-deploy-monero-miner/",
+      "pubDate": "2026-08-14T14:59:55.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "I turned my RSS feeds into an e-ink newspaper to stop reading on my phone",
+      "link": "https://heyjonny.dev/posts/rss-to-eink-newspaper/",
+      "description": "Comments",
+      "guid": "https://heyjonny.dev/posts/rss-to-eink-newspaper/",
+      "pubDate": "2026-08-14T14:21:18.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
+      "title": "The Modern Attack Chain: Rethinking Google Workspace Security in the Age of AI",
+      "link": "https://www.bleepingcomputer.com/news/security/the-modern-attack-chain-rethinking-google-workspace-security-in-the-age-of-ai/",
+      "description": "Google Workspace attacks do not always begin with phishing. Stolen OAuth tokens can provide another path into Gmail, Drive, and connected systems. Material Security explains why organizations need defenses that cover the entire Workspace attack chain. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/the-modern-attack-chain-rethinking-google-workspace-security-in-the-age-of-ai/",
+      "pubDate": "2026-08-14T14:00:10.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
+      "title": "What Boards Need to Know About Tech Risk",
+      "link": "https://www.darkreading.com/cyber-risk/what-boards-must-know-tech-risk",
+      "description": "Why do so many boards underestimate technology risk until it becomes a crisis?",
+      "guid": "https://www.darkreading.com/cyber-risk/what-boards-must-know-tech-risk",
+      "pubDate": "2026-08-14T14:00:00.000Z",
+      "sourceName": "Dark Reading",
+      "sourceUrl": "https://www.darkreading.com/rss.xml",
+      "category": "news"
+    },
+    {
+      "title": "Max severity SAP Commerce Cloud flaw now targeted in attacks",
+      "link": "https://www.bleepingcomputer.com/news/security/max-severity-sap-commerce-cloud-flaw-now-targeted-in-attacks/",
+      "description": "A maximum-severity SAP Commerce Cloud remote code execution vulnerability patched three days ago is already being targeted in attacks, according to threat intelligence company Defused. [...]",
+      "guid": "https://www.bleepingcomputer.com/news/security/max-severity-sap-commerce-cloud-flaw-now-targeted-in-attacks/",
+      "pubDate": "2026-08-14T13:45:18.000Z",
+      "sourceName": "BleepingComputer",
+      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
+      "category": "news"
+    },
+    {
       "title": "From a Single WAF Bypass to 58,000+ Exposed Media Objects",
       "link": "https://medium.com/@tarekeldemerdash/from-a-single-waf-bypass-to-58-000-exposed-media-objects-ad5efc34640b?source=rss------bug_bounty-5",
       "description": "A bug bounty case study in chaining overlooked misconfigurations into a full attack surface Continue reading on Medium »",
@@ -82,6 +467,17 @@
       "sourceName": "Medium Bug Bounty Tag",
       "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
       "category": "bugbounty"
+    },
+    {
+      "title": "Apple now uses iPhone alerts for targets of mercenary spyware",
+      "link": "https://www.malwarebytes.com/blog/news/2026/08/apple-now-uses-iphone-alerts-for-targets-of-mercenary-spyware",
+      "description": "Apple explains how Threat Notifications help protect iPhone users targeted by mercenary spyware.",
+      "guid": "https://www.malwarebytes.com/blog/news/2026/08/apple-now-uses-iphone-alerts-for-targets-of-mercenary-spyware",
+      "pubDate": "2026-08-14T12:46:29.000Z",
+      "sourceName": "Malwarebytes Labs",
+      "sourceUrl": "https://www.malwarebytes.com/blog/feed",
+      "category": "research",
+      "imageUrl": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/08/thrreat_notification.png?w=1024"
     },
     {
       "title": "My First Valid Bug: A Broken Object Level Authorization (BOLA) in Customer API",
@@ -94,7 +490,7 @@
       "category": "bugbounty"
     },
     {
-      "title": "Cyera's Oasis Security Buy is All About AI Agent Control",
+      "title": "Cyera's Oasis Security Buy Is All About AI Agent Control",
       "link": "https://www.darkreading.com/identity-access-management-security/cyera-oasis-security-acquisition-ai-agent-control",
       "description": "The $1 billion deal aims to converge data security and identity into a single control plane for agents, with privileged access redefined around business context rather than static roles.",
       "guid": "https://www.darkreading.com/identity-access-management-security/cyera-oasis-security-acquisition-ai-agent-control",
@@ -156,28 +552,6 @@
       "imageUrl": "https://cdn-images-1.medium.com/max/1200/1*eXmAqQeRerLFP5XWtJnbuQ.png"
     },
     {
-      "title": "{{7*7}} = 49: A Bug Hunter’s Guide to Server-Side Template Injection",
-      "link": "https://osintteam.blog/7-7-49-a-bug-hunters-guide-to-server-side-template-injection-299cdcd6e259?source=rss------bug_bounty-5",
-      "description": "How “Hello, {name}” turns into remote code execution. Continue reading on OSINT Team »",
-      "guid": "https://medium.com/p/299cdcd6e259",
-      "pubDate": "2026-08-14T11:26:56.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*OwaqZj1HEG3VqfjfBab2uw.png"
-    },
-    {
-      "title": "How a Simple Wayback Search Revealed 44,000+ Exposed Job Applicant Emails",
-      "link": "https://osintteam.blog/how-a-simple-wayback-search-revealed-44-000-exposed-job-applicant-emails-c6c2c361985e?source=rss------bug_bounty-5",
-      "description": "A simple Wayback Machine recon uncovered archived pages exposing an estimated 44,560 job applicant emails, highlighting the risks of… Continue reading on OSINT Team »",
-      "guid": "https://medium.com/p/c6c2c361985e",
-      "pubDate": "2026-08-14T11:25:13.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1376/1*ivCr7oz5mk3_l2WWlZ3rXA.png"
-    },
-    {
       "title": "Who’s Tracking You? Use This New Service to Find Out",
       "link": "https://krebsonsecurity.com/2026/08/whos-tracking-you-use-this-new-service-to-find-out/",
       "description": "It can be daunting to determine who's responsible for showing ads on the websites we visit, or who's harvesting data from the mobile apps we use every day. That information is already semi-public, but it is not easily parsed and traditionally much of it has remained walled away in the hands of large advertising platforms. Not anymore: A powerful and free new service called DecryptAds scrapes and correlates this adtech data and makes it simple to quickly learn a great deal about the entities that are tracking you.",
@@ -189,15 +563,14 @@
       "imageUrl": "https://krebsonsecurity.com/wp-content/uploads/2026/08/decryptads-ESPN.png"
     },
     {
-      "title": "My First Bug Bounty : A Beginner's Web Security Investigation",
-      "link": "https://medium.com/@bharanidharan.security/my-first-bug-bounty-a-beginners-web-security-investigation-3085094265a9?source=rss------bug_bounty-5",
-      "description": "A beginner's journey from self-doubt and endless overthinking to taking action and conducting my first real web security investigation. Continue reading on Medium »",
-      "guid": "https://medium.com/p/3085094265a9",
-      "pubDate": "2026-08-14T11:17:04.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*7SwnL56vr4_JdLE2d_qiFQ.png"
+      "title": "Infosec News Nuggets — August 14, 2026",
+      "link": "https://aboutdfir.com/infosec-news-nuggets-august-14-2026/",
+      "description": "vCenter Flaw Exploited Just Five Days After Disclosure A critical directory-traversal flaw in VMware vCenter’s Syslog server, rated CVSS 9.8, was already being exploited within five days of Broadcom’s disclosure, with researchers tracing 361 victim IP addresses across 47 countries. The attacker deployed an open-source reverse shell tool to maintain access to compromised systems, and […] The post Infosec News Nuggets — August 14, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
+      "guid": "https://aboutdfir.com/?p=9302",
+      "pubDate": "2026-08-14T11:08:40.000Z",
+      "sourceName": "About DFIR",
+      "sourceUrl": "https://aboutdfir.com/feed",
+      "category": "offensive"
     },
     {
       "title": "New Android malware relays bank cards to fraudsters while victims still hold them",
@@ -260,17 +633,6 @@
       "category": "news"
     },
     {
-      "title": "Free Resources Every Broke College Student Can Use to Learn Hacking",
-      "link": "https://medium.com/@atnoforcybersecurity/free-resources-every-broke-college-student-can-use-to-learn-hacking-b0a65637929d?source=rss------bug_bounty-5",
-      "description": "No budget. No problem. Some of the best security professionals learned everything on free resources. Continue reading on Medium »",
-      "guid": "https://medium.com/p/b0a65637929d",
-      "pubDate": "2026-08-14T10:16:01.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1408/1*QOtq2iu8ij6wQEWDXbYEzg.png"
-    },
-    {
       "title": "Why does Opus 5 feel worse to work with?",
       "link": "https://mun-logadan.github.io/why-does-opus-5-feel-worse/",
       "description": "Comments",
@@ -279,27 +641,6 @@
       "sourceName": "Hacker News",
       "sourceUrl": "https://news.ycombinator.com/rss",
       "category": "community"
-    },
-    {
-      "title": "DeepSeek peak/off-peak pricing update",
-      "link": "https://api-docs.deepseek.com/news/news260813/",
-      "description": "Comments",
-      "guid": "https://api-docs.deepseek.com/news/news260813/",
-      "pubDate": "2026-08-14T09:55:33.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "THE DOOR Penetration Testing | SQLi → Authentication Bypass → Command Injection",
-      "link": "https://medium.com/@pentesterclubpvtltd/the-door-penetration-testing-sqli-authentication-bypass-command-injection-d3049e81a15d?source=rss------bug_bounty-5",
-      "description": "Web application vulnerabilities rarely exist in isolation. Continue reading on Medium »",
-      "guid": "https://medium.com/p/d3049e81a15d",
-      "pubDate": "2026-08-14T09:33:21.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1918/1*XZA-z8yDloyfnjCj76ToMw.png"
     },
     {
       "title": "Over 1,000 Charities Hit by Beacon CRM Data Breach",
@@ -393,16 +734,6 @@
       "sourceName": "Security Affairs",
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
       "category": "news"
-    },
-    {
-      "title": "Browser Exploitation: 12 Techniques From Recent CTFs You Can Actually Use",
-      "link": "https://medium.com/@verylazytech/browser-exploitation-12-techniques-from-recent-ctfs-you-can-actually-use-1779ff4c94dd?source=rss------bug_bounty-5",
-      "description": "What if I told you that your browser — yes, the very thing you’re using right now — could become the weakest link in your security chain… Continue reading on Medium »",
-      "guid": "https://medium.com/p/1779ff4c94dd",
-      "pubDate": "2026-08-14T07:12:38.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty"
     },
     {
       "title": "You’re Back In The Room (Citrix NetScaler Pre-Auth RCE CVE-2026-8452(?)) - watchTowr Labs",
@@ -505,17 +836,6 @@
       "category": "news"
     },
     {
-      "title": "How a Single HTTP Redirect Bypassed SSRF Filters on 4 Programs Over 8 Years",
-      "link": "https://infosecwriteups.com/how-a-single-http-redirect-bypassed-ssrf-filters-on-4-programs-over-8-years-4f67437ba6c7?source=rss------bug_bounty-5",
-      "description": "30-Second Version: One SSRF bypass technique — a single HTTP redirect — worked against Infogram (2017), Slack (2018), Bitwarden (2020)… Continue reading on InfoSec Write-ups »",
-      "guid": "https://medium.com/p/4f67437ba6c7",
-      "pubDate": "2026-08-14T02:31:01.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1774/1*jVaF0RgnzTlfii0i5BeBog.png"
-    },
-    {
       "title": "Soap Box: Zero Trust(ish) Networks",
       "link": "https://risky.biz/SOAPBOX110/",
       "description": "In this Soap Box edition of the Risky Business podcast host Patrick Gray chats with Adam Pointon, CEO of Knocknoc, about the failure of Zero Trust as a comprehensive architecture. Most networks look like they were designed in 1999, and most Zero Trust products look like they were designed for 2049. Instead, Patrick and Adam pitch something in the middle: Zero Trust(ish) networks, where Zero Trust principles are applied selectively where possible. Instead of trying to re-architect entire networks, maybe it’s time we learned to apply Zero Trust principles selectively against risky assets. It’s a better approach than the status quo, which involves liberal use of the “risk accepted” stamp. This episode is also available on YouTube Show notes",
@@ -607,36 +927,6 @@
       "category": "community"
     },
     {
-      "title": "Hello, me. It's been a while",
-      "link": "https://themech.net/2026/08/hello-me-its-been-a-while/",
-      "description": "Comments",
-      "guid": "https://themech.net/2026/08/hello-me-its-been-a-while/",
-      "pubDate": "2026-08-13T18:37:18.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Hackers breach govt webmail while running parallel crypto fraud",
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-breach-govt-webmail-while-running-parallel-crypto-fraud/",
-      "description": "The Jewelbug hacker group has been carrying out espionage operations targeting governments and militaries while also engaging in cryptocurrency fraud. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/hackers-breach-govt-webmail-while-running-parallel-crypto-fraud/",
-      "pubDate": "2026-08-13T18:15:19.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "Accelerating GPT-5.6 Sol Ultrafast",
-      "link": "https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai",
-      "description": "Comments",
-      "guid": "https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai",
-      "pubDate": "2026-08-13T18:10:02.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Adobe Commerce CVE-2026-71362 Comes Under Attack Shortly After Public Disclosure",
       "link": "https://securityaffairs.com/197149/hacking/adobe-commerce-cve-2026-71362-comes-under-attack-shortly-after-public-disclosure.html",
       "description": "Hackers began targeting a critical Adobe Commerce flaw that could let unauthenticated attackers hijack customer accounts and access private data. Hackers began targeting CVE-2026-71362 (CVSS score of 9.1), a critical Adobe Commerce flaw, shortly after its public disclosure. The vulnerability allows unauthenticated attackers to switch customer sessions, hijack accounts and access private data. Cybersecurity firm […]",
@@ -647,36 +937,6 @@
       "category": "news"
     },
     {
-      "title": "Microsoft patches LegacyHive Windows zero-day vulnerability",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-patches-legacyhive-windows-zero-day-vulnerability/",
-      "description": "Microsoft has released security patches to address a Windows zero-day vulnerability known as \"LegacyHive,\" disclosed after the July 2026 Patch Tuesday. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/microsoft/microsoft-patches-legacyhive-windows-zero-day-vulnerability/",
-      "pubDate": "2026-08-13T17:46:20.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "AI 'watermark removers' flood the web. Almost none can prove they work.",
-      "link": "https://www.bleepingcomputer.com/news/security/ai-watermark-removers-flood-the-web-almost-none-can-prove-they-work/",
-      "description": "Multiple 'watermark removers' have surfaced days after Anthropic began watermarking text generated by Claude, including an open source project with over 4,500 GitHub stars and paid AI detection evasion services. None of the tools' claims about defeating the text watermark can be verified, as Anthropic has not released a detector. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/ai-watermark-removers-flood-the-web-almost-none-can-prove-they-work/",
-      "pubDate": "2026-08-13T17:33:28.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "Gemini 3.7 Flash",
-      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
-      "description": "Comments",
-      "guid": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/",
-      "pubDate": "2026-08-13T17:23:22.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "U.S. CISA adds Metabase, Windows, and Cisco Secure Firewall flaws to its Known Exploited Vulnerabilities catalog",
       "link": "https://securityaffairs.com/197110/hacking/u-s-cisa-adds-metabase-windows-and-cisco-secure-firewall-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
       "description": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Metabase, Windows, and Cisco Secure Firewall flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added the following vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog: CVE-2026-20349 is a vulnerability in Cisco Secure Firewall ASA and FTD software that could allow unauthenticated, […]",
@@ -684,16 +944,6 @@
       "pubDate": "2026-08-13T17:12:45.000Z",
       "sourceName": "Security Affairs",
       "sourceUrl": "https://securityaffairs.co/wordpress/feed",
-      "category": "news"
-    },
-    {
-      "title": "Critical VMware vCenter RCE flaw exploited for reverse SSH access",
-      "link": "https://www.bleepingcomputer.com/news/security/critical-vmware-vcenter-rce-flaw-exploited-for-reverse-ssh-access/",
-      "description": "A recently patched critical vulnerability (CVE-2026-59310) in VMware vCenter Syslog Server is being exploited in an active campaign to deploy a reverse SSH tool for persistence and remote access. [...]",
-      "guid": "https://www.bleepingcomputer.com/news/security/critical-vmware-vcenter-rce-flaw-exploited-for-reverse-ssh-access/",
-      "pubDate": "2026-08-13T16:40:23.000Z",
-      "sourceName": "BleepingComputer",
-      "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
     },
     {
@@ -907,6 +1157,16 @@
       "category": "news"
     },
     {
+      "title": "Infosec News Nuggets — August 13, 2026",
+      "link": "https://aboutdfir.com/infosec-news-nuggets-august-13-2026/",
+      "description": "Lazarus Exploits Windows Zero-Day to Gain SYSTEM Access and Deploy Backdoor North Korea’s Lazarus Group exploited a Windows zero-day in the AFD.sys driver as part of a fresh wave of its long-running Dream Job campaign, targeting defense and aerospace firms in France, Germany, Brazil, and India with fake recruiter outreach on LinkedIn. Victims were lured […] The post Infosec News Nuggets — August 13, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
+      "guid": "https://aboutdfir.com/?p=9300",
+      "pubDate": "2026-08-13T10:13:15.000Z",
+      "sourceName": "About DFIR",
+      "sourceUrl": "https://aboutdfir.com/feed",
+      "category": "offensive"
+    },
+    {
       "title": "'Jewelbug' APT Balances State Espionage &amp; Cryptocurrency Theft",
       "link": "https://www.darkreading.com/threat-intelligence/jewelbug-apt-state-espionage-cryptocurrency-theft",
       "description": "Researchers discovered hackers-for-hire performing cyber espionage and financially motivated heists from the same Web panel.",
@@ -1064,16 +1324,6 @@
       "category": "news"
     },
     {
-      "title": "China-Linked Hackers Use AI Agents in Autonomous Attack on Taiwan",
-      "link": "https://securityaffairs.com/197079/apt/china-linked-hackers-use-ai-agents-in-autonomous-attack-on-taiwan.html",
-      "description": "China-linked hackers reportedly used eight AI agents to breach a government network, steal data and compromise accounts with minimal human oversight. Israeli cybersecurity firm Dream documented what looks like the first fully autonomous, end-to-end AI hacking operation against a government target. Over four days at the start of July, according to the Financial Times, suspected […]",
-      "guid": "https://securityaffairs.com/?p=197079",
-      "pubDate": "2026-08-12T17:58:44.000Z",
-      "sourceName": "Security Affairs",
-      "sourceUrl": "https://securityaffairs.co/wordpress/feed",
-      "category": "news"
-    },
-    {
       "title": "Lazarus Exploits Windows Zero-Day to Gain SYSTEM Access and Deploy Backdoor",
       "link": "https://thehackernews.com/2026/08/lazarus-exploits-windows-zero-day-to.html",
       "description": "The North Korean threat actor known as Lazarus Group has been attributed to the zero-day exploitation of a newly patched security flaw impacting Microsoft Windows to deliver a never-before-seen backdoor targeting defense and aerospace companies across France, Germany, Brazil, and India. The activity, per Check Point Research, is part of Operation Dream Job, a long-running cyber espionage and",
@@ -1157,16 +1407,6 @@
       "category": "research"
     },
     {
-      "title": "Walmart Leaders Transform Security Operations Without Going Bananas",
-      "link": "https://www.darkreading.com/cybersecurity-operations/walmart-leaders-transform-security-operations-without-going-bananas",
-      "description": "The big-box giant has scaled its defenses by encouraging trust and innovation. Good communications, transparency, and team spirit are key factors.",
-      "guid": "https://www.darkreading.com/cybersecurity-operations/walmart-leaders-transform-security-operations-without-going-bananas",
-      "pubDate": "2026-08-12T12:41:03.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
       "title": "CISA Unveils New Cybersecurity Resources for K-12 Schools and Districts",
       "link": "https://www.cisa.gov/news-events/news/cisa-unveils-new-cybersecurity-resources-k-12-schools-and-districts",
       "description": "",
@@ -1238,6 +1478,16 @@
       "sourceName": "r/netsec",
       "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
       "category": "community"
+    },
+    {
+      "title": "Infosec News Nuggets — August 12, 2026",
+      "link": "https://aboutdfir.com/infosec-news-nuggets-august-12-2026/",
+      "description": "Microsoft Plugs Nearly 400 Security Holes August’s Patch Tuesday saw Microsoft fix 398 vulnerabilities across Windows and supported software, with 42 rated critical. The lone actively exploited zero-day, a privilege escalation flaw in the AFD.sys WinSock driver, gives attackers a path to SYSTEM control after gaining an initial low-privilege foothold. Microsoft has attributed the swelling […] The post Infosec News Nuggets — August 12, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
+      "guid": "https://aboutdfir.com/?p=9297",
+      "pubDate": "2026-08-12T10:11:48.000Z",
+      "sourceName": "About DFIR",
+      "sourceUrl": "https://aboutdfir.com/feed",
+      "category": "offensive"
     },
     {
       "title": "Prompt Injections for Defense",
@@ -1335,16 +1585,6 @@
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2023/06/22/Kevin-Donohue.jpg"
     },
     {
-      "title": "Microsoft's Patch Tuesday Deluge Continues With August Updates",
-      "link": "https://www.darkreading.com/application-security/microsofts-patch-tuesday-deluge-continues",
-      "description": "The most concerning bug in the batch is CVE-2026-62878 (CVSS: 9.8), a remote code execution (RCE) vulnerability in Windows DNS Server that requires no user interaction.",
-      "guid": "https://www.darkreading.com/application-security/microsofts-patch-tuesday-deluge-continues",
-      "pubDate": "2026-08-11T21:42:34.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
-    },
-    {
       "title": "Microsoft Plugs Nearly 400 Security Holes",
       "link": "https://krebsonsecurity.com/2026/08/microsoft-plugs-nearly-400-security-holes/",
       "description": "Microsoft today released updates to remedy at least 398 security vulnerabilities in its Windows operating systems and supported software, including one weakness that is already being actively exploited and two others that were publicly detailed prior to today.",
@@ -1354,16 +1594,6 @@
       "sourceUrl": "https://krebsonsecurity.com/feed/",
       "category": "news",
       "imageUrl": "https://krebsonsecurity.com/wp-content/uploads/2026/08/workingonpc.png"
-    },
-    {
-      "title": "Gunra Ransomware Gang Exploits Fortinet Flaws, Bypasses MFA",
-      "link": "https://www.darkreading.com/cyberattacks-data-breaches/gunra-ransomware-gang-fortinet-flaws-bypasses-mfa",
-      "description": "The ransomware-as-a-service operation is finding success against critical infrastructure targets with leaked Conti code and old flaws in firewalls and VPN appliances.",
-      "guid": "https://www.darkreading.com/cyberattacks-data-breaches/gunra-ransomware-gang-fortinet-flaws-bypasses-mfa",
-      "pubDate": "2026-08-11T21:16:25.000Z",
-      "sourceName": "Dark Reading",
-      "sourceUrl": "https://www.darkreading.com/rss.xml",
-      "category": "news"
     },
     {
       "title": "Fake CCleaner installs GhostDesk Chrome spyware",
@@ -1480,16 +1710,6 @@
       "category": "news"
     },
     {
-      "title": "CopyEscape: Container-to-host arbitrary file write via docker cp (CVE-2026-17106)",
-      "link": "https://www.reddit.com/r/netsec/comments/1vlkth5/copyescape_containertohost_arbitrary_file_write/",
-      "description": "Author here. We discovered a vulnerability in docker cp that allows a malicious container to create or overwrite files on the machine running the Docker CLI. The exploit combines a filesystem race in Docker’s archive creation with unsafe symlink handling during extraction. Depending on the CLI user’s privileges, this can lead to developer-account compromise or root code execution. Docker confirmed that sbx cp was also affected. Fixed versions: Docker Engine/CLI 29.7.2+ Docker Desktop 4.86.0+ Docker Sandboxes 0.38.0+ Happy to answer technical questions. submitted by /u/ronmasas [link] [comments]",
-      "guid": "t3_1vlkth5",
-      "pubDate": "2026-08-11T15:33:52.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
-    },
-    {
       "title": "VU#431093: TCG TPM 2.0 reference code found vulnerable to information leakage and timing side-channel attacks",
       "link": "https://kb.cert.org/vuls/id/431093",
       "description": "Overview Two vulnerabilities have been identified in the Trusted Platform Module (TPM) 2.0 reference implementation: CVE-2026-6726 – Information leakage via falsified TPM keys. CVE-2026-6727 – A timing side-channel vulnerability in RSA OAEP decryption. An attacker with privileged access to a TPM command interface may be able to exploit these vulnerabilities by sending specially crafted TPM commands. Successful exploitation could allow the attacker to decrypt ciphertexts encrypted to affected TPM-managed RSA keys, including the RSA Endorsement Key (EK), or obtain credentials for falsified TPM keys, enabling forged TPM 2.0 attestations. TCGVRT010 and TCGVRT0011: Description Trusted Platform Module (TPM) technology provides hardware-backed cryptographic services for modern computing platforms. TPMs are designed to resist tampering and may be implemented as discrete chips, integrated hardware, firmware-based TPMs (fTPMs), or software implementations used in cloud and virtualized environments. Two vulnerabilities were identified in the TPM 2.0 reference implementation. CVE-2026-6727 CVE-2026-6726 Both vulnerabilities require privileged access to the TPM command interface. Multiple vendors have released firmware and software updates incorporating fixes from the updated TPM 2.0 reference implementation. Impact Successful exploitation requires privileged local access to a TPM command interface. Depending on the vulnerability exploited, an attacker may be able to: The overall impact depends on the affected TPM implementation and how TPM-based attestation and key management are used by the platform. Solution The vulnerabilities originate in the TPM 2.0 reference implementation, and TPM vendors have incorporated the corresponding fixes into updated firmware and software releases. Users should install TPM firmware updates, operating system updates, or software patches provided by their platform or TPM vendor. Cloud providers using software-based TPM implementations may also hav",
@@ -1508,27 +1728,6 @@
       "sourceName": "Malwarebytes Labs",
       "sourceUrl": "https://www.malwarebytes.com/blog/feed",
       "category": "research"
-    },
-    {
-      "title": "Show HN: C# Game Engine with its own scripting language and IDE",
-      "link": "https://github.com/ArcadeMakerSources/ArcadeMaker",
-      "description": "Comments",
-      "guid": "https://github.com/ArcadeMakerSources/ArcadeMaker",
-      "pubDate": "2026-08-11T13:34:54.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
-      "title": "Love/hate relationship: The AI affair. Young people love AI, but it’s breaking their trust",
-      "link": "https://www.malwarebytes.com/blog/ai/2026/08/love-hate-relationship-the-ai-affair-young-people-love-ai-but-its-breaking-their-trust",
-      "description": "The same technology making our lives easier is also making it harder. How are young people navigating this new world?",
-      "guid": "https://www.malwarebytes.com/blog/ai/2026/08/love-hate-relationship-the-ai-affair-young-people-love-ai-but-its-breaking-their-trust",
-      "pubDate": "2026-08-11T12:30:00.000Z",
-      "sourceName": "Malwarebytes Labs",
-      "sourceUrl": "https://www.malwarebytes.com/blog/feed",
-      "category": "research",
-      "imageUrl": "https://www.malwarebytes.com/wp-content/uploads/sites/2/2026/08/HateRelationship_Stat1_1200x627.png?w=1024"
     },
     {
       "title": "Head Mare APT is exploiting vulnerabilities in an unpatched TrueConf server to deliver PhantomCore and PhantomGraph to video conference participants",
@@ -1560,6 +1759,16 @@
       "sourceName": "Schneier on Security",
       "sourceUrl": "https://www.schneier.com/feed/atom/",
       "category": "news"
+    },
+    {
+      "title": "Infosec News Nuggets — August 11, 2026",
+      "link": "https://aboutdfir.com/infosec-news-nuggets-august-11-2026/",
+      "description": "CISA Flags TeamCity CVE-2026-63077 RCE Flaw Under Active Exploitation in the Wild A deserialization flaw in on-premise JetBrains TeamCity servers is being actively exploited, letting unauthenticated attackers bypass authentication via the agent polling protocol and run arbitrary commands with the privileges of the TeamCity server process. Successful attacks can expose stored credentials and configurations and […] The post Infosec News Nuggets — August 11, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
+      "guid": "https://aboutdfir.com/?p=9295",
+      "pubDate": "2026-08-11T10:29:41.000Z",
+      "sourceName": "About DFIR",
+      "sourceUrl": "https://aboutdfir.com/feed",
+      "category": "offensive"
     },
     {
       "title": "Project CAV3RN continues: Google Apps Script as C2 relay and DNS-based C2 channel selection",
@@ -1607,7 +1816,7 @@
       "title": "August 2026 Patch Tuesday: One Exploited Zero-Day and 62 Critical Vulnerabilities Among 415 CVEs",
       "link": "https://www.crowdstrike.com/en-us/blog/patch-tuesday-analysis-august-2026/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=439887",
+      "guid": "https://www.crowdstrike.com/?p=884631",
       "pubDate": "2026-08-11T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1653,16 +1862,6 @@
       "sourceUrl": "https://unit42.paloaltonetworks.com/feed",
       "category": "research",
       "imageUrl": "https://unit42.paloaltonetworks.com/wp-content/uploads/2026/08/04_Malware_Category_1920x900-4.jpg"
-    },
-    {
-      "title": "Don't classify, hallucinate!",
-      "link": "https://softwaredoug.com/blog/2026/08/10/hypothetical-classifications",
-      "description": "Comments",
-      "guid": "https://softwaredoug.com/blog/2026/08/10/hypothetical-classifications",
-      "pubDate": "2026-08-10T20:50:36.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "AWS completes the 2026 Police-Assured Secure Facilities (PASF) audit in Europe (London)",
@@ -1739,16 +1938,6 @@
       "category": "research"
     },
     {
-      "title": "Protect Your Relays",
-      "link": "https://www.iroh.computer/blog/authenticated-relays",
-      "description": "Comments",
-      "guid": "https://www.iroh.computer/blog/authenticated-relays",
-      "pubDate": "2026-08-10T12:40:50.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "CISA, FBI and Partners Warn Organizations of Gunra Ransomware Actors Targeting Multiple Critical Infrastructure Sectors",
       "link": "https://www.cisa.gov/news-events/news/cisa-fbi-and-partners-warn-organizations-gunra-ransomware-actors-targeting-multiple-critical",
       "description": "",
@@ -1767,6 +1956,16 @@
       "sourceName": "Schneier on Security",
       "sourceUrl": "https://www.schneier.com/feed/atom/",
       "category": "news"
+    },
+    {
+      "title": "Infosec News Nuggets — August 10, 2026",
+      "link": "https://aboutdfir.com/infosec-news-nuggets-august-10-2026/",
+      "description": "18-Year-Old Linux SCTP Flaw Could Let Local Users Gain Root and Escape Containers A use-after-free bug tracked as CVE-2026-64564 and nicknamed SCTPhantom has been lurking in Linux’s SCTP networking code since 2008 and can be chained into full root access on a host; researchers say they used it to escape a container and reach the […] The post Infosec News Nuggets — August 10, 2026 appeared first on AboutDFIR - The Definitive Compendium Project.",
+      "guid": "https://aboutdfir.com/?p=9293",
+      "pubDate": "2026-08-10T10:11:38.000Z",
+      "sourceName": "About DFIR",
+      "sourceUrl": "https://aboutdfir.com/feed",
+      "category": "offensive"
     },
     {
       "title": "IT threat evolution in Q2 2026. Non-mobile statistics",
@@ -1791,28 +1990,6 @@
       "imageUrl": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2026/08/10093530/malware-report-q2-2026-featured-image-scaled-1-990x400.jpg"
     },
     {
-      "title": "Phantom 5: File Authority — Escalating from Group Membership to Root (A Linux Privilege Escalation…",
-      "link": "https://infosecwriteups.com/phantom-5-file-authority-escalating-from-group-membership-to-root-a-linux-privilege-escalation-a5bec7f02b8c?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/a5bec7f02b8c",
-      "pubDate": "2026-08-10T09:43:42.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/655/1*0dEHXM3m0XO5UajE2IQQ-g.png"
-    },
-    {
-      "title": "The Bug That Almost Wasn’t: How a “Dead End” Led to 500+ Leaked Customer Records",
-      "link": "https://infosecwriteups.com/the-bug-that-almost-wasnt-how-a-dead-end-led-to-500-leaked-customer-records-18db26e53705?source=rss----7b722bfd1b8d---4",
-      "description": "A story about persistence, reading between the lines, and why you should always check custom post types Continue reading on InfoSec Write-ups »",
-      "guid": "https://medium.com/p/18db26e53705",
-      "pubDate": "2026-08-10T09:42:50.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*RjEExewJzpwg6tFMKKIMGA.png"
-    },
-    {
       "title": "The Bug That Almost Wasn’t: How a “Dead End” Led to 500+ Leaked Customer Records",
       "link": "https://infosecwriteups.com/the-bug-that-almost-wasnt-how-a-dead-end-led-to-500-leaked-customer-records-18db26e53705?source=rss----7b722bfd1b8d--bug_bounty",
       "description": "A story about persistence, reading between the lines, and why you should always check custom post types Continue reading on InfoSec Write-ups »",
@@ -1822,28 +1999,6 @@
       "sourceUrl": "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty",
       "category": "bugbounty",
       "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*RjEExewJzpwg6tFMKKIMGA.png"
-    },
-    {
-      "title": "Hacker Holidays 2026: Day 4 Walkthrough (Packed Light)",
-      "link": "https://infosecwriteups.com/hacker-holidays-2026-day-4-walkthrough-packed-light-02a5a14604a7?source=rss----7b722bfd1b8d---4",
-      "description": "Someone was smuggling data out of the resort network one cookie at a time. We used Wireshark, Base64 and a single XOR key to decode the… Continue reading on InfoSec Write-ups »",
-      "guid": "https://medium.com/p/02a5a14604a7",
-      "pubDate": "2026-08-10T09:41:58.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1698/1*VOKyk_8L9iYseTfh4Ezt6w.png"
-    },
-    {
-      "title": "Bypassing Enterprise SSO via a Forgotten Source Map: A Bug Bounty Story",
-      "link": "https://infosecwriteups.com/bypassing-enterprise-sso-via-a-forgotten-source-map-a-bug-bounty-story-a43ab0973146?source=rss----7b722bfd1b8d---4",
-      "description": "When you look at a bug bounty scope with 15+ root domains, it’s easy to get overwhelmed. Most hunters will fire off their automated… Continue reading on InfoSec Write-ups »",
-      "guid": "https://medium.com/p/a43ab0973146",
-      "pubDate": "2026-08-10T09:40:18.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*Omd0ev0CqBSJFovqcVzOTw.png"
     },
     {
       "title": "Bypassing Enterprise SSO via a Forgotten Source Map: A Bug Bounty Story",
@@ -1857,39 +2012,6 @@
       "imageUrl": "https://cdn-images-1.medium.com/max/1536/1*Omd0ev0CqBSJFovqcVzOTw.png"
     },
     {
-      "title": "TryHackMe: Packed Light (Hacker Holidays Day 04) Walkthrough",
-      "link": "https://infosecwriteups.com/tryhackme-packed-light-hacker-holidays-day-04-walkthrough-a4c45b84e1b7?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/a4c45b84e1b7",
-      "pubDate": "2026-08-10T09:39:16.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*uRKcID47-GTqL5WajEy_ig.png"
-    },
-    {
-      "title": "BYUCTF RSA Dreams Cybersecurity Writeup 2026",
-      "link": "https://infosecwriteups.com/byuctf-rsa-dreams-writeup-2026-3525d1a1d83c?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/3525d1a1d83c",
-      "pubDate": "2026-08-10T09:37:33.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/0*1B37l6cc-pOlw13x.png"
-    },
-    {
-      "title": "They Gave Me $1,000 After I Found Their Entire Student Database Exposed!",
-      "link": "https://infosecwriteups.com/they-gave-me-1-000-after-i-found-their-entire-student-database-exposed-f127e4bc91f3?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/f127e4bc91f3",
-      "pubDate": "2026-08-10T09:35:57.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*wDM3FXhIzAL4caMQ1DAILQ.jpeg"
-    },
-    {
       "title": "They Gave Me $1,000 After I Found Their Entire Student Database Exposed!",
       "link": "https://infosecwriteups.com/they-gave-me-1-000-after-i-found-their-entire-student-database-exposed-f127e4bc91f3?source=rss----7b722bfd1b8d--bug_bounty",
       "description": "",
@@ -1899,39 +2021,6 @@
       "sourceUrl": "https://medium.com/feed/bugbountywriteup/tagged/bug-bounty",
       "category": "bugbounty",
       "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*wDM3FXhIzAL4caMQ1DAILQ.jpeg"
-    },
-    {
-      "title": "Hack Smarter - Silent Corridor (Blue Team)",
-      "link": "https://infosecwriteups.com/hack-smarter-silent-corridor-blue-team-e3a6ef6a65e6?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/e3a6ef6a65e6",
-      "pubDate": "2026-08-10T09:33:56.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*HOyYx6TeH0DDndOif_6wZQ.png"
-    },
-    {
-      "title": "TryHackMe: “Complimentary” Room Walkthrough ( Hacker’s Holiday Challenge )",
-      "link": "https://infosecwriteups.com/tryhackme-complimentary-room-walkthrough-hackers-holiday-challenge-719f29710300?source=rss----7b722bfd1b8d---4",
-      "description": "",
-      "guid": "https://medium.com/p/719f29710300",
-      "pubDate": "2026-08-10T09:33:02.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1024/1*moBZcWZpx9sVem4DqVTV-g.png"
-    },
-    {
-      "title": "Hacker Holidays 2026: Day 3 Walkthrough (Complimentary)",
-      "link": "https://infosecwriteups.com/hacker-holidays-2026-day-3-walkthrough-complimentary-12e4ddc2d3c6?source=rss----7b722bfd1b8d---4",
-      "description": "A wellness app was quietly handing out AWS credentials to every visitor. We used them to dump the entire database. Here is how. Continue reading on InfoSec Write-ups »",
-      "guid": "https://medium.com/p/12e4ddc2d3c6",
-      "pubDate": "2026-08-10T09:31:18.000Z",
-      "sourceName": "InfoSec Writeups",
-      "sourceUrl": "https://infosecwriteups.com/feed",
-      "category": "offensive",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1232/1*Rc80p6SQFork8vKNyuouFQ.png"
     },
     {
       "title": "Why Bug Hunters Skip Role-Based API Testing And How I Turned a Writer Token Into an SSRF",
@@ -1975,16 +2064,6 @@
       "category": "bugbounty"
     },
     {
-      "title": "Differential Heuristics",
-      "link": "https://www.redblobgames.com/blog/2026-08-08-differential-heuristics/",
-      "description": "Comments",
-      "guid": "https://www.redblobgames.com/blog/2026-08-08-differential-heuristics/",
-      "pubDate": "2026-08-09T13:58:46.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Inside the Modern SOC: The Identity Front Door",
       "link": "https://unit42.paloaltonetworks.com/soc-identity-front-door/",
       "description": "Identity-based attacks drive 90% of incidents. Learn how modern attackers exploit identities and what SOC leaders can do to respond. The post Inside the Modern SOC: The Identity Front Door appeared first on Unit 42.",
@@ -2015,37 +2094,6 @@
       "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
       "category": "cloud",
       "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/08/05/Vladimir-Provorov-Author.jpg"
-    },
-    {
-      "title": "Securing your Amazon S3 buckets: Identifying and remediating over-permissioned access",
-      "link": "https://aws.amazon.com/blogs/security/securing-your-amazon-s3-buckets-identifying-and-remediating-over-permissioned-access/",
-      "description": "Misconfigured Amazon Simple Storage Service (Amazon S3) buckets can expose your data to unauthorized access. Without proactive review, S3 bucket policies or Access Control Lists (ACLs) configured with broad access may go unnoticed in your environment. In this post, you learn how to identify and fix over-permissioned S3 buckets across your AWS environment, along with […]",
-      "guid": "d2a2a47bd24a9d71d4f9ddd6987866c13aa2ba0f",
-      "pubDate": "2026-08-07T16:46:40.000Z",
-      "sourceName": "AWS Security Blog",
-      "sourceUrl": "https://aws.amazon.com/blogs/security/feed/",
-      "category": "cloud",
-      "imageUrl": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2026/08/03/s3-audit-flowchart-v3-Figure-1.png"
-    },
-    {
-      "title": "Beware cut-price AI services that read your every word",
-      "link": "https://www.fortra.com/blog/beware-cut-price-ai-services-read-your-every-word",
-      "description": "f someone offered you 90% off the official price to access Claude, the powerful AI model from Anthropic, would you be tempted? It turns out that around 900 people were, and they may be regretting their decision. Read more in my article on the Fortra blog.",
-      "guid": "https://grahamcluley.com/?p=17351888",
-      "pubDate": "2026-08-07T15:33:08.000Z",
-      "sourceName": "Graham Cluley",
-      "sourceUrl": "https://www.grahamcluley.com/feed/",
-      "category": "news"
-    },
-    {
-      "title": "VU#987105: The nothings stb TrueType library, up to version 1.26, contains a heap buffer overflow vulnerability",
-      "link": "https://kb.cert.org/vuls/id/987105",
-      "description": "Overview A heap buffer overflow vulnerability exists in the stb TrueType library created by nothings. Exploitation of this vulnerability can occur when handling malformed font data and may lead to both Denial of Service (DoS) and Information Disclosure. Description The nothings stb repository, versions 1.26 and earlier, contains a collection of single-file public domain and MIT-licensed libraries for C/C++ projects. CVE-2026-18497 A heap buffer overflow vulnerability exists in the stbtt_GetGlyphShape() function within the stb_truetype.h library when handling malformed TrueType Font (TTF) data. The issue occurs during glyph contour parsing. The function iterates based on the number of contour endpoints specified in endPtsOfContours, but does not validate that the points pointer remains within the bounds of the glyph data buffer. As a result, operations such as flags = *points++; may read memory beyond the allocated region. An attacker can exploit this vulnerability by crafting a TTF file that specifies an excessively large endPtsOfContours value while providing truncated or minimal glyph data. When an application utilizing stb_truetype.h attempts to load, bake, or render this malformed font via stbtt_GetGlyphShape(), the parser will continue iterating past the end of the glyph data buffer, triggering the out-of-bounds heap read. Impact Exploitation of this vulnerability can lead to application crashes due to invalid reads of unmapped memory addresses, resulting in denial of service (DoS). In some cases, an attacker may also be able to read data from adjacent heap memory. Solution Unfortunately, we were unable to reach the stb maintainers to coordinate this vulnerability. Users are advised to monitor the project's GitHub repository for updates and install the latest version of this library once a fix has been released. At the time of this writing, the maintainer of this repository had the following message posted on the project's README page: \"This project discusses s",
-      "guid": "https://kb.cert.org/vuls/id/987105",
-      "pubDate": "2026-08-07T14:15:19.038Z",
-      "sourceName": "CERT Vulnerability Notes",
-      "sourceUrl": "https://www.kb.cert.org/vulfeed/",
-      "category": "government"
     }
   ]
 }
