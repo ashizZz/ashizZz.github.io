@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-26T20:41:57.336Z",
+  "generatedAt": "2026-09-27T03:57:56.995Z",
   "maxItemsPerFeed": 10,
   "maxAgeDays": 7,
   "feedCount": 55,
@@ -63,6 +63,145 @@
     }
   ],
   "items": [
+    {
+      "title": "EDR Evasion: Process Injection Without WriteProcessMemory",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr9sr7/edr_evasion_process_injection_without/",
+      "description": "Unlike traditional approaches, console named-pipe injection does not use VirtualAllocEx and WriteProcessMemory. Instead, it takes advantage of read and write operations through a named pipe, along with the way console programs store interactive commands in memory. submitted by /u/Cold-Dinosaur [link] [comments]",
+      "guid": "t3_1wr9sr7",
+      "pubDate": "2026-09-27T03:39:18.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "SOCMIntelligence",
+      "link": "https://kitploit.com/en/tools/github/emrekybs/socmintelligence",
+      "description": "A modular OSINT & SOCMINT framework for social media intelligence, investigation, and public data analysis.",
+      "guid": "https://kitploit.com/en/tools/github/emrekybs/socmintelligence",
+      "pubDate": "2026-09-27T02:51:40.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56235/3def84878a81716a6621ff67e879d01aaa4456829e3d5ff494af010a64798d06-display-v1.webp"
+    },
+    {
+      "title": "reverse-engineering-browser",
+      "link": "https://kitploit.com/en/tools/github/sunghoojung/reverse-engineering-browser",
+      "description": "Brave-based browser harness for reverse engineering.",
+      "guid": "https://kitploit.com/en/tools/github/sunghoojung/reverse-engineering-browser",
+      "pubDate": "2026-09-27T01:51:33.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56234/894dde32e2fe9eaa35372f080752ded6e6f0a1f69cd3f865cac94e284b17a7c4-display-v1.webp"
+    },
+    {
+      "title": "AI on Kubernetes: Default Helm Chart Security Configurations and Lateral Movement Risks",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr6wxx/ai_on_kubernetes_default_helm_chart_security/",
+      "description": "A technical audit evaluating the security defaults of 15 official Helm charts used for AI serving, vector databases, and Model Context Protocol (MCP) agents (including KubeRay, vLLM, LiteLLM, Qdrant, Weaviate, and Flux159 MCP). Key findings from static manifest analysis and live single-pod lateral movement probes on a test cluster: Plaintext Secret Handling: LiteLLM database migration Job embeds raw database passwords in container environment variables (F-13). Unauthenticated Remote Code Execution: KubeRay defaults accept unauthenticated job submissions via HTTP, running commands inside a container with passwordless sudo access. Over-privileged Agent Access: Flux159 Kubernetes MCP server mounts a ClusterRole with cluster-wide Secret read and pod exec permissions, exposed without an authentication token over HTTP. Static Scanners vs CRDs: Standard static analysis tools (Checkov, Trivy, Kubescape) failed to inspect pods nested inside Custom Resource Definitions like Ray clusters. The paper documents reproducible test commands, network capture logs, and remediation Helm snippets. Scrubbed raw probe logs and results tables are available on GitHub: https://github.com/Sorami-Consulting-AU/ai-kubernetes-helm-chart-security submitted by /u/No-Peanut-6988 [link] [comments]",
+      "guid": "t3_1wr6wxx",
+      "pubDate": "2026-09-27T01:11:18.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "Purple-Team-Automation",
+      "link": "https://kitploit.com/en/tools/github/joshuagodwin7929/purple-team-automation",
+      "description": "Automated adversary emulation (Caldera) against an AD lab to validate Sigma detection coverage and map results to MITRE ATT&CK.",
+      "guid": "https://kitploit.com/en/tools/github/joshuagodwin7929/purple-team-automation",
+      "pubDate": "2026-09-27T00:51:17.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56228/53e5832157d5751f87aa9edc2398d1572e01d00118846b7588c0c78ff0ffb29e-display-v1.webp"
+    },
+    {
+      "title": "wordpress-cve-scanner",
+      "link": "https://kitploit.com/en/tools/gitlab/valtersit/wordpress-cve-scanner",
+      "description": "Scan your WordPress core, themes and plugins for known CVEs from the command line. Open source, auditable, privacy-first — powered by the ValtersIT CVE API.",
+      "guid": "https://kitploit.com/en/tools/gitlab/valtersit/wordpress-cve-scanner",
+      "pubDate": "2026-09-26T23:51:01.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56224/15496ed684763ff05591864f724cabb69835f62ae854894d5e090e728b70a030-display-v1.webp"
+    },
+    {
+      "title": "Prompt-Injection-in-the-Wild",
+      "link": "https://kitploit.com/en/tools/github/cybershujin/prompt-injection-in-the-wild",
+      "description": "Tracker of publicly reported prompt-injection techniques, broken down by delivery method, encoding, and propagation behavior, with confirmed models, sources, and MITRE ATLAS tags.",
+      "guid": "https://kitploit.com/en/tools/github/cybershujin/prompt-injection-in-the-wild",
+      "pubDate": "2026-09-26T22:50:28.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56226/7b4e3ac92967738d7e7434b44512a57f9b7104b2a040568db4076ae00a4ede74-display-v1.webp"
+    },
+    {
+      "title": "Predictable Account-Activation Token: Email-Ownership Verification Bypass",
+      "link": "https://medium.com/@redhunter01/predictable-account-activation-token-email-ownership-verification-bypass-0eead49d4f1d?source=rss------bug_bounty-5",
+      "description": "Email verification is supposed to establish one simple security property: Continue reading on Medium »",
+      "guid": "https://medium.com/p/0eead49d4f1d",
+      "pubDate": "2026-09-26T22:20:05.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty"
+    },
+    {
+      "title": "XXERipper",
+      "link": "https://kitploit.com/en/tools/github/kamalx06/xxeripper",
+      "description": "Production-grade XXE scanner that combines statistical baselining, differential parser fingerprinting, and OOB confirmation to find what naive scanners miss. 30+ attack techniques, credential extraction with paste-ready exploit snippets, and CI/CD-ready SARIF output.",
+      "guid": "https://kitploit.com/en/tools/github/kamalx06/xxeripper",
+      "pubDate": "2026-09-26T21:50:20.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56214/b8ea352662bd3408c13515e4d17816f13c0fa47ef7bf1e80d2807ed17724236a-display-v1.webp"
+    },
+    {
+      "title": "A header-level look at 4,688 small-business websites: 0.17% passed a header-only script-CSP rule [methods, parser rules, data]",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr23li/a_headerlevel_look_at_4688_smallbusiness_websites/",
+      "description": "We scanned 7,040 randomly sampled U.S. local-business directory listings and graded the response headers against a published rubric. Of the 4,688 live sites, 49.7% met none of seven header criteria, and 8 sites (0.17%) passed a strict header-only script-CSP rule. Rubric, parser rules, code and de-identified data are all on the page. submitted by /u/Plastic-Falcon9147 [link] [comments]",
+      "guid": "t3_1wr23li",
+      "pubDate": "2026-09-26T21:26:16.000Z",
+      "sourceName": "r/netsec",
+      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
+      "category": "community"
+    },
+    {
+      "title": "SpectralCovert",
+      "link": "https://kitploit.com/en/tools/github/prox0959/spectralcovert",
+      "description": "Detects network covert channels using Shannon entropy and Sarle's bimodality coefficient to flag encrypted ICMP/TCP payload exfiltration and timing-based leaks.",
+      "guid": "https://kitploit.com/en/tools/github/prox0959/spectralcovert",
+      "pubDate": "2026-09-26T20:50:11.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56217/c2734556d1e56757291b3c47e96ded5dbfef518475c8f49076032422a3022a1b-display-v1.webp"
+    },
+    {
+      "title": "Finding Hidden Bug Bounty Programs Outside HackerOne",
+      "link": "https://medium.com/@owl011/finding-hidden-bug-bounty-programs-outside-hackerone-581b041b2091?source=rss------bug_bounty-5",
+      "description": "Introduction Continue reading on Medium »",
+      "guid": "https://medium.com/p/581b041b2091",
+      "pubDate": "2026-09-26T20:41:46.000Z",
+      "sourceName": "Medium Bug Bounty Tag",
+      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
+      "category": "bugbounty",
+      "imageUrl": "https://cdn-images-1.medium.com/max/1365/1*6z5KbalodY0YV1c3BsZtpQ.png"
+    },
+    {
+      "title": "file-notification-attacks",
+      "link": "https://kitploit.com/en/tools/github/isec-tugraz/file-notification-attacks",
+      "description": "Research artifacts for file-notification side-channel attacks on Linux, Windows, and macOS, demonstrating inotify/FSEvents leakage, keystroke timing, and website fingerprinting.",
+      "guid": "https://kitploit.com/en/tools/github/isec-tugraz/file-notification-attacks",
+      "pubDate": "2026-09-26T19:49:58.000Z",
+      "sourceName": "KitPloit",
+      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
+      "category": "offensive",
+      "imageUrl": "https://assets.kitploit.com/production/public/tools/56156/43d577dcaf9c182650acb2b808348d14a14fb511bfc5518c6b378dbf56b217a8-display-v1.webp"
+    },
     {
       "title": "Strategies for Passing CompTIA CySA+: My Practical Roadmap to Becoming a Better Security Analyst",
       "link": "https://mukibas37.medium.com/strategies-for-passing-comptia-cysa-my-practical-roadmap-to-becoming-a-better-security-analyst-50e622b917a8?source=rss------bug_bounty-5",
@@ -235,17 +374,6 @@
       "imageUrl": "https://cdn-images-1.medium.com/max/1672/1*eTWrHYZoe0uTLuikPycUkQ.png"
     },
     {
-      "title": "WordList",
-      "link": "https://kitploit.com/en/tools/github/rix4uni/wordlist",
-      "description": "Custom wordlist, updated regularly",
-      "guid": "https://kitploit.com/en/tools/github/rix4uni/wordlist",
-      "pubDate": "2026-09-26T16:49:24.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56161/3045b66f94aa3d8c0f07c23dd01d9374cdc7c401d056baf784af0a3cc134c806-display-v1.webp"
-    },
-    {
       "title": "Local AI Model Modifies Windows Credential Dumper to Bypass EDR Detection",
       "link": "https://cybersecuritynews.com/local-ai-bypasses-edr/",
       "description": "A locally hosted, uncensored artificial intelligence model modified a Windows credential-dumping utility until it evaded two Endpoint Detection and Response (EDR) products in a controlled lab, highlighting how accessible generative AI could accelerate custom offensive-tool development. The experiment, published by Project Black researcher Eddie Zhang, targeted the Local Security Authority Subsystem Service (LSASS), whose memory […] The post Local AI Model Modifies Windows Credential Dumper to Bypass EDR Detection appeared first on Cyber Security News.",
@@ -278,16 +406,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjw68366x21zn2YL0KqOUF-wrxy-LyOYksgHE5HQACjbKayTgem__HPYR5r9RThTKKcgubDsWrMEud-C63raYE3CqpkLzcsLvJCbwZArzAZzPF3bMe2k1iDmZaxA1zv8mfkmn8G5LDHtTSx9kzPvHehA04fBdQn8yXjCJnGqaPNO5YJt4Ki9DSIvZGepnc/s1600/Screenshot%202026-09-25%20164428%20%281%29.webp"
     },
     {
-      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
-      "link": "https://tangled.org/yanndegat.tngl.sh/drawgent",
-      "description": "Comments",
-      "guid": "https://tangled.org/yanndegat.tngl.sh/drawgent",
-      "pubDate": "2026-09-26T15:56:34.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Microsoft pauses KB5002907 update after Office license deactivations",
       "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-365-kb5002907-update-paused-after-office-license-deactivations/",
       "description": "Microsoft has paused the rollout of the KB5002907 Microsoft 365 update after users report that it deactivated, or in some cases completely removed, perpetual Office 2016 and Office 2019 installations. [...]",
@@ -298,15 +416,14 @@
       "category": "news"
     },
     {
-      "title": "libprocesshider",
-      "link": "https://kitploit.com/en/tools/github/gianlucaborello/libprocesshider",
-      "description": "Hide a process under Linux using the ld preloader (https://sysdig.com/blog/hiding-linux-processes-for-fun-and-profit/)",
-      "guid": "https://kitploit.com/en/tools/github/gianlucaborello/libprocesshider",
-      "pubDate": "2026-09-26T15:49:20.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56163/746f997497d24cb6fc5a1aff8c55d3c01480eef4daeb4e3afdd2da34fc656eb3-display-v1.webp"
+      "title": "Turning GLM-5.3-Flash into a Jev-like decision model",
+      "link": "https://www.privatemode.ai/blog/system-one-from-glm-flash",
+      "description": "Comments",
+      "guid": "https://www.privatemode.ai/blog/system-one-from-glm-flash",
+      "pubDate": "2026-09-26T15:49:04.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "OpenAI Agents Accessed US Government Websites Without Authorization",
@@ -319,37 +436,14 @@
       "category": "news"
     },
     {
-      "title": "Mastering Web Cache Deception: PortSwigger 5 Labs",
-      "link": "https://medium.com/@bhanvararamchoudhary6/mastering-web-cache-deception-portswigger-5-labs-0c0e533837ea?source=rss------bug_bounty-5",
-      "description": "A Practical Guide to Exploiting Path Mapping, Delimiters, Normalization, and Exact-Match Cache Rules Continue reading on Medium »",
-      "guid": "https://medium.com/p/0c0e533837ea",
-      "pubDate": "2026-09-26T15:14:45.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1202/1*kQwsXPAB-Ao-fdCtTHabDw.png"
-    },
-    {
-      "title": "unwaf",
-      "link": "https://kitploit.com/en/tools/github/mmarting/unwaf",
-      "description": "Unwaf is a Go tool designed to help identify WAF bypasses using passive techniques. It automates the process of discovering the real origin IP behind a WAF/CDN by combining multiple discovery methods and verifying candidates through HTML similarity comparison, SSL certificate fingerprinting, and HTTP header analysis.",
-      "guid": "https://kitploit.com/en/tools/github/mmarting/unwaf",
-      "pubDate": "2026-09-26T14:48:56.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56208/31af3d0361e82bf3218e85a20aceb17f10024f9483c24524853da6b31224b7ae-display-v1.webp"
-    },
-    {
-      "title": "I Tested Tencent’s OctoP AI Agent for Cybersecurity — Can AI Really Do Pentesting?",
-      "link": "https://medium.com/@pentesterclubpvtltd/i-tested-tencents-octop-ai-agent-for-cybersecurity-can-ai-really-do-pentesting-c941e8d47f6f?source=rss------bug_bounty-5",
-      "description": "Can an AI agent actually perform penetration testing, or is it still just a chatbot with a terminal? Continue reading on Medium »",
-      "guid": "https://medium.com/p/c941e8d47f6f",
-      "pubDate": "2026-09-26T14:41:46.000Z",
-      "sourceName": "Medium Bug Bounty Tag",
-      "sourceUrl": "https://medium.com/feed/tag/bug-bounty",
-      "category": "bugbounty",
-      "imageUrl": "https://cdn-images-1.medium.com/max/1912/1*G3T6xO_ighv8DiTwL2bKsQ.png"
+      "title": "Go Concurrency Distilled",
+      "link": "https://antonz.org/go-concurrency-distilled/",
+      "description": "Comments",
+      "guid": "https://antonz.org/go-concurrency-distilled/",
+      "pubDate": "2026-09-26T14:34:49.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "Exploit.in Database Reveals the Roots of Today’s Ransomware Ecosystem",
@@ -373,17 +467,6 @@
       "category": "news"
     },
     {
-      "title": "findcdn",
-      "link": "https://kitploit.com/en/tools/github/cisagov/findcdn",
-      "description": "findCDN is a tool created to help accurately identify what CDN a domain is using.",
-      "guid": "https://kitploit.com/en/tools/github/cisagov/findcdn",
-      "pubDate": "2026-09-26T13:48:37.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56209/99dde6049143089718aeeb43a2fb2196c6fd21857290fc5d8292601f13f5e516-display-v1.webp"
-    },
-    {
       "title": "ShinyHunters Bypass WAF Rules to Resume Oracle PeopleSoft Attacks",
       "link": "https://hackread.com/shinyhunters-bypass-waf-rules-oracle-peoplesoft-attacks/",
       "description": "ShinyHunters exploit CVE-2026-35273 in Oracle PeopleSoft using URL encoding to bypass WAF rules, deploy web shells and spread the SIDEEYE backdoor.",
@@ -392,17 +475,6 @@
       "sourceName": "HackRead",
       "sourceUrl": "https://www.hackread.com/feed",
       "category": "news"
-    },
-    {
-      "title": "waf-detector",
-      "link": "https://kitploit.com/en/tools/github/ammarion/waf-detector",
-      "description": "🛡️ High-performance WAF & CDN detection tool. Identify protection layers (Cloudflare, Akamai, AWS, Fastly, and more), run effectiveness and enforcement tests with evasion payloads, and generate posture reports. Built in Rust 🦀.",
-      "guid": "https://kitploit.com/en/tools/github/ammarion/waf-detector",
-      "pubDate": "2026-09-26T12:48:11.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56210/db2a12b3c71c7759caf25663a57dfa10c8a483c05ac4c6496632efdc97bd445b-display-v1.webp"
     },
     {
       "title": "OpenAI's AI agents accidentally uploaded user-provided images to third-party sites",
@@ -425,17 +497,6 @@
       "category": "news"
     },
     {
-      "title": "cdn-ip-scanner",
-      "link": "https://kitploit.com/en/tools/github/shahinst/cdn-ip-scanner",
-      "description": "Web-based scanner that discovers fast, low-latency CDN IP addresses from Cloudflare, Fastly and other providers using multi-threaded 5-attempt verification and V2Ray config testing.",
-      "guid": "https://kitploit.com/en/tools/github/shahinst/cdn-ip-scanner",
-      "pubDate": "2026-09-26T11:48:00.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56211/88d1d0810f7935f4a6204a1379ceecf43f4730d6244134714f95a0f0a004002c-display-v1.webp"
-    },
-    {
       "title": "Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells",
       "link": "https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html",
       "description": "Google is warning of renewed mass exploitation of a known security vulnerability in Oracle PeopleSoft as part of a campaign targeting multiple sectors globally. The ShinyHunters-linked activity involves the weaponization of CVE-2026-35273 (CVSS score: 9.8), a critical security flaw that could result in unauthenticated remote code execution. The vulnerability was first exploited as a zero-day",
@@ -445,17 +506,6 @@
       "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
       "category": "news",
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYN2VWIT2g8mQkV0GeZWzYErKcubb0-baI8J__2nmdElucECc7HrLkdPsR1dz93qjMBI5sr_dL8yPWHf2bwWCBXa3YfutHAeJ-70UCSMuJrHhyOB3RO4OkuDjuw7gxRLXUnK-CeK9jZO0uOJRy-N3w-rV7uZ4t1FnFIWNjEsKtSYQINUvPX31mKzV_5Ert/s1600/oracle-flaw.jpg"
-    },
-    {
-      "title": "FUCK-CDN",
-      "link": "https://kitploit.com/en/tools/github/0xshe/fuck-cdn",
-      "description": "一键绕过CDN获取真实IP",
-      "guid": "https://kitploit.com/en/tools/github/0xshe/fuck-cdn",
-      "pubDate": "2026-09-26T10:47:52.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56212/043d043093a2e5342b00f7a7554a18cfd9ecea192cc775a57bfa8081a6fc50b6-display-v1.webp"
     },
     {
       "title": "Zero Trust for AI Agents Starts With Fixing Zero Visibility",
@@ -490,17 +540,6 @@
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoCsmpn_im_gimeko6yEdebgucFfzjRrTH0Hmvl1triNXT64w_JdoBIqCrFEApRZ9mmKBYfJQ1fqgfubPH3ZRaWW7SJ2HSr18mBsjSdFE6AwVl362SwcdzHp0EtlL2qoVuYARkSKmOqQaORUjjYVAM-PCT9Itvvkgb69lyVLttezAFtAuCw86RpPu3lAo4/s1600/wordpress-ele.jpg"
     },
     {
-      "title": "midonescanner-android",
-      "link": "https://kitploit.com/en/tools/github/mwhammadrezss/midonescanner-android",
-      "description": "Scanner CDN Detection, Real Bandwidth Test, Throttle Detection",
-      "guid": "https://kitploit.com/en/tools/github/mwhammadrezss/midonescanner-android",
-      "pubDate": "2026-09-26T09:47:37.000Z",
-      "sourceName": "KitPloit",
-      "sourceUrl": "http://feeds.feedburner.com/PentestTools",
-      "category": "offensive",
-      "imageUrl": "https://assets.kitploit.com/production/public/tools/56213/1f54d0a6def831d458efcab961b0c274e9cd7ddf3310798f6a6a719fe1fb4611-display-v1.webp"
-    },
-    {
       "title": "EX-ARRR: Sailing the Apple 0-click Seas",
       "link": "https://www.reddit.com/r/netsec/comments/1wqmb3o/exarrr_sailing_the_apple_0click_seas/",
       "description": "submitted by /u/nindustries [link] [comments]",
@@ -508,16 +547,6 @@
       "pubDate": "2026-09-26T09:35:39.000Z",
       "sourceName": "r/netsec",
       "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
-    },
-    {
-      "title": "Fifteen years later, the Apple Cards origin story",
-      "link": "https://lexontech.org/fifteen-years-later-the-apple-cards-origin-story",
-      "description": "Comments",
-      "guid": "https://lexontech.org/fifteen-years-later-the-apple-cards-origin-story",
-      "pubDate": "2026-09-26T09:13:41.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
       "category": "community"
     },
     {
@@ -606,16 +635,6 @@
       "category": "news"
     },
     {
-      "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
-      "link": "https://swarmtraces.org/",
-      "description": "Comments",
-      "guid": "https://swarmtraces.org/",
-      "pubDate": "2026-09-25T21:09:27.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Friday Squid Blogging: Participatory Squid Dissection in October in Tennessee",
       "link": "https://www.schneier.com/blog/archives/2026/09/friday-squid-blogging-participatory-squid-dissection-in-october-in-tennessee.html",
       "description": "I feel like someone who reads this blog will want to go to this: Families are invited to dive into the fascinating world of marine biology during an exciting, hands-on Family Squid Dissection at the Hands-On Science Center. Designed for curious learners of all ages, this unique experience combines an interactive lesson with the opportunity to explore the anatomy and adaptations of real ocean life. […] During the guided squid dissection, each family will work together to examine a squid up close, exploring its organs, structures, and specialized features. The experience provides a memorable opportunity for children and adults to see firsthand how the anatomy of a squid helps it survive in its underwater environment. If you go, take pictures. As usual, you can also use this squid post to talk about the security stories in the news that I haven’t covered. Blog moderation policy.",
@@ -644,16 +663,6 @@
       "sourceName": "BleepingComputer",
       "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
-    },
-    {
-      "title": "Analyzing Frontier Model Progress with My Favourite Game: Prince of Persia",
-      "link": "https://blog.priyan.in/2026/09/analyzing-frontier-model-progress-with.html",
-      "description": "Comments",
-      "guid": "https://blog.priyan.in/2026/09/analyzing-frontier-model-progress-with.html",
-      "pubDate": "2026-09-25T20:53:54.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
     },
     {
       "title": "5G-Shark Lures Phones to Rogue 5G Cells Without Network Jamming",
@@ -735,6 +744,16 @@
       "sourceName": "BleepingComputer",
       "sourceUrl": "https://www.bleepingcomputer.com/feed/",
       "category": "news"
+    },
+    {
+      "title": "Snap Wants to be a State Actor??–Kansas v. Snap",
+      "link": "https://blog.ericgoldman.org/archives/2026/09/snap-wants-to-be-a-state-actor-kansas-v-snap.htm",
+      "description": "Comments",
+      "guid": "https://blog.ericgoldman.org/archives/2026/09/snap-wants-to-be-a-state-actor-kansas-v-snap.htm",
+      "pubDate": "2026-09-25T17:12:04.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "VU#699627: Readwise Reader for Android, version 8.7.2, contains multiple XSS vulnerabilities",
@@ -873,6 +892,16 @@
       "imageUrl": "https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/09/image-71.png?resize=1024%2C789&#038;ssl=1"
     },
     {
+      "title": "Does Georgism work? Five years later",
+      "link": "https://www.astralcodexten.com/p/does-georgism-work-five-years-later",
+      "description": "Comments",
+      "guid": "https://www.astralcodexten.com/p/does-georgism-work-five-years-later",
+      "pubDate": "2026-09-25T13:48:38.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
       "title": "Sauron Loader Malware Uses DLL Side-Loading and In-Memory Decryption to Evade Detection",
       "link": "https://cybersecuritynews.com/sauron-loader-malware/",
       "description": "Sauron Loader has surfaced in attacks on German organizations, giving intruders a way to deliver more malware. The new tool need not be the first thing a victim encounters. In the cases examined, it arrived at the end of attack chains built around deception rather than a newly disclosed software flaw. Some victims faced ClickFix […] The post Sauron Loader Malware Uses DLL Side-Loading and In-Memory Decryption to Evade Detection appeared first on Cyber Security News.",
@@ -903,6 +932,16 @@
       "sourceUrl": "https://feeds.feedburner.com/TheHackersNews",
       "category": "news",
       "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRZ3gQjU3cKnH6bHzlz8PjeaUqGcrVWnRx-bT-mgDBYv-G4CM2Iix8afTJe8sAXEghuPTiD5KszOYzA0peRhyoGKNW9YE1QtwLubBFuv9YZjXnANEGyMGwi7-oEdIqmtRBWPzUZV7S91WiUX4cI2YVMHVSQbByCmIwAX9oZxvzjb2ScVJmpmMCzpDKaKtN/s1600/macos.jpg"
+    },
+    {
+      "title": "We Should Be Able to Change Our Languages",
+      "link": "http://jimmyhmiller.com/change-our-languages",
+      "description": "Comments",
+      "guid": "http://jimmyhmiller.com/change-our-languages",
+      "pubDate": "2026-09-25T13:00:10.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
     },
     {
       "title": "Master Key Included: Detecting SolarWinds ARM CVE-2026-28326",
@@ -1272,6 +1311,16 @@
       "category": "research"
     },
     {
+      "title": "Evolving programming languages in the AI era",
+      "link": "https://dashbit.co/blog/evolving-ai-era",
+      "description": "Comments",
+      "guid": "https://dashbit.co/blog/evolving-ai-era",
+      "pubDate": "2026-09-25T02:34:39.000Z",
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://news.ycombinator.com/rss",
+      "category": "community"
+    },
+    {
       "title": "Argus Monitor Local Denial-of-Service Vulnerability (CVE-2026-79417)",
       "link": "https://www.reddit.com/r/netsec/comments/1wpkc7q/argus_monitor_local_denialofservice_vulnerability/",
       "description": "(1) An exposed IOCTL lets unprivileged users disable the x86 MONITOR & MWAIT instructions used by Hyper-V and other kernel components--triggering a HYPERVISOR_ERROR bugcheck. (2) Reaching the IOCTL requires exploiting a TOCTOU bug arguably caused by poor documentation of the SeLocateProcessImageName function. (3) Reimplementation of the driver's security through obscurity IOCTL encryption scheme: SHA-256 KDF-derived XOR keystream & CRC16 Checksum. See full write-up, and Github for PoC. submitted by /u/p0xq [link] [comments]",
@@ -1320,16 +1369,6 @@
       "sourceName": "Dark Reading",
       "sourceUrl": "https://www.darkreading.com/rss.xml",
       "category": "news"
-    },
-    {
-      "title": "Lunex Unmasked: A New Information Stealer Deployed Through BYOVD",
-      "link": "https://www.reddit.com/r/netsec/comments/1wpddil/lunex_unmasked_a_new_information_stealer_deployed/",
-      "description": "submitted by /u/SpectreTv [link] [comments]",
-      "guid": "t3_1wpddil",
-      "pubDate": "2026-09-24T20:56:07.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
     },
     {
       "title": "Ryuk Member Karen Vardanyan Sentenced to Two Years in U.S. Prison",
@@ -1433,16 +1472,6 @@
       "sourceUrl": "https://www.microsoft.com/security/blog/feed",
       "category": "cloud",
       "imageUrl": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2026/09/Picture1-2.webp"
-    },
-    {
-      "title": "One Tap Too Far: Using Shortcuts to Bypass Chrome for iOS Call Prompts",
-      "link": "https://www.reddit.com/r/netsec/comments/1wp56y2/one_tap_too_far_using_shortcuts_to_bypass_chrome/",
-      "description": "submitted by /u/nibblesec [link] [comments]",
-      "guid": "t3_1wp56y2",
-      "pubDate": "2026-09-24T15:45:32.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
     },
     {
       "title": "VU#676317: Norwegian Cruise Line door access controller contains an improper authentication vulnerability",
@@ -1596,16 +1625,6 @@
       "category": "government"
     },
     {
-      "title": "Modern Object Pascal Introduction for Programmers",
-      "link": "https://castle-engine.io/modern_pascal",
-      "description": "Comments",
-      "guid": "https://castle-engine.io/modern_pascal",
-      "pubDate": "2026-09-24T11:33:56.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Malicious npm Packages That Evade Defenses",
       "link": "https://www.schneier.com/blog/archives/2026/09/malicious-npm-packages-that-evade-defenses.html",
       "description": "This is an impressive piece of malware. Its sophistication says nation-state to me, but there is no direct evidence and certainly no attribution.",
@@ -1668,16 +1687,6 @@
       "category": "research"
     },
     {
-      "title": "The Lost Atomic Update on Loongson CPU",
-      "link": "https://jia.je/hardware/2026/09/24/loongson-cpu-erratum-en/",
-      "description": "Comments",
-      "guid": "https://jia.je/hardware/2026/09/24/loongson-cpu-erratum-en/",
-      "pubDate": "2026-09-24T08:36:40.000Z",
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://news.ycombinator.com/rss",
-      "category": "community"
-    },
-    {
       "title": "Google’s location data privacy failures draw a €403 million fine",
       "link": "https://www.malwarebytes.com/blog/news/2026/09/googles-location-data-privacy-failures-draw-a-e403-million-fine",
       "description": "Turning off Location History did not necessarily stop Google from recording where users went. Ireland’s privacy regulator has now fined the company €403 million.",
@@ -1721,7 +1730,7 @@
       "title": "CrowdStrike Named a Leader in The Forrester Wave&trade;: Proactive Security Platforms, Q3 2026",
       "link": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-forrester-wave-proactive-security-platforms-q3-2026/",
       "description": "",
-      "guid": "https://www.crowdstrike.com/?p=123652",
+      "guid": "https://www.crowdstrike.com/?p=331655",
       "pubDate": "2026-09-24T05:00:00.000Z",
       "sourceName": "CrowdStrike Blog",
       "sourceUrl": "https://www.crowdstrike.com/blog/feed",
@@ -1736,16 +1745,6 @@
       "sourceName": "SANS Internet Storm Center",
       "sourceUrl": "https://isc.sans.edu/rssfeed_full.xml",
       "category": "research"
-    },
-    {
-      "title": "Is This A Joke? In The Auth Header? (F5 BIG-IP UnAuth Heap-Overflow to RCE CVE-2026-94127) - watchTowr Labs",
-      "link": "https://www.reddit.com/r/netsec/comments/1woli59/is_this_a_joke_in_the_auth_header_f5_bigip_unauth/",
-      "description": "submitted by /u/dx7r__ [link] [comments]",
-      "guid": "t3_1woli59",
-      "pubDate": "2026-09-23T23:20:45.000Z",
-      "sourceName": "r/netsec",
-      "sourceUrl": "https://www.reddit.com/r/netsec/.rss",
-      "category": "community"
     },
     {
       "title": "Smashing Security podcast #486: Vibe-coded shops, and hackable Flock cameras",
